@@ -26,6 +26,6 @@ try(Connection db = ds.getConnection()){
 }
 %>
 
-データベースへの接続に成功しました。
+データベースへの接続に成功しました。うんち
 </body>
 </html>
