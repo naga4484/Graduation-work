@@ -10,7 +10,7 @@
 <p>${account.name}　でログインしている</p>
 <p><a href="../account/Logout.action">ログアウト</a></p>
 
-<h1>サブスクレイピングの確認</h1>
+<h1>スクレイピングの確認</h1>
 <c:forEach begin="0" end="5" step="2" var="i">
 	<p>${today_temperature_data[i]} ： ${today_temperature_data[i+1]}</p>
 </c:forEach>
