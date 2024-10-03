@@ -18,7 +18,7 @@ public class AccountDAO extends DAO {
 		
 		PreparedStatement st;
 		st=con.prepareStatement(
-				"select * from student_account where student_id=? and password=?");
+				"select * from Student_account where student_id=? and password=?");
 		st.setString(1, student_id);
 		st.setString(2, password);
 		ResultSet rs=st.executeQuery();
