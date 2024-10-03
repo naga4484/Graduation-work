@@ -15,4 +15,7 @@
 	<p>${today_temperature_data[i]} ： ${today_temperature_data[i+1]}</p>
 </c:forEach>
 
+<h1>AI使用の確認</h1>
+<p><a href="../ai/gemini.jsp">AI使用ページへ</a></p>
+
 <%@include file="../footer.jsp"  %>
