@@ -5,6 +5,8 @@
 
 <h1>AI(Gemini)の使用について</h1>
 <p>多分、AI君が間違わなければちゃんと返答ができると思います…</p>
+<p>ちなみにGemini君はHTMLタグでのレスポンスを返してくれないので、スタイルを無理やり変えてます…</p>
+<p><a href="../common/top.jsp">ホームへ戻る</a></p>
 
 <p>質問：<br>
 <input type="text" id="ai-request"></p>
@@ -38,13 +40,15 @@
       async function run(ai_request) {
       // The Gemini 1.5 models are versatile and work with both text-only and multimodal prompts
       let model = genAI.getGenerativeModel({ model: "gemini-1.5-flash"});
+	  let ai_request_total = "日本語での回答でお願いします";
+	  ai_request_total = ai_request_total + "。" + ai_request
 
-      let result = await model.generateContent(ai_request);
+      let result = await model.generateContent(ai_request_total);
       let response = await result.response;
       let text = response.text();
 	  console.log(text);
       let htmlContent = text.replace(/\*\*(.*?)\*\*/g, '<br><strong>$1</strong><br>');
-	  let fullhtmlContent = htmlContent.replace(/\*/g, '<br>');
+	  let fullhtmlContent = htmlContent.replace(/\*/g, '<br>　');
       console.log(fullhtmlContent);
 	  
 
@@ -53,6 +57,7 @@
 
 	  const ai_button = document.getElementById('ai-request-button');
 	  let ai_request = "日本語での回答でお願いします";
+	  run(ai_request);
 
 	  ai_button.addEventListener('click' ,function(e){
 		
