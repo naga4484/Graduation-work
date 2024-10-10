@@ -1,30 +1,15 @@
 @charset "UTF-8";
 
-
-/*ここら辺は、一応商業利用可能なフリーフォント*/
-@font-face {
-  font-family: "コーポレートロゴ";
-  src: url("../font/Corporate-Logo-Bold-ver3.otf") format("opentype");
+.main_image{
+	position: absolute;
+    top: -60px;
+    left: 100px;
+    width: 400px;
 }
-
-@font-face {
-  font-family: "源界明朝";
-  src: url("../font/genkai-mincho.ttf") format("truetype");
-}
-
-@font-face {
-  font-family: "鉄瓶ゴシック";
-  src: url("../font/07鉄瓶ゴシック.otf") format("opentype");
-}
-@font-face {
-  font-family: "ヘタレ字";
-  src: url("../font/Hetare.ttf") format("truetype");
-}
-
-.main_content{
-	width:1100px;
-	margin:0 auto;
-	position: relative;
+.top_down_content{
+	position: absolute;
+	top: 300px;
+    left: 0px;
 }
 
 .cal-area {

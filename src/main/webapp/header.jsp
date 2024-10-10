@@ -3,7 +3,11 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<link rel="stylesheet" type="text/css" href="../css/style.css">
+
+<!-- CSSに関しては、機能ファルダごとにCSSを分けている -->
+<link rel="stylesheet" type="text/css" href="../css/top.css">
+<link rel="stylesheet" type="text/css" href="../css/common.css">
+<link rel="stylesheet" type="text/css" href="../css/teacher.css">
 </head>
 <body>
 <div class="main_content">
