@@ -1,0 +1,114 @@
+@charset "UTF-8";
+
+
+/*ここら辺は、一応商業利用可能なフリーフォント*/
+@font-face {
+  font-family: "コーポレートロゴ";
+  src: url("../font/Corporate-Logo-Bold-ver3.otf") format("opentype");
+}
+
+@font-face {
+  font-family: "源界明朝";
+  src: url("../font/genkai-mincho.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "鉄瓶ゴシック";
+  src: url("../font/07鉄瓶ゴシック.otf") format("opentype");
+}
+@font-face {
+  font-family: "ヘタレ字";
+  src: url("../font/Hetare.ttf") format("truetype");
+}
+
+.main_content{
+	width:1100px;
+	margin:0 auto;
+	position: relative;
+}
+
+.cal-area {
+    width: 420px;
+    position: absolute;
+    top: 0px;
+    right: 0px;
+}
+
+#calendar {
+    width: 500px;
+    height: 400px;
+    position: absolute;
+    right: 0px;
+    top: 0px;
+}
+#calendar h1 {
+    margin-bottom: 10px;
+    margin-left:110px;
+}
+
+.actions {
+    width: 300px;
+    margin: 0 0 0 127px;
+}
+
+#calendar table{
+    width: 420px;
+    border-collapse:  collapse;
+    text-align: center;
+    border: #333 solid 1px;
+}
+
+.table-title {
+    background-color: #f9fffd;
+}
+
+#calendar th,td {
+    border: #333 solid 1px;
+    padding: 10px;
+}
+.ex_td {
+    color: darkgray;
+    opacity: 0.5;
+}
+
+#calendar table .normal:first-child{
+    color: red;
+}
+#calendar table .normal:last-child{
+    color: blue;
+}
+
+
+#last-button {
+    width: 100px;
+    padding: 10px;
+    border: none;
+    background-color: #ffcf32;
+    border-radius: 10px;
+    color: #fff;
+    font-weight: bold;
+    position: absolute;
+    top: 25px;
+    left: -80px;
+}
+#last-button:hover {
+    transition: all 0.5s;
+    background-color: #8c35ff;
+}
+#next-button {
+    width: 100px;
+    padding: 10px;
+    border: none;
+    background-color: #3236ff;
+    border-radius: 10px;
+    color: #fff;
+    font-weight: bold;
+    position: absolute;
+    top: 25px;
+    right: 80px;
+
+}
+#next-button:hover {
+    transition: all 0.5s;
+    background-color: #10e548;
+}
