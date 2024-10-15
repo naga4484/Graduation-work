@@ -14,10 +14,10 @@ public class LogoutAction extends Action {
 
 		if (session.getAttribute("account")!=null) {
 			session.removeAttribute("account");
-			session.setAttribute("logout_mes", "ログアウトしました");
-			return "login.jsp";
+			request.setAttribute("logout_mes", "ログアウトしました");
+			return "login_top.jsp";
 		}
 		
-		return "loginjsp";
+		return "login_top.jsp";
 	}
 }

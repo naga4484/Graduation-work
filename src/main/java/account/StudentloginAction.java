@@ -2,20 +2,23 @@ package account;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
-import bean.Account;
+import bean.Class_num;
+import bean.Studentaccount;
 import dao.AccountDAO;
+import dao.ClassDAO;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import tool.Action;
 
-public class LoginAction extends Action {
+public class StudentloginAction extends Action {
 	public String execute(
 		HttpServletRequest request, HttpServletResponse response
 	) throws Exception {
@@ -26,7 +29,10 @@ public class LoginAction extends Action {
 		String password=request.getParameter("password");
 
 		AccountDAO dao=new AccountDAO();
-		Account account=dao.student_search(student_id, password);
+		Studentaccount account=dao.student_search(student_id, password);
+		
+		ClassDAO cdao=new ClassDAO();
+		List<Class_num> class_num=cdao.getallclass();
 		
 		
 		String today_temperature = "変更されていない";
@@ -45,10 +51,11 @@ public class LoginAction extends Action {
 		
 		if (account!=null) {
 			session.setAttribute("account", account);
+			session.setAttribute("class_num", class_num);
 			session.setAttribute("today_temperature_data", today_temperature_data);
 			return "../common/top.jsp";
 		}
 		request.setAttribute("login_error", "IDまたはパスワードが確認できませんでした");
-		return "login.jsp";
+		return "student_login.jsp";
 	}
 }

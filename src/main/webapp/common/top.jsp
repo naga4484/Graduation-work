@@ -20,7 +20,11 @@
 
 	<div class="top_main_function_icon">
 		<!-- 各種機能のアイコン用 -->
-		<a href="../teacher_function/teacher_function.jsp">教師</a>
+		<c:choose>
+		    <c:when test="${account.account_kind == \"教師\"}">
+		        <a href="../teacher_function/teacher_function.jsp">教師</a>
+		    </c:when>
+		</c:choose>
 		<a href="">自己管理</a>
 		<a href="">グループ管理</a>
 		<a href="">アンケート</a>

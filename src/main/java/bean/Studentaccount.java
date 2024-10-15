@@ -1,24 +1,21 @@
 package bean;
 
-public class Account implements java.io.Serializable {
+public class Studentaccount implements java.io.Serializable {
 	
 	private String student_id;
 	private String name;
-	private String grade;
 	private String class_id;
 	private String password;
 	private String address;
 	private String nickname;
 	private String icon;
+	private String account_kind;
 	
 	public String getStudent_id() {
 		return student_id;
 	}
 	public String getName() {
 		return name;
-	}
-	public String getGrade() {
-		return grade;
 	}
 	public String getClass_id() {
 		return class_id;
@@ -35,15 +32,15 @@ public class Account implements java.io.Serializable {
 	public String getIcon() {
 		return icon;
 	}
+	public String getAccount_kind() {
+		return account_kind;
+	}
 	
 	public void setStudent_id(String student_id) {
 		this.student_id=student_id;
 	}
 	public void setName(String name) {
 		this.name=name;
-	}
-	public void setGrade(String grade) {
-		this.grade=grade;
 	}
 	public void setClass_id(String class_id) {
 		this.class_id=class_id;
@@ -59,5 +56,8 @@ public class Account implements java.io.Serializable {
 	}
 	public void setIcon(String icon) {
 		this.icon=icon;
+	}
+	public void setAccount_kind(String account_kind) {
+		this.account_kind=account_kind;
 	}
 }
