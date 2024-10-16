@@ -178,4 +178,68 @@ public class AccountDAO extends DAO {
 		con.close();
 		return line;
 	}
+	
+	//学生氏名検索機能
+	public List<Studentaccount> student_search_name(String name)
+	throws Exception {
+		List<Studentaccount> studentaccountlist=new ArrayList<>();
+		Studentaccount account=null;
+
+		Connection con=getConnection();
+		
+		PreparedStatement st;
+		st=con.prepareStatement(
+				"select * from Student_account where name=?");
+		st.setString(1, name);
+		ResultSet rs=st.executeQuery();
+		
+		while (rs.next()) {
+			account=new Studentaccount();
+			account.setStudent_id(rs.getString("student_id"));
+			account.setName(rs.getString("name"));
+			account.setClass_id(rs.getString("class_id"));
+			account.setPassword(rs.getString("password"));
+			account.setAddress(rs.getString("address"));
+			account.setNickname(rs.getString("nickname"));
+			account.setIcon(rs.getString("icon"));
+			account.setAccount_kind("学生");
+			studentaccountlist.add(account);
+		}
+		
+		st.close();
+		con.close();
+		return studentaccountlist;
+	}
+	//学生クラス検索機能
+	public List<Studentaccount> student_search_class(String class_id)
+	throws Exception {
+		List<Studentaccount> studentaccountlist=new ArrayList<>();
+		Studentaccount account=null;
+
+		Connection con=getConnection();
+		
+		PreparedStatement st;
+		st=con.prepareStatement(
+				"select * from Student_account where class_id=?");
+		st.setString(1, class_id);
+		ResultSet rs=st.executeQuery();
+		
+		while (rs.next()) {
+			account=new Studentaccount();
+			account.setStudent_id(rs.getString("student_id"));
+			account.setName(rs.getString("name"));
+			account.setClass_id(rs.getString("class_id"));
+			account.setPassword(rs.getString("password"));
+			account.setAddress(rs.getString("address"));
+			account.setNickname(rs.getString("nickname"));
+			account.setIcon(rs.getString("icon"));
+			account.setAccount_kind("学生");
+			studentaccountlist.add(account);
+			
+		}
+		
+		st.close();
+		con.close();
+		return studentaccountlist;
+	}
 }

@@ -8,6 +8,10 @@
 <h1>出欠管理機能</h1>
 
 <form action="Attendancesearch.action">
+	
+	<c:if test="${none_error != null}">
+	<p>${none_error}</p>
+	</c:if>
 	<label>学生</label>
 	<input type="text" name="student_name" placeholder="名前を入力してください">
 	
@@ -19,6 +23,23 @@
 	</select>
 	
 	<input type="submit" value="検索">
+</form>
+<form  action="Attendanceregistration.action">
+	<table>
+		<tr>
+			<th>出欠可否</th>
+			<th>学生ID</th>
+			<th>学生氏名</th>
+		</tr>
+		<c:forEach var="item" items="${attendancsstudentlist}">
+	  		<tr>
+	  			<td><input type="checkbox"></td>
+	  			<td>${item.student_id}</td>
+	  			<td>${item.name}</td>
+	  		</tr>
+		</c:forEach>
+	</table>
+	<input type="submit" value="登録">
 </form>
 
 <a href="../common/top.jsp">TOP</a>

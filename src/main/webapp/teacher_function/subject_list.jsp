@@ -12,6 +12,9 @@
 <c:if test="${change_mes != null}">
 	<p>${change_mes}</p>
 </c:if>
+<c:if test="${none_mes != null}">
+	<p>${none_mes}</p>
+</c:if>
 <a href="subject_registration.jsp">新規登録</a>
 <form action="Subjectchangedata.action">
 	<table>

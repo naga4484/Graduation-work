@@ -21,6 +21,9 @@ public class SubjectchangedataAction extends Action {
 			SubjectDAO dao=new SubjectDAO();
 			List<Subject> subject=dao.getallsubject();
 			int line = 0;
+			if(subject == null) {
+				return "Subjectlisttop.action";
+			}
 			
 			for(Subject i : subject) {
 				String id = i.getSubject_id();
@@ -30,6 +33,23 @@ public class SubjectchangedataAction extends Action {
 					total_unit_num = "0";
 				}
 				int total_unit=Integer.parseInt(total_unit_num);
+				
+				if(subject_name == "") {
+					request.setAttribute("none_mes", "科目名の未入力は許容されません");
+					return "Subjectlisttop.action";
+				}
+			}
+			
+			for(Subject i : subject) {
+				String id = i.getSubject_id();
+				String subject_name=request.getParameter(id + "_subject_name");
+				String total_unit_num = request.getParameter(id + "_total_unit");
+				if(total_unit_num == "" ||total_unit_num == null) {
+					total_unit_num = "0";
+				}
+				int total_unit=Integer.parseInt(total_unit_num);
+				
+				
 				line = dao.change_subject(id, subject_name, total_unit);
 			}
 			if(line > 0) {

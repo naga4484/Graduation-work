@@ -11,7 +11,7 @@
     <label>科目ID</label>
     <input type="text" name="subject_id" placeholder="科目IDを入力してください"><br><br>
     
-    <label>科目ID</label>
+    <label>科目名</label>
     <input type="text" name="subject_name" placeholder="科目名を入力してください"><br><br>
     
 	<label>総単位数</label>
