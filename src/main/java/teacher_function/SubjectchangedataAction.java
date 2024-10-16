@@ -16,16 +16,26 @@ public class SubjectchangedataAction extends Action {
 
 			HttpSession session=request.getSession();
 			
-			String subject_name=request.getParameter("subject_id");
-			int total_unit=Integer.parseInt(request.getParameter("total_unit"));
+			
 			
 			SubjectDAO dao=new SubjectDAO();
 			List<Subject> subject=dao.getallsubject();
+			int line = 0;
 			
-			
-			
-			
-			
-			return "subject_list.jsp";
+			for(Subject i : subject) {
+				String id = i.getSubject_id();
+				String subject_name=request.getParameter(id + "_subject_name");
+				String total_unit_num = request.getParameter(id + "_total_unit");
+				if(total_unit_num == "" ||total_unit_num == null) {
+					total_unit_num = "0";
+				}
+				int total_unit=Integer.parseInt(total_unit_num);
+				line = dao.change_subject(id, subject_name, total_unit);
+			}
+			if(line > 0) {
+				request.setAttribute("change_mes", "変更が完了いたしました。");
+				return "Subjectlisttop.action";
+			}
+			return "Subjectlisttop.action";
 		}
 	}

@@ -18,7 +18,11 @@ public class SubjectregistrationAction extends Action {
 
 			String subject_id=request.getParameter("subject_id");
 			String subject_name=request.getParameter("subject_name");
-			int total_unit=Integer.parseInt(request.getParameter("total_unit"));
+			String total_unit_num = request.getParameter("total_unit");
+			if(total_unit_num == "" ||total_unit_num == null) {
+				total_unit_num = "0";
+			}
+			int total_unit=Integer.parseInt(total_unit_num);
 			String class_id=request.getParameter("class_id");
 			
 			

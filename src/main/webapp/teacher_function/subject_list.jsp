@@ -6,7 +6,12 @@
 <title>科目情報一覧画面</title>
 
 <h1>科目情報一覧機能</h1>
-<p>${delete_mes}</p>
+<c:if test="${delete_mes != null}">
+	<p>${delete_mes}</p>
+</c:if>
+<c:if test="${change_mes != null}">
+	<p>${change_mes}</p>
+</c:if>
 <a href="subject_registration.jsp">新規登録</a>
 <form action="Subjectchangedata.action">
 	<table>
@@ -27,7 +32,7 @@
 	  		</tr>
 		</c:forEach>
 	</table>
-	<input type="submit" value="変更">
+	<input type="submit" value="変更" id="subject_change_button">
 </form>
 
 
