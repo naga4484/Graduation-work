@@ -9,14 +9,14 @@
 <form action="Studentregistration.action" method="post">
 	
     <label>氏名</label>
-    <input type="text" name="name" placeholder="氏名を入力してください"><br>
+    <input type="text" name="name" placeholder="氏名を入力してください"><br><br>
     
     <label>クラス</label>
     <select name="class_id">
 	    <c:forEach var="class_num" items="${class_num}">
 	    	<option value="${class_num.class_id}">${class_num.class_num}</option>
 	    </c:forEach>
-	</select><br>
+	</select><br><br>
 	
 	<p>${student_id_duplication_error}</p>
 	<label>学生ID</label>

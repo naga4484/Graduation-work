@@ -1,1 +1,17 @@
 @charset "UTF-8";
+
+#delete_box {
+  background: #FFF;
+  border: 1px solid #333;
+  box-shadow: 0 10px 10px #999;
+  display: none;
+  font-family: serif;
+  padding: 10px;
+  position: absolute;
+  top: 0px;
+  text-align: center;
+  float: left;
+  width: 100%;
+  height: 120%;
+  margin:auto;
+}

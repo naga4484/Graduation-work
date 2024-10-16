@@ -13,6 +13,7 @@
 	<a href="">出欠</a>
 	<a href="">時間割</a>
 	<a href="">成績</a>
+	<a href="Subjectlisttop.action">科目一覧</a>
 	<a href="student_registration.jsp">学生情報</a>
 	<a href="">権限</a>
 	<a href="">座席表</a>

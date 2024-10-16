@@ -38,8 +38,6 @@ public class StudentregistrationAction extends Action {
 			if(line>0) {
 				return "student_registration.jsp";
 			}
-			
-			request.setAttribute("login_error", "IDまたはパスワードが確認できませんでした");
 			return "student_registration.jsp";
 		}
 	}
