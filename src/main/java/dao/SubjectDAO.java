@@ -70,7 +70,7 @@ public class SubjectDAO extends DAO {
 		Connection con=getConnection();
 
 		PreparedStatement st=con.prepareStatement(
-			"insert into subject values(?, ?, ?, ?)");
+			"insert into Subject values(?, ?, ?, ?)");
 		st.setString(1, subject_id);
 		st.setString(2, class_id);
 		st.setString(3, subject_name);
@@ -87,7 +87,7 @@ public class SubjectDAO extends DAO {
 		Connection con=getConnection();
 
 		PreparedStatement st=con.prepareStatement(
-			"delete from subject where subject_id = ?");
+			"delete from Subject where subject_id = ?");
 		st.setString(1, subject_id);
 		int line=st.executeUpdate();
 
@@ -100,7 +100,7 @@ public class SubjectDAO extends DAO {
 		Connection con=getConnection();
 
 		PreparedStatement st=con.prepareStatement(
-			"update subject set subject_name = ?,total_unit = ? where subject_id = ?");
+			"update Subject set subject_name = ?,total_unit = ? where subject_id = ?");
 		st.setString(1, subject_name);
 		st.setInt(2, total_unit);
 		st.setString(3, subject_id);
