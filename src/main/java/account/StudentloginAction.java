@@ -36,7 +36,7 @@ public class StudentloginAction extends Action {
 		
 		
 		String today_temperature = "変更されていない";
-		Document Doc = Jsoup.connect("https://www.msn.com/ja-jp/weather/forecast/in-%E5%B2%A1%E5%B1%B1%E7%9C%8C,%E5%B2%A1%E5%B1%B1%E5%B8%82?loc=eyJsIjoi5bKh5bGx5biCIiwiciI6IuWyoeWxseecjCIsImMiOiLml6XmnKwiLCJpIjoiSlAiLCJnIjoiamEtanAiLCJ4IjoiMTMzLjkyMjkyNzg1NjQ0NTMiLCJ5IjoiMzQuNjYyOTY3NjgxODg0NzY2In0%3D&weadegreetype=C&ocid=winp2fptaskbarhoverent&cvid=da421c3861b74a439db43804c57234a7").get();
+		Document Doc = Jsoup.connect("https://www.msn.com/ja-jp/weather/forecast/").get();
 		Element Elm = Doc.body();
 		Elements temperatures = Elm.getElementsByClass("summaryLineGroupCompact-E1_1");
 		
