@@ -3,7 +3,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-
+<%@include file="/common/menu.jsp"%>
 <!-- CSSに関しては、機能ファルダごとにCSSを分けている -->
 <link rel="stylesheet" type="text/css" href="../css/top.css">
 <link rel="stylesheet" type="text/css" href="../css/common.css">

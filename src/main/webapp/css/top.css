@@ -1,5 +1,79 @@
 @charset "UTF-8";
 
+body,html {
+    -ms-overflow-style: none; /* IEとEdge */
+    scrollbar-width: none; /* Firefox */
+    margin:0;
+    padding: 0;
+}
+
+body::-webkit-scrollbar {
+    display: none; /* Webkitブラウザ */
+}
+.menu_links:link{
+	color: #333;
+}
+.menu_links:visited{
+	color: rgb(85, 85, 85);
+}
+.menu_links:hover{
+	font-weight: bold;
+}
+
+.menu_var{
+	position: absolute;
+	right: 3%;
+	top: 0%;
+	width: 100px;
+}
+
+#menu_box{
+	background: #FFF;
+	border: 1px solid #333;
+	box-shadow: 0 10px 10px #999;
+	display: none;
+	font-family: serif;
+	padding: 10px;
+	position: fixed;
+	top: 0px;
+	text-align: center;
+	float: left;
+	width: 20%;
+	height: 120%;
+	z-index: 100;
+	margin-left: 980px;
+	opacity: 0;
+	animation: popaimation 0.3s;
+	animation-fill-mode: forwards;
+}
+
+#menu_box_back{
+	background: #333;
+	opacity: 0.5;
+	position: fixed;
+	top: 0px;
+	text-align: center;
+	float: left;
+	width: 100%;
+	height: 200%;
+	z-index: 80;
+	display: none;
+}
+@keyframes popaimation {
+        100%{
+            opacity: 1;
+       	}
+}
+.menu_box_contents{
+	border-bottom: #333 1px solid;
+	height: 45px;
+	padding-top: 20px;
+}
+.menu_box_contents a{
+	text-decoration: none;
+	
+}
+
 .main_image{
 	position: absolute;
     top: -60px;
