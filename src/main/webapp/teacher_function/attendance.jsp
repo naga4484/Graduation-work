@@ -3,9 +3,45 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 
+<link rel="stylesheet" type="text/css" href="../css/attendance.css">
+
 <title>出欠管理画面</title>
 
 <h1>出欠管理機能</h1>
+
+<c:if test="${not_attendancestudent != null}">
+	<button id="up_not_attendance">欠席学生の情報を登録する</button>
+	<div id="attendance_box">
+		<form  action="AttendanceNotregistration.action">
+			<table>
+				<tr>
+					<th>病欠</th>
+					<th>公欠</th>
+					<th>遅刻</th>
+					<th>その他</th>
+					<th>学生ID</th>
+					<th>学生氏名</th>
+				</tr>
+				<c:forEach var="item" items="${not_attendancestudent}">
+			  		<tr>
+			  			<td><input type="radio" name="${item.student_id}" value="出席" checked></td>
+			  			<td><input type="radio" name="${item.student_id}" value="公欠" checked></td>
+			  			<td><input type="radio" name="${item.student_id}" value="遅刻" checked></td>
+			  			<td><input type="radio" name="${item.student_id}" value="その他" checked></td>
+			  			<td>${item.student_id}</td>
+			  			<td>${item.name}</td>
+			  		</tr>
+				</c:forEach>
+			</table>
+			<input type="submit" value="登録">
+		</form>
+	</div>
+	<div id="attendance_box_back">
+	</div>
+</c:if>
+<c:if test="${attendance_finish != null}">
+	<p>${attendance_finish}</p>
+</c:if>
 
 <form action="Attendancesearch.action">
 	
@@ -43,4 +79,5 @@
 </form>
 
 <a href="../common/top.jsp">TOP</a>
+<script src="../js/attendance.js"></script>
 <%@include file="../footer.jsp"  %>

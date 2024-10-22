@@ -25,6 +25,7 @@ body::-webkit-scrollbar {
 	right: 3%;
 	top: 0%;
 	width: 100px;
+	z-index: 60;
 }
 
 #menu_box{
@@ -42,9 +43,6 @@ body::-webkit-scrollbar {
 	height: 120%;
 	z-index: 100;
 	margin-left: 980px;
-	opacity: 0;
-	animation: popaimation 0.3s;
-	animation-fill-mode: forwards;
 }
 
 #menu_box_back{
@@ -59,11 +57,8 @@ body::-webkit-scrollbar {
 	z-index: 80;
 	display: none;
 }
-@keyframes popaimation {
-        100%{
-            opacity: 1;
-       	}
-}
+
+
 .menu_box_contents{
 	border-bottom: #333 1px solid;
 	height: 45px;
