@@ -8,6 +8,7 @@
 <link rel="stylesheet" type="text/css" href="../css/top.css">
 <link rel="stylesheet" type="text/css" href="../css/common.css">
 <link rel="stylesheet" type="text/css" href="../css/teacher.css">
+<link rel="stylesheet" type="text/css" href="../css/account.css">
 </head>
 <body>
 <div class="main_content">
