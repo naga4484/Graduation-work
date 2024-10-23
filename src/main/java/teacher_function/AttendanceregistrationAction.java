@@ -24,7 +24,7 @@ public class AttendanceregistrationAction extends Action {
 			AttendanceDAO dao = new AttendanceDAO();
 			List<String> id_list = dao.getattendanceid();
 			int list_size = id_list.size();
-			String id_num = Integer.toString(list_size);
+			String id_num = Integer.toString(list_size + 1);
 			Date date = new Date();
 	        String sdf = new SimpleDateFormat("yyyy'年'MM'月'dd'日'").format(date);
 	        List<Studentaccount> not_attendancestudent = new ArrayList<>();
@@ -45,18 +45,6 @@ public class AttendanceregistrationAction extends Action {
 					else if(g == true) {
 						int line = dao.attendance_update(sdf, i.getStudent_id(), "1", "");
 					}
-				}
-				else if(Flag.equals("公欠")==true) {
-					int line = dao.attendance_update(sdf, i.getStudent_id(), "3", "");
-				}
-				else if(Flag.equals("病欠")==true) {
-					int line = dao.attendance_update(sdf, i.getStudent_id(), "2", "");				
-				}
-				else if(Flag.equals("遅刻")==true) {
-					int line = dao.attendance_update(sdf, i.getStudent_id(), "4", "");
-				}
-				else if(Flag.equals("その他")==true) {
-					int line = dao.attendance_update(sdf, i.getStudent_id(), "0", "");
 				}
 				else {
 					Boolean g = dao.student_search(i.getStudent_id(),sdf);
