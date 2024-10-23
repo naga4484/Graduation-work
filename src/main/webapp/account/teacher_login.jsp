@@ -1,4 +1,4 @@
-<%@page contentType="text/html; charset=UTF-8" %>
+<%@page contentType="text/html; charset=UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,22 +7,26 @@
 <link rel="stylesheet" type="text/css" href="../css/top.css">
 <link rel="stylesheet" type="text/css" href="../css/common.css">
 <link rel="stylesheet" type="text/css" href="../css/teacher.css">
+<link rel="stylesheet" type="text/css" href="../css/account.css">
 </head>
 <body>
-<div class="main_content">
+	<div class="main_content">
 
-<title>教師ログイン画面</title>
+		<title>教師ログイン画面</title>
+		<div class="login">
+			<h1>教師ログイン</h1>
 
-<h1>教師ログイン</h1>
+			<form action="Teacherlogin.action" method="post">
+				<p>${login_error}
+				<p>
+				<p>教師ID：</p>
+				<input type="text" required="required" name="teacher_id">
+				<p>パスワード：</p>
+				<input type="text" required="required" name="password">
 
-<form action="Teacherlogin.action" method="post">
-	<p>${login_error}<p>
-    <p>教師ID：</p><input type="text"required="required" name="teacher_id"> 
-    <p>パスワード：</p><input type="text"required="required" name="password"> 
-    
 
 
-   	<button type="submit">ログイン</button> 
-</form>
-
-<%@include file="../footer.jsp"  %>
+				<button type="submit">ログイン</button>
+			</form>
+		</div>
+		<%@include file="../footer.jsp"%>
