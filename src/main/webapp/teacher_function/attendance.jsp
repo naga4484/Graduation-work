@@ -44,7 +44,7 @@
 </c:if>
 
 <form action="Attendancesearch.action">
-	
+	<h2>学生検索</h2>
 	<c:if test="${none_error != null}">
 	<p>${none_error}</p>
 	</c:if>

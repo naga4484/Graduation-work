@@ -37,6 +37,34 @@ public class SubjectDAO extends DAO {
         
         return subjectList;
 	}
+	//科目一覧の取得(クラスごとの)
+	public List<Subject> getclasssubject(String class_id) 
+			throws Exception {
+				List<Subject> subjectList = new ArrayList<>(); 
+				Subject subject;
+
+		        Connection con = getConnection();
+
+		        PreparedStatement st = con.prepareStatement("select * from Subject where class_id=?");
+		        st.setString(1, class_id);
+		        ResultSet rs = st.executeQuery();
+
+		        while (rs.next()) {
+		        	subject = new Subject();
+		        	subject.setSubject_id(rs.getString("subject_id"));
+		        	subject.setSubject_name(rs.getString("subject_name"));
+		        	subject.setTotal_unit(rs.getInt("total_unit"));
+		        	subject.setClass_id(rs.getString("class_id"));
+		        	subjectList.add(subject); 
+		        }
+
+		        rs.close(); 
+		        st.close();
+		        con.close(); 
+		        
+		        return subjectList;
+			}
+	
 	
 	//科目ID検索機能
 	public List<Subject> subject_search_no(String subject_id)

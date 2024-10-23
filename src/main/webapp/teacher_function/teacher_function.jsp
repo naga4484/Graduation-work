@@ -8,7 +8,7 @@
 <h1>教師機能</h1>
 
 <div class="teacher_function_iocn">
-	<a href="">提出物登録</a>
+	<a href="submissions_registration.jsp">提出物登録</a>
 	<a href="">提出物確認</a>
 	<a href="attendance.jsp">出欠</a>
 	<a href="">時間割</a>

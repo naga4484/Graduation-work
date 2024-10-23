@@ -10,9 +10,11 @@ import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
 import bean.Class_num;
+import bean.Subject;
 import bean.Teacheraccount;
 import dao.AccountDAO;
 import dao.ClassDAO;
+import dao.SubjectDAO;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
@@ -34,6 +36,9 @@ public class TeacherloginAction extends Action {
 		ClassDAO cdao=new ClassDAO();
 		List<Class_num> class_num=cdao.getallclass();
 		
+		SubjectDAO sdao=new SubjectDAO();
+		List<Subject> class_subject = sdao.getclasssubject(account.getClass_id());
+		
 		
 		String today_temperature = "変更されていない";
 		Document Doc = Jsoup.connect("https://www.msn.com/ja-jp/weather/forecast/").get();
@@ -52,6 +57,7 @@ public class TeacherloginAction extends Action {
 		if (account!=null) {
 			session.setAttribute("account", account);
 			session.setAttribute("class_num", class_num);
+			session.setAttribute("class_subject", class_subject);
 			session.setAttribute("today_temperature_data", today_temperature_data);
 			return "../common/top.jsp";
 		}
