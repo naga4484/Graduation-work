@@ -29,4 +29,6 @@
 				<button type="submit">ログイン</button>
 			</form>
 		</div>
-		<%@include file="../footer.jsp"%>
+	</div>
+</body>
+<%@include file="../footer.jsp"%>
