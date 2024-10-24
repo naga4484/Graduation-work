@@ -29,7 +29,7 @@ public class SubmissionsstudentAction extends Action {
 			}
 			
 			if(submissionsstudent.size() > 0) {
-				session.setAttribute("submissionsstudent", submissionsstudent);
+				request.setAttribute("submissionsstudent", submissionsstudent);
 				return "submissions_registration.jsp";
 			}
 			

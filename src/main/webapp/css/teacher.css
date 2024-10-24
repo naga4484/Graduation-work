@@ -17,6 +17,7 @@
   opacity: 0;
   animation: popaimation 0.3s;
   animation-fill-mode: forwards;
+  z-index: 100;
 }
 
 @keyframes popaimation {

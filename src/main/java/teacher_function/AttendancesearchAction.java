@@ -29,7 +29,7 @@ public class AttendancesearchAction extends Action {
 			}
 			
 			if(attendancsstudentlist.size() > 0) {
-				session.setAttribute("attendancsstudentlist", attendancsstudentlist);
+				request.setAttribute("attendancsstudentlist", attendancsstudentlist);
 				return "attendance.jsp";
 			}
 			
