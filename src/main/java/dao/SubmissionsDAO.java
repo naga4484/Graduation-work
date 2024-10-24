@@ -11,7 +11,7 @@ import bean.Submissions;
 public class SubmissionsDAO extends DAO {
 	
 	
-	//提出物一覧の取得
+	//提出物一覧の取得(名前検索)
 	public List<Submissions> distinctsubmissions(String name) 
 	throws Exception {
 		List<Submissions> submissionsList = new ArrayList<>(); 
@@ -25,7 +25,7 @@ public class SubmissionsDAO extends DAO {
 
         while (rs.next()) {
         	submissions = new Submissions();
-        	submissions.setSubmissions_id(rs.getString("submissions_id"));
+        	submissions.setSubmissions_id(rs.getInt("submissions_id"));
         	submissions.setName("name");
         	submissions.setSave_path("save_path");
         	submissions.setCreate_date("create_data");
@@ -40,6 +40,35 @@ public class SubmissionsDAO extends DAO {
         
         return submissionsList;
 	}
+	//提出物一覧の取得(クラス検索)
+		public List<Submissions> distinctsubmissions_class(String class_id) 
+		throws Exception {
+			List<Submissions> submissionsList = new ArrayList<>(); 
+			Submissions submissions;
+
+	        Connection con = getConnection();
+
+	        PreparedStatement st = con.prepareStatement("select * from Submissions where class_id=?");
+	        st.setString(1, class_id);
+	        ResultSet rs = st.executeQuery();
+
+	        while (rs.next()) {
+	        	submissions = new Submissions();
+	        	submissions.setSubmissions_id(rs.getInt("submissions_id"));
+	        	submissions.setName("name");
+	        	submissions.setSave_path("save_path");
+	        	submissions.setCreate_date("create_data");
+	        	submissions.setClass_id(rs.getString("class_id"));
+	        	submissions.setSubject_id(rs.getString("subject_id"));
+	        	submissionsList.add(submissions); 
+	        }
+
+	        rs.close(); 
+	        st.close();
+	        con.close(); 
+	        
+	        return submissionsList;
+		}
 	//提出物登録
 	public int submissions_registration(String name,String save_path,String create_data,String class_id,String subject_id) throws Exception {
 		Connection con=getConnection();
@@ -51,6 +80,41 @@ public class SubmissionsDAO extends DAO {
 		st.setString(3, create_data);
 		st.setString(4, class_id);
 		st.setString(5, subject_id);
+		int line=st.executeUpdate();
+
+		st.close();
+		con.close();
+		return line;
+	}
+	//提出物ID取得用
+	public int id_search(String name) 
+			throws Exception {
+				int submissions = 0;
+
+		        Connection con = getConnection();
+
+		        PreparedStatement st = con.prepareStatement("select submissions_id from Submissions where name=?");
+		        st.setString(1, name);
+		        ResultSet rs = st.executeQuery();
+
+		        while (rs.next()) {
+		        	submissions = (rs.getInt("submissions_id"));
+		        }
+
+		        rs.close(); 
+		        st.close();
+		        con.close(); 
+		        
+		        return submissions;
+			}
+	//提出物学生連携登録
+	public int submissions_alignment(int submissions_id, String student_id) throws Exception {
+		Connection con=getConnection();
+
+		PreparedStatement st=con.prepareStatement(
+			"insert into Submissions_alignment values(?, ?)");
+		st.setInt(1, submissions_id);
+		st.setString(2, student_id);
 		int line=st.executeUpdate();
 
 		st.close();

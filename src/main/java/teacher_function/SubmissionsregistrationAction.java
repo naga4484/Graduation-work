@@ -41,6 +41,19 @@ public class SubmissionsregistrationAction extends Action {
 				
 				if(Flag.equals("〇")==true) {
 					int line = sdao.submissions_registration(submission_name, save_path , fulldata, i.getClass_id() ,subject_id);
+					break;
+				}
+			}
+			int submissions_id = sdao.id_search(submission_name);
+			
+			for(Studentaccount i : submissionsstudent) {
+				String Flag=request.getParameter(i.getStudent_id());
+				if(Flag==null) {
+					Flag="";
+				}
+				
+				if(Flag.equals("〇")==true) {
+					int line = sdao.submissions_alignment(submissions_id, i.getStudent_id());
 				}
 			}
 			

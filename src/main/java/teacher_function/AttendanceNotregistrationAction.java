@@ -21,7 +21,6 @@ public class AttendanceNotregistrationAction extends Action {
 			List<Studentaccount> not_attendancestudent = (List<Studentaccount>) session.getAttribute("not_attendancestudent");
 			
 			AttendanceDAO dao = new AttendanceDAO();
-			List<String> id_list = dao.getattendanceid();
 			Date date = new Date();
 	        String sdf = new SimpleDateFormat("yyyy'年'MM'月'dd'日'").format(date);
 			
