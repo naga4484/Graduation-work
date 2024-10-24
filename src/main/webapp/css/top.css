@@ -71,7 +71,7 @@ body::-webkit-scrollbar {
 
 .main_image{
 	position: absolute;
-    top: -180px;
+    top: -170px;
     left: -65px;
     width: 650px;
 }
