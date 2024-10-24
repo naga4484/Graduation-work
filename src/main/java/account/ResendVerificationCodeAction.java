@@ -18,7 +18,7 @@ public class ResendVerificationCodeAction extends Action {
         String email = (String) request.getSession().getAttribute("email");
 
         if (email != null) {
-            // 新しい6桁の確認コードを生成してセッションに保存
+            // 新しい6桁の確認コードを生成してセッションに保存 
             String newVerificationCode = generateVerificationCode();
             request.getSession().setAttribute("verificationCode", newVerificationCode);
             
