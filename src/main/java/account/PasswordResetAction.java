@@ -48,7 +48,7 @@ public class PasswordResetAction extends Action {
     private void sendVerificationCodeByEmail(String recipientEmail, String verificationCode) {
         // GmailのSMTPサーバー設定
         final String username = "k62670044@gmail.com"; // 送信元のGmailアドレス
-        final String password = "pcsi erxm cogb hxfa"; // 送信元のGmailパスワード（セキュリティ上の理由からは環境変数などで管理するのが望ましい）
+        final String password = "pcsi erxm cogb hxfa"; // 送信元のGmailパスワード
 
         // SMTPサーバー設定プロパティ
         Properties prop = new Properties();

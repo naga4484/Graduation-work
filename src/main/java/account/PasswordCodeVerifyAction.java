@@ -6,7 +6,6 @@ import tool.Action;
 
 public class PasswordCodeVerifyAction extends Action {
     public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
-        String email = (String) request.getSession().getAttribute("email");
         String sessionVerificationCode = (String) request.getSession().getAttribute("verificationCode");
         String userInputCode = request.getParameter("verification_code");
 
