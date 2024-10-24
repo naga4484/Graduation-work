@@ -74,9 +74,6 @@
 	
 	
 	<!-- ここらへんはプチ開発で試した内容。とりあえず保存しているだけ -->
-	<h1>ログイン処理の確認</h1>
-	<p>${account.name}　でログインしている</p>
-	<p><a href="../account/Logout.action">ログアウト</a></p>
 	
 	<h1>スクレイピングの確認</h1>
 	<c:forEach begin="0" end="5" step="2" var="i">
