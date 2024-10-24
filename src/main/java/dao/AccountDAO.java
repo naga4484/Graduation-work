@@ -278,4 +278,20 @@ public class AccountDAO extends DAO {
         st.close();
         con.close();
     }
+    
+    //メールアドレスが登録されているかどうかの確認
+    public boolean isEmailRegistered(String email) throws Exception {
+        Connection con = getConnection();
+        PreparedStatement st = con.prepareStatement(
+            "SELECT COUNT(*) FROM Student_account WHERE address = ?"
+        );
+        st.setString(1, email);
+        ResultSet rs = st.executeQuery();
+
+        rs.next();
+        boolean exists = rs.getInt(1) > 0; // カウントが1以上なら存在する
+        st.close();
+        con.close();
+        return exists;
+    }
 }

@@ -2,6 +2,7 @@ package account;
 
 import java.util.Properties;
 
+import dao.AccountDAO;
 import jakarta.mail.Message;
 import jakarta.mail.MessagingException;
 import jakarta.mail.PasswordAuthentication;
@@ -17,8 +18,9 @@ public class PasswordResetAction extends Action {
     public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
         String email = request.getParameter("email");
 
-        // メールアドレスが存在するかのチェック（仮に存在するとします）
-        boolean emailExists = true;  // 仮の実装
+        // メールアドレスの存在確認
+        AccountDAO dao = new AccountDAO();
+        boolean emailExists = dao.isEmailRegistered(email);
         
         if (emailExists) {
             // 6桁の確認コードを生成してセッションに保存
