@@ -21,6 +21,12 @@
 	<p>${none_error}</p>
 </c:if>
 
+<c:if test="${change_mes != null}">
+	<p>${change_mes}</p>
+</c:if>
+<c:if test="${delete_mes != null}">
+	<p>${delete_mes}</p>
+</c:if>
 <c:if test="${distinctsubmissions_class != null}">
 	<table>
 		<tr>
@@ -31,8 +37,8 @@
 		<tr>
 			<c:forEach var="item" items="${distinctsubmissions_class}" varStatus="status">
 			    <td>${status.index + 1}</td>
-			    <td>${item.submissions_id}</td>
-			    <td>${item.name}</td>
+			    <td><a href="Submissions_detail.action?submissions_id=${item.submissions_id}">${item.submissions_id}</a></td>
+			    <td><a href="Submissions_detail.action?submissions_id=${item.submissions_id}">${item.name}</a></td>
 			</c:forEach>
 		</tr>
 	</table>
