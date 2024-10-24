@@ -8,8 +8,8 @@
 <div class="cal-area">
     <div id="calendar"></div>
     <div class="actions">
-        <button id="last-button"><span>前の月</span></button>
-        <button id="next-button"><span>次の月</span></button>
+        <button id="last-button"><img src="../images/左矢印.png" class="cal_button_image_last"></button>
+        <button id="next-button"><img src="../images/右矢印.png" class="cal_button_image_next"></button>
     </div>
 </div>
 
@@ -21,21 +21,44 @@
 		<!-- 各種機能のアイコン用 -->
 		<c:choose>
 		    <c:when test="${account.account_kind == \"教師\"}">
-		        <a href="../teacher_function/teacher_function.jsp">教師</a>
+		    	<a href="../teacher_function/teacher_function.jsp">
+			    	<div class="top_links_contents">
+			    		<img src="../images/サンプル1.png" class="teacher_top_icon" id="teacher_top_icon">
+			        	<p class="top_links_contents_title1">教師</p>
+			    	</div>
+			    </a>
 		    </c:when>
 		</c:choose>
-		<a href="">自己管理</a>
-		<a href="">グループ管理</a>
-		<a href="">アンケート</a>
-		<a href="">効率化</a>
+		<div class="top_links_contents">
+			<a href=""><img src="../images/サンプル5.png" class="my_management_top_icon"></a> <!-- 自己管理 -->
+			<p class="top_links_contents_title2">自己管理</p>
+		</div>
+		<div class="top_links_contents">
+			<a href=""><img src="../images/サンプル6.png" class="my_management_top_icon"></a> <!-- グループ管理 -->
+			<p class="top_links_contents_title3">グループ</p>
+		</div>
+		<div class="top_links_contents">	
+			<a href=""><img src="../images/サンプル2.png" class="my_management_top_icon"></a> <!-- アンケート管理 -->
+			<p class="top_links_contents_title4">アンケート</p>
+		</div>	
+		<div class="top_links_contents">	
+			<a href=""><img src="../images/サンプル3.png" class="my_management_top_icon"></a> <!-- 効率化管理 -->
+			<p class="top_links_contents_title5">効率化</p>
+		</div>
 	</div>
 	<div class="top_sub_fnction_icon">
-		<a href="">サポート</a>
-		<a href="">リラックス</a>
+		<a href=""><img src="../images/サンプル7.png" class="my_management_top_icon"></a> <!-- サポート -->
+		<a href=""><img src="../images/サンプル8.png" class="my_management_top_icon"></a> <!-- リラックス -->
 	</div>
 	<div class="top_critical_function_icon">
-		<a href="../account/Logout.action">ログアウト</a>
-		<a href="">問い合わせ</a>
+		<div class="top_critical_function_contents">
+			<a href="../account/Logout.action"><img src="../images/サンプル9.png" class="top_logout_icon"></a> <!-- ログアウト -->
+			<a href="../account/Logout.action"><p class="top_logout_mes">ログアウト</p></a>
+		</div>
+		<div class="top_critical_function_contents">
+			<a href=""><img src="../images/サンプル10.png" class="top_contact_icon"></a> <!-- 問い合わせ -->
+			<p class="top_contact_mes">問い合わせ</p>
+		</div>
 	</div>
 	
 	
