@@ -23,7 +23,7 @@
 				<button type="submit">送信</button>
 			</form>
 
-			<a href="login_top.jsp">戻る</a>
+			<a href="" onclick="window.history.back(); return false;">戻る</a>
 			<!-- 戻るリンク -->
 		</div>
 	</div>

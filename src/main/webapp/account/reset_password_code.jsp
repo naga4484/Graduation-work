@@ -27,7 +27,7 @@
 			<a href="ResendVerificationCode.action">確認コードを再送信</a>
 			<!-- 確認コード再送信リンク -->
 			<br>
-			<br> <a href="login_top.jsp">戻る</a>
+			<br> <a href="" onclick="window.history.back(); return false;">戻る</a>
 			<!-- 戻るリンク -->
 		</div>
 	</div>
