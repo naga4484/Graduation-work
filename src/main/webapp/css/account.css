@@ -93,6 +93,10 @@
     border-bottom: 3px solid #ff8c00;
     padding: 10px;
 }
+.password_reset a{
+	text-decoration: none;/*	下線の削除*/
+	text-align: right;
+}
 /*ラベルの設定*/
 .password_reset p{
 	margin: 10px 0; /* 上下の余白を10pxに設定 */

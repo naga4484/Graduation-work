@@ -19,15 +19,13 @@
 			<form action="PasswordCodeVerify.action" method="post">
 				<p>確認コード：</p>
 				<input type="text" name="verification_code" required="required">
-				<br>
-				<br>
+				<br> <a href="ResendVerificationCode.action">確認コードを再送信</a> <br>
 				<button type="submit">送信</button>
 			</form>
 
-			<a href="ResendVerificationCode.action">確認コードを再送信</a>
 			<!-- 確認コード再送信リンク -->
-			<br>
-			<br> <a href="" onclick="window.history.back(); return false;">戻る</a>
+			<br> <br> <a href=""
+				onclick="window.history.back(); return false;">戻る</a>
 			<!-- 戻るリンク -->
 		</div>
 	</div>
