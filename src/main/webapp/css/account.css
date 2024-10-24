@@ -32,6 +32,17 @@
     margin: 10px 0; /* 上下の余白を10pxに設定 */
 }
 
+/*パスワードリセットリンクの設定*/
+.login a {
+	margin:10px 0;
+	text-align: center; /* テキストを中央揃え */
+	text-decoration: none;/*	下線の削除*/
+
+}
+.login a:hover{
+	color:red;
+}
+
 /* テキスト入力フィールドのスタイルを設定 */
 .login input[type="text"] {
     padding: 10px; /* 内側の余白を10pxに設定 */
@@ -57,3 +68,54 @@
 .login button:hover {
     background-color: #218838; /* ホバー時の背景色を濃い緑色に設定 */
 }
+
+
+
+/*パスワードリセット-------*/
+
+.password_reset{
+	max-width: 600px; /* コンテンツの最大幅を600pxに設定 */
+    margin: 50px auto; /* 上下の余白を50pxに設定し、左右は自動調整 */
+    background: rgb(255, 255, 255); /* 背景色を白に設定 */
+    padding: 20px; /* 内側の余白を20pxに設定 */
+    box-shadow: 0 0 10px rgba(0,0,0,0.1); /* コンテンツに薄い影を追加して浮き上がらせる */
+
+}
+
+.password_reset form {
+	 display: flex; /* フレックスボックスを使用して配置 */
+    flex-direction: column; /* 垂直方向にアイテムを配置 */
+}
+/*見出しの設定*/
+.password_reset h1{
+	text-align: center;
+	border-top: 3px solid #ff8c00;
+    border-bottom: 3px solid #ff8c00;
+    padding: 10px;
+}
+/*ラベルの設定*/
+.password_reset p{
+	margin: 10px 0; /* 上下の余白を10pxに設定 */
+}
+/*メールアドレス入力フォームの設定*/
+.password_reset input[type="email"]{
+	padding: 10px; /* 内側の余白を10pxに設定 */
+    margin-bottom: 20px; /* 下部の余白を20pxに設定 */
+    border: 1px solid #ccc; /* 枠線を薄い灰色に設定 */
+    border-radius: 4px; /* 枠線の角を丸く設定 */
+    width: 90%;
+}
+/*送信ボタンの設定*/
+.password_reset button{
+	padding: 10px; /* 内側の余白を10pxに設定 */
+    background-color: #1e90ff; /* 背景色を緑色に設定 */
+    color: #fff; /* テキストの色を白に設定 */
+    border-radius: 4px; /* 枠線の角を丸く設定 */
+    cursor: pointer; /* カーソルをポインタに設定 */
+    width: 25%;
+    margin: 0 auto;
+}
+.password_reset button:hover {
+    background-color: #218838; /* ホバー時の背景色を濃い緑色に設定 */
+}
+

@@ -23,7 +23,7 @@
 				<input type="text" required="required" name="teacher_id">
 				<p>パスワード：</p>
 				<input type="text" required="required" name="password">
-
+				<a href="reset_password_email.jsp">パスワードリセットを行う</a>
 
 
 				<button type="submit">ログイン</button>
