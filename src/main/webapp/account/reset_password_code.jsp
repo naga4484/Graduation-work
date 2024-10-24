@@ -10,8 +10,11 @@
     <div class="main_content">
         <h1>パスワードリセット</h1>
 
+        <!-- 再送信完了メッセージを表示 -->
+        <p>${successMessage}</p>
+        <p>${errorMessage}</p> <!-- 確認コードが正しくない場合のエラーメッセージ表示 -->
+
         <form action="PasswordCodeVerify.action" method="post">
-            <p>${errorMessage}</p> <!-- 確認コードが正しくない場合のエラーメッセージ表示 -->
             <p>確認コード：</p>
             <input type="text" name="verification_code" required="required">
             <br><br>
