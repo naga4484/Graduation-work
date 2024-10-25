@@ -19,43 +19,52 @@ import jakarta.servlet.http.HttpSession;
 import tool.Action;
 
 public class StudentloginAction extends Action {
-	public String execute(
-		HttpServletRequest request, HttpServletResponse response
-	) throws Exception {
+    public String execute(
+        HttpServletRequest request, HttpServletResponse response
+    ) throws Exception {
 
-		HttpSession session=request.getSession();
+        HttpSession session = request.getSession();
 
-		String student_id=request.getParameter("student_id");
-		String password=request.getParameter("password");
+        String student_id = request.getParameter("student_id");
+        String password = request.getParameter("password");
 
-		AccountDAO dao=new AccountDAO();
-		Studentaccount account=dao.student_search(student_id, password);
-		
-		ClassDAO cdao=new ClassDAO();
-		List<Class_num> class_num=cdao.getallclass();
-		
-		
-		String today_temperature = "変更されていない";
-		Document Doc = Jsoup.connect("https://www.msn.com/ja-jp/weather/forecast/").get();
-		Element Elm = Doc.body();
-		Elements temperatures = Elm.getElementsByClass("summaryLineGroupCompact-E1_1");
-		
-		
-		
-		for(Element temperature : temperatures) {
-			today_temperature = temperature.text();
-		}
-		ArrayList<String> today_temperature_data  = new ArrayList<String>(Arrays.asList(today_temperature.split(" ")));
-		today_temperature_data.add(0,"現在の気温");
-		today_temperature_data.add(2,"現在の天気");
-		
-		if (account!=null) {
-			session.setAttribute("account", account);
-			session.setAttribute("class_num", class_num);
-			session.setAttribute("today_temperature_data", today_temperature_data);
-			return "../common/top.jsp";
-		}
-		request.setAttribute("login_error", "IDまたはパスワードが確認できませんでした");
-		return "student_login.jsp";
-	}
+        AccountDAO dao = new AccountDAO();
+        Studentaccount account = dao.student_search(student_id, password);
+
+        ClassDAO cdao = new ClassDAO();
+        List<Class_num> class_num = cdao.getallclass();
+
+        // 天気情報を取得するための処理
+        String today_temperature = "変更されていない";
+        Document doc = Jsoup.connect("https://www.msn.com/ja-jp/weather/forecast/").get();
+        Element elm = doc.body();
+        Elements temperatures = elm.getElementsByClass("summaryLineGroupCompact-E1_1");
+
+        for (Element temperature : temperatures) {
+            today_temperature = temperature.text();
+        }
+
+        ArrayList<String> today_temperature_data = new ArrayList<>(Arrays.asList(today_temperature.split(" ")));
+        today_temperature_data.add(0, "現在の気温");
+        today_temperature_data.add(2, "現在の天気");
+
+        if (account != null) {
+            // ログイン成功時にセッションに情報を保存
+            session.setAttribute("account", account);
+            session.setAttribute("class_num", class_num);
+            session.setAttribute("today_temperature_data", today_temperature_data);
+
+            // 追加：ユーザー情報をセッションに保存
+            session.setAttribute("userId", account.getStudent_id()); // 学生IDをセッションに保存
+            session.setAttribute("accountKind", "学生"); // アカウント種別を学生として設定
+            session.setAttribute("userName", account.getName()); // 学生の名前をセッションに保存
+            session.setAttribute("email", account.getAddress()); // 学生のメールアドレスをセッションに保存
+
+            return "../common/top.jsp";
+        }
+
+        // ログイン失敗時の処理
+        request.setAttribute("login_error", "IDまたはパスワードが確認できませんでした");
+        return "student_login.jsp";
+    }
 }

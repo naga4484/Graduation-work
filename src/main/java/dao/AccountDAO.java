@@ -294,4 +294,33 @@ public class AccountDAO extends DAO {
         con.close();
         return exists;
     }
+    
+ // ユーザーIDからメールアドレスを取得するメソッド
+    public String getEmailByUserId(String userId, String accountKind) throws Exception {
+        String email = null;
+        Connection con = getConnection();
+
+        // 学生と教師の区別をして、それぞれのテーブルからメールアドレスを取得
+        String query;
+        if ("学生".equals(accountKind)) {
+            query = "SELECT address FROM Student_account WHERE student_id = ?";
+        } else if ("教師".equals(accountKind)) {
+            query = "SELECT address FROM Teacher_account WHERE teacher_id = ?";
+        } else {
+            return null; // これは無効なアカウントタイプの場合
+        }
+
+        PreparedStatement st = con.prepareStatement(query);
+        st.setString(1, userId);
+        ResultSet rs = st.executeQuery();
+
+        if (rs.next()) {
+            email = rs.getString("address");
+        }
+
+        st.close();
+        con.close();
+        return email;
+    }
+
 }
