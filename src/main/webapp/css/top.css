@@ -131,39 +131,39 @@ body::-webkit-scrollbar {
 .top_critical_function_icon{
 	position: absolute;
 	width:500px;
-	top: 185px;
-	right: -510px;
+	top: 140px;
+	right: -585px;
 }
 .top_critical_function_contents{
 	display: inline-block;
 	position: relative;
-	width: 200px;
+	width: 160px;
 }
 .top_logout_icon{
-	width: 80px;
+	width: 60px;
 	border-radius: 50px;
 }
 .top_logout_mes{
 	position: absolute;
 	font-weight: bold;
-	top: 13px;
-	left: 74px;
+	top: 4px;
+	left: 60px;
 }
 .top_contact_icon{
-	width: 80px;
+	width: 60px;
 	border-radius: 50px;
 }
 .top_contact_mes{
 	position: absolute;
 	font-weight: bold;
-	top: 13px;
-	left: 74px;
+	top: 4px;
+	left: 60px;
 }
 
 
 /* カレンダー機能系のCSS */
 .cal-area {
-    width: 420px;
+    width: 385px;
     position: absolute;
     top: 15px;
     right: -30px;
@@ -173,12 +173,12 @@ body::-webkit-scrollbar {
     width: 500px;
     height: 400px;
     position: absolute;
-    right: 0px;
+    right: -63px;
     top: 0px;
 }
 #calendar h1 {
     margin-bottom: 10px;
-    margin-left:88px;
+    margin-left:56px;
 }
 
 .actions {
@@ -188,7 +188,7 @@ body::-webkit-scrollbar {
 }
 
 #calendar table{
-    width: 380px;
+    width: 320px;
     border-collapse:  collapse;
     text-align: center;
     border: #333 solid 1px;
@@ -199,7 +199,7 @@ body::-webkit-scrollbar {
 }
 
 #calendar tr{
-	height: 65px;
+	height: 50px;
 }
 #calendar th,td {
     border: #333 solid 1px;
@@ -218,16 +218,16 @@ body::-webkit-scrollbar {
 }
 
 .cal_button_image_last{
-	width: 50px;
+	width: 40px;
 	position: absolute;
-	left: -125px;
-	top: -5px;
+	left: -97px;
+	top: 0px;
 }
 .cal_button_image_next{
-	width: 50px;
+	width: 40px;
 	position: absolute;
-	left: 0px;
-	top: -5px;
+	left: -20px;
+	top: 0px;
 }
 #last-button {
     width: 100px;

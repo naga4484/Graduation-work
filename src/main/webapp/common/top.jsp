@@ -56,7 +56,7 @@
 			<a href="../account/Logout.action"><p class="top_logout_mes">ログアウト</p></a>
 		</div>
 		<div class="top_critical_function_contents">
-			<a href=""><img src="../images/サンプル10.png" class="top_contact_icon"></a> <!-- 問い合わせ -->
+			<a href="../inquiry/inquiry_form.jsp"><img src="../images/サンプル10.png" class="top_contact_icon"></a> <!-- 問い合わせ -->
 			<p class="top_contact_mes">問い合わせ</p>
 		</div>
 	</div>
