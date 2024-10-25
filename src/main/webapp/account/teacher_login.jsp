@@ -22,14 +22,25 @@
 				<p>教師ID：</p>
 				<input type="text" required="required" name="teacher_id">
 				<p>パスワード：</p>
-				<input type="text" required="required" name="password">
-				<a href="reset_password_email.jsp">パスワードリセットを行う</a>
-
-
-				<button type="submit">ログイン</button>
-			</form>
-		</div>
-	</div>
-</body>
-
+            <input type="password" required="required" name="password" id="password">
+            <label for="showPassword">
+                <input type="checkbox" id="showPassword" onchange="togglePasswordVisibility()" />
+                パスワードを表示する
+            </label>
+            <a href="reset_password_email.jsp">パスワードリセットを行う</a>
+            <button type="submit">ログイン</button>
+        </form>
+    </div>
+</div>
+<script>
+function togglePasswordVisibility() {
+    let passwordInput = document.getElementById("password");
+    let showPasswordCheckbox = document.getElementById("showPassword");
+    if (showPasswordCheckbox.checked) {
+        passwordInput.type = "text";
+    } else {
+        passwordInput.type = "password";
+    }
+}
+</script>
 <%@include file="../footer.jsp"%>

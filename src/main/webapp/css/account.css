@@ -2,7 +2,31 @@
 /* ファイル: student_login.css */
 
 
-/* メインコンテンツのスタイルを設定 */
+/*ログイントップ画面のcss*/
+
+.login_top {
+	max-width: 600px; /* コンテンツの最大幅を600pxに設定 */
+    margin: 50px auto; /* 上下の余白を50pxに設定し、左右は自動調整 */
+    background: rgb(255, 255, 255); /* 背景色を白に設定 */
+    padding: 20px; /* 内側の余白を20pxに設定 */
+    box-shadow: 0 0 10px rgba(0,0,0,0.1); /* コンテンツに薄い影を追加して浮き上がらせる */
+}
+
+.login_top a{
+	padding: 0 10px;
+  background-image: linear-gradient(to right, rgba(0, 0, 0, 0) 50%, rgb(49, 170, 226) 50%);
+  background-position: 0 0;
+  background-size: 200% auto;
+  transition: .3s;
+  font-size: 18px; /* フォントサイズを大きくする */
+}
+
+.login_top a:hover{
+	background-position: -100% 0;
+	color: red;
+}
+
+/* ログイン画面のcss************************** */
 .login {
     max-width: 600px; /* コンテンツの最大幅を600pxに設定 */
     margin: 50px auto; /* 上下の余白を50pxに設定し、左右は自動調整 */
@@ -32,6 +56,19 @@
     margin: 10px 0; /* 上下の余白を10pxに設定 */
 }
 
+.login label {
+    display: flex;
+    align-items: center;
+    gap: 5px; /* チェックボックスとラベルの間に隙間を追加 */
+    margin-top: 10px;
+}
+
+.login input[type="checkbox"] {
+    margin: 0;
+    padding: 0;
+    width: auto; /* チェックボックスの幅を自動に設定 */
+}
+
 /*パスワードリセットリンクの設定*/
 .login a {
 	margin:10px 0;
@@ -44,7 +81,7 @@
 }
 
 /* テキスト入力フィールドのスタイルを設定 */
-.login input[type="text"] {
+.login input {
     padding: 10px; /* 内側の余白を10pxに設定 */
     margin-bottom: 20px; /* 下部の余白を20pxに設定 */
     border: 1px solid #ccc; /* 枠線を薄い灰色に設定 */
@@ -101,22 +138,7 @@
 .password_reset p{
 	margin: 10px 0; /* 上下の余白を10pxに設定 */
 }
-.password_reset input[type="password"]{
-	padding: 10px; /* 内側の余白を10pxに設定 */
-    margin-bottom: 20px; /* 下部の余白を20pxに設定 */
-    border: 1px solid #ccc; /* 枠線を薄い灰色に設定 */
-    border-radius: 4px; /* 枠線の角を丸く設定 */
-    width: 90%;
-}
-.password_reset input[type="text"]{
-	padding: 10px; /* 内側の余白を10pxに設定 */
-    margin-bottom: 20px; /* 下部の余白を20pxに設定 */
-    border: 1px solid #ccc; /* 枠線を薄い灰色に設定 */
-    border-radius: 4px; /* 枠線の角を丸く設定 */
-    width: 90%;
-}
-/*メールアドレス入力フォームの設定*/
-.password_reset input[type="email"]{
+.password_reset input{
 	padding: 10px; /* 内側の余白を10pxに設定 */
     margin-bottom: 20px; /* 下部の余白を20pxに設定 */
     border: 1px solid #ccc; /* 枠線を薄い灰色に設定 */
