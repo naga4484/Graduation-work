@@ -16,7 +16,7 @@ public class AccountDAO extends DAO {
         List<Studentaccount> studentaccountlist = new ArrayList<>();
 
         Connection con = getConnection();
-        PreparedStatement st = con.prepareStatement("select * from Student_account");
+        PreparedStatement st = con.prepareStatement("SELECT * FROM Student_account");
         ResultSet rs = st.executeQuery();
         while (rs.next()) {
             Studentaccount account = new Studentaccount();
@@ -33,7 +33,6 @@ public class AccountDAO extends DAO {
 
         st.close();
         con.close();
-
         return studentaccountlist;
     }
 
@@ -42,7 +41,7 @@ public class AccountDAO extends DAO {
         List<Teacheraccount> teacheraccountlist = new ArrayList<>();
 
         Connection con = getConnection();
-        PreparedStatement st = con.prepareStatement("select * from Teacher_account");
+        PreparedStatement st = con.prepareStatement("SELECT * FROM Teacher_account");
         ResultSet rs = st.executeQuery();
         while (rs.next()) {
             Teacheraccount account = new Teacheraccount();
@@ -59,7 +58,6 @@ public class AccountDAO extends DAO {
 
         st.close();
         con.close();
-
         return teacheraccountlist;
     }
 
@@ -68,8 +66,7 @@ public class AccountDAO extends DAO {
         Studentaccount account = null;
 
         Connection con = getConnection();
-
-        PreparedStatement st = con.prepareStatement("select * from Student_account where student_id=? and password=?");
+        PreparedStatement st = con.prepareStatement("SELECT * FROM Student_account WHERE student_id=? AND password=?");
         st.setString(1, student_id);
         st.setString(2, password);
         ResultSet rs = st.executeQuery();
@@ -96,8 +93,7 @@ public class AccountDAO extends DAO {
         Teacheraccount account = null;
 
         Connection con = getConnection();
-
-        PreparedStatement st = con.prepareStatement("select * from Teacher_account where teacher_id=? and password=?");
+        PreparedStatement st = con.prepareStatement("SELECT * FROM Teacher_account WHERE teacher_id=? AND password=?");
         st.setString(1, teacher_id);
         st.setString(2, password);
         ResultSet rs = st.executeQuery();
@@ -124,8 +120,7 @@ public class AccountDAO extends DAO {
         List<Studentaccount> student_no_list = new ArrayList<>();
 
         Connection con = getConnection();
-
-        PreparedStatement st = con.prepareStatement("select * from Student_account where student_id=?");
+        PreparedStatement st = con.prepareStatement("SELECT * FROM Student_account WHERE student_id=?");
         st.setString(1, student_id);
         ResultSet rs = st.executeQuery();
 
@@ -151,7 +146,7 @@ public class AccountDAO extends DAO {
     public int student_registration(String student_id, String password, String class_id, String name) throws Exception {
         Connection con = getConnection();
 
-        PreparedStatement st = con.prepareStatement("insert into student_account values(?, ?, ?, ?, ?, ?, ?)");
+        PreparedStatement st = con.prepareStatement("INSERT INTO student_account VALUES (?, ?, ?, ?, ?, ?, ?)");
         st.setString(1, student_id);
         st.setString(2, name);
         st.setString(3, class_id);
@@ -172,8 +167,7 @@ public class AccountDAO extends DAO {
         Studentaccount account = null;
 
         Connection con = getConnection();
-
-        PreparedStatement st = con.prepareStatement("select * from Student_account where name=?");
+        PreparedStatement st = con.prepareStatement("SELECT * FROM Student_account WHERE name=?");
         st.setString(1, name);
         ResultSet rs = st.executeQuery();
 
@@ -201,8 +195,7 @@ public class AccountDAO extends DAO {
         Studentaccount account = null;
 
         Connection con = getConnection();
-
-        PreparedStatement st = con.prepareStatement("select * from Student_account where class_id=?");
+        PreparedStatement st = con.prepareStatement("SELECT * FROM Student_account WHERE class_id=?");
         st.setString(1, class_id);
         ResultSet rs = st.executeQuery();
 
@@ -217,7 +210,6 @@ public class AccountDAO extends DAO {
             account.setIcon(rs.getString("icon"));
             account.setAccount_kind("学生");
             studentaccountlist.add(account);
-
         }
 
         st.close();
@@ -225,8 +217,7 @@ public class AccountDAO extends DAO {
         return studentaccountlist;
     }
 
-    // パスワードリセット機能関連のメソッド
-    // メールアドレスの存在確認
+    // パスワードリセット機能関連のメソッド、メールアドレスの存在確認
     public boolean email_exists(String email) throws Exception {
         Connection con = getConnection();
         PreparedStatement st = con.prepareStatement("SELECT COUNT(*) FROM Student_account WHERE address = ?");
@@ -243,7 +234,9 @@ public class AccountDAO extends DAO {
     // 確認コードの保存
     public void store_verification_code(String email, String code) throws Exception {
         Connection con = getConnection();
-        PreparedStatement st = con.prepareStatement("INSERT INTO Verification_code (email, code, expiration_time) VALUES (?, ?, NOW() + INTERVAL 10 MINUTE)");
+        PreparedStatement st = con.prepareStatement(
+            "INSERT INTO Verification_code (email, code, expiration_time) VALUES (?, ?, NOW() + INTERVAL 10 MINUTE)"
+        );
         st.setString(1, email);
         st.setString(2, code);
         st.executeUpdate();
@@ -278,13 +271,22 @@ public class AccountDAO extends DAO {
         st.close();
         con.close();
     }
-    
-    //メールアドレスが登録されているかどうかの確認
+ // 確認コードを削除するメソッド
+    public void delete_verification_code(String email) throws Exception {
+        Connection con = getConnection();
+        PreparedStatement st = con.prepareStatement("DELETE FROM Verification_code WHERE email = ?");
+        st.setString(1, email);
+        st.executeUpdate();
+
+        st.close();
+        con.close();
+    }
+
+
+    // メールアドレスが登録されているかどうかの確認
     public boolean isEmailRegistered(String email) throws Exception {
         Connection con = getConnection();
-        PreparedStatement st = con.prepareStatement(
-            "SELECT COUNT(*) FROM Student_account WHERE address = ?"
-        );
+        PreparedStatement st = con.prepareStatement("SELECT COUNT(*) FROM Student_account WHERE address = ?");
         st.setString(1, email);
         ResultSet rs = st.executeQuery();
 
@@ -294,8 +296,8 @@ public class AccountDAO extends DAO {
         con.close();
         return exists;
     }
-    
- // ユーザーIDからメールアドレスを取得するメソッド
+
+    // ユーザーIDからメールアドレスを取得するメソッド
     public String getEmailByUserId(String userId, String accountKind) throws Exception {
         String email = null;
         Connection con = getConnection();
@@ -322,5 +324,4 @@ public class AccountDAO extends DAO {
         con.close();
         return email;
     }
-
 }

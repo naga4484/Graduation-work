@@ -23,8 +23,14 @@ public class PasswordResetAction extends Action {
         boolean emailExists = dao.isEmailRegistered(email);
         
         if (emailExists) {
-            // 6桁の確認コードを生成してセッションに保存
+            // 既存の確認コードを無効化する（削除する）
+            dao.delete_verification_code(email);
+
+            // 6桁の確認コードを生成してデータベースに保存
             String verificationCode = generateVerificationCode();
+            dao.store_verification_code(email, verificationCode);  // データベースに保存
+
+            // セッションに確認コードとメールアドレスを保存
             request.getSession().setAttribute("verificationCode", verificationCode);
             request.getSession().setAttribute("email", email);  // メールアドレスもセッションに保存
             
