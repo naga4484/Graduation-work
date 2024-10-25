@@ -60,14 +60,22 @@ public class InquiryAction extends Action {
 
         // メール内容を構成
         StringBuilder inquiryContent = new StringBuilder();
-        inquiryContent.append("送信者: ").append(senderName).append("\n");
-        inquiryContent.append("送信者のメール: ").append(senderEmail).append("\n\n");
-        inquiryContent.append("問い合わせ内容: \n");
+        inquiryContent.append("お問い合わせメールが届きました。情報を検索します。……面倒くさい ").append("\n\n\n");
+        inquiryContent.append("・問い合わせ内容: \n");
 
         for (String type : inquiryTypes) {
             inquiryContent.append("- ").append(type).append("\n");
         }
-        inquiryContent.append("\n質問詳細:\n").append(details);
+
+        inquiryContent.append("\n・お問い合わせの詳細:\n");
+        inquiryContent.append("   ").append(details); 
+        inquiryContent.append("\n\n\n・送信者: ").append(senderName).append("\n");
+        inquiryContent.append("・メールアドレス: ").append(senderEmail).append("\n\n");
+        inquiryContent.append("\nしっかりと確認した後、的確かつ迅速な対応をお願いします。私の仕事が減るので。……あぁ、休みたい");
+
+
+
+
 
         // メール送信処理
         sendEmail(inquiryContent.toString());
@@ -82,7 +90,7 @@ public class InquiryAction extends Action {
     private void sendEmail(String content) throws MessagingException {
         // SMTPサーバー設定
         final String fromEmail = "k62670044@gmail.com"; // 固定送信者メールアドレス
-        final String toEmail = "tianzhongcong92@gmail.com"; // 固定受信者メールアドレス
+        final String toEmail = "harunoemiru@gmail.com"; // 固定受信者メールアドレス
         final String username = "k62670044@gmail.com"; // Gmailアドレス
         final String password = "pcsi erxm cogb hxfa"; // アプリパスワード
 
