@@ -22,9 +22,9 @@ body::-webkit-scrollbar {
 
 .menu_var{
 	position: absolute;
-	right: 3%;
-	top: 0%;
-	width: 100px;
+	right: 8%;
+	top: 4%;
+	width: 70px;
 	z-index: 60;
 }
 
@@ -71,9 +71,9 @@ body::-webkit-scrollbar {
 
 .main_image{
 	position: absolute;
-    top: -170px;
-    left: -65px;
-    width: 650px;
+    top: -113px;
+    left: 40px;
+    width: 500px;
 }
 .top_down_content{
 	position: absolute;
@@ -81,8 +81,30 @@ body::-webkit-scrollbar {
     left: 0px;
 }
 .top_main_function_icon{
-	width: 600px;
+	width: auto;
 	margin-bottom: 50px;
+	margin-left: 40px;
+	border: 1px #333 solid;
+	padding: 10px;
+	height: 115px;
+	border-radius: 10px;
+	position: relative;
+}
+.top_main_function_icon_title{
+	width: auto;
+	height: auto;
+	position: absolute;
+	top: -51px;
+	left: 15px;
+	border: 1px #333 solid;
+	padding:10px;
+	border-top-left-radius: 10px;
+	border-top-right-radius: 10px;
+}
+.top_main_function_icon_title p{
+	margin:0;
+	font-weight: bold;
+	font-size: 20px;
 }
 .top_links_contents{
 	display: inline-block;
@@ -132,7 +154,7 @@ body::-webkit-scrollbar {
 	position: absolute;
 	width:500px;
 	top: 140px;
-	right: -585px;
+	right: -630px;
 }
 .top_critical_function_contents{
 	display: inline-block;
@@ -170,10 +192,10 @@ body::-webkit-scrollbar {
 }
 
 #calendar {
-    width: 500px;
+    width: 400px;
     height: 400px;
     position: absolute;
-    right: -63px;
+    right: 33px;
     top: 0px;
 }
 #calendar h1 {
@@ -205,7 +227,11 @@ body::-webkit-scrollbar {
     border: #333 solid 1px;
     padding: 10px;
 }
+#calendar td{
+	background-color: white;
+}
 .ex_td {
+	background-color: white;
     color: darkgray;
     opacity: 0.5;
 }

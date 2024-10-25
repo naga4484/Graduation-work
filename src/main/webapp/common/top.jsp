@@ -18,6 +18,9 @@
 <div class="top_down_content">
 
 	<div class="top_main_function_icon">
+		<div class="top_main_function_icon_title">
+			<p>基本機能</p>
+		</div>
 		<!-- 各種機能のアイコン用 -->
 		<c:choose>
 		    <c:when test="${account.account_kind == \"教師\"}">
