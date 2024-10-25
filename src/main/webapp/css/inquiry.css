@@ -1,0 +1,50 @@
+@charset "UTF-8";
+
+.inquiry_top{
+	max-width: 600px; /* コンテンツの最大幅を600pxに設定 */
+    margin: 50px auto; /* 上下の余白を50pxに設定し、左右は自動調整 */
+    background: rgb(255, 255, 255); /* 背景色を白に設定 */
+    padding: 20px; /* 内側の余白を20pxに設定 */
+    box-shadow: 0 0 10px rgba(0,0,0,0.1); /* コンテンツに薄い影を追加して浮き上がらせる */
+}
+
+.inquiry_top h1{
+	text-align: left; /* テキストを中央揃え */
+    color: black; 
+    background-color: gainsboro;
+    padding: 10px;
+}
+/*テキストボックス*/
+.inquiry_top textarea {
+    position: relative;          /* 相対位置を設定 */
+    width: 100%;                 /* 幅を100%に設定 */
+    margin: 10px 0;              /* 上下の余白を10pxに設定 */
+    font: 15px/1.6 sans-serif;   /* フォントサイズを15px、行間を1.6倍、sans-serifフォントに設定 */
+    width: calc(100% - 20px);    /* 計算された幅を設定（コンテナの幅から20px引いた幅） */
+    padding: 0.3em;              /* 内側の余白を0.3emに設定 */
+    color: black;                /* テキストの色を黒に設定 */
+    border: 1px solid #ffffff;   /* 白い1pxの実線枠を設定 */
+    box-shadow: 1px 1px 2px 0 #707070 inset; /* 内側に影を設定 (影の距離と色) */
+    border-radius: 4px;          /* 枠の角を4px丸める */
+    transition: 0.3s;            /* 0.3秒のトランジション効果を設定 */
+    outline: none;               /* フォーカス時のアウトラインを削除 */
+    box-shadow: inset 1px 1px 2px 0 #c9c9c9; /* 内側にもう一つ影を設定（影の距離と色） */
+}
+
+/*チェックボックス*/
+.inquiry_top input[type="checkbox"] {
+  accent-color:blue;/*  背景色*/
+  transform :scale(1.5);/*  文字サイズ*/
+}
+
+/*送信ボタン*/
+.inquiry_top button{
+	text-align: center;
+	padding: 10px; /* 内側の余白を10pxに設定 */
+    background-color: #1e90ff; /* 背景色を緑色に設定 */
+    color: #fff; /* テキストの色を白に設定 */
+    border-radius: 4px; /* 枠線の角を丸く設定 */
+    cursor: pointer; /* カーソルをポインタに設定 */
+    width: 25%;
+    margin: 0 auto;
+}
