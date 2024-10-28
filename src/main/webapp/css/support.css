@@ -1,0 +1,49 @@
+/* タイマー全体のコンテナ */
+.timer-container {
+    text-align: center;
+    margin-top: 50px;
+}
+
+/* タイマーの数字表示エリア */
+#timerDisplay {
+    font-size: 48px;
+    margin-bottom: 20px;
+}
+
+/* 時・分・秒の入力欄のスタイル */
+.time-inputs {
+    margin-bottom: 20px;
+}
+
+/* 時・分・秒の数値入力フィールドのスタイル */
+.time-inputs input[type="number"] {
+    width: 60px;
+    font-size: 24px;
+    text-align: center;
+    margin-right: 5px;  /* ラベルと入力欄の間隔 */
+}
+
+/* 時・分・秒のラベルのスタイル */
+.time-inputs label {
+    font-size: 24px;
+    margin-right: 20px; /* ラベルと次の入力欄の間隔 */
+}
+
+/* ボタンのスタイル */
+.timer-buttons button {
+    font-size: 24px;
+    margin: 10px;
+    padding: 10px 20px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    cursor: pointer;
+}
+
+
+/* ページ全体のスクロールを無効 */
+body {
+    margin: 0;
+    padding: 0;
+    height: 100vh; 
+    overflow: hidden; 
+}
