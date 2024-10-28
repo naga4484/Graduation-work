@@ -1,4 +1,4 @@
-<%@ page contentType="text/html; charset=UTF-8" %>
+<%@page contentType="text/html; charset=UTF-8"%>
 <%@include file="../header.jsp"%>
 <%@ page import="java.util.ArrayList" %>
 <link rel="stylesheet" type="text/css" href="../css/inquiry.css">
@@ -47,3 +47,4 @@
     </div>
 </body>
 </html>
+<%@include file="../footer.jsp"  %>
