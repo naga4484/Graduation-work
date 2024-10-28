@@ -8,7 +8,7 @@
     <div class="container">
         <h2>アンケート一覧</h2>
         <div class="buttons">
-            <button onclick="location.href='conductSurvey.jsp'">アンケートを実施</button>
+            <button onclick="location.href='survey_implement.jsp'">アンケートを実施</button>
             <button onclick="location.href='participateSurvey.jsp'">アンケートに参加</button>
         </div>
         <table>
