@@ -57,6 +57,7 @@ public class SubmissionsregistrationAction extends Action {
 				}
 			}
 			
+			session.removeAttribute("submissionsstudent");
 			return "submissions_registration_success.jsp";
 		}
 	}

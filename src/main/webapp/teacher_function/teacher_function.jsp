@@ -11,7 +11,7 @@
 	<a href="submissions_registration.jsp">提出物登録</a>
 	<a href="submissions_confirmation.jsp">提出物確認</a>
 	<a href="attendance.jsp">出欠</a>
-	<a href="">時間割</a>
+	<a href="timetable_management.jsp">時間割</a>
 	<a href="">成績</a>
 	<a href="Subjectlisttop.action">科目一覧</a>
 	<a href="student_registration.jsp">学生情報</a>

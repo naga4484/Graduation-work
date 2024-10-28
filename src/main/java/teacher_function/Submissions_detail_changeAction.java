@@ -17,10 +17,11 @@ public class Submissions_detail_changeAction extends Action {
 			HttpSession session=request.getSession();
 			
 			String submission_name=request.getParameter("submission_name");
+			int submissions_id=Integer.parseInt(request.getParameter("submissions_id"));
 			SubmissionsDAO sdao=new SubmissionsDAO();
-			List<Submissions> distinctsubmissions = sdao.distinctsubmissions(submission_name);
+			List<Submissions> distinctsubmissions = sdao.distinctsubmissions(submission_name,submissions_id);
 			
-			if(distinctsubmissions.size()>0) {
+			if(distinctsubmissions.size()>1) {
 				request.setAttribute("distinct_error", "提出物名が重複しています");
 				return "submissions_detail.jsp";
 			}
@@ -30,13 +31,13 @@ public class Submissions_detail_changeAction extends Action {
 			String date=request.getParameter("date");
 			String fulldata = year + "年" +month + "月" + date + "日";
 			String save_path = "../submissions_files/" + submission_name;
-			int submissions_id=Integer.parseInt(request.getParameter("submissions_id"));
 			
 		
 			int line = sdao.change_submissions(submissions_id, submission_name, save_path, fulldata, subject_id);
 					
 			
 			request.setAttribute("change_mes","「"+submission_name+"」の変更が完了しました");
-			return "submissions_confirmation.jsp.jsp";
+			session.removeAttribute("distinctsubmissions_class");
+			return "submissions_confirmation.jsp";
 		}
 	}

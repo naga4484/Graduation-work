@@ -14,7 +14,7 @@
 </div>
 
 
-<form action="Submissions_detail_change.action?submissions_id=${distinctsubmissions_id.submissions_id}">
+<form action="Submissions_detail_change.action">
 	<div>
 		<h2>提出物</h2>
 		<c:if test="${distinct_error != null}">
@@ -33,6 +33,7 @@
 		<select id="year" name="year"></select>
 		<select id="month" name="month"></select>
 		<select id="date" name="date"></select>
+		<input type="hidden" value="${distinctsubmissions_id.submissions_id}" name="submissions_id">
 		
 		<input type="submit" value="変更">
 	</div>

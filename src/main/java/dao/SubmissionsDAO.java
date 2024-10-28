@@ -67,34 +67,64 @@ public class SubmissionsDAO extends DAO {
         
         return submissionsList;
 	}
+	//提出物一覧の取得(名前検索+ID)
+	public List<Submissions> distinctsubmissions(String name,int submissions_id) 
+	throws Exception {
+		List<Submissions> submissionsList = new ArrayList<>(); 
+		Submissions submissions;
+
+        Connection con = getConnection();
+
+        PreparedStatement st = con.prepareStatement("select * from Submissions where name=? and submissions_id = ?");
+        st.setString(1, name);
+        st.setInt(2, submissions_id);
+        ResultSet rs = st.executeQuery();
+
+        while (rs.next()) {
+        	submissions = new Submissions();
+        	submissions.setSubmissions_id(rs.getInt("submissions_id"));
+        	submissions.setName("name");
+        	submissions.setSave_path("save_path");
+        	submissions.setCreate_date("create_data");
+        	submissions.setClass_id(rs.getString("class_id"));
+        	submissions.setSubject_id(rs.getString("subject_id"));
+        	submissionsList.add(submissions); 
+        }
+
+        rs.close(); 
+        st.close();
+        con.close(); 
+        
+        return submissionsList;
+	}
 	//提出物一覧の取得(クラス検索)
-		public List<Submissions> distinctsubmissions_class(String class_id) 
-		throws Exception {
-			List<Submissions> submissionsList = new ArrayList<>(); 
-			Submissions submissions;
+	public List<Submissions> distinctsubmissions_class(String class_id) 
+	throws Exception {
+		List<Submissions> submissionsList = new ArrayList<>(); 
+		Submissions submissions;
 
-	        Connection con = getConnection();
+        Connection con = getConnection();
 
-	        PreparedStatement st = con.prepareStatement("select * from Submissions where class_id=?");
-	        st.setString(1, class_id);
-	        ResultSet rs = st.executeQuery();
+        PreparedStatement st = con.prepareStatement("select * from Submissions where class_id=?");
+        st.setString(1, class_id);
+        ResultSet rs = st.executeQuery();
 
-	        while (rs.next()) {
-	        	submissions = new Submissions();
-	        	submissions.setSubmissions_id(rs.getInt("submissions_id"));
-	        	submissions.setName(rs.getString("name"));
-	        	submissions.setSave_path(rs.getString("save_path"));
-	        	submissions.setCreate_date(rs.getString("create_data"));
-	        	submissions.setClass_id(rs.getString("class_id"));
-	        	submissions.setSubject_id(rs.getString("subject_id"));
-	        	submissionsList.add(submissions); 
-	        }
+        while (rs.next()) {
+        	submissions = new Submissions();
+        	submissions.setSubmissions_id(rs.getInt("submissions_id"));
+        	submissions.setName(rs.getString("name"));
+        	submissions.setSave_path(rs.getString("save_path"));
+        	submissions.setCreate_date(rs.getString("create_data"));
+        	submissions.setClass_id(rs.getString("class_id"));
+        	submissions.setSubject_id(rs.getString("subject_id"));
+        	submissionsList.add(submissions); 
+        }
 
-	        rs.close(); 
-	        st.close();
-	        con.close(); 
-	        
-	        return submissionsList;
+        rs.close(); 
+        st.close();
+        con.close(); 
+        
+        return submissionsList;
 	}
 	//提出物一覧の取得(ID検索)
 	public Submissions distinctsubmissions_id(int submissions_id) 
