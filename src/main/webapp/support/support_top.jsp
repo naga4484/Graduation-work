@@ -2,6 +2,8 @@
 <%@include file="../header.jsp"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
+<link rel="stylesheet" type="text/css" href="../css/support.css">
+
  
  	<div id="support_top">
 	<h2>サポート</h2>
