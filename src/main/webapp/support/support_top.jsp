@@ -22,15 +22,14 @@
 	</div>
 	
 	<!-- 電卓リンク -->
-	<div class="calculator_links">
-	<a href="calculator.jsp"><img src="" class="calculator_link_icon"></a>
-	    <p class="calculator_links_title">電卓</p>
-	</div>
-	</section>
-	</div>
-
+	 <div class="calculator_links">
+            <!-- hrefを削除し、onclickイベントで子ウィンドウを開くように修正 -->
+            <a href="#" onclick="openCalculator(); return false;">test<img src="" class="calculator_link_icon"></a>
+            <p class="calculator_links_title">電卓</p>
+        </div>
 
  <a href="../common/top.jsp">戻る</a>
+ <script src="../js/calculator.js"></script>
 
 <%@include file="../footer.jsp"  %>
 
