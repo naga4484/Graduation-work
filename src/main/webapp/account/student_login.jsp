@@ -27,17 +27,9 @@
             <a href="reset_password_email.jsp">パスワードリセットを行う</a>
             <button type="submit">ログイン</button>
         </form>
+        <a href="login_top.jsp">戻る</a>
     </div>
+    
 </div>
-<script>
-function togglePasswordVisibility() {
-    let passwordInput = document.getElementById("password");
-    let showPasswordCheckbox = document.getElementById("showPassword");
-    if (showPasswordCheckbox.checked) {
-        passwordInput.type = "text";
-    } else {
-        passwordInput.type = "password";
-    }
-}
-</script>
+<script src="../js/password.js"></script>
 <%@ include file="../footer.jsp" %>
