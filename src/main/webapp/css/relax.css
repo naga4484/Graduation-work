@@ -20,39 +20,31 @@
     margin: 20px 0;
 }
 
-/* ボタンコンテナのスタイル */
-.button-group {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    justify-content: center;
-    margin-top: 15px;
+/* アイコンボタンのスタイル */
+.control-icon {
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+    margin: 0 10px;
 }
 
-.bgm-control label {
-    font-size: 18px;
-    margin-right: 10px;
-    color: #555;
+.loop-icon {
+    margin-top: 10px;
 }
 
-/* ボタンの共通スタイル */
-.button-group button, .fortune-telling button {
+/* フォーチュンボタン */
+.fortune-telling button {
+    background-color: #008CBA;
     font-size: 16px;
     padding: 10px 20px;
-    background-color: #4CAF50;
     color: white;
     border: none;
     border-radius: 5px;
     cursor: pointer;
-}
-
-/* 占いボタンの特別なスタイル */
-.fortune-telling button {
-    background-color: #008CBA;
     margin-top: 20px;
 }
 
-.button-group button:hover, .fortune-telling button:hover {
+.fortune-telling button:hover {
     opacity: 0.9;
 }
 
