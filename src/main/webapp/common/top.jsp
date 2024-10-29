@@ -49,7 +49,7 @@
 			<p class="top_links_contents_title5">効率化</p>
 		</div>
 	</div>
-	<div class="top_sub_fnction_icon">
+	<div class="top_sub_function_icon">
 		<a href="../support/support_top.jsp"><img src="../images/サンプル7.png" class="my_management_top_icon"></a> <!-- サポート -->
 		<a href="javascript:void(0);" onclick="openRelaxWindow()"><img src="../images/サンプル8.png" class="my_management_top_icon"></a> <!-- リラックス -->
 	</div>
