@@ -51,7 +51,7 @@
 	</div>
 	<div class="top_sub_fnction_icon">
 		<a href="../support/support_top.jsp"><img src="../images/サンプル7.png" class="my_management_top_icon"></a> <!-- サポート -->
-		<a href=""><img src="../images/サンプル8.png" class="my_management_top_icon"></a> <!-- リラックス -->
+		<a href="javascript:void(0);" onclick="openRelaxWindow()"><img src="../images/サンプル8.png" class="my_management_top_icon"></a> <!-- リラックス -->
 	</div>
 	<div class="top_critical_function_icon">
 		<div class="top_critical_function_contents">
@@ -63,6 +63,7 @@
 			<p class="top_contact_mes">問い合わせ</p>
 		</div>
 	</div>
+	
 	
 	
 	
