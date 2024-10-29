@@ -1,7 +1,7 @@
-let relaxWindow; // リラックスウィンドウを保持
-let currentAudio; // 現在再生中の音楽オブジェクトを保持
-let musicList = []; // 音楽ファイルリスト
-let currentTrackIndex = 0; // 現在再生中のトラックのインデックス
+let relaxWindow; 
+let currentAudio; 
+let musicList = []; 
+let currentTrackIndex = 0; 
 
 // リラックスウィンドウを開く関数
 function openRelaxWindow() {
@@ -21,7 +21,7 @@ function loadMusicList() {
     fetch("../relax/musicList") // サーブレットから音楽リストを取得
         .then(response => response.json())
         .then(data => {
-            musicList = data; // 音楽リストを格納
+            musicList = data;
             const musicSelect = document.getElementById("musicSelect");
             musicSelect.innerHTML = ""; // セレクトボックスをリセット
             musicList.forEach(file => {
@@ -38,7 +38,7 @@ function loadMusicList() {
 
 // 音楽を再生する関数
 function playMusic() {
-    if (musicList.length === 0) return; // 音楽リストが空の場合は何もしない
+    if (musicList.length === 0) return; 
     const selectedMusic = musicList[currentTrackIndex]; // 現在の曲を取得
     if (currentAudio) {
         currentAudio.pause();
@@ -48,7 +48,6 @@ function playMusic() {
     currentAudio.loop = false; // デフォルトはループオフ
     currentAudio.play();
 
-    // セレクトボックスの選択状態を現在の曲に更新
     const musicSelect = document.getElementById("musicSelect");
     musicSelect.value = selectedMusic;
 
@@ -56,10 +55,18 @@ function playMusic() {
     currentAudio.addEventListener("ended", skipToNextTrack);
 }
 
+// セレクトボックスの曲を選択したときに再生する関数
+function selectTrack() {
+    const musicSelect = document.getElementById("musicSelect");
+    const selectedMusic = musicSelect.value;
+    currentTrackIndex = musicList.indexOf(selectedMusic); 
+    playMusic(); // 選択された曲を再生
+}
+
 // 次の曲にスキップする関数
 function skipToNextTrack() {
     // 次の曲のインデックスに移動
-    currentTrackIndex = (currentTrackIndex + 1) % musicList.length; // 最後の曲の後は最初の曲に戻る
+    currentTrackIndex = (currentTrackIndex + 1) % musicList.length; 
     playMusic(); // 次の曲を再生
 }
 
@@ -101,3 +108,6 @@ function showFortune() {
 
 // ページがロードされたときに音楽リストを読み込む
 window.addEventListener("load", loadMusicList);
+
+// セレクトボックスの変更時に selectTrack 関数を呼び出す
+document.getElementById("musicSelect").addEventListener("change", selectTrack);
