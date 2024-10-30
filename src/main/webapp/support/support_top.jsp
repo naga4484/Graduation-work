@@ -13,6 +13,7 @@
 	<div class="timer_links">
 	<a href="timer.jsp"><img src="" class="timer_link_icon"></a>
         <p class="timer_links_title">タイマー</p>
+        <a href="timer.jsp">タイマーリンク</a>
 	</div>
 	
 	<!-- カスタマイズリンク -->
