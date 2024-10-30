@@ -38,7 +38,6 @@ public class Timetable_classAction extends Action {
 			
 			session.setAttribute("timetableList", timetableList);
 			session.setAttribute("timetable_select", timetable_select);
-			session.setAttribute("Flag", "ok");
 			return "timetable_management.jsp";
 		}
 	}

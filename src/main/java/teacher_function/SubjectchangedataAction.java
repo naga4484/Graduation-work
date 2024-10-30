@@ -48,9 +48,10 @@ public class SubjectchangedataAction extends Action {
 					total_unit_num = "0";
 				}
 				int total_unit=Integer.parseInt(total_unit_num);
+				String subject_color=request.getParameter("subject_color");
 				
 				
-				line = dao.change_subject(id, subject_name, total_unit);
+				line = dao.change_subject(id, subject_name, total_unit,subject_color);
 			}
 			if(line > 0) {
 				request.setAttribute("change_mes", "変更が完了いたしました。");

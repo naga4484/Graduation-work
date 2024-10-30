@@ -23,6 +23,7 @@
 			<th>科目名</th>
 			<th>総単位数</th>
 			<th>クラスID</th>
+			<th>科目色</th>
 			<th></th>
 		</tr>
 		<c:forEach var="item" items="${subject_list}">
@@ -31,6 +32,7 @@
 	  			<td><input type="text" value="${item.subject_name}" name="${item.subject_id}_subject_name"></td>
 	  			<td><input type="text" value="${item.total_unit}" name="${item.subject_id}_total_unit"></td>
 	  			<td>${item.class_id}</td>
+	  			<td><input type="color" name="subject_color" value="${item.subject_color}"></td>
 	  			<td><input type="button" id="button${item.subject_id}" value="削除" name="${item.subject_id}"></td>
 	  		</tr>
 		</c:forEach>

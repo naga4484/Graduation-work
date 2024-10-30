@@ -31,6 +31,8 @@ public class Timetables_data_searchAction extends Action {
 			
 			session.setAttribute("timetable_change_List", timetable_change_List);
 			session.setAttribute("Month_of_days", Month_of_days);
+			session.setAttribute("data_num", data);
+			session.setAttribute("timetable_update_class_id", class_id);
 			return "timetable_management.jsp";
 		}
 	}

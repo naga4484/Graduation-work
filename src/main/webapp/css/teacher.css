@@ -25,3 +25,9 @@
             opacity: 1;
        	}
 }
+
+.timetable_box{
+	border: 1px solid #333;
+	display: inline-block;
+	margin: 5px;
+}

@@ -24,6 +24,7 @@ public class SubjectregistrationAction extends Action {
 			}
 			int total_unit=Integer.parseInt(total_unit_num);
 			String class_id=request.getParameter("class_id");
+			String subject_color=request.getParameter("subject_color");
 			
 			
 			SubjectDAO no_dao=new SubjectDAO();
@@ -37,7 +38,7 @@ public class SubjectregistrationAction extends Action {
 			}
 
 			SubjectDAO dao=new SubjectDAO();
-			int line=dao.subject_registration(subject_id ,class_id, subject_name,total_unit);
+			int line=dao.subject_registration(subject_id ,class_id, subject_name,total_unit,subject_color);
 			
 			if(line>0) {
 				return "Subjectlisttop.action";

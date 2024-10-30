@@ -176,4 +176,21 @@ public class TimetableDAO extends DAO {
         
         return timetableList;
 	}
+	//時間割設定用
+	public int timetable_update(String subject_id,String timetable_hour,String teacher_id,String class_id,String data) throws Exception {
+		Connection con=getConnection();
+
+		PreparedStatement st=con.prepareStatement(
+			"update Timetable set subject_id=? where timetable_hour=? and teacher_id=? and class_id=? and data = ?");
+		st.setString(1, subject_id);
+        st.setString(2, timetable_hour);
+        st.setString(3, teacher_id);
+        st.setString(4, class_id);
+        st.setString(5, data);
+		int line=st.executeUpdate();
+
+		st.close();
+		con.close();
+		return line;
+	}
 }

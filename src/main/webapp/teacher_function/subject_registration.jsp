@@ -15,7 +15,10 @@
     <input type="text" name="subject_name" placeholder="科目名を入力してください"><br><br>
     
 	<label>総単位数</label>
-    <input type="text" name="total_unit" placeholder="総単位数を入力してください">
+    <input type="text" name="total_unit" placeholder="総単位数を入力してください"><br><br>
+    
+    <label>科目イメージカラー</label>
+    <input type="color" name="subject_color" value="#cce5ff"><br><br>
     
     <input type="hidden" name="class_id" value="${account.class_id}">
 

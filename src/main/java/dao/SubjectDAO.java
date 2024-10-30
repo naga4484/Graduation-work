@@ -28,6 +28,7 @@ public class SubjectDAO extends DAO {
         	subject.setSubject_name(rs.getString("subject_name"));
         	subject.setTotal_unit(rs.getInt("total_unit"));
         	subject.setClass_id(rs.getString("class_id"));
+        	subject.setSubject_color(rs.getString("subject_color"));
         	subjectList.add(subject); 
         }
 
@@ -55,6 +56,7 @@ public class SubjectDAO extends DAO {
 		        	subject.setSubject_name(rs.getString("subject_name"));
 		        	subject.setTotal_unit(rs.getInt("total_unit"));
 		        	subject.setClass_id(rs.getString("class_id"));
+		        	subject.setSubject_color(rs.getString("subject_color"));
 		        	subjectList.add(subject); 
 		        }
 
@@ -85,6 +87,7 @@ public class SubjectDAO extends DAO {
 			subject.setClass_id(rs.getString("class_id"));
 			subject.setSubject_name(rs.getString("subject_name"));
 			subject.setTotal_unit(rs.getInt("total_unit"));
+			subject.setSubject_color(rs.getString("subject_color"));
 			subject_no_list.add(subject);
 		}
 		
@@ -94,15 +97,16 @@ public class SubjectDAO extends DAO {
 	}
 	
 	//科目登録機能
-	public int subject_registration(String subject_id,String class_id,String subject_name,int total_unit) throws Exception {
+	public int subject_registration(String subject_id,String class_id,String subject_name,int total_unit,String subject_color) throws Exception {
 		Connection con=getConnection();
 
 		PreparedStatement st=con.prepareStatement(
-			"insert into Subject values(?, ?, ?, ?)");
+			"insert into Subject values(?, ?, ?, ?, ?)");
 		st.setString(1, subject_id);
 		st.setString(2, class_id);
 		st.setString(3, subject_name);
 		st.setInt(4, total_unit);
+		st.setString(5, subject_color);
 		int line=st.executeUpdate();
 
 		st.close();
@@ -124,14 +128,15 @@ public class SubjectDAO extends DAO {
 		return line;
 	}
 	//科目情報更新機能
-	public int change_subject(String subject_id,String subject_name,int total_unit) throws Exception {
+	public int change_subject(String subject_id,String subject_name,int total_unit,String subject_color) throws Exception {
 		Connection con=getConnection();
 
 		PreparedStatement st=con.prepareStatement(
-			"update Subject set subject_name = ?,total_unit = ? where subject_id = ?");
+			"update Subject set subject_name = ?,total_unit = ?,subject_color=? where subject_id = ?");
 		st.setString(1, subject_name);
 		st.setInt(2, total_unit);
-		st.setString(3, subject_id);
+		st.setString(3, subject_color);
+		st.setString(4, subject_id);
 		int line=st.executeUpdate();
 
 		st.close();

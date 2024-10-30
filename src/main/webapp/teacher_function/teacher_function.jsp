@@ -19,7 +19,7 @@
 	<a href="">座席表</a>
 	<a href="">グループ</a>
 	<a href="">傾向分析</a>
-	<a href="">科目テンプレ</a>
+	<a href="timetable_template.jsp">科目テンプレ</a>
 </div>
 <div class="teacher_registration">
 	<a href="">教師アカウントの登録</a>
