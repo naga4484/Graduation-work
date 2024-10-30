@@ -71,32 +71,80 @@ body::-webkit-scrollbar {
 
 .main_image{
 	position: absolute;
-    top: -113px;
-    left: 40px;
-    width: 500px;
+    top: -80px;
+    left: 50%;
+    width: 320px;
+    transform: translateX(-50%);
 }
 .top_down_content{
 	position: absolute;
 	top: 300px;
     left: 0px;
 }
-.top_main_function_icon{
-	width: auto;
-	margin-bottom: 50px;
-	margin-left: 40px;
-	border: 1px #333 solid;
-	padding: 10px;
-	height: 115px;
-	border-radius: 10px;
-	position: relative;
+/*アイコンたち*/
+.top_main_function_icon {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
 }
+
+
+/* メインアイコン内の個別アイコン */
+
+.top_main_function_icon .top_links_contents:nth-child(2) {
+    position: absolute;
+    left: 400px; 
+    top: -190px; 
+}
+.top_main_function_icon .top_links_contents:nth-child(3) {
+    position: absolute;
+    left: 600px; /* 必要に応じて調整 */
+    top: -190px; /* 必要に応じて調整 */
+}
+.top_main_function_icon .top_links_contents:nth-child(4) {
+    position: absolute;
+    left: 400px; /* 必要に応じて調整 */
+    top: 20px; /* 必要に応じて調整 */
+}
+.top_main_function_icon .top_links_contents:nth-child(5) {
+    position: absolute;
+    left: 600px; /* 必要に応じて調整 */
+    top: 20px; /* 必要に応じて調整 */
+}
+.top_main_function_icon .top_links_contents:nth-child(1) {
+    position: absolute;
+    left: 800px; /* 必要に応じて調整 */
+    top: -190px; /* 必要に応じて調整 */
+}
+/* サブアイコン */
+.top_sub_function_icon {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+
+/* サブアイコン内の個別アイコン */
+.top_sub_function_icon a:nth-of-type(1) .my_management_top_icon_sub {
+    position: absolute;
+    left: 830px; /* 必要に応じて調整 */
+    top: 100px; /* 必要に応じて調整 */
+}
+
+.top_sub_function_icon a:nth-of-type(2) .my_management_top_icon_sub {
+    position: absolute;
+    left: 950px; /* 必要に応じて調整 */
+    top: 100px; /* 必要に応じて調整 */
+}
+
+
+/*アイコンpの部分*/
 .top_main_function_icon_title{
 	width: auto;
 	height: auto;
 	position: absolute;
-	top: -51px;
-	left: 15px;
-	border: 1px #333 solid;
+	top: -150px;
 	padding:10px;
 	border-top-left-radius: 10px;
 	border-top-right-radius: 10px;
@@ -109,52 +157,62 @@ body::-webkit-scrollbar {
 .top_links_contents{
 	display: inline-block;
 	position: relative;
-	width: 100px;
+	margin: 40px;
+	width: 150px;
 }
 .top_links_contents_title1{
 	position: absolute;
 	font-weight: bold;
-	top:75px;
-	left: 22px;
+	top:160px;
+	left: 80px;
 }
 .top_links_contents_title2{
 	position: absolute;
 	font-weight: bold;
-	top:75px;
-	left: 8px;
+	top:160px;
+	left: 60px;
 }
 .top_links_contents_title3{
 	position: absolute;
 	font-weight: bold;
-	top:75px;
-	left: 8px;
+	top:160px;
+	left: 65px;
 }
 .top_links_contents_title4{
 	position: absolute;
 	font-weight: bold;
-	top:75px;
-	left: 0px;
+	top:160px;
+	left: 60px;
 }
 .top_links_contents_title5{
 	position: absolute;
 	font-weight: bold;
-	top:75px;
-	left: 17px;
+	top:160px;
+	left: 70px;
 }
 
 .teacher_top_icon{
-	width: 80px;
-	border-radius: 50px;
+	margin:15px;
+	width: 160px;
+    border-radius: 50px;
+
 }
 .my_management_top_icon{
-	width: 80px;
-	border-radius: 50px;
+	width: 160px;
+	margin:15px;
+    border-radius: 50px;
 }
+.my_management_top_icon_sub{
+	width: 100px;
+	margin:15px;
+    border-radius: 80px;
+}
+/*アイコン位置↓*/
 .top_critical_function_icon{
 	position: absolute;
 	width:500px;
-	top: 140px;
-	right: -630px;
+	top: -260px;
+	left: 30px;
 }
 .top_critical_function_contents{
 	display: inline-block;
@@ -187,9 +245,10 @@ body::-webkit-scrollbar {
 .cal-area {
     width: 385px;
     position: absolute;
-    top: 15px;
-    right: -30px;
+    top : 180px;  /* 変更: 下から15px */
+    left: 90px;    /* 変更: 左から30px */
 }
+
 
 #calendar {
     width: 400px;

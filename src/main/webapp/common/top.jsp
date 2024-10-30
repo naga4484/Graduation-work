@@ -18,20 +18,11 @@
 <div class="top_down_content">
 
 	<div class="top_main_function_icon">
-		<div class="top_main_function_icon_title">
-			<p>基本機能</p>
+		 <div class="top_main_function_icon_title">
+			<p></p>
 		</div>
 		<!-- 各種機能のアイコン用 -->
-		<c:choose>
-		    <c:when test="${account.account_kind == \"教師\"}">
-		    	<a href="../teacher_function/teacher_function.jsp">
-			    	<div class="top_links_contents">
-			    		<img src="../images/サンプル1.png" class="teacher_top_icon" id="teacher_top_icon">
-			        	<p class="top_links_contents_title1">教師</p>
-			    	</div>
-			    </a>
-		    </c:when>
-		</c:choose>
+
 		<div class="top_links_contents">
 			<a href=""><img src="../images/サンプル5.png" class="my_management_top_icon"></a> <!-- 自己管理 -->
 			<p class="top_links_contents_title2">自己管理</p>
@@ -48,10 +39,20 @@
 			<a href=""><img src="../images/サンプル3.png" class="my_management_top_icon"></a> <!-- 効率化管理 -->
 			<p class="top_links_contents_title5">効率化</p>
 		</div>
+		<c:choose>
+		    <c:when test="${account.account_kind == \"教師\"}">
+		    	<a href="../teacher_function/teacher_function.jsp">
+			    	<div class="top_links_contents">
+			    		<img src="../images/サンプル1.png" class="teacher_top_icon" id="teacher_top_icon">
+			        	<p class="top_links_contents_title1">教師</p>
+			    	</div>
+			    </a>
+		    </c:when>
+		</c:choose>
 	</div>
 	<div class="top_sub_function_icon">
-		<a href="../support/support_top.jsp"><img src="../images/サンプル7.png" class="my_management_top_icon"></a> <!-- サポート -->
-		<a href="javascript:void(0);" onclick="openRelaxWindow()"><img src="../images/サンプル8.png" class="my_management_top_icon"></a> <!-- リラックス -->
+		<a href="../support/support_top.jsp"><img src="../images/サンプル7.png" class="my_management_top_icon_sub"></a> <!-- サポート -->
+		<a href="javascript:void(0);" onclick="openRelaxWindow()"><img src="../images/サンプル8.png" class="my_management_top_icon_sub"></a> <!-- リラックス -->
 	</div>
 	<div class="top_critical_function_icon">
 		<div class="top_critical_function_contents">
@@ -69,14 +70,16 @@
 	
 	
 	
+</div>
+
+<%@include file="../footer.jsp"  %>	
 	
 	
 	
 	
 	
 	
-	
-	
+<br><br><br><br><br><br><br><br><br><br><br><br>	
 	<!-- ここらへんはプチ開発で試した内容。とりあえず保存しているだけ -->
 	
 	<h1>スクレイピングの確認</h1>
@@ -86,6 +89,3 @@
 	
 	<h1>AI使用の確認</h1>
 	<p><a href="../ai/gemini.jsp">AI使用ページへ</a></p>
-</div>
-
-<%@include file="../footer.jsp"  %>
