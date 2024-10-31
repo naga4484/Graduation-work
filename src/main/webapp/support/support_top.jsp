@@ -4,10 +4,12 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <link rel="stylesheet" type="text/css" href="../css/support.css">
 
+ <title>サポート画面</title>
  
- 	<div id="support_top">
+ 	<div class="support_top">
 	<h2>サポート</h2>
 	<section>
+	</div>
 	
 	<!-- タイマーリンク -->
 	<div class="timer_links">
@@ -24,10 +26,10 @@
 	
 	<!-- 電卓リンク -->
 	 <div class="calculator_links">
-            <!-- hrefを削除し、onclickイベントで子ウィンドウを開くように修正 -->
-            <a href="#" onclick="openCalculator(); return false;">test<img src="" class="calculator_link_icon"></a>
-            <p class="calculator_links_title">電卓</p>
-        </div>
+         <!-- hrefを削除し、onclickイベントで子ウィンドウを開くように修正 -->
+         <a href="#" onclick="openCalculator(); return false;">test<img src="" class="calculator_link_icon"></a>
+         <p class="calculator_links_title">電卓</p>
+     </div>
 
  <a href="../common/top.jsp">戻る</a>
  <script src="../js/calculator.js"></script>
