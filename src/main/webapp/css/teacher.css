@@ -31,3 +31,30 @@
 	display: inline-block;
 	margin: 5px;
 }
+
+.item {
+    display: inline-block;
+    width: 100px;
+    height: 50px;
+    margin: 5px;
+    background-color: #add8e6;
+    color: black;
+    text-align: center;
+    line-height: 50px;
+    border: 1px solid black;
+    cursor: pointer;
+ }
+
+  /* 詳細設定エリアのスタイル */
+  .detail-settings {
+    display: none;
+    margin-top: 20px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    background-color: #f9f9f9;
+  }
+
+  .detail-settings label, .detail-settings select, .detail-settings input {
+    display: block;
+    margin-bottom: 10px;
+  }
