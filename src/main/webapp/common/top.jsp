@@ -24,26 +24,26 @@
 		<!-- 各種機能のアイコン用 -->
 
 		<div class="top_links_contents">
-			<a href=""><img src="../images/サンプル5.png" class="my_management_top_icon"></a> <!-- 自己管理 -->
+			<a href=""><img src="../images/自己管理アイコン.png" class="my_management_top_icon"></a> <!-- 自己管理 -->
 			<p class="top_links_contents_title2">自己管理</p>
 		</div>
 		<div class="top_links_contents">
-			<a href=""><img src="../images/サンプル6.png" class="my_management_top_icon"></a> <!-- グループ管理 -->
+			<a href=""><img src="../images/グループ管理アイコン.png" class="my_management_top_icon"></a> <!-- グループ管理 -->
 			<p class="top_links_contents_title3">グループ</p>
 		</div>
 		<div class="top_links_contents">	
-			<a href=""><img src="../images/サンプル2.png" class="my_management_top_icon"></a> <!-- アンケート管理 -->
+			<a href=""><img src="../images/アンケートアイコン.png" class="my_management_top_icon"></a> <!-- アンケート管理 -->
 			<p class="top_links_contents_title4">アンケート</p>
 		</div>	
 		<div class="top_links_contents">	
-			<a href=""><img src="../images/サンプル3.png" class="my_management_top_icon"></a> <!-- 効率化管理 -->
+			<a href=""><img src="../images/効率化アイコン.png" class="my_management_top_icon"></a> <!-- 効率化管理 -->
 			<p class="top_links_contents_title5">効率化</p>
 		</div>
 		<c:choose>
 		    <c:when test="${account.account_kind == \"教師\"}">
 		    	<a href="../teacher_function/teacher_function.jsp">
 			    	<div class="top_links_contents">
-			    		<img src="../images/サンプル1.png" class="teacher_top_icon" id="teacher_top_icon">
+			    		<img src="../images/教師アイコン.png" class="teacher_top_icon" id="teacher_top_icon">
 			        	<p class="top_links_contents_title1">教師</p>
 			    	</div>
 			    </a>
@@ -51,16 +51,22 @@
 		</c:choose>
 	</div>
 	<div class="top_sub_function_icon">
-		<a href="../support/support_top.jsp"><img src="../images/サンプル7.png" class="my_management_top_icon_sub"></a> <!-- サポート -->
-		<a href="javascript:void(0);" onclick="openRelaxWindow()"><img src="../images/サンプル8.png" class="my_management_top_icon_sub"></a> <!-- リラックス -->
+		<div class="top_sub_links_contents">
+		    <a href="../support/support_top.jsp"><img src="../images/サポートアイコン.png" class="my_management_top_icon_sub"></a> <!-- サポート -->
+			<p class="top_sub_links_contents_title1">サポート</p>
+		</div>
+        <div class="top_sub_links_contents">
+		    <a href="javascript:void(0);" onclick="openRelaxWindow()"><img src="../images/癒しアイコン.png" class="my_management_top_icon_sub"></a> <!-- リラックス -->
+		    <p class="top_sub_links_contents_title2">リラックス</p>
+		</div>
 	</div>
 	<div class="top_critical_function_icon">
 		<div class="top_critical_function_contents">
-			<a href="../account/Logout.action"><img src="../images/サンプル9.png" class="top_logout_icon"></a> <!-- ログアウト -->
+			<a href="../account/Logout.action"><img src="../images/logout.png" class="top_logout_icon"></a> <!-- ログアウト -->
 			<a href="../account/Logout.action"><p class="top_logout_mes">ログアウト</p></a>
 		</div>
 		<div class="top_critical_function_contents">
-			<a href="../inquiry/inquiry_form.jsp"><img src="../images/サンプル10.png" class="top_contact_icon"></a> <!-- 問い合わせ -->
+			<a href="../inquiry/inquiry_form.jsp"><img src="../images/contact.png" class="top_contact_icon"></a> <!-- 問い合わせ -->
 			<p class="top_contact_mes">問い合わせ</p>
 		</div>
 	</div>
