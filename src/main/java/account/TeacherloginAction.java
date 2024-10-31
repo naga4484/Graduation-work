@@ -33,6 +33,11 @@ public class TeacherloginAction extends Action {
 		AccountDAO dao=new AccountDAO();
 		Teacheraccount account=dao.teacher_search(teacher_id, password);
 		
+		if(account == null) {
+			request.setAttribute("login_error", "IDまたはパスワードが違います");
+			return "teacher_login.jsp";
+		}
+		
 		ClassDAO cdao=new ClassDAO();
 		List<Class_num> class_num=cdao.getallclass();
 		
@@ -54,14 +59,11 @@ public class TeacherloginAction extends Action {
 		today_temperature_data.add(0,"現在の気温");
 		today_temperature_data.add(2,"現在の天気");
 		
-		if (account!=null) {
-			session.setAttribute("account", account);
-			session.setAttribute("class_num", class_num);
-			session.setAttribute("class_subject", class_subject);
-			session.setAttribute("today_temperature_data", today_temperature_data);
-			return "../common/top.jsp";
-		}
-		request.setAttribute("login_error", "IDまたはパスワードが確認できませんでした");
-		return "student_login.jsp";
+
+		session.setAttribute("account", account);
+		session.setAttribute("class_num", class_num);
+		session.setAttribute("class_subject", class_subject);
+		session.setAttribute("today_temperature_data", today_temperature_data);
+		return "../common/top.jsp";
 	}
 }
