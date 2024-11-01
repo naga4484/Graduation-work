@@ -20,6 +20,7 @@
     </c:choose>
     
     <br>
+    <p>${account.name }さん。こんにちは</p>
 		<a href="../account/Logout.action"><p>ログアウト</p></a>
 </body>
 <%@ include file="../footer.jsp" %>
