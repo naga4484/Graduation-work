@@ -35,3 +35,5 @@ const items = document.querySelectorAll('.timetable_box');
 
   // 初期表示を設定
   changePage(0);
+  
+

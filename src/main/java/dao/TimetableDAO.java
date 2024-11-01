@@ -10,6 +10,7 @@ import java.util.LinkedHashSet;
 import java.util.List;
 
 import bean.Timetable;
+import bean.Timetable_template;
 
 public class TimetableDAO extends DAO {
 	
@@ -196,20 +197,130 @@ public class TimetableDAO extends DAO {
 	
 	
 	//ここからは、時間割テンプレートの機能のDAO
-	public int timetable_template_registration(String subject_id,String timetable_hour,String teacher_id,String class_id,String data) throws Exception {
+	public int timetable_template_registration(String timetable_id,String timetable_name,String subject_id,String timetable_hour,String teacher_id) throws Exception {
 		Connection con=getConnection();
 
 		PreparedStatement st=con.prepareStatement(
-			"update Timetable set subject_id=? where timetable_hour=? and teacher_id=? and class_id=? and data = ?");
-		st.setString(1, subject_id);
-        st.setString(2, timetable_hour);
-        st.setString(3, teacher_id);
-        st.setString(4, class_id);
-        st.setString(5, data);
+			"insert into Timetable_template values(?,?,?,?,?)");
+		st.setString(1, timetable_id);
+		st.setString(2, subject_id);
+        st.setString(3, timetable_hour);
+        st.setString(4, teacher_id);
+        st.setString(5, timetable_name);
 		int line=st.executeUpdate();
 
 		st.close();
 		con.close();
 		return line;
 	}
+	//時間割テンプレートの一覧の取得
+	public List<Timetable_template> timetable_template(String teacher_id) 
+	throws Exception {
+		List<Timetable_template> timetableList = new ArrayList<>(); 
+		Timetable_template timetable;
+
+        Connection con = getConnection();
+
+        PreparedStatement st = con.prepareStatement("select * from Timetable_template where teacher_id=?");
+        st.setString(1, teacher_id);
+        ResultSet rs = st.executeQuery();
+
+        while (rs.next()) {
+        	timetable = new Timetable_template();
+        	timetable.setTemplate_id(rs.getString("template_id"));
+        	timetable.setSubject_id(rs.getString("subject_id"));
+        	timetable.setTimetable_hour(rs.getString("timetable_hour"));
+        	timetable.setTeacher_id(rs.getString("teacher_id"));
+        	timetable.setTemplate_name(rs.getString("template_name"));
+        	timetableList.add(timetable); 
+        }
+
+        rs.close(); 
+        st.close();
+        con.close(); 
+        
+        return timetableList;
+	}
+	//時間割テンプレートの一覧の取得(重複削除)
+	public List<Timetable_template> distinct_timetable_template(String teacher_id) 
+	throws Exception {
+		List<Timetable_template> timetableList = new ArrayList<>(); 
+		Timetable_template timetable;
+
+        Connection con = getConnection();
+
+        PreparedStatement st = con.prepareStatement("select distinct template_id,template_name from Timetable_template where teacher_id=?");
+        st.setString(1, teacher_id);
+        ResultSet rs = st.executeQuery();
+
+        while (rs.next()) {
+        	timetable = new Timetable_template();
+        	timetable.setTemplate_id(rs.getString("template_id"));
+        	timetable.setTemplate_name(rs.getString("template_name"));
+        	timetableList.add(timetable); 
+        }
+
+        rs.close(); 
+        st.close();
+        con.close(); 
+        
+        return timetableList;
+	}
+	//時間割テンプレートの一覧の取得(ID検索)
+	public List<Timetable_template> timetable_template_id(String template_id) 
+	throws Exception {
+		List<Timetable_template> timetableList = new ArrayList<>(); 
+		Timetable_template timetable;
+
+        Connection con = getConnection();
+
+        PreparedStatement st = con.prepareStatement("select * from Timetable_template where template_id=?");
+        st.setString(1, template_id);
+        ResultSet rs = st.executeQuery();
+
+        while (rs.next()) {
+        	timetable = new Timetable_template();
+        	timetable.setTemplate_id(rs.getString("template_id"));
+        	timetable.setSubject_id(rs.getString("subject_id"));
+        	timetable.setTimetable_hour(rs.getString("timetable_hour"));
+        	timetable.setTeacher_id(rs.getString("teacher_id"));
+        	timetable.setTemplate_name(rs.getString("template_name"));
+        	timetableList.add(timetable); 
+        }
+
+        rs.close(); 
+        st.close();
+        con.close(); 
+        
+        return timetableList;
+	}
+	//時間割テンプレート削除用
+	public int timetable_template_delete(String template_id) throws Exception {
+		Connection con=getConnection();
+
+		PreparedStatement st=con.prepareStatement(
+			"delete from Timetable_template where template_id = ?");
+		st.setString(1, template_id);
+		int line=st.executeUpdate();
+
+		st.close();
+		con.close();
+		return line;
+	}
+	//時間割テンプレート更新用
+		public int timetable_template_update(String template_id,String template_name,String subject_id,String timetable_hour) throws Exception {
+			Connection con=getConnection();
+
+			PreparedStatement st=con.prepareStatement(
+				"update Timetable_template set template_name=?,subject_id=? where template_id=? and timetable_hour=?");
+			st.setString(1, template_name);
+			st.setString(2, subject_id);
+			st.setString(3, template_id);
+			st.setString(4, timetable_hour);
+			int line=st.executeUpdate();
+
+			st.close();
+			con.close();
+			return line;
+		}
 }

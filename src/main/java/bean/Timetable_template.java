@@ -21,7 +21,7 @@ public class Timetable_template implements java.io.Serializable {
         return teacher_id;
     }
     public String getTemplate_name() {
-        return template_id;
+        return template_name;
     }
     public void setTemplate_id(String template_id) {
         this.template_id = template_id;

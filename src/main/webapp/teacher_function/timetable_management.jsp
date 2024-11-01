@@ -45,7 +45,7 @@
 			    		<c:forEach var="item_timetable" items="${timetable_change_List}">
 					    	<c:if test="${item_timetable.data.substring(8,11).equals('0'.concat(Integer.toString(days)).concat('日')) == true}">
 					    		<c:if test="${item_timetable.timetable_hour.equals('1') == true}">
-					    			<h1>${item_timetable.data}</h1>
+					    			<h1 id="contents_data_${days}">${item_timetable.data}</h1>
 					    		</c:if>
 					    		<p>${item_timetable.timetable_hour}コマ目：
 						    		<select name="${item_timetable.data}${item_timetable.timetable_hour}">
@@ -62,7 +62,6 @@
 						    			</c:forEach>
 						    		</select>
 					    		</p>
-					    		
 					    	</c:if>
 				   		</c:forEach>
 			    	</c:if>
@@ -70,7 +69,7 @@
 			    		<c:forEach var="item_timetable" items="${timetable_change_List}">
 					    	<c:if test="${item_timetable.data.substring(8,11).equals(Integer.toString(days).concat('日')) == true}">
 					    		<c:if test="${item_timetable.timetable_hour.equals('1') == true}">
-					    			<h1>${item_timetable.data}</h1>
+					    			<h1 id="contents_data_${days}">${item_timetable.data}</h1>
 					    		</c:if>
 					    		<p>${item_timetable.timetable_hour}コマ目：
 						    		<select name="${item_timetable.data}${item_timetable.timetable_hour}">
@@ -90,8 +89,35 @@
 					    	</c:if>
 				   		</c:forEach>
 			    	</c:if>
+			    	<select name="timetable_template" id="select_template${days}">
+			    		<c:set var="num">none</c:set>
+			    		<c:forEach var="item_template" items="${timetable_template_teacher}">
+			    			<c:choose>
+								<c:when test="${item_template.template_id.equals(num) == true}">
+		    					</c:when>
+		    					<c:otherwise>
+		    						<c:set var="num">${item_template.template_id}</c:set>
+									<option value="${item_template.template_id}">${item_template.template_name}</option>
+								</c:otherwise>
+							</c:choose>
+			    		</c:forEach>
+			    	</select>
+			    	<c:set var="num">none</c:set>
+		    		<c:forEach var="item_template" items="${timetable_template_teacher}">
+		    			<c:choose>
+							<c:when test="${item_template.template_id.equals(num) == true}">
+								<input type="hidden" id="${item_template.template_id}_${item_template.timetable_hour}" value="${item_template.subject_id}">
+	    					</c:when>
+	    					<c:otherwise>
+	    						<c:set var="num">${item_template.template_id}</c:set>
+								<input type="hidden" id="${item_template.template_id}_${item_template.timetable_hour}" value="${item_template.subject_id}">
+							</c:otherwise>
+						</c:choose>
+		    		</c:forEach>
+			    	<input type="button" id="template_button${days}" value="適用">
 		    	</div>
 		</c:forEach>
+		<input type="hidden" value="${timetable_template_teacher}" id="template_list">
 		<input type="submit" value="登録">
 	</form>
 	<div class="pagination">
@@ -102,4 +128,33 @@
 </c:if>
 <a href="../common/top.jsp">TOP</a>
 <script src="../js/timetable.js"></script>
+<script>
+	//テンプレート適応用(Javaから渡したデータを使う場合、jsファイルだと上手くいかないので、こっちで作成)
+	let template_list = document.getElementById('template_list');
+	for(let i = 1;i <= "${Month_of_days}";i++){
+		let template_button = document.getElementById('template_button' + i);
+		template_button.addEventListener('click',function(e){
+			let select_template = document.querySelector("#select_template" + i);
+			let template_id = select_template.value;
+			let data_num = document.getElementById('contents_data_' + i).innerText;
+			let template_data_1 = document.getElementById(template_id + '_1');
+			let template_data_2 = document.getElementById(template_id + '_2');
+			let template_data_3 = document.getElementById(template_id + '_3');
+			let template_data_4 = document.getElementById(template_id + '_4');
+			let select_1 = document.querySelector('[name="' + data_num + '1"]');
+			let select_2 = document.querySelector('[name="' + data_num + '2"]');
+			let select_3 = document.querySelector('[name="' + data_num + '3"]');
+			let select_4 = document.querySelector('[name="' + data_num + '4"]');
+			select_1.value = template_data_1.value || "Notset";
+			select_2.value = template_data_2.value || "Notset";
+			select_3.value = template_data_3.value || "Notset";
+			select_4.value = template_data_4.value || "Notset";
+			console.log(template_data_1);
+			console.log(template_data_2);
+			console.log(template_data_3);
+			console.log(template_data_4);
+			
+		});
+	}
+</script>
 <%@include file="../footer.jsp"  %>
