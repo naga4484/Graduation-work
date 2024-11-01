@@ -1,3 +1,50 @@
+
+.support_top{
+	font-size: 50px;
+    margin-top: -50px;
+}
+
+.support_top_icon img {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+
+    width: 330px;    
+    height: 280px;
+}
+
+/* 個別アイコン */
+.support_top_icon .support_links:nth-child(1) {
+    position: absolute;
+    left: 740px; 
+    top: 190px; 
+}
+.support_top_icon .support_links:nth-child(2) {
+    position: absolute;
+    left: 385px; 
+    top: 190px; 
+}
+.support_top_icon .support_links:nth-child(3) {
+    position: absolute;
+    left: 30px; 
+    top: 190px; 
+}
+.back_button img {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    width: 60px;    
+    height: 60px;
+
+}
+.back_button {
+    position: absolute;	
+	left: 30px;
+    top: 510px;
+}
+
 /* タイマー全体のコンテナ */
 .timer-container {
     text-align: center;

@@ -6,35 +6,36 @@
 
  <title>サポート画面</title>
  
- 	<div class="support_top">
-	<h2>サポート</h2>
-	<section>
+  	<div class="support_top">
+	 <h2>サポート</h2>
+	 <img src="../images/main_image.png" class="main_image">
+	 <section>
 	</div>
+  <div class="support_top_icon">
+	 <!-- タイマーリンク -->
+	 <div class="support_links">
+	    <a href="timer.jsp"><img src="../images/タイマーアイコン(横長).png" class="support_link_icon"></a>
+	 </div>
 	
-	<!-- タイマーリンク -->
-	<div class="timer_links">
-	<a href="timer.jsp"><img src="" class="timer_link_icon"></a>
-        <p class="timer_links_title">タイマー</p>
-        <a href="timer.jsp">タイマーリンク</a>
-	</div>
-	
-	<!-- カスタマイズリンク -->
-	<div class="customize_links">
-	<a href="customize.jsp"><img src="" class="customize_link_icon"></a>
-		<p class="customize_links_title">カスタマイズ</p>
-	</div>
-	
-	<!-- 電卓リンク -->
-	 <div class="calculator_links">
-         <!-- hrefを削除し、onclickイベントで子ウィンドウを開くように修正 -->
-         <a href="#" onclick="openCalculator(); return false;">test<img src="" class="calculator_link_icon"></a>
-         <p class="calculator_links_title">電卓</p>
+	 <!-- カスタマイズリンク -->
+	 <div class="support_links">
+	    <a href="customize.jsp"><img src="../images/カスタマイズアイコン(横長).png" class="support_link_icon"></a>
      </div>
+	
+ 	 <!-- 電卓リンク -->
+	  <div class="support_links">
+          <!-- hrefを削除し、onclickイベントで子ウィンドウを開くように修正 -->
+          <a href="#" onclick="openCalculator(); return false;"><img src="../images/電卓アイコン(横長).png" class="support_link_icon"></a>
+      </div>
+   </div>
+<div class="back_button">
+    <a href="../common/top.jsp"><img src="../images/戻るボタン1.png" class="support_back_icon"></a>
+</div>
 
- <a href="../common/top.jsp">戻る</a>
  <script src="../js/calculator.js"></script>
 
 <%@include file="../footer.jsp"  %>
+
 
 
 
