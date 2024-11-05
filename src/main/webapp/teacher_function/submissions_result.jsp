@@ -3,10 +3,10 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 
-<title>学期成績登録画面</title>
+<title>提出物成績登録画面</title>
 
-<h1>学期成績</h1>
-<form action="Semester_result_class.action">
+<h1>提出物成績</h1>
+<form action="Submissions_result_class.action">
 	<label>クラス</label>
     <select name="class_id">
 	    <c:forEach var="class_num" items="${class_num}">
@@ -16,18 +16,18 @@
 	<input type="submit" value="検索">
 </form>
 
-<c:if test="${semester_result_student_list != null}">
+<c:if test="${submissions_result_student_list != null}">
 <c:if test="${reg_mes != null}">
 	<p>${reg_mes}</p>
 </c:if>
-<form action="Semester_result_registration.action">
+<form action="Submissions_result_registration.action">
 	<div>
 		<h2>成績情報</h2>
-		<label>学期</label>
-		<select name="semester">
-			<c:forEach begin="1" end="3" var="i">
-				<option value="${i}">${i}</option>
-			</c:forEach>
+		<label>科目</label>
+	    <select name="submissions_id">
+		    <c:forEach var="class_submissions" items="${submissions_result_list}">
+		    	<option value="${class_submissions.submissions_id}">${class_submissions.name}</option>
+		    </c:forEach>
 		</select>
 		<label>点数</label>
     	<input type="number" name="result" placeholder="点数を入力してください" min="0" max="100" required>
@@ -39,7 +39,7 @@
 		</select>
 		<label>コメント</label>
 		<textarea name="comment" id="comment"></textarea>
-		<input type="hidden" value="${semester_result_student_list[0].class_id}" name="class_id">
+		<input type="hidden" value="${submissions_result_student_list[0].class_id}" name="class_id">
 		<input type="submit" value="登録">
 	</div>
 	<div>
@@ -49,7 +49,7 @@
 				<th>学生ID</th>
 				<th>学生氏名</th>
 			</tr>
-			<c:forEach var="item" items="${semester_result_student_list}" varStatus="j">
+			<c:forEach var="item" items="${submissions_result_student_list}" varStatus="j">
 		  		<tr>
 		  			<c:choose>
 						<c:when test="${j.index == 0}">

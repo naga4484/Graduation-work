@@ -36,6 +36,30 @@ public class ClassDAO extends DAO {
         
         return classList;
 	}
+	
+	//特定のクラス情報の取得
+	public Class_num get_class(String class_id) 
+	throws Exception {
+        Class_num class_num = new Class_num();
+
+        Connection con = getConnection();
+
+        PreparedStatement st = con.prepareStatement("select * from Class_num where class_id=?");
+        st.setString(1, class_id);
+        ResultSet rs = st.executeQuery();
+
+        while (rs.next()) {
+            class_num.setClass_id(rs.getString("class_id"));
+            class_num.setClass_num(rs.getString("class_num"));
+            class_num.setGrade(rs.getString("grade"));
+        }
+
+        rs.close(); 
+        st.close();
+        con.close(); 
+        
+        return class_num;
+	}
 }
 
     
