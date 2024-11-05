@@ -9,58 +9,60 @@
 	<h1>マイページ</h1>
 	<c:choose>
 		<c:when test="${account.account_kind == '教師'}">
-			<input type="hidden" name="teacherId" value="${account.teacher_id}">
+			<p>教師アカウントです</p>
 		</c:when>
 		<c:when test="${account.account_kind == '学生'}">
-			<input type="hidden" name="studentId" value="${account.student_id}">
+			<p>学生アカウントです</p>
 		</c:when>
 		<c:otherwise>
 			<p>ユーザータイプが不明です。</p>
 		</c:otherwise>
 	</c:choose>
 
-		<table border="1">
+	<table border="1">
 
-			<c:choose>
-				<c:when test="${account.account_kind == '教師'}">
-					<tr>
-						<td>教師ID</td>
-						<td>${account.teacher_id}</td>
-					</tr>
-				</c:when>
-				<c:when test="${account.account_kind == '学生'}">
-					<tr>
-						<td>学生ID</td>
-						<td>${account.student_id}</td>
-					</tr>
-				</c:when>
-			</c:choose>
-			<tr>
-				<td>名前</td>
-				<td>${account.name}</td>
-			</tr>
-			<tr>
-				<td>クラス</td>
-				<td>${account.class_id}</td>
-			</tr>
-			<tr>
-				<td>ニックネーム</td>
-				<td>${account.nickname}</td>
-			</tr>
-			<tr>
-				<td>メールアドレス</td>
-				<td>${account.address}</td>
-			</tr>
+		<c:choose>
+			<c:when test="${account.account_kind == '教師'}">
+				<tr>
+					<td>教師ID</td>
+					<td>${account.teacher_id}</td>
+				</tr>
+			</c:when>
+			<c:when test="${account.account_kind == '学生'}">
+				<tr>
+					<td>学生ID</td>
+					<td>${account.student_id}</td>
+				</tr>
+			</c:when>
+		</c:choose>
+		<tr>
+			<td>名前</td>
+			<td>${account.name}</td>
+		</tr>
+		<tr>
+			<td>クラス</td>
+			<td>${account.class_id}</td>
+		</tr>
+		<tr> 
+			<td>ニックネーム</td>
+			<td>${account.nickname}</td>
+		</tr>
+		<tr>
+			<td>メールアドレス</td>
+			<td>${account.address}</td>
+			<!-- ↓アドレス情報の格納 -->
+			 <input type="hidden" name="address" value="${account.address}">
+		</tr>
 
-		</table>
-		<a href="change_mypage.jsp" class="button-link">
-			<button type="button">マイページを編集</button>
-		</a>
+	</table>
+	<a href="change_mypage.jsp" class="button-link">
+		<button type="button">マイページを編集</button>
+	</a>
 
-		<br>
-		<a href="../account/Logout.action"><p>ログアウト</p></a>
-
-		<br>
-		<a href="../common/top.jsp">戻る</a>
+	<br>
+	<a href="../account/Logout.action"><p>ログアウト</p></a>
+	
+	<br>
+	<a href="../common/top.jsp">戻る</a>
 </body>
 <%@ include file="../footer.jsp"%>
