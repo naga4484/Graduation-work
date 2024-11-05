@@ -1,0 +1,169 @@
+/* 全体の基本スタイル */
+body {
+    font-family: Arial, sans-serif; /* フォント設定 */
+    color: #333; /* テキストカラー */
+    margin: 0; /* 余白のリセット */
+    padding: 20px; /* 内側の余白 */
+}
+
+/* 見出しのスタイル */
+h1 {
+    font-size: 28px;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+h2 {
+    font-size: 20px;
+    font-weight: bold;
+    margin: 20px 0 10px;
+    color: #333;
+}
+
+/* 天気情報エリア */
+.weather-info {
+    margin: 20px auto;
+    padding: 20px;
+    max-width: 600px;
+    background-color: #e0f7fa; /* 天気情報エリアの背景色 */
+    border-radius: 8px;
+    text-align: center;
+}
+
+/* 日付と授業エリア */
+.date-and-schedule {
+    position: absolute; /* 画面の絶対位置指定 */
+    top: 20px;
+    right: 80px;
+    display: flex;
+    flex-direction: column; /* 縦方向に配置 */
+    align-items: center;
+    width: 100px;
+}
+
+.date-box {
+    background-color: #f0f0f0; /* 日付ボックスの背景色 */
+    text-align: center;
+    padding: 10px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* ボックスの影 */
+    cursor: pointer; /* カーソルをポインタに変更 */
+}
+
+/* 日付表示のテキストスタイル */
+.date-text {
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 5px;
+}
+
+/* 授業メッセージのテキストスタイル */
+.class-text {
+    font-size: 14px;
+    color: #666;
+}
+
+/* ポップアップウィンドウ */
+.popup-window {
+    position: fixed; /* ウィンドウを画面中央に固定 */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* 背景の暗いオーバーレイ */
+    z-index: 1000;
+    visibility: hidden; /* 初期は非表示 */
+    opacity: 0; /* フェードイン効果のための透明度 */
+    transition: opacity 0.3s ease-in-out; /* フェードイン・アウトのアニメーション */
+}
+
+/* ポップアップが表示される時のスタイル */
+.popup-window.show {
+    display: flex; /* フレックスレイアウトを適用 */
+    align-items: center; /* 縦中央揃え */
+    justify-content: center; /* 横中央揃え */
+    visibility: visible; /* 表示状態に設定 */
+    opacity: 1; /* 不透明に設定 */
+}
+
+/* ポップアップの内容 */
+.popup-content {
+    background-color: white; /* コンテンツの背景色 */
+    border-radius: 8px;
+    padding: 20px;
+    width: 300px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* ボックスの影 */
+    text-align: center;
+}
+
+/* ポップアップの見出し */
+.popup-content h2 {
+    font-size: 20px;
+    margin-top: 0;
+    color: #333;
+}
+
+/* ポップアップのリスト */
+.popup-content ul {
+    list-style-type: none; /* リストマーカーを非表示 */
+    padding: 0;
+}
+
+/* ポップアップの閉じるボタン */
+.popup-content button {
+    margin-top: 10px;
+    padding: 8px 15px;
+    font-size: 16px;
+    cursor: pointer; /* ポインタ表示 */
+    background-color: #ff6b6b; /* ボタンの背景色 */
+    color: white;
+    border: none;
+    border-radius: 5px;
+}
+
+/* 予定エリア */
+.plan-info {
+    margin: 10px auto;
+    padding: 15px;
+    max-width: 600px;
+    background-color: #f8f8f8;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    text-align: center;
+}
+
+/* 提出物エリア */
+.submission-info {
+    margin: 10px auto;
+    padding: 15px;
+    max-width: 600px;
+    background-color: #f8f8f8;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    text-align: center;
+}
+
+/* 追加リンクエリア */
+.additional-links {
+    text-align: center;
+    margin-top: 30px;
+}
+
+/* 追加リンク内のテキスト */
+.additional-links p {
+    font-size: 16px;
+    margin: 10px 0;
+}
+
+/* 追加リンクのアンカー */
+.additional-links a {
+    color: #007bff; /* リンクの色 */
+    text-decoration: none; /* 下線なし */
+}
+
+/* 追加リンクのアンカーホバー時のスタイル */
+.additional-links a:hover {
+    text-decoration: underline; /* ホバー時に下線表示 */
+}
