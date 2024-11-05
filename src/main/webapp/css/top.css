@@ -22,7 +22,7 @@ body::-webkit-scrollbar {
 
 .menu_var{
 	position: absolute;
-	right: 90px;
+	right: 8%;
 	top: 4%;
 	width: 70px;
 	z-index: 60;
@@ -90,7 +90,6 @@ body::-webkit-scrollbar {
 	margin-left: 40px;
 }
 
-
 /* メインアイコン内の個別アイコン */
 
 .top_main_function_icon .top_links_contents:nth-child(2) {
@@ -110,13 +109,13 @@ body::-webkit-scrollbar {
 }
 .top_main_function_icon .top_links_contents:nth-child(5) {
     position: absolute;
-    left: 600px; /* 必要に応じて調整 */
-    top: -200px; /* 必要に応じて調整 */
+    left: 600px;
+    top: -200px; 
 }
 .top_main_function_icon .top_links_contents:nth-child(1) {
     position: absolute;
-    left: 800px; /* 必要に応じて調整 */
-    top: -200px; /* 必要に応じて調整 */
+    left: 800px; 
+    top: -200px; 
 }
 /* サブアイコン */
 .top_sub_function_icon {
@@ -137,8 +136,8 @@ body::-webkit-scrollbar {
 
 .top_sub_function_icon .top_sub_links_contents:nth-child(2) {
     position: absolute;
-    left: 950px; /* 必要に応じて調整 */
-    top: 100px; /* 必要に応じて調整 */
+    left: 950px; 
+    top: 100px; 
 }
 
 
@@ -239,7 +238,7 @@ body::-webkit-scrollbar {
 .top_critical_function_icon{
 	position: absolute;
 	width:500px;
-	top: -260px;
+	top: -300px;
 	left: 30px;
 }
 .top_critical_function_contents{
@@ -248,7 +247,7 @@ body::-webkit-scrollbar {
 	width: 160px;
 }
 .top_logout_icon{
-	width: 60px;
+	width: 40px;
 	border-radius: 50px;
 }
 .top_logout_mes{
@@ -333,7 +332,7 @@ body::-webkit-scrollbar {
 .cal_button_image_last{
 	width: 40px;
 	position: absolute;
-	left: -97px;
+	left: -20px;
 	top: 0px;
 }
 .cal_button_image_next{
@@ -343,7 +342,7 @@ body::-webkit-scrollbar {
 	top: 0px;
 }
 #last-button {
-    width: 100px;
+    width: 10px;
     padding: 10px;
     border: none;
     background:none;
@@ -352,10 +351,10 @@ body::-webkit-scrollbar {
     font-weight: bold;
     position: absolute;
     top: 25px;
-    left: -80px;
+    left: -160px;
 }
 #next-button {
-    width: 100px;
+    width: 10px;
     padding: 10px;
     border: none;
     background:none;
@@ -364,6 +363,6 @@ body::-webkit-scrollbar {
     font-weight: bold;
     position: absolute;
     top: 25px;
-    right: 80px;
+    right: 150px;
 
 }
