@@ -62,8 +62,8 @@
 	</div>
 	<div class="top_critical_function_icon">
 		<div class="top_critical_function_contents">
-			<a href="../mypage/mypage.jsp"><img src="../images/logout.png" class="top_logout_icon"></a>
-			<a href="../mypage/mypage.jsp"><p class="top_logout_mes">マイページ</p></a>
+			<a href="../mypage/mypage_top.jsp"><img src="../images/logout.png" class="top_logout_icon"></a>
+			<a href="../mypage/mypage_top.jsp"><p class="top_logout_mes">マイページ</p></a>
 		</div>
 		<div class="top_critical_function_contents">
 			<a href="../inquiry/inquiry_form.jsp"><img src="../images/contact.png" class="top_contact_icon"></a> <!-- 問い合わせ -->
