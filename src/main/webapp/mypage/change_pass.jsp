@@ -3,9 +3,9 @@
 
 <head>
 <meta charset="UTF-8">
-<title>メールアドレス変更</title>
+<title>パスワード変更</title>
 </head>
 <body>
-<h1>メールアドレス変更</h1>
-</body> 
+<h1>パスワード変更</h1>
+</body>
 <%@ include file="../footer.jsp"%>
