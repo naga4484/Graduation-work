@@ -15,6 +15,7 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 
 @WebServlet("/schedule/CalendarDisplayAction")
 public class CalendarDisplayAction extends HttpServlet {
@@ -25,7 +26,8 @@ public class CalendarDisplayAction extends HttpServlet {
         if (selectedDate == null || selectedDate.isEmpty()) {
             selectedDate = "日付が選択されていません";
         }
-        request.setAttribute("selectedDate", selectedDate);
+        HttpSession session=request.getSession();
+        session.setAttribute("selectedDate", selectedDate);
 
         // 天気情報を取得する処理
         String todayTemperature = "情報取得エラー";

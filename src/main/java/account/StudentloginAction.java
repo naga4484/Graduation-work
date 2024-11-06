@@ -11,8 +11,10 @@ import org.jsoup.select.Elements;
 
 import bean.Class_num;
 import bean.Studentaccount;
+import bean.User_id;
 import dao.AccountDAO;
 import dao.ClassDAO;
+import dao.UserDAO;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
@@ -33,6 +35,13 @@ public class StudentloginAction extends Action {
 
         ClassDAO cdao = new ClassDAO();
         List<Class_num> class_num = cdao.getallclass();
+        
+        UserDAO udao = new UserDAO();
+		User_id user_id = udao.user_student(student_id);
+		if(user_id == null) {
+			int line = udao.user_stu_insert(student_id);
+			user_id = udao.user_student(student_id);
+		}
 
         // 天気情報を取得するための処理
         String today_temperature = "変更されていない";

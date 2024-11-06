@@ -2,12 +2,12 @@ package bean;
 
 public class User_id implements java.io.Serializable {
 
-	private String user_id;
+	private int user_id;
 	private String student_id;
 	private String teacher_id;
 	
 
-	public String getUser_id() {
+	public int getUser_id() {
 		return user_id;
 	}
 	public String getStudent_id() {
@@ -17,7 +17,7 @@ public class User_id implements java.io.Serializable {
 		return teacher_id;
 	}
 
-	public void setUser_id(String user_id) {
+	public void setUser_id(int user_id) {
 		this.user_id=user_id;
 	}
 	public void setStudent_id(String student_id) {
