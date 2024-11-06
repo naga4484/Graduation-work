@@ -24,7 +24,7 @@
 		<!-- 各種機能のアイコン用 -->
 
 		<div class="top_links_contents">
-			<a href=""><img src="../images/自己管理アイコン.png" class="my_management_top_icon"></a> <!-- 自己管理 -->
+			<a href="../my_management/my_management_top.action"><img src="../images/自己管理アイコン.png" class="my_management_top_icon"></a> <!-- 自己管理 -->
 			<p class="top_links_contents_title2">自己管理</p>
 		</div>
 		<div class="top_links_contents">
