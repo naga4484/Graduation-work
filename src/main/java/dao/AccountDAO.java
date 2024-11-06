@@ -271,6 +271,17 @@ public class AccountDAO extends DAO {
         st.close();
         con.close();
     }
+ // パスワードの更新(教師)
+    public void update_password_tch(String teacher_id, String newPassword) throws Exception {
+        Connection con = getConnection();
+        PreparedStatement st = con.prepareStatement("UPDATE Teacher_account SET password = ? WHERE teacher_id = ?");
+        st.setString(1, newPassword);
+        st.setString(2, teacher_id);
+        st.executeUpdate();
+
+        st.close();
+        con.close();
+    }
  // 確認コードを削除するメソッド
     public void delete_verification_code(String email) throws Exception {
         Connection con = getConnection();
@@ -324,4 +335,32 @@ public class AccountDAO extends DAO {
         con.close();
         return email;
     }
+//    学生ニックネームの変更
+    public void tch_upd_nick(String teacher_id , String nickname) throws Exception {
+    	Connection con = getConnection();
+        PreparedStatement st = con.prepareStatement("UPDATE Teacher_account SET nickname = ? WHERE teacher_id = ?");
+        
+        st.setString(1, nickname);
+        st.setString(2, teacher_id);
+        st.executeUpdate();
+        
+        st.close();
+        con.close();
+        
+    }
+//    教師ニックネームの変更
+    public void stu_upd_nick(String student_id , String nickname) throws Exception {
+    	Connection con = getConnection();
+        PreparedStatement st = con.prepareStatement("UPDATE Student_account SET nickname = ? WHERE student_id = ?");
+        
+        st.setString(1, nickname);
+        st.setString(2, student_id);
+        st.executeUpdate();
+        
+        st.close();
+        con.close();
+   
+    
+}
+
 }
