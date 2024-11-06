@@ -11,14 +11,6 @@
 <body>
     <h1>カレンダー表示</h1>
 
-    <!-- URLから日付を取得 -->
-    <%
-        String selectedDate = (String) request.getAttribute("selectedDate");
-        if (selectedDate == null) {
-            selectedDate = "日付が選択されていません";
-        }
-    %>
-
     <!-- 天気情報エリア -->
     <div class="weather-info">
         <h2>天気情報</h2>
@@ -30,7 +22,7 @@
     <!-- 日付と授業エリア -->
     <div class="date-and-schedule">
         <div class="date-box" id="dateBox">
-            <div class="date-text"><%= selectedDate %></div> <!-- 日付表示 -->
+            <div class="date-text">${selectedDate}</div> <!-- 日付表示 -->
             <div class="class-text">授業がありません</div> <!-- 授業メッセージ -->
         </div>
     </div>

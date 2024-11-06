@@ -59,6 +59,7 @@ public class StudentloginAction extends Action {
 
         if (account != null) {
             // ログイン成功時にセッションに情報を保存
+        	session.setAttribute("user", user_id);
             session.setAttribute("account", account);
             session.setAttribute("class_num", class_num);
             session.setAttribute("today_temperature_data", today_temperature_data);
