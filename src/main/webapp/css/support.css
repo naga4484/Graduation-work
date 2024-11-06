@@ -1,4 +1,4 @@
-
+/* サポートトップ */
 .support_top{
 	font-size: 50px;
     margin-top: -50px;
@@ -45,16 +45,18 @@
     top: 510px;
 }
 
+.timer_top{
+	font-size: 40px;
+    margin-top: -50px;
+}
 /* タイマー全体のコンテナ */
 .timer-container {
     text-align: center;
-    margin-top: 50px;
 }
 
 /* タイマーの数字表示エリア */
 #timerDisplay {
-    font-size: 48px;
-    margin-bottom: 20px;
+    font-size: 110px;
 }
 
 /* 時・分・秒の入力欄のスタイル */
@@ -80,17 +82,29 @@
 .timer-buttons button {
     font-size: 24px;
     margin: 10px;
-    padding: 10px 20px;
+    padding: 7px 14px;
     border-radius: 5px;
     border: 1px solid #ccc;
     cursor: pointer;
 }
 
+@font-face {
+  font-family: 'CustomFont';
+  src: url('../font/tikara-nukeru.ttf')
+  format('truetype');
+}
 
-/* ページ全体のスクロールを無効 */
+.calculator_title {
+  font-family: 'CustomFont', sans-serif;
+  font-size: 24px;
+  margin-top: 10px;
+}
+
+/* 縦スクロールを無効 */
 body {
     margin: 0;
     padding: 0;
     height: 100vh; 
-    overflow: hidden; 
+    overflow-y: hidden;
+    overflow-x: auto;
 }
