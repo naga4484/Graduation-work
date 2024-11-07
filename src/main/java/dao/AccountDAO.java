@@ -93,7 +93,9 @@ public class AccountDAO extends DAO {
         Teacheraccount account = null;
 
         Connection con = getConnection();
-        PreparedStatement st = con.prepareStatement("SELECT * FROM Teacher_account WHERE teacher_id=? AND password=?");
+        PreparedStatement st = con.prepareStatement(
+            "SELECT * FROM Teacher_account WHERE teacher_id=? AND password=?"
+        );
         st.setString(1, teacher_id);
         st.setString(2, password);
         ResultSet rs = st.executeQuery();
@@ -248,7 +250,9 @@ public class AccountDAO extends DAO {
     // 確認コードの検証
     public boolean verify_code(String email, String code) throws Exception {
         Connection con = getConnection();
-        PreparedStatement st = con.prepareStatement("SELECT COUNT(*) FROM Verification_code WHERE email = ? AND code = ? AND expiration_time > NOW()");
+        PreparedStatement st = con.prepareStatement(
+            "SELECT COUNT(*) FROM Verification_code WHERE email = ? AND code = ? AND expiration_time > NOW()"
+        );
         st.setString(1, email);
         st.setString(2, code);
         ResultSet rs = st.executeQuery();
@@ -271,7 +275,8 @@ public class AccountDAO extends DAO {
         st.close();
         con.close();
     }
- // パスワードの更新(教師)
+
+    // パスワードの更新(教師)
     public void update_password_tch(String teacher_id, String newPassword) throws Exception {
         Connection con = getConnection();
         PreparedStatement st = con.prepareStatement("UPDATE Teacher_account SET password = ? WHERE teacher_id = ?");
@@ -282,7 +287,8 @@ public class AccountDAO extends DAO {
         st.close();
         con.close();
     }
- // 確認コードを削除するメソッド
+
+    // 確認コードを削除するメソッド
     public void delete_verification_code(String email) throws Exception {
         Connection con = getConnection();
         PreparedStatement st = con.prepareStatement("DELETE FROM Verification_code WHERE email = ?");
@@ -292,7 +298,6 @@ public class AccountDAO extends DAO {
         st.close();
         con.close();
     }
-
 
     // メールアドレスが登録されているかどうかの確認
     public boolean isEmailRegistered(String email) throws Exception {
@@ -335,32 +340,30 @@ public class AccountDAO extends DAO {
         con.close();
         return email;
     }
-//    学生ニックネームの変更
-    public void tch_upd_nick(String teacher_id , String nickname) throws Exception {
-    	Connection con = getConnection();
+
+    // 学生ニックネームの変更
+    public void tch_upd_nick(String teacher_id, String nickname) throws Exception {
+        Connection con = getConnection();
         PreparedStatement st = con.prepareStatement("UPDATE Teacher_account SET nickname = ? WHERE teacher_id = ?");
-        
+
         st.setString(1, nickname);
         st.setString(2, teacher_id);
         st.executeUpdate();
-        
+
         st.close();
         con.close();
-        
     }
-//    教師ニックネームの変更
-    public void stu_upd_nick(String student_id , String nickname) throws Exception {
-    	Connection con = getConnection();
+
+    // 教師ニックネームの変更
+    public void stu_upd_nick(String student_id, String nickname) throws Exception {
+        Connection con = getConnection();
         PreparedStatement st = con.prepareStatement("UPDATE Student_account SET nickname = ? WHERE student_id = ?");
-        
+
         st.setString(1, nickname);
         st.setString(2, student_id);
         st.executeUpdate();
-        
+
         st.close();
         con.close();
-   
-    
-}
-
+    }
 }

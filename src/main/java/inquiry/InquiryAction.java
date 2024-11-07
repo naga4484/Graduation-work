@@ -24,21 +24,19 @@ public class InquiryAction extends Action {
         String accountKind = (String) session.getAttribute("accountKind"); // 学生か教師の情報
         String senderName = (String) session.getAttribute("userName"); // ユーザー名
 
-        // デバッグ用にセッション情報をログ出力
-        System.out.println("User ID: " + userId);
-        System.out.println("Account Kind: " + accountKind);
-        System.out.println("User Name: " + senderName);
+        // バリデーション: ユーザー情報が正しくない場合
+        if ((userId == null || userId.trim().isEmpty()) || (accountKind == null || accountKind.trim().isEmpty())) {
+            request.setAttribute("errorMessage", "送信者情報が無効です。もう一度ログインしてください。");
+            return "inquiry_form.jsp";
+        }
 
         // データベースからメールアドレスを取得
         AccountDAO dao = new AccountDAO();
         String senderEmail = dao.getEmailByUserId(userId, accountKind);
 
-        // デバッグ用に取得したメールアドレスをログ出力
-        System.out.println("Sender Email: " + senderEmail);
-
-        // バリデーション: ユーザー情報が正しくない場合
-        if ((userId == null || userId.trim().isEmpty()) || (accountKind == null || accountKind.trim().isEmpty())) {
-            request.setAttribute("errorMessage", "送信者情報が無効です。もう一度ログインしてください。");
+        // メールアドレスが取得できていない場合
+        if (senderEmail == null || senderEmail.trim().isEmpty()) {
+            request.setAttribute("errorMessage", "送信者のメールアドレスが取得できませんでした。もう一度ログインしてください。");
             return "inquiry_form.jsp";
         }
 
@@ -52,15 +50,9 @@ public class InquiryAction extends Action {
             return "inquiry_form.jsp";
         }
 
-        // メールアドレスが取得できていない場合
-        if (senderEmail == null || senderEmail.trim().isEmpty()) {
-            request.setAttribute("errorMessage", "送信者のメールアドレスが取得できませんでした。もう一度ログインしてください。");
-            return "inquiry_form.jsp";
-        }
-
         // メール内容を構成
         StringBuilder inquiryContent = new StringBuilder();
-        inquiryContent.append("お問い合わせメールが届きました。情報を検索します。……面倒くさい ").append("\n\n\n");
+        inquiryContent.append("お問い合わせメールが届きました。以下は詳細です。\n\n");
         inquiryContent.append("・問い合わせ内容: \n");
 
         for (String type : inquiryTypes) {
@@ -69,13 +61,8 @@ public class InquiryAction extends Action {
 
         inquiryContent.append("\n・お問い合わせの詳細:\n");
         inquiryContent.append("   ").append(details); 
-        inquiryContent.append("\n\n\n・送信者: ").append(senderName).append("\n");
+        inquiryContent.append("\n\n・送信者: ").append(senderName).append("\n");
         inquiryContent.append("・メールアドレス: ").append(senderEmail).append("\n\n");
-        inquiryContent.append("\nしっかりと確認した後、的確かつ迅速な対応をお願いします。私の仕事が減るので。……あぁ、休みたい");
-
-
-
-
 
         // メール送信処理
         sendEmail(inquiryContent.toString());
@@ -90,7 +77,7 @@ public class InquiryAction extends Action {
     private void sendEmail(String content) throws MessagingException {
         // SMTPサーバー設定
         final String fromEmail = "k62670044@gmail.com"; // 固定送信者メールアドレス
-        final String toEmail = "harunoemiru@gmail.com"; // 固定受信者メールアドレス
+        final String toEmail = "tianzhongcong92@gmail.com"; // 固定受信者メールアドレス
         final String username = "k62670044@gmail.com"; // Gmailアドレス
         final String password = "pcsi erxm cogb hxfa"; // アプリパスワード
 
