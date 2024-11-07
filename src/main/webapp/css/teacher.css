@@ -1,5 +1,124 @@
 @charset "UTF-8";
 
+.teacher_top{
+	font-size: 50px;
+    margin-top: -50px;
+    text-align: center;
+
+}
+
+.center-text {
+    text-align: center;
+}
+
+.teacher_function_icon img{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    text-align: center;
+    width: 120px;    
+    height: 120px;
+}	
+
+#registration {
+    position: absolute;
+    left: 140px; 
+    top: 150px; 
+}
+
+#confirmation {
+    position: absolute;
+    left: 280px; 
+    top: 150px; 	
+}
+
+#Subjectlisttop {
+    position: absolute;
+    left: 420px; 
+    top: 150px; 	
+}
+
+#template {
+    position: absolute;
+    left: 560px; 
+    top: 150px; 		
+}
+
+#attendance {
+    position: absolute;
+    left: 700px; 
+    top: 150px; 	
+}
+
+#grade {
+    position: absolute;
+    left: 840px; 
+    top: 150px; 	
+}
+
+#timetable {
+    position: absolute;
+    left: 140px; 
+    top: 330px; 	
+}
+
+#authority {
+    position: absolute;
+    left: 280px; 
+    top: 330px; 		
+}
+
+#student {
+    position: absolute;
+    left: 420px; 
+    top: 330px; 	
+}
+
+#seating {
+    position: absolute;
+    left: 560px; 
+    top: 330px; 	
+}
+
+#group {
+	position: absolute;
+    left: 700px; 
+    top: 330px; 
+}
+
+#trend {
+	position: absolute;
+    left: 840px; 
+    top: 330px; 
+}
+
+
+.back_button img {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    width: 60px;    
+    height: 60px;
+
+}
+.back_button {
+    position: absolute;	
+	left: 30px;
+    top: 510px;
+}
+
+.teacher_registration {
+	display: flex;
+    flex-wrap: wrap;
+	position: absolute;	
+	left: 900px;
+    top: 530px
+}
+
+
+
 #delete_box {
   background: #FFF;
   border: 1px solid #333;
