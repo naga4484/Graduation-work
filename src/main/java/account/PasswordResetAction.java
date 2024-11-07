@@ -18,30 +18,34 @@ public class PasswordResetAction extends Action {
     public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
         String email = request.getParameter("email");
 
-        // メールアドレスの存在確認（学生・教師両方対応）
+        // デバッグログ追加
+        System.out.println("Password reset requested for email: " + email);
+
+        // メールアドレスの存在確認
         AccountDAO dao = new AccountDAO();
         boolean emailExists = dao.isEmailRegistered(email);
-        
+
         if (emailExists) {
-            // 既存の確認コードを無効化する（削除する）
+            // デバッグログ追加
+            System.out.println("Email found: " + email);
+
             dao.delete_verification_code(email);
-
-            // 6桁の確認コードを生成してデータベースに保存
             String verificationCode = generateVerificationCode();
-            dao.store_verification_code(email, verificationCode);  // データベースに保存
+            dao.store_verification_code(email, verificationCode);
 
-            // セッションに確認コードとメールアドレスを保存
             request.getSession().setAttribute("verificationCode", verificationCode);
-            request.getSession().setAttribute("email", email);  // メールアドレスもセッションに保存
-            
-            // 確認コードをメールで送信
+            request.getSession().setAttribute("email", email);
+
             sendVerificationCodeByEmail(email, verificationCode);
 
             request.setAttribute("successMessage", "確認コードを送信しました。");
-            return "reset_password_code.jsp";  // 確認コード入力ページに遷移
+            return "reset_password_code.jsp";
         } else {
+            // デバッグログ追加
+            System.out.println("Email not found: " + email);
+
             request.setAttribute("errorMessage", "登録されていないメールアドレスです。");
-            return "reset_password_email.jsp";  // エラーメッセージと共に元のページに戻る
+            return "reset_password_email.jsp";
         }
     }
 

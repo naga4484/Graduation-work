@@ -300,18 +300,30 @@ public class AccountDAO extends DAO {
     }
 
     // メールアドレスが登録されているかどうかの確認
+    //sql文を追加した
     public boolean isEmailRegistered(String email) throws Exception {
         Connection con = getConnection();
-        PreparedStatement st = con.prepareStatement("SELECT COUNT(*) FROM Student_account WHERE address = ?");
+        PreparedStatement st = con.prepareStatement(
+            "SELECT COUNT(*) FROM (" +
+            "SELECT address FROM Student_account " +
+            "UNION ALL " +
+            "SELECT address FROM Teacher_account" +
+            ") AS All_accounts WHERE address = ?"
+        );
         st.setString(1, email);
         ResultSet rs = st.executeQuery();
 
         rs.next();
         boolean exists = rs.getInt(1) > 0; // カウントが1以上なら存在する
+
+        // デバッグログを追加
+        System.out.println("Email check result for " + email + ": " + exists);
+
         st.close();
         con.close();
         return exists;
     }
+
 
     // ユーザーIDからメールアドレスを取得するメソッド
     public String getEmailByUserId(String userId, String accountKind) throws Exception {
