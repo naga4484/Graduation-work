@@ -2,7 +2,7 @@
 
 .inquiry_top{
 	max-width: 600px; /* コンテンツの最大幅を600pxに設定 */
-    margin: 50px auto; /* 上下の余白を50pxに設定し、左右は自動調整 */
+    margin: 20px auto; /* 上下の余白を50pxに設定し、左右は自動調整 */
     background: rgb(255, 255, 255); /* 背景色を白に設定 */
     padding: 20px; /* 内側の余白を20pxに設定 */
     box-shadow: 0 0 10px rgba(0,0,0,0.1); /* コンテンツに薄い影を追加して浮き上がらせる */
@@ -28,6 +28,7 @@
     border-radius: 4px;          /* 枠の角を4px丸める */
     transition: 0.3s;            /* 0.3秒のトランジション効果を設定 */
     outline: none;               /* フォーカス時のアウトラインを削除 */
+    resize: none;
     box-shadow: inset 1px 1px 2px 0 #c9c9c9; /* 内側にもう一つ影を設定（影の距離と色） */
 }
 
@@ -47,4 +48,19 @@
     cursor: pointer; /* カーソルをポインタに設定 */
     width: 25%;
     margin: 0 auto;
+}
+
+.back_button img {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    width: 60px;    
+    height: 60px;
+
+}
+.back_button {
+    position: absolute;	
+	left: 30px;
+    top: 510px;
 }

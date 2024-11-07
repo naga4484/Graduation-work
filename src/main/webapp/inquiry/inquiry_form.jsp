@@ -29,7 +29,9 @@
 				<button type="submit">送信</button>
 			</form>
 
-			<a href="../common/top.jsp">戻る</a>
+			<div class="back_button">
+              <a href="../common/top.jsp"><img src="../images/戻るボタン2.png" class="teacher_back_icon"></a>
+            </div>
 		</div>
 	</div>
 <%@include file="../footer.jsp"  %>
