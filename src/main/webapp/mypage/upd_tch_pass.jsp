@@ -10,9 +10,14 @@
 			<h1>パスワード変更</h1>
 
 			<form action="TeacherPasswordUpdate.action" method="post">
-				<input type="hidden" name="teacher_id"value="${account.teacher_id }">
-					
+				<input type="hidden" name="teacher_id"value="${account.teacher_id }">	
+				<input type="hidden" name="password"value="${account.password }">	
 					<p>${errorMessage}</p>
+					
+					<label>パスワードを入力</label>
+					<input type="password"name="old_password"required="required">
+					<br>
+					<br>
 					<label>新しいパスワード</label>
 					<input type="password"name="new_password" required="required">
 					<br>
@@ -33,4 +38,5 @@
 
 
 </body>
+<script src="../js/mypage.js"></script>
 <%@ include file="../footer.jsp"%>

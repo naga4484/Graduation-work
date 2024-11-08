@@ -11,8 +11,14 @@
 
 			<form action="StudentPasswordUpdate.action" method="post">
 				<input type="hidden" name="email"value="${account.address }">
+				<input type="hidden" name="password"value="${account.password }">	
+				<input type="hidden" name="student_id" value="${account.student_id }">
 					
 					<p>${errorMessage}</p>
+					<label>パスワードを入力</label>
+					<input type="password"name="old_password"required="required">
+					<br>
+					<br>
 					<label>新しいパスワード</label>
 					<input type="password"name="new_password" required="required">
 					<br>
