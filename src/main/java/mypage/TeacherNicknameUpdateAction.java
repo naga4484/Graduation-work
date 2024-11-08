@@ -21,7 +21,7 @@ public class TeacherNicknameUpdateAction extends Action{
 		 
 		 Teacheraccount account = dao.teacher_search_id(teacherId);
 		 session.setAttribute("account", account);
-		 return "change_top.jsp";
+		 return "change_top.jsp"; 
 	 }
 
 }
