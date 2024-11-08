@@ -116,7 +116,7 @@ document.addEventListener("DOMContentLoaded", function () {
     document.addEventListener('click', function(e) {
         if (e.target.classList.contains('normal') || e.target.classList.contains('ex_td')) {
             const selectedDate = e.target.dataset.infomation;
-            window.location.href = '../schedule/CalendarDisplayAction?selectedDate=' + encodeURIComponent(selectedDate);
+            window.location.href = '../schedule/CalendarDisplay.action?selectedDate=' + encodeURIComponent(selectedDate);
         }
     });
 

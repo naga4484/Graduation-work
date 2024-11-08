@@ -13,6 +13,34 @@ import bean.Timetable;
 import bean.Timetable_template;
 
 public class TimetableDAO extends DAO {
+	//時間割の取得(クラスと日にち)
+	public List<Timetable> timetable_search(String class_id,String data) throws Exception {
+		List<Timetable> timetableList = new ArrayList<>(); 
+		Timetable timetable;
+        Connection con = getConnection();
+        PreparedStatement st = con.prepareStatement("select * from Timetable where class_id=? and data=?");
+        st.setString(1, class_id);
+        st.setString(2, data);
+        ResultSet rs = st.executeQuery();
+        
+        while (rs.next()) {
+        	timetable = new Timetable();
+        	timetable.setTimetable_id(rs.getString("timetable_id"));
+        	timetable.setSubject_id(rs.getString("subject_id"));
+        	timetable.setSubject_color(rs.getString("subject_color"));
+        	timetable.setTimetable_hour(rs.getString("timetable_hour"));
+        	timetable.setTeacher_id(rs.getString("teacher_id"));
+        	timetable.setData(rs.getString("data"));
+        	timetable.setClass_id(rs.getString("class_id"));
+        	timetableList.add(timetable);
+        }
+
+        rs.close(); 
+        st.close();
+        con.close(); 
+        
+        return timetableList;
+	}
 	
 	//時間割一覧の取得(クラス+教師ID検索)
 	public List<Timetable> timetable_class(String class_id,String teacher_id) 

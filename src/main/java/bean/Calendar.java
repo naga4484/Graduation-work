@@ -17,7 +17,7 @@ public class Calendar implements Serializable {
     public String getSetting_date() {
         return setting_date;
     }
-    public String getAttendance_id() {
+    public String getSchedule_content() {
         return schedule_content;
     }
 

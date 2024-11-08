@@ -11,9 +11,11 @@ import org.jsoup.select.Elements;
 
 import bean.Class_num;
 import bean.Studentaccount;
+import bean.Subject;
 import bean.User_id;
 import dao.AccountDAO;
 import dao.ClassDAO;
+import dao.SubjectDAO;
 import dao.UserDAO;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -32,9 +34,16 @@ public class StudentloginAction extends Action {
 
         AccountDAO dao = new AccountDAO();
         Studentaccount account = dao.student_search(student_id, password);
+        if(account == null) {
+        	request.setAttribute("login_error", "IDまたはパスワードが確認できませんでした");
+            return "student_login.jsp";
+        }
 
         ClassDAO cdao = new ClassDAO();
         List<Class_num> class_num = cdao.getallclass();
+        
+        SubjectDAO sdao=new SubjectDAO();
+		List<Subject> class_subject = sdao.getclasssubject(account.getClass_id());
         
         UserDAO udao = new UserDAO();
 		User_id user_id = udao.user_student(student_id);
@@ -62,6 +71,7 @@ public class StudentloginAction extends Action {
         	session.setAttribute("user", user_id);
             session.setAttribute("account", account);
             session.setAttribute("class_num", class_num);
+            session.setAttribute("class_subject", class_subject);
             session.setAttribute("today_temperature_data", today_temperature_data);
 
             // 追加：ユーザー情報をセッションに保存
@@ -72,9 +82,6 @@ public class StudentloginAction extends Action {
 
             return "../common/top.jsp";
         }
-
-        // ログイン失敗時の処理
-        request.setAttribute("login_error", "IDまたはパスワードが確認できませんでした");
         return "student_login.jsp";
     }
 }

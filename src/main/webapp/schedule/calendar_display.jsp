@@ -23,14 +23,23 @@
     <div class="date-and-schedule">
         <div class="date-box" id="dateBox">
             <div class="date-text">${selectedDate}</div> <!-- 日付表示 -->
-            <div class="class-text">授業がありません</div> <!-- 授業メッセージ -->
+            <div class="class-text">詳細情報</div> <!-- 授業メッセージ -->
         </div>
     </div>
 
     <!-- 予定エリア -->
     <h2>予定</h2>
     <div class="plan-info">
-        <p>予定がありません</p>
+ 		<c:choose>
+			<c:when test="${cal_list.size() > 0}">
+				<c:forEach var="item" items="${cal_list}">
+					<p>${item.setting_date}　${item.schedule_content}</p>
+				</c:forEach>
+			</c:when>
+			<c:otherwise>
+				<p>予定はありません</p>
+			</c:otherwise>
+        </c:choose>
     </div>
 
     <!-- 提出物エリア -->
@@ -49,9 +58,22 @@
     <!-- ポップアップウィンドウ -->
     <div id="popupWindow" class="popup-window">
         <div class="popup-content">
-            <h2>詳細情報</h2>
+            <h2>${selectedDate}</h2>
             <ul>
-                <li>（データベース接続は後で追加）</li>
+	            <c:forEach var="item" items="${schedule_timetable}">
+	            	<c:choose>
+						<c:when test="${item.subject_id != null}">
+							<c:forEach var="subject" items="${class_subject}">
+								<c:if test="${subject.subject_id == item.subject_id}">
+									<li>${subject.subject_name}</li>
+								</c:if>
+							</c:forEach>
+						</c:when>
+						<c:otherwise>
+							<li>未設定</li>
+						</c:otherwise>
+					</c:choose>
+	            </c:forEach>
             </ul>
             <button id="closePopup">閉じる</button>
         </div>
