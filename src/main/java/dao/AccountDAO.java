@@ -428,4 +428,30 @@ public class AccountDAO extends DAO {
       con.close();
       return account;
   }
+//  生徒のメールアドレス変更
+  public void stu_upd_add(String student_id, String address) throws Exception {
+	  Connection con = getConnection();
+      PreparedStatement st = con.prepareStatement("UPDATE Student_account SET address = ? WHERE student_id = ?");
+      
+      st.setString(1, address);
+      st.setString(2, student_id);
+      st.executeUpdate();
+
+      st.close();
+      con.close();
+  }
+  
+//  教師のメアド変更
+  public void tch_upd_add(String teacher_id,String address) throws Exception{
+	  Connection con = getConnection();
+	  PreparedStatement st = con.prepareStatement("UPDATE Teacher_ACCOUNT SET ADdRESS = ? WHERE teacher_ID = ?");
+	  
+	  st.setString(1, address);
+      st.setString(2, teacher_id);
+      st.executeUpdate();
+
+
+      st.close();
+      con.close();
+  }
 }
