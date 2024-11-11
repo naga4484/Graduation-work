@@ -1,0 +1,42 @@
+@charset "UTF-8";
+
+#my_submissions_box {
+  background: #FFF;
+  border: 1px solid #333;
+  box-shadow: 0 10px 10px #999;
+  display: block;
+  font-family: serif;
+  padding: 10px;
+  position: absolute;
+  top: 50px;
+  left: 200px;
+  text-align: center;
+  float: left;
+  width: 60%;
+  height: 40%;
+  z-index: 100;
+  margin:auto;
+  opacity: 0;
+  animation: popaimation 0.3s;
+  animation-fill-mode: forwards;
+}
+
+@keyframes popaimation {
+        100%{
+            opacity: 1;
+       	}
+}
+
+#my_submissions_box_back{
+	background: #333;
+	opacity: 0.5;
+	position: fixed;
+	top: 0px;
+	left: 0px;
+	text-align: center;
+	float: left;
+	width: 100%;
+	height: 100%;
+	z-index: 80;
+	display: block;
+}

@@ -9,6 +9,8 @@ public class Submissions implements java.io.Serializable {
     private String class_id;         // CLASS_ID
     private String subject_id;       // SUBJECT_ID
     private String student_id;
+    private boolean submissions_flag;
+    private String submissions_date_color;
 
     // データを取得するメソッドを定義
     public int getSubmissions_id() {
@@ -37,6 +39,12 @@ public class Submissions implements java.io.Serializable {
     public String getStudent_id() {
 		return student_id;
 	}
+    public boolean getSubmissions_flag() {
+		return submissions_flag;
+	}
+    public String getSubmissions_date_color() {
+		return submissions_date_color;
+	}
 
     // データを設定するメソッドを定義
     public void setSubmissions_id(int submissions_id) {
@@ -64,5 +72,11 @@ public class Submissions implements java.io.Serializable {
     }
     public void setStudent_id(String student_id) {
 		this.student_id=student_id;
+	}
+    public void setSubmissions_flag(boolean submissions_flag) {
+		this.submissions_flag=submissions_flag;
+	}
+    public void setSubmissions_date_color(String submissions_date_color) {
+		this.submissions_date_color=submissions_date_color;
 	}
 }

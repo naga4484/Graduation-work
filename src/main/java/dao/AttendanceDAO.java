@@ -6,6 +6,8 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
+import bean.Attendance;
+
 public class AttendanceDAO extends DAO {
 	
 	//出欠登録
@@ -83,5 +85,35 @@ public class AttendanceDAO extends DAO {
 			st.close();
 			con.close();
 			return i;
+	}
+	
+	//欠席日数計算用(計算はjsp側で行う)
+	public List<Attendance> attendance_calculation(String student_id) throws Exception {
+		Connection con=getConnection();
+		List<Attendance> at_list = new ArrayList<>(); 
+		Attendance at;
+
+		PreparedStatement st=con.prepareStatement(
+			"SELECT * FROM Attendance where student_id=? ORDER BY CAST(attendance_id AS UNSIGNED) DESC limit 30;");
+		st.setString(1,student_id);
+		ResultSet rs = st.executeQuery();
+		int num = 0;
+
+        while (rs.next()) {
+        	at = new Attendance();
+        	at.setAttendance_id(rs.getString("attendance_id"));
+        	at.setStudent_id(rs.getString("student_id"));
+        	at.setAttendance_kind_id(rs.getString("attendance_kind_id"));
+        	at.setAttendance_date(rs.getString("attendance_date"));
+        	at.setClass_id(rs.getString("class_id"));
+            at.setNote(rs.getString("note"));
+            at_list.add(at);
+        }
+
+        rs.close(); 
+        st.close();
+        con.close(); 
+
+		return at_list;
 	}
 }

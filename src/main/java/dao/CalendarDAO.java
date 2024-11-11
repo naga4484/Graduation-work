@@ -98,18 +98,72 @@ public class CalendarDAO extends DAO {
 		return line;
 	}
 	// カレンダー削除(ユーザーと日付と設定時間)
-		public int cal_del(int user_id,String selectdate,String delete_data) throws Exception {
-			Connection con=getConnection();
+	public int cal_del(int user_id,String selectdate,String delete_data) throws Exception {
+		Connection con=getConnection();
 
-			PreparedStatement st=con.prepareStatement(
-				"delete from Calendar where user_id=? and calender_date=? and setting_date=?");
-			st.setInt(1, user_id);
-			st.setString(2, selectdate);
-			st.setString(3, delete_data);
-			int line=st.executeUpdate();
+		PreparedStatement st=con.prepareStatement(
+			"delete from Calendar where user_id=? and calender_date=? and setting_date=?");
+		st.setInt(1, user_id);
+		st.setString(2, selectdate);
+		st.setString(3, delete_data);
+		int line=st.executeUpdate();
 
-			st.close();
-			con.close();
-			return line;
-		}
+		st.close();
+		con.close();
+		return line;
+	}
+	
+	// 自己管理画面でのスケジュール取得(日付の取得)
+	public List<Calendar> my_management_schedule_date(int user_id,String start_date,String end_date) throws Exception {
+		List<Calendar> cal_list = new ArrayList<>(); 
+		Calendar cal = null;
+
+        Connection con = getConnection();
+
+        PreparedStatement st = con.prepareStatement("SELECT DISTINCT CALENDER_DATE FROM Calendar WHERE user_id=? and STR_TO_DATE(CALENDER_DATE, '%Y/%m/%d') BETWEEN ? AND ?;");
+        st.setInt(1, user_id);
+		st.setString(2, start_date);
+		st.setString(3, end_date);
+        ResultSet rs = st.executeQuery();
+
+        while (rs.next()) {
+            cal = new Calendar();
+            cal.setCalender_date(rs.getString("calender_date"));
+            cal_list.add(cal);
+        }
+
+        rs.close(); 
+        st.close();
+        con.close(); 
+        
+        return cal_list;
+	}
+	// 自己管理画面でのスケジュール取得(データの取得)
+	public List<Calendar> my_management_schedule(int user_id,String start_date,String end_date) throws Exception {
+		List<Calendar> cal_list = new ArrayList<>(); 
+		Calendar cal = null;
+
+        Connection con = getConnection();
+
+        PreparedStatement st = con.prepareStatement("SELECT * FROM Calendar WHERE user_id=? and STR_TO_DATE(CALENDER_DATE, '%Y/%m/%d') BETWEEN ? AND ?;");
+        st.setInt(1, user_id);
+		st.setString(2, start_date);
+		st.setString(3, end_date);
+        ResultSet rs = st.executeQuery();
+
+        while (rs.next()) {
+            cal = new Calendar();
+            cal.setUser_id(rs.getInt("user_id"));
+            cal.setCalender_date(rs.getString("calender_date"));
+            cal.setSetting_date(rs.getString("setting_date"));
+            cal.setSchedule_content(rs.getString("schedule_content"));
+            cal_list.add(cal);
+        }
+
+        rs.close(); 
+        st.close();
+        con.close(); 
+        
+        return cal_list;
+	}
 }
