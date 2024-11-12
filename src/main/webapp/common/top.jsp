@@ -28,7 +28,7 @@
 			<p class="top_links_contents_title2">自己管理</p>
 		</div>
 		<div class="top_links_contents">
-			<a href=""><img src="../images/グループ管理アイコン.png" class="my_management_top_icon"></a> <!-- グループ管理 -->
+			<a href="../group/group_top.jsp"><img src="../images/グループ管理アイコン.png" class="my_management_top_icon"></a> <!-- グループ管理 -->
 			<p class="top_links_contents_title3">グループ</p>
 		</div>
 		<div class="top_links_contents">	
