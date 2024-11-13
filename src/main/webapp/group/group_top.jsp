@@ -11,7 +11,7 @@
 <div>
 	<a href="#">共有(未着手)</a>
 	<a href="#">チャット</a>
-	<a href="Group_attendance.action">グループ作成・参加</a>
+	<a href="group_create_participation.jsp">グループ作成・参加</a>
 </div>
 
 
