@@ -1,5 +1,8 @@
 package mypage;
 
+
+//学生のメールアドレスの確認action
+
 import bean.Studentaccount;
 import dao.AccountDAO;
 import jakarta.servlet.http.HttpServletRequest;

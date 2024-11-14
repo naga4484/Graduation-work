@@ -454,4 +454,20 @@ public class AccountDAO extends DAO {
       st.close();
       con.close();
   }
+//  メールアドレスによるメールアドレスの照合
+  public boolean email_check(String email) throws Exception {
+	    try (Connection con = getConnection();
+	         PreparedStatement st = con.prepareStatement(
+	             "SELECT address FROM ( SELECT address FROM student_account UNION SELECT address FROM teacher_account) AS all_addresses WHERE address = ?"
+	         )) {
+	        
+	        st.setString(1, email);
+	        ResultSet rs = st.executeQuery();
+	        
+	        boolean exists = rs.next(); // 結果があれば true, なければ false
+	        
+	        return exists;
+	    }
+	}
+
 }

@@ -1,4 +1,8 @@
 package mypage;
+
+//メアドから確認コードを送信するやつ
+//メアド変更関連のjspに送信する。
+
 import java.util.Properties;
 
 import dao.AccountDAO;
@@ -43,8 +47,8 @@ public class AddressChangeAction extends Action {
             // デバッグログ追加
             System.out.println("Email not found: " + email);
 
-            request.setAttribute("errorMessage", "登録されていないメールアドレスです。");
-            return "change_top.jsp";
+            request.setAttribute("errorMessage", "存在しないアカウントです");
+            return "error.jsp";
         }
     }
 

@@ -9,34 +9,33 @@ import tool.Action;
 
 public class TeacherPasswordUpdateAction extends Action {
     public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
-    	HttpSession session=request.getSession();
-    	String Password = request.getParameter("password");
-    	String oldPassword = request.getParameter("old_password");
+        HttpSession session = request.getSession();
+        String Password = request.getParameter("password");
+        String oldPassword = request.getParameter("old_password");
         String newPassword = request.getParameter("new_password");
         String confirmPassword = request.getParameter("confirm_password");
-        String teacherId=request.getParameter("teacher_id");
-        
+        String teacherId = request.getParameter("teacher_id");
 
-        // パスワードのバリデーション
-        if (!newPassword.equals(confirmPassword)) {
-            request.setAttribute("errorMessage", "確認パスワードが一致しません。");
+        // パスワードのバリデーション: 既存のパスワード確認 > 形式の確認 > 確認パスワードの一致
+        if (!Password.equals(oldPassword)) {
+            request.setAttribute("errorMessage", "既存パスワードが一致しません。");
             return "upd_tch_pass.jsp";
         } else if (!isValidPassword(newPassword)) {
             request.setAttribute("errorMessage", "8字以上、数字、大文字、小文字をそれぞれ1文字以上使用してください。");
-            return "upd_tch_pass.jsp";
-        }else if (!Password.equals(oldPassword)) {
-        	request.setAttribute("errorMessage", "既存パスワードが一致しません。");
-        	return "upd_tch_pass.jsp";
+            return "upd_tch_pass_R.jsp";
+        } else if (!newPassword.equals(confirmPassword)) {
+            request.setAttribute("errorMessage", "確認パスワードが一致しません。");
+            return "upd_tch_pass_R.jsp";
         }
 
         // パスワード更新処理
         AccountDAO dao = new AccountDAO();
         dao.update_password_tch(teacherId, newPassword);
-//        既存のパスワード変更処理が「学生」のメールアドレスを参照しているので新しく教師IDで参照するものを作成しています
+        // 既存のパスワード変更処理が「学生」のメールアドレスを参照しているので新しく教師IDで参照するものを作成しています
         request.setAttribute("successMessage", "パスワードが更新されました。");
         Teacheraccount account = dao.teacher_search_id(teacherId);
-		session.setAttribute("account", account);
-        return "change_top.jsp";  // 更新後、ログインページに遷移
+        session.setAttribute("account", account);
+        return "change_top.jsp";  // 更新後、トップページに遷移
     }
 
     // パスワードのバリデーションメソッド

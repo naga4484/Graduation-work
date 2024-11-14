@@ -1,6 +1,7 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
 <%@ include file="../header.jsp"%>
-
+<!-- 確認コードのチェックを終えた後のパスワード変更画面 -->
+<!-- また、既存のパスワードがあっている際のパスワード入力画面 -->
 <head>
     <title>パスワード変更</title>
 </head>
@@ -15,9 +16,8 @@
                 <input type="hidden" name="password" value="${account.password}">
                 
                 <p>${errorMessage}</p>
-                
-                <label>パスワードを入力</label>
-                <input type="password" name="old_password" required="required">
+                <!-- 古いパスワードを保持 -->
+                <input type="hidden" name="old_password" value="${account.password }">
                 
                 <br><br>
                 
@@ -34,17 +34,10 @@
                 <button type="submit">変更</button>
             </form>
 
-            <!-- パスワードリセット用フォーム -->
-            <form action="PasswordReset.action" method="post">
-                <p>パスワードを忘れた方はこちら</p>
-                <input type="hidden" name="email" value="${account.address}">
-                <button type="submit">忘れた</button>
-            </form>
         </div>
         
         <br>
         <a href="change_top.jsp">戻る</a>
     </div>
 </body>
-
 <%@ include file="../footer.jsp"%>

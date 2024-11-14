@@ -1,5 +1,7 @@
 package mypage;
 
+//教師のメールアドレスの確認action
+
 
 import bean.Teacheraccount;
 import dao.AccountDAO;

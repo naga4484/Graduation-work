@@ -1,7 +1,5 @@
 package mypage;
 
-//確認コードを再送信しメールアドレスの確認コード入力ページに移行する
-
 import java.util.Properties;
 
 import jakarta.mail.Message;
@@ -15,7 +13,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import tool.Action;
 
-public class AddressResendAction extends Action {
+public class PasswordResendAction extends Action {
     public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
         String email = (String) request.getSession().getAttribute("email");
 
@@ -29,11 +27,11 @@ public class AddressResendAction extends Action {
 
             // 再送信完了メッセージを設定（画面遷移せずにメッセージを表示）
             request.setAttribute("successMessage", "確認コードを再送信しました。");
-            return "upd_add_code.jsp";  // 確認コード入力ページのままにする
+            return "reset_pass_code.jsp";  // 確認コード入力ページのままにする
         } else {
-            request.setAttribute("errorMessage", "メールアドレスが見つかりません。最初からやり直してください。");
+            request.setAttribute("errorMessage", "メールアドレスが見つかりません");
             return "error.jsp";  // エラーメッセージと共にメールアドレス入力ページに戻る
-        }
+        }//↑見つからないことはないので必要ない
     }
 
     // 6桁の確認コードを生成するメソッド

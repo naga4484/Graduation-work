@@ -1,5 +1,7 @@
 package mypage;
 
+//教師IDと入力されたニックネームを渡すことでニックネームを変更することができる
+
 import bean.Teacheraccount;
 import dao.AccountDAO;
 import jakarta.servlet.http.HttpServletRequest;

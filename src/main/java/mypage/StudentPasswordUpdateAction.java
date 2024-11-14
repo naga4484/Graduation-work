@@ -17,16 +17,16 @@ public class StudentPasswordUpdateAction extends Action {
         String email = (String) request.getSession().getAttribute("email");
         String studentId=request.getParameter("student_id");
 
-        // パスワードのバリデーション
-        if (!newPassword.equals(confirmPassword)) {
-            request.setAttribute("errorMessage", "パスワードが一致しません。");
+        // パスワードのバリデーション: 既存のパスワード確認 > 形式の確認 > 確認パスワードの一致
+        if (!Password.equals(oldPassword)) {
+            request.setAttribute("errorMessage", "既存パスワードが一致しません。");
             return "upd_stu_pass.jsp";
         } else if (!isValidPassword(newPassword)) {
             request.setAttribute("errorMessage", "8字以上、数字、大文字、小文字をそれぞれ1文字以上使用してください。");
-            return "upd_stu_pass.jsp";
-        }else if (!Password.equals(oldPassword)) {
-        	request.setAttribute("errorMessage", "既存パスワードが一致しません。");
-        	return "upd_stu_pass.jsp";
+            return "upd_stu_pass_R.jsp";
+        } else if (!newPassword.equals(confirmPassword)) {
+            request.setAttribute("errorMessage", "確認パスワードが一致しません。");
+            return "upd_stu_pass_R.jsp";
         }
 
         // パスワード更新処理

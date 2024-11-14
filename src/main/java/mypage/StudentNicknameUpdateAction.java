@@ -1,5 +1,7 @@
 package mypage;
 
+//学生IDと入力されたニックネームを送信することでニックネームを設定できるaction7
+
 import bean.Studentaccount;
 import dao.AccountDAO;
 import jakarta.servlet.http.HttpServletRequest;
