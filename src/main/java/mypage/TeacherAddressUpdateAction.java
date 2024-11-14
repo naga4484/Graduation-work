@@ -22,6 +22,13 @@ public class TeacherAddressUpdateAction extends Action{
     	}
     	
     	AccountDAO dao =new AccountDAO();
+    	
+    	 // 新しいメールアドレスが既に登録されているかを確認
+    	if (dao.isEmailRegistered(newAddress)) {
+            request.setAttribute("errorMessage", "このメールアドレスは既に使用されています");
+            return "upd_tch_add.jsp";
+        }
+//    	メールアドレスを更新する処理
     	dao.tch_upd_add(teacherId, newAddress);
     	
     	request.setAttribute("successMessage", "メールアドレスが更新されました。");

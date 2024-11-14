@@ -22,6 +22,12 @@ public class StudentAddressUpdateAction extends Action {
     	}
     	
     	AccountDAO dao =new AccountDAO();
+    	
+    	 // 新しいメールアドレスが既に登録されているかを確認
+    	if (dao.isEmailRegistered(newAddress)) {
+            request.setAttribute("errorMessage", "このメールアドレスは既に使用されています");
+            return "upd_stu_add.jsp";
+        }
     	dao.stu_upd_add(studentId, newAddress);
     	
     	request.setAttribute("successMessage", "メールアドレスが更新されました。");
