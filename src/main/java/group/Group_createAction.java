@@ -20,7 +20,6 @@ public class Group_createAction extends Action {
 
 			HttpSession session=request.getSession();
 
-			//自己管理における共通機能の処理
 			User_id user_id = (User_id)session.getAttribute("user");
 			
 			String group_name=request.getParameter("group_name");
@@ -32,18 +31,24 @@ public class Group_createAction extends Action {
 			
 			if(name_group != null) {
 				if(id_group != null) {
-					request.setAttribute("dis_error", "グループ名とグループIDが重複しています");
+					request.setAttribute("dis_cre_error", "グループ名とグループIDが重複しています");
+					return "group_create_participation.jsp";
 				}
-				request.setAttribute("dis_error", "グループ名が重複しています");
+				request.setAttribute("dis_cre_error", "グループ名が重複しています");
+				return "group_create_participation.jsp";
 			}
 			if(id_group != null) {
-				request.setAttribute("dis_error", "グループIDが重複しています");
+				request.setAttribute("dis_cre_error", "グループIDが重複しています");
+				return "group_create_participation.jsp";
 			}
 			
-			System.out.println("Current directory: " + System.getProperty("user.dir"));
+			
+			//csvファイル書き込み用(恐らく本番環境では使用できない)
 			try {
+				//ファイル名
+				String file_name = group_name + "_user.csv";
 	            // 出力ファイルの作成
-	            FileWriter fw = new FileWriter(group_name + "_user.csv", false);
+	            FileWriter fw = new FileWriter(file_name, false);
 	            // PrintWriterクラスのオブジェクトを生成
 	            PrintWriter pw = new PrintWriter(new BufferedWriter(fw));
 	 
@@ -58,16 +63,16 @@ public class Group_createAction extends Action {
 	 
 	            // ファイルを閉じる
 	            pw.close();
-	 
-	            // 出力確認用のメッセージ
-	            System.out.println("csvファイルを出力しました");
+	            
+	            int line = dao.group_create(group_id, group_name, file_name, user_id.getUser_id());
+	      
 	 
 	        // 出力に失敗したときの処理
 	        } catch (IOException ex) {
 	            ex.printStackTrace();
 	        }
 			
-			
+			request.setAttribute("comp_mes", "グループ名「" + group_name + "」を作成しました");
 			return "group_top.jsp";
 	}
 }

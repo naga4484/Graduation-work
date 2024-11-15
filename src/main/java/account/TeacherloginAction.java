@@ -49,7 +49,7 @@ public class TeacherloginAction extends Action {
         UserDAO udao = new UserDAO();
         User_id user_id = udao.user_teacher(teacher_id);
         if (user_id == null) {
-            int line = udao.user_tea_insert(teacher_id);
+            int line = udao.user_tea_insert(teacher_id,account.getName());
             user_id = udao.user_teacher(teacher_id);
         }
 

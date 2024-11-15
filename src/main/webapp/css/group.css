@@ -1,0 +1,113 @@
+@charset "UTF-8";
+
+.chat_left_content{
+	width: 200px;
+	float: left;
+	margin-left: 20px;
+	margin-top: 20px;
+	clear: both;
+	border: 1px solid #333;
+	border-radius: 10px;
+}
+#chat_iframe{
+	width: 750px;
+	height: 400px;
+	float: right;
+	margin-right: 20px;
+	padding-bottom: 20px;
+	border: 1px solid #333;
+	border-radius: 10px;
+}
+.chat_right_content{
+	width: 700px;
+	float: right;
+	margin-right: 20px;
+	padding-bottom: 20px;
+	clear: both;
+}
+
+.chat_partner_select{
+	width: 100px;
+	height: 50px;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	margin-left: 10px;
+}
+.chat_partner_select a{
+	text-decoration: none;
+}
+.chat_partner_select h4{
+	margin-top: auto;
+	margin-bottom: auto;
+}
+.chat_submit_area{
+	width: 700px;
+	height: 50px;
+	float: right;
+	margin-top: 20px;
+	margin-right: 20px;
+}
+.chat_submit_area #chat_content_area{
+	width: 560px;
+	height: 30px;
+	margin-left: 25px;
+	padding-left: 10px;
+	font-weight: bold;
+}
+.chat_submit_area #chat_submit_area{
+	width: 70px;
+	height: 36px;
+}
+.chat_date_block_date{
+	text-align: center;
+	margin:20px auto 0 auto;
+	clear: both;
+	width: 150px;
+	background-color: #333;
+	color: white;
+	border-radius: 10px;
+	font-family: '鉄瓶ゴシック';
+	padding: 5px;
+}
+.chat_my_content{
+	width: 700px;
+	float:right;
+	clear: both;
+	text-align: right;
+	margin:10px 15px 15px 0px;
+}
+.chat_partner_content{
+	width: 700px;
+	float:left;
+	clear: both;
+	margin:10px 0px 15px 15px;
+	
+}
+.chat_name{
+	margin: 0px 10px 0px 0px;
+}
+.chat_date{
+	width: 70px;
+	display: inline-block;
+	margin: 0 0 7px 0;
+	vertical-align: bottom;
+	font-size: 13px;
+}
+.chat_content{
+	max-width: 400px;
+	display: inline-block;
+	background-color: aliceblue;
+	border-radius: 10px;
+	padding: 30px;
+	margin: 0px;
+}
+
+.common_back_button{
+	position: fixed;
+    bottom: 5px;
+    left: 15px;
+}
+.common_back_button img{
+	width: 60px;    
+    height: 60px;
+}

@@ -6,6 +6,10 @@ public class Group implements java.io.Serializable {
 	private String group_name;
 	private String accept_user;
 	private int user_id;
+	private int chat_id;
+	private String chat_content;
+	private String chat_date;
+	private String name;
 	
 	public String getGroup_id() {
 		return group_id;
@@ -18,6 +22,18 @@ public class Group implements java.io.Serializable {
 	}
 	public int getUser_id() {
 		return user_id;
+	}
+	public int getChat_id() {
+		return chat_id;
+	}
+	public String getChat_content() {
+		return chat_content;
+	}
+	public String getChat_date() {
+		return chat_date;
+	}
+	public String getName() {
+		return name;
 	}
 	
 	
@@ -32,6 +48,18 @@ public class Group implements java.io.Serializable {
 	}
 	public void setUser_id(int user_id) {
 		this.user_id=user_id;
+	}
+	public void setChat_id(int chat_id) {
+		this.chat_id=chat_id;
+	}
+	public void setChat_content(String chat_content) {
+		this.chat_content=chat_content;
+	}
+	public void setChat_date(String chat_date) {
+		this.chat_date=chat_date;
+	}
+	public void setName(String name) {
+		this.name=name;
 	}
 	
 }

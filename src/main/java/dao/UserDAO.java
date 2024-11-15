@@ -47,12 +47,13 @@ public class UserDAO extends DAO {
         return user;
     }
     // ユーザー追加機能(学生ID)
-    public int user_stu_insert(String student_id) throws Exception {
+    public int user_stu_insert(String student_id,String name) throws Exception {
 		Connection con=getConnection();
 
 		PreparedStatement st=con.prepareStatement(
-			"insert into User_account(student_id) values(?)");
+			"insert into User_account(student_id,name) values(?,?)");
 		st.setString(1, student_id);
+		st.setString(2, name);
 		int line=st.executeUpdate();
 
 		st.close();
@@ -60,12 +61,13 @@ public class UserDAO extends DAO {
 		return line;
 	}
     // ユーザー追加機能(教師ID)
-    public int user_tea_insert(String teacher_id) throws Exception {
+    public int user_tea_insert(String teacher_id,String name) throws Exception {
 		Connection con=getConnection();
 
 		PreparedStatement st=con.prepareStatement(
-			"insert into User_account(teacher_id) values(?)");
+			"insert into User_account(teacher_id,name) values(?,?)");
 		st.setString(1, teacher_id);
+		st.setString(2, name);
 		int line=st.executeUpdate();
 
 		st.close();

@@ -9,8 +9,14 @@
 <h1>グループ管理</h1>
 
 <div>
+	<c:if test="${comp_mes != null}">
+		<p>${comp_mes}</p>
+	</c:if>
+	<c:if test="${no_par_error != null}">
+		<p>${no_par_error}</p>
+	</c:if>
 	<a href="#">共有(未着手)</a>
-	<a href="#">チャット</a>
+	<a href="Group_chat.action">チャット</a>
 	<a href="group_create_participation.jsp">グループ作成・参加</a>
 </div>
 

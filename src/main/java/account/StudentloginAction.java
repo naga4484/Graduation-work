@@ -48,7 +48,7 @@ public class StudentloginAction extends Action {
         UserDAO udao = new UserDAO();
 		User_id user_id = udao.user_student(student_id);
 		if(user_id == null) {
-			int line = udao.user_stu_insert(student_id);
+			int line = udao.user_stu_insert(student_id,account.getName());
 			user_id = udao.user_student(student_id);
 		}
 
