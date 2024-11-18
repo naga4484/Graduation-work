@@ -1,0 +1,103 @@
+
+
+/*学生検索フォームのcss*/
+
+.student_search,
+.submission_registration {
+	border: 1px solid #ccc; /* 枠線 */
+  border-radius: 8px; /* 角を丸く */
+  padding: 10px; /* 内側の余白 */
+  max-width: 40%; /* 幅を制限 */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 軽い影 */
+   
+}
+
+.student_search h2,
+.submission_registration h2{
+	padding: 0.2em 0.4em;
+    border-left: 5px solid #00000b;
+    color: #333333;
+	
+}
+
+
+
+.student_search label,
+.submission_registration label{
+	font-weight: bold; 
+	display: block;
+	margin-bottom: 5px;
+}
+
+.student_search input[type="text"],
+.submission_registration input[type="text"]{
+	padding: 10px; /* 内側の余白を10pxに設定 */
+    margin-bottom: 20px; /* 下部の余白を20pxに設定 */
+    border: 1px solid #ccc; /* 枠線を薄い灰色に設定 */
+    border-radius: 4px; /* 枠線の角を丸く設定 */
+    width: 90%;
+}
+
+.student_search input[type="submit"],
+.submission_registration input[type="submit"]{
+	padding: 5px; /* 内側の余白を10pxに設定 */
+    background-color: deepskyblue; /* 背景色を緑色に設定 */
+    color: #fff; /* テキストの色を白に設定 */
+    border-radius: 4px; /* 枠線の角を丸く設定 */
+    cursor: pointer; /* カーソルをポインタに設定 */
+    width: 25%;
+    border: 1px solid white;
+    margin: 0 auto;
+}
+
+/*selectボックスのcss*/
+.main_contents select{
+/*	appearance: none;*/
+	margin-bottom: 1em; /* 下に1emの隙間 */
+    min-width: 230px;
+    height: 2em;
+    padding: .4em calc(.8em + 30px) .4em .8em;
+    border: 1px solid black;
+    border-radius: 3px;
+    background-color: #fff;
+    color: black;
+    font-size: 1em;
+    cursor: pointer;
+}
+
+.teacher_table {
+	margin: 30px;
+  height: calc(190vh / 2 ); /* スクロール用の高さ */
+  overflow-y: scroll; /* スクロールを有効に */
+  border: 1px solid #ccc;
+  width:50%;
+  position: absolute; /* 絶対位置を指定 */
+  top: 0; /* 上部に配置 */
+  right: 0; /* 右側に配置 */
+}
+
+.teacher_table table {
+  width: 100%; /* テーブルの幅を100%に */
+  border-collapse: collapse;
+  text-align: center;
+}
+
+/* チェックボックスのスタイル */
+input[type="checkbox"] {  
+  vertical-align: middle; /* チェックボックスを垂直方向に中央揃え */
+  transform :scale(1.5);/*  文字サイズ*/
+}
+
+.table th, .table td {
+  height: 100px;
+  vertical-align: middle;
+  padding: 0 15px;
+  border: 1px solid #ccc;
+}
+
+.headword {
+  position: sticky;
+  top: 0;
+  color: #fff;
+  background: #333;
+}
