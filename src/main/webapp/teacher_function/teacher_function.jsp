@@ -25,9 +25,9 @@
 	<a href="Timetable_template_set.action"id="template"><img src="../images/テンプレートアイコン.png" class="teacher_link_icon">科目テンプレ</a>
 </div>
 <div class="teacher_registration">
-	<a href="">教師アカウントの登録</a>
+	<a href="teacher_registration.jsp">教師アカウントの登録</a>
 </div>
-<div class="back_button">
+<div class="common_back_button">
   <a href="../common/top.jsp"><img src="../images/戻るボタン1.png" class="teacher_back_icon"></a>
 </div>
 <%@include file="../footer.jsp"  %>

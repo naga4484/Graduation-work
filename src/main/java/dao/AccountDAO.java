@@ -162,6 +162,24 @@ public class AccountDAO extends DAO {
         con.close();
         return line;
     }
+ // 教師登録機能
+    public int teacher_registration(String teacher_id, String password, String class_id, String name,String email) throws Exception {
+        Connection con = getConnection();
+
+        PreparedStatement st = con.prepareStatement("INSERT INTO teacher_account VALUES (?, ?, ?, ?, ?, ?, ?)");
+        st.setString(1, teacher_id);
+        st.setString(2, name);
+        st.setString(3, password);
+        st.setString(4, email);
+        st.setString(5, class_id);
+        st.setString(6, "");
+        st.setString(7, "");
+        int line = st.executeUpdate();
+
+        st.close();
+        con.close();
+        return line;
+    }
 
     // 学生氏名検索機能
     public List<Studentaccount> student_search_name(String name) throws Exception {

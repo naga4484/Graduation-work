@@ -101,13 +101,3 @@
 	padding: 30px;
 	margin: 0px;
 }
-
-.common_back_button{
-	position: fixed;
-    bottom: 5px;
-    left: 15px;
-}
-.common_back_button img{
-	width: 60px;    
-    height: 60px;
-}
