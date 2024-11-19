@@ -9,6 +9,7 @@ public class Attendance implements Serializable {
     private String attendance_date;
     private String class_id;
     private String note;
+    private String name;
 
     public String getAttendance_id() {
         return attendance_id;
@@ -57,4 +58,10 @@ public class Attendance implements Serializable {
     public void setNote(String note) {
         this.note = note;
     }
+    public String getName() {
+		return name;
+	}
+    public void setName(String name) {
+		this.name=name;
+	}
 }

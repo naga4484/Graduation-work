@@ -60,23 +60,28 @@
 	
 	<input type="submit" value="検索">
 </form>
-<form  action="Attendanceregistration.action">
-	<table>
-		<tr>
-			<th>出欠可否</th>
-			<th>学生ID</th>
-			<th>学生氏名</th>
-		</tr>
-		<c:forEach var="item" items="${attendancsstudentlist}">
-	  		<tr>
-	  			<td><input type="checkbox" name="${item.student_id}" value="出席" checked></td>
-	  			<td>${item.student_id}</td>
-	  			<td>${item.name}</td>
-	  		</tr>
-		</c:forEach>
-	</table>
-	<input type="submit" value="登録">
-</form>
+<c:if test="${attendancsstudentlist.size() > 0}">
+	<form  action="Attendanceregistration.action">
+		<table>
+			<tr>
+				<th>出欠可否</th>
+				<th>学生ID</th>
+				<th>学生氏名</th>
+			</tr>
+			<c:forEach var="item" items="${attendancsstudentlist}">
+		  		<tr>
+		  			<td><input type="checkbox" name="${item.student_id}" value="出席" checked></td>
+		  			<td>${item.student_id}</td>
+		  			<td>${item.name}</td>
+		  		</tr>
+			</c:forEach>
+		</table>
+		<input type="submit" value="登録">
+	</form>
+	<c:if test="${samplelist.size() > 0}">
+		<iframe src="attendance_list.jsp"></iframe>
+	</c:if>
+</c:if>
 
 <a href="../common/top.jsp">TOP</a>
 <script src="../js/attendance.js"></script>
