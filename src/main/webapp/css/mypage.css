@@ -2,15 +2,12 @@
 
 .mypage_top{
 	text-align: center;
+    position: relative;
+    width: 100%; 
 	font-size: 25px;
     margin-top: -20px;
     margin-left: 20px;
 
-}
-
-.mypage_top {
-    position: relative;
-    width: 100%; 
 }
 
 .profile-table {
