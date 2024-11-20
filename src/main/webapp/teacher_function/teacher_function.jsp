@@ -20,7 +20,7 @@
 	<a href="student_registration.jsp"id="student"><img src="../images/学生情報アイコン.png" class="teacher_link_icon">学生情報</a>
 	<a href=""id="authority"><img src="../images/権限アイコン.png" class="teacher_link_icon">権限</a>
 	<a href=""id="seating"><img src="../images/座席表アイコン.png" class="teacher_link_icon">座席表</a>
-	<a href=""id="group"><img src="../images/グループアイコン.png" class="teacher_link_icon">グループ</a>
+	<a href="group_auto_create.jsp"id="group"><img src="../images/グループアイコン.png" class="teacher_link_icon">グループ</a>
 	<a href=""id="trend"><img src="../images/傾向分析アイコン.png" class="teacher_link_icon">傾向分析</a>
 	<a href="Timetable_template_set.action"id="template"><img src="../images/テンプレートアイコン.png" class="teacher_link_icon">科目テンプレ</a>
 </div>

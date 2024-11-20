@@ -28,6 +28,9 @@
 	<div class="menu_box_contents">
 		<a href="../common/top.jsp" class="menu_links">TOP</a>
 	</div>
+	<div class="menu_box_contents">
+		<a href="../account/Logout.action" class="menu_links">ログアウト</a>
+	</div>
 </div>
 <div id="menu_box_back">
 </div>

@@ -24,10 +24,10 @@
 				</tr>
 				<c:forEach var="item" items="${not_attendancestudent}">
 			  		<tr>
-			  			<td><input type="radio" name="${item.student_id}" value="出席" checked></td>
-			  			<td><input type="radio" name="${item.student_id}" value="公欠" checked></td>
-			  			<td><input type="radio" name="${item.student_id}" value="遅刻" checked></td>
-			  			<td><input type="radio" name="${item.student_id}" value="その他" checked></td>
+			  			<td><input type="radio" name="${item.student_id}" value="出席"></td>
+			  			<td><input type="radio" name="${item.student_id}" value="公欠"></td>
+			  			<td><input type="radio" name="${item.student_id}" value="遅刻"></td>
+			  			<td><input type="radio" name="${item.student_id}" value="その他"></td>
 			  			<td>${item.student_id}</td>
 			  			<td>${item.name}</td>
 			  		</tr>
