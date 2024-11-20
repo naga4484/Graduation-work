@@ -1,0 +1,281 @@
+@charset "UTF-8";
+
+.mypage_top{
+	text-align: center;
+	font-size: 25px;
+    margin-top: -20px;
+    margin-left: 20px;
+
+}
+
+.mypage_top {
+    position: relative;
+    width: 100%; 
+}
+
+.profile-table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: center;
+}
+
+.top-row {
+    font-weight: bold;
+    background-color: #f0f0f0;
+}
+
+.bottom-row {
+    background-color: #ffffff;
+}
+
+
+.logout-button {
+    display: block;
+    margin: 10px auto;
+    margin-left: 1015px;   
+    margin-top: -25px;	
+}
+
+.button-link {
+    display: block;
+    margin: 10px auto;
+    margin-top: 20px;
+}
+
+
+.update_add {
+	text-align: center;
+	font-size: 25px;
+    margin-top: -20px;
+    margin-left: 20px;	
+}
+
+.box1 {
+    padding: 0.5em 1em;
+    margin: 2em auto; 
+    font-weight: bold;
+    color: #000; 
+    background: #FFF;
+    border: solid 3px #000; 
+    border-radius: 9px; 
+    position: relative; 
+    width: 60%; 
+}
+
+.box1::before {
+    content: "";
+    position: absolute;
+    top: 50%; 
+    left: 0;
+    right: 0;
+    height: 1px; 
+    background: #000; 
+    transform: translateY(-50%); 
+}
+
+button[type="submit"] {
+    position: absolute;
+    left: 42%;
+    top: 70%;
+    width: 200px; 
+    height: 40px; 
+    background-color:#007BFF; 
+    color: #ffffff; 
+    font-size: 16px; 
+    border: none; 
+    border-radius: 5px; 
+    cursor: pointer; 
+}
+
+.box1 p {
+    margin: 0px; 
+    padding: 0;
+}
+
+
+input[type="email"] {
+    width: 300px; 
+    height: 20px; 
+    font-size: 16px;
+    padding: 10px; 
+    border: 1px solid #ccc; 
+    border: 2px solid #333;
+    border-radius: 5px; 
+}
+
+
+label {
+    font-size: 20px; 
+    font-weight: 10px; 
+}
+
+.update_nickname {
+	text-align: center;
+	font-size: 25px;
+    margin-top: -20px;
+    margin-left: 20px;	
+}
+
+input[type="text"] {
+    width: 400px; 
+    height: 20px; 
+    font-size: 16px;
+    padding: 10px; 
+    border: 1px solid #ccc; 
+    border: 2px solid #333;
+    border-radius: 5px; 
+}
+
+.directions {
+	text-align: center;
+	font-size: 18px;
+    margin-top: 60px;
+    margin-left: 20px;
+	
+}
+
+.box2 {
+    padding: 0.8em 0.5em;
+    margin: 1em auto; 
+    font-weight: bold;
+    color: #000; 
+    border: solid 3px #000; 
+    border-radius: 10px; 
+    position: relative; 
+    width: 60%; 
+}
+
+.update_pass {
+	text-align: center;
+	font-size: 25px;
+    margin-top: -20px;
+    margin-left: 20px;	
+}
+
+.box3 {
+    padding: 0.3em 0.5em;
+    margin: 1em auto; 
+    font-weight: bold;
+    color: #000; 
+    border: solid 3px #000; 
+    border-radius: 10px; 
+    position: relative; 
+    width: 60%; 	
+}
+
+.pass_form {
+	text-align: right;
+	font-size: 15px;
+}
+
+input[type="password"] {
+    width: 400px; 
+    height: 10px; 
+    font-size: 16px;
+    padding: 10px; 
+    border: 1px solid #ccc; 
+    border: 1px solid #333;
+    border-radius: 5px; 
+    margin-bottom: 5px;
+}
+
+.passup_buttun button[type="submit"] {
+    position: absolute;
+    left: 42%;
+    top: 70%;
+    width: 200px; 
+    height: 40px; 
+    background-color:#007BFF; 
+    color: #ffffff; 
+    font-size: 16px; 
+    border: none; 
+    border-radius: 5px; 
+    cursor: pointer; 
+}
+
+.error {
+	text-align: cente;
+	font-size:20px;
+	color:#ff3d3d
+}
+
+.add_reset {
+	text-align: center;
+	font-size: 25px;
+    margin-top: -20px;
+    margin-left: 20px;	
+}
+
+.return_link {
+	text-align: center;
+	font-size: 15px;
+    margin-top: 5px;
+}
+
+.box4 {
+    padding: 0.5em 0.5em;
+    margin: 1em auto; 
+    font-weight: bold;
+    color: #000; 
+    border: solid 3px #000; 
+    border-radius: 10px; 
+    position: relative; 
+    width: 60%; 	
+}
+
+
+.pass_reset {
+	text-align: center;
+	font-size: 25px;
+    margin-top: -20px;
+    margin-left: 20px;	
+}
+
+.code_return {
+	text-align: right;
+	font-size:18px;
+	margin-top: 5px;
+	color:#ff3d3d
+}
+
+.send_messe {
+	text-align: cente;
+	font-size:20px;	
+}
+
+.input_messe {
+	text-align: cente;
+	font-size:25px;		
+}
+
+.back_button img {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    width: 60px;    
+    height: 60px;
+
+}
+
+.back_button {
+    position: absolute;	
+	left: 10px;
+    top: 500px;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 10px;
+}
+
+.row div {
+  margin-right: 20px;
+}

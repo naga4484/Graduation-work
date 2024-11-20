@@ -1,5 +1,6 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
 <%@ include file="../header.jsp"%>
+<link rel="stylesheet" type="text/css" href="../css/mypage.css">
 
 <head>
 <meta charset="UTF-8">
@@ -9,15 +10,21 @@
     <div class="main_content">
         <div class="add_reset">
             <h1>メールアドレス変更</h1>
+            <div class="code_return"
             <p>${successMessage}</p>
+            </div>
+            <div class="error">
             <p>${errorMessage}</p>
+            </div>
             
             <form action="AddressCodeVerify.action" method="post">
                 <input type="hidden" name="kind" value="${account.account_kind }">
-                <p>確認コード:</p>
+                <p>確認コード</p>
                 <input type="text" name="verification_code" required="required">
                 <br>
+                <div class="return_link">
                 <a href="AddressResend.action">確認コードを再送信</a><br>
+                </div>
                 <button type="submit">送信</button>
             </form>
             <br><br>

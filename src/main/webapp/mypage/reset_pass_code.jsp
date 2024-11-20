@@ -1,5 +1,6 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
 <%@ include file="../header.jsp"%>
+<link rel="stylesheet" type="text/css" href="../css/mypage.css">
 
 <head>
 <meta charset="UTF-8">
@@ -9,16 +10,26 @@
     <div class="main_content">
         <div class="pass_reset">
             <h1>パスワード変更</h1>
+            <div class="send_messe">
             <p>${successMessage}</p>
+            </div>
+            <div class="error">
             <p>${errorMessage}</p>
+            </div>
             
             <form action="PasswordCodeVerify.action" method="post">
+                <div class="box4">
                 <input type="hidden" name="kind" value="${account.account_kind }">
+                <div class="input_messe">
                 <p>確認コードを入力してください</p>
-                <p>確認コード:</p>
+                </div>
                 <input type="text" name="verification_code" required="required">
                 <br>
+                <div class="code_return">
                 <a href="PasswordResend.action">確認コードを再送信</a><br>
+                </div>
+                </div>               
+                
                 <button type="submit">送信</button>
             </form>
             <br><br>

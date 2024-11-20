@@ -8,8 +8,6 @@
  
   	<div class="support_top">
 	 <h2>サポート</h2>
-	 <img src="../images/main_image.png" class="main_image">
-	 <section>
 	</div>
   <div class="support_top_icon">
 	 <!-- タイマーリンク -->

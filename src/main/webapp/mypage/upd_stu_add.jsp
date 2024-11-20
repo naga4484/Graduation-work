@@ -1,5 +1,6 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
 <%@ include file="../header.jsp"%>
+<link rel="stylesheet" type="text/css" href="../css/mypage.css">
 
 <head>
 <title>メールアドレス変更</title>
@@ -8,23 +9,26 @@
 <body>
 	<div class="main_content">
 		<div class="update_add">
+
 			<h1>メールアドレス変更</h1>
 				<form action="StudentAddressUpdate.action"method="post">
 					<input type="hidden" name="student_id"id="student_id"value="${account.student_id }">
-					
-					<p>${errorMessage }</p>
-					<label>新しいメールアドレスを入力</label>
+					<div class="box1">
+				<div class="error">
+				<p>${errorMessage }</p>
+				</div>	
+					<label>新しいメールアドレスを入力</label><br>
 					<input type="email" name="new_address"required="required">
 					<br><br>
-					<label>新しいメールアドレスを確認</label>
+					<label>新しいメールアドレスを確認</label><br>
 					<input type="email" name="confirm_address"required="required">
-					<br><br>
-					
+				    </div>
 					<button type="submit">変更</button>
 				</form>
 		</div>
-	
-	<a href="change_top.jsp">戻る</a>
+	<div class="back_button">
+	<a href="change_top.jsp"><img src="../images/戻るボタン1.png" class="support_back_icon"></a>
+	</div>
 	</div>
 
 </body>

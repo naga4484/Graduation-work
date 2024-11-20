@@ -1,5 +1,7 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
 <%@ include file="../header.jsp"%>
+<link rel="stylesheet" type="text/css" href="../css/mypage.css">
+
 <!-- 確認コードのチェックを終えた後のパスワード変更画面 -->
 <!-- また、既存のパスワードがあっている際のパスワード入力画面 -->
 <head>
@@ -14,21 +16,24 @@
             <form action="TeacherPasswordUpdate.action" method="post">
                 <input type="hidden" name="teacher_id" value="${account.teacher_id}">
                 <input type="hidden" name="password" value="${account.password}">
-                
+                <div class="error">
                 <p>${errorMessage}</p>
+                </div>
                 <!-- 古いパスワードを保持 -->
+                <div class="box3">
+                
                 <input type="hidden" name="old_password" value="${account.password }">
                 
-                <br><br>
                 
-                <label>新しいパスワード</label>
+                
+                <label>新しいパスワード</label><br>
                 <input type="password" name="new_password" required="required">
                 
                 <br><br>
                 
                 <label>新しいパスワードを確認</label>
                 <input type="password" name="confirm_password" required="required">
-                
+                </div>
                 <br><br>
                 
                 <button type="submit">変更</button>
