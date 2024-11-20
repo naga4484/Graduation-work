@@ -282,12 +282,24 @@ public class AccountDAO extends DAO {
         return isValid;
     }
 
-    // パスワードの更新
+    // パスワードの更新(メールアドレスを参照)
     public void update_password(String email, String newPassword) throws Exception {
         Connection con = getConnection();
         PreparedStatement st = con.prepareStatement("UPDATE Student_account SET password = ? WHERE address = ?");
         st.setString(1, newPassword);
         st.setString(2, email);
+        st.executeUpdate();
+
+        st.close();
+        con.close();
+    }
+    
+    // パスワードの更新(教師)
+    public void update_password_stu(String student_id, String newPassword) throws Exception {
+        Connection con = getConnection();
+        PreparedStatement st = con.prepareStatement("UPDATE Student_account SET password = ? WHERE student_id = ?");
+        st.setString(1, newPassword);
+        st.setString(2, student_id);
         st.executeUpdate();
 
         st.close();

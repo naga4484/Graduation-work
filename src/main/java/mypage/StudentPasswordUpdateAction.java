@@ -14,7 +14,6 @@ public class StudentPasswordUpdateAction extends Action {
     	String oldPassword = request.getParameter("old_password");
         String newPassword = request.getParameter("new_password");
         String confirmPassword = request.getParameter("confirm_password");
-        String email = (String) request.getSession().getAttribute("email");
         String studentId=request.getParameter("student_id");
 
         // パスワードのバリデーション: 既存のパスワード確認 > 形式の確認 > 確認パスワードの一致
@@ -31,7 +30,7 @@ public class StudentPasswordUpdateAction extends Action {
 
         // パスワード更新処理
         AccountDAO dao = new AccountDAO();
-        dao.update_password(email, newPassword);
+        dao.update_password_stu(studentId, newPassword);
 //        学生のパスワード更新処理はパスワードリセット機能を流用したためaddressを参照してます
         
         request.setAttribute("successMessage", "パスワードが更新されました。");
