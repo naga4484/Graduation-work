@@ -1,7 +1,6 @@
 
-
 /*学生検索フォームのcss*/
-
+.class_submission_search,
 .student_search,
 .submission_registration {
 	border: 1px solid #ccc; /* 枠線 */
@@ -12,46 +11,59 @@
    
 }
 
-.student_search h2,
-.submission_registration h2{
+h2{
 	padding: 0.2em 0.4em;
     border-left: 5px solid #00000b;
     color: #333333;
 	
 }
 
-
-.class_submission_search label,
-.student_search label,
-.submission_registration label{
+label{
 	font-weight: bold; 
 	display: block;
 	margin-bottom: 5px;
 }
 
-.student_search input[type="text"],
-.submission_registration input[type="text"]{
+
+input[type="text"]{
 	padding: 10px; /* 内側の余白を10pxに設定 */
     margin-bottom: 20px; /* 下部の余白を20pxに設定 */
     border: 1px solid #ccc; /* 枠線を薄い灰色に設定 */
     border-radius: 4px; /* 枠線の角を丸く設定 */
     width: 90%;
+    max-width: 150px; /* 最大幅を制限 */
+    min-width: 60px; /* 最小幅を制限 */
 }
 
-.student_search input[type="submit"],
-.submission_registration input[type="submit"]{
+
+input[type="number"]{
+padding: 10px; /* 内側の余白を10pxに設定 */
+    margin-bottom: 20px; /* 下部の余白を20pxに設定 */
+    border: 1px solid #ccc; /* 枠線を薄い灰色に設定 */
+    border-radius: 4px; /* 枠線の角を丸く設定 */
+    width: 90%;
+    max-width: 50px; /* 最大幅を制限 */
+    min-width: 40px; /* 最小幅を制限 */
+}
+
+
+button[type="button"],
+button[type="submit"],
+input[type="submit"]{
 	padding: 5px; /* 内側の余白を10pxに設定 */
     background-color: deepskyblue; /* 背景色を緑色に設定 */
     color: #fff; /* テキストの色を白に設定 */
     border-radius: 4px; /* 枠線の角を丸く設定 */
+    max-width: 80px; /* 最大幅を制限 */
+    min-width: 60px; /* 最小幅を制限 */
     cursor: pointer; /* カーソルをポインタに設定 */
     width: 25%;
-    border: 1px solid white;
+    border: 0.1px solid black;
     margin: 0 auto;
 }
 
 /*selectボックスのcss*/
-.main_contents select{
+select{
 /*	appearance: none;*/
 	margin-bottom: 1em; /* 下に1emの隙間 */
     min-width: 230px;
@@ -61,10 +73,12 @@
     border-radius: 3px;
     background-color: #fff;
     color: black;
+    max-width: 150px; /* 最大幅を制限 */
+    min-width: 50px; /* 最小幅を制限 */
     font-size: 1em;
     cursor: pointer;
 }
-
+/*スクロールのテーブルをしようする際*/
 .teacher_table {
 	margin: 30px;
   height: calc(190vh / 2 ); /* スクロール用の高さ */
@@ -88,6 +102,7 @@ input[type="checkbox"] {
   transform :scale(1.5);/*  文字サイズ*/
 }
 
+
 .table th, .table td {
   height: 100px;
   vertical-align: middle;
@@ -101,3 +116,76 @@ input[type="checkbox"] {
   color: #fff;
   background: #333;
 }
+
+/*subjecttableのスクロールする右置きにならないtableの作成*/
+
+.subject_table {
+	height: calc(120vh / 2 ); /* スクロール用の高さ */
+  overflow-y: scroll; /* スクロールを有効に */
+  border: 1px solid #ccc;
+  width:50%;
+}
+.subject_table table {
+  width: 100%; /* テーブルの幅を100%に */
+  border-collapse: collapse;
+  text-align: center;
+}
+
+
+/*success画面のcss*/
+
+.successPage body {
+	font-family: 'Arial', sans-serif;
+    background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+.successPage {
+	text-align: center;
+    padding: 50px;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 10px;
+    box-shadow: 0px 10px 15px rgba(0, 0, 0, 0.1);
+    max-width: 600px;
+    margin: 50px auto;
+}
+.successPage h1 {
+    font-size: 2.5em;
+    color: dodgerblue;
+    margin-bottom: 20px;
+}
+
+.successPage p {
+    font-size: 1.2em;
+    color: #555;
+    margin-bottom: 30px;
+}
+
+.successPage button {
+    background-color: blue;
+    color: white;
+    border: none;
+    padding: 15px 30px;
+    font-size: 1em;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.successPage button:hover {
+    background-color: lightskyblue;
+}
+
+.successPage button a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+/*テンプレート作成画面のpタグcss*/
+
+.detail-settings p{
+	
+}
+

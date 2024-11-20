@@ -2,14 +2,16 @@
 <%@include file="../header.jsp"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
+<link rel="stylesheet" type="text/css"href="../css/teacher_function.css">
 <title>一括設定送信</title>
 <div>
-  <!-- 左側の要素 -->
-  <div class="item" onclick="showSettings(1)">未設定 1</div>
-  <div class="item" onclick="showSettings(2)">未設定 2</div>
-  <div class="item" onclick="showSettings(3)">未設定 3</div>
-  <div class="item" onclick="showSettings(4)">未設定 4</div>
+<!-- 左側の要素 -->
+  <div class="item" id="itemLabel1" onclick="showSettings(1)">未設定 1</div>
+  <div class="item" id="itemLabel2" onclick="showSettings(2)">未設定 2</div>
+  <div class="item" id="itemLabel3" onclick="showSettings(3)">未設定 3</div>
+  <div class="item" id="itemLabel4" onclick="showSettings(4)">未設定 4</div>
 </div>
+
 
 <!-- 詳細設定エリア -->
 <div id="settingsArea" class="detail-settings">
@@ -82,6 +84,12 @@ function saveSettings() {
 
   // 各アイテムの隠しフィールドに設定を反映
   document.getElementById(`item` + currentItem + `Name`).value = subjectName;
+
+//アイテムラベルを更新
+  const itemLabel = document.getElementById(`itemLabel` + currentItem);
+  if (itemLabel) {
+    itemLabel.textContent = subjectName || `未設定 ${currentItem}`;
+  }
 }
 </script>
 

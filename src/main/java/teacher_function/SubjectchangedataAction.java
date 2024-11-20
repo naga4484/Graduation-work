@@ -48,7 +48,7 @@ public class SubjectchangedataAction extends Action {
 					total_unit_num = "0";
 				}
 				int total_unit=Integer.parseInt(total_unit_num);
-				String subject_color=request.getParameter("subject_color");
+				String subject_color=request.getParameter(id+"_subject_color");
 				
 				
 				line = dao.change_subject(id, subject_name, total_unit,subject_color);

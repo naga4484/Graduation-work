@@ -39,7 +39,15 @@ public class SubjectregistrationAction extends Action {
 
 			SubjectDAO dao=new SubjectDAO();
 			int line=dao.subject_registration(subject_id ,class_id, subject_name,total_unit,subject_color);
-			
+			// 入力の検証ロジック
+			if (subject_id.length() > 5) {
+			    request.setAttribute("errorMessage", "科目IDは5文字以下で入力してください。");
+			    return "subject_registration.jsp"; // エラーページを返す、または同じページに戻る
+			}
+			if (subject_name.length() > 30) {
+			    request.setAttribute("errorMessage", "科目名は30文字以下で入力してください。");
+			    return "subject_registration.jsp"; // 入力ページに戻る
+			}
 			if(line>0) {
 				return "Subjectlisttop.action";
 			}

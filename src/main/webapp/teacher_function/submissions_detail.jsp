@@ -2,6 +2,8 @@
 <%@include file="../header.jsp"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
+<link rel="stylesheet" type="text/css"href="../css/teacher_function.css">
+
 
 <title>提出物詳細画面</title>
 
@@ -21,7 +23,7 @@
 			<p>${distinct_error}</p>
 		</c:if>
 		<label>提出物名</label>
-		<input type="text" name="submission_name" placeholder="提出物名を入力してください" required="required" value="${distinctsubmissions_id.name}">
+		<input type="text" name="submission_name" placeholder="提出物名を入力してください" maxlength="30"required="required" value="${distinctsubmissions_id.name}">
 		
 		<label>科目</label>
 	    <select name="subject_id">

@@ -39,7 +39,7 @@
                     <p>${complete_mes}</p>
                 </c:if>
                 <label for="submission_name">提出物名</label>
-                <input type="text" id="submission_name" name="submission_name" placeholder="提出物名を入力してください" required>
+                <input type="text" id="submission_name"maxlength="30" name="submission_name" placeholder="提出物名を入力してください" required>
                 
                 <label for="subject_id">科目</label>
                 <select id="subject_id" name="subject_id">
