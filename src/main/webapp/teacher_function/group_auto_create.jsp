@@ -24,6 +24,9 @@
 <c:if test="${st_list.size() > 0}">
 	<form action="Group_auto_create.action">
 		<div>
+			<c:if test="${num_error != null}">
+				<p>${num_error}</p>
+			</c:if>
 			<label>1グループの人数</label>
 			<select name="group_member_num" id="group_member_num">
 				<c:forEach var="i" begin="1" end="${st_list.size() / 2 + 1}" step="1">
@@ -36,6 +39,7 @@
 			<input type="radio" name="reader_flag" id="no_flag" value="off" checked>
 			<div id="reader_content">
 			</div>
+			<br>
 			<input type="submit" value="生成">
 		</div>
 		<div id="group_member_table">
@@ -55,7 +59,9 @@
 	</form>
 </c:if>
 
-<a href="../common/top.jsp">TOP</a>
+<div class="common_back_button">
+  <a href="../teacher_function/teacher_function.jsp"><img src="../images/戻るボタン1.png" class="teacher_back_icon"></a>
+</div>
 
 <!-- sessionの情報をつかう為にここにjsを記入 -->
 <script>
@@ -67,19 +73,21 @@
 	reader_content_style.display = "none";
 	let group_style = group.style;
 	let select_reader = document.getElementById('group_member_num');
-	let select_reader_value=select_reader.value
+	let select_reader_value=select_reader.value;
+	let num;
+	let list_num = ${st_list.size()};
+	
 	select_reader.addEventListener('change', function() {
 		select_reader_value = select_reader.value
-		console.log("selectからの変更：" + select_reader_value)
+		num = Math.ceil(list_num / select_reader_value);
+		reader_content.innerHTML = `<p>リーダーの人数：` + num + `</p>`
 	});
 
 	reader_radio_on.onchange = function(e){
 		reader_content_style.display = "block";
 		select_reader_value = select_reader.value
-		console.log("radioからの変更：" + select_reader_value)
-		reader_content.innerHTML = `	
-			<p>リーダーの人数：` + select_reader_value + `</p>
-		`
+		num = Math.ceil(list_num / select_reader_value);
+		reader_content.innerHTML = `<p>リーダーの人数：` + num + `</p>`
 		group.innerHTML = `
 			<table>
 			<tr>

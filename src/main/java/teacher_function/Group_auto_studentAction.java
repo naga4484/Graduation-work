@@ -15,6 +15,7 @@ public class Group_auto_studentAction extends Action {
 		) throws Exception {
 
 			HttpSession session=request.getSession();
+			session.removeAttribute("reader_flag");
 
 			String class_id=request.getParameter("class_id");
 			

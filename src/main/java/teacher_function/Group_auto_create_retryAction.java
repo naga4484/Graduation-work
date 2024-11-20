@@ -11,7 +11,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import tool.Action;
 
-public class Group_auto_createAction extends Action {
+public class Group_auto_create_retryAction extends Action {
 	public String execute(
 			HttpServletRequest request, HttpServletResponse response
 		) throws Exception {
@@ -20,18 +20,14 @@ public class Group_auto_createAction extends Action {
 			session.removeAttribute("reader_flag");
 
 			Random rand = new Random();
-			int member_num = Integer.parseInt(request.getParameter("group_member_num"));
-			String flag = request.getParameter("reader_flag");
-			List<Studentaccount> st_list = (List<Studentaccount>)session.getAttribute("st_list");
+			int member_num = (int)session.getAttribute("member_num");
+			String flag = (String)session.getAttribute("flag");
+			List<Studentaccount> st_list = (List<Studentaccount>)session.getAttribute("copy_st_list");
 			List<Studentaccount> copy_st_list = new ArrayList<>(st_list);
 			session.setAttribute("copy_st_list", copy_st_list);
 			
 			//グループ数の計算
-			int group_num = (int)Math.ceil(st_list.size()/(double)member_num);
-			
-			session.setAttribute("member_num", member_num);
-			session.setAttribute("flag", flag);
-			session.setAttribute("group_num", group_num);
+			int group_num = (int)session.getAttribute("group_num");
 			
 			HashMap<String, ArrayList<Studentaccount>> group_list = new HashMap<>();
 			//リーダーを設定しない場合
@@ -52,31 +48,14 @@ public class Group_auto_createAction extends Action {
 			}
 			//リーダーを設定する場合
 			else if(flag.equals("on") == true) {
-				List<Studentaccount> reader_list = new ArrayList<>();
-				List<Studentaccount> member_list = new ArrayList<>();
-				member_num -= 1;
-				
-				//指定したリーダーメンバーの取得(チームメンバーも別途取得)
-				for(int i = 0;i < st_list.size();i++) {
-					String reader_flag=request.getParameter("reader_" + i);
-					if(reader_flag != null) {
-						if(reader_flag.equals("リーダー")==true) {
-							reader_list.add(st_list.get(i));
-						}
-					}else {
-						member_list.add(st_list.get(i));
-					}
-				}
-				
-				//リーダーメンバーの人数とグループ数が一致するか判定
-				if(group_num != reader_list.size()) {
-					request.setAttribute("num_error", "リーダーの人数とグループ数が一致しません");
-					return "group_auto_create.jsp";
-				}
+				List<Studentaccount> reader_list = (List<Studentaccount>)session.getAttribute("copy_reader_list");
+				List<Studentaccount> member_list = (List<Studentaccount>)session.getAttribute("copy_member_list");
 				List<Studentaccount> copy_reader_list = new ArrayList<>(reader_list);
 				List<Studentaccount> copy_member_list = new ArrayList<>(member_list);
 				session.setAttribute("copy_reader_list", copy_reader_list);
 				session.setAttribute("copy_member_list", copy_member_list);
+				member_num -= 1;
+				
 				
 				//グループの振り分け
 				for(int i = 0;i < group_num;i++) {
@@ -96,8 +75,8 @@ public class Group_auto_createAction extends Action {
 				}
 				session.setAttribute("reader_flag", "リーダーを設定しています");
 			}
-
-			session.removeAttribute("st_list");
+			
+			request.setAttribute("retry_mes", "再抽選しました");
 			session.setAttribute("group_num", group_num);
 			session.setAttribute("group_list", group_list);
 			return "group_construction.jsp";
