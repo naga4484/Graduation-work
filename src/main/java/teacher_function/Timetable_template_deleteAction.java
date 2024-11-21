@@ -13,11 +13,11 @@ public class Timetable_template_deleteAction extends Action {
 
 			HttpSession session=request.getSession();
 			
-			String template_id=request.getParameter("template_id");
+			String template_name=request.getParameter("template_name");
 			TimetableDAO dao = new TimetableDAO();
-			int line = dao.timetable_template_delete(template_id);
+			int line = dao.timetable_template_delete(template_name);
 			
-			request.setAttribute("delete_mes", "テンプレートID「" + template_id + "」の削除が完了しました");
+			request.setAttribute("delete_mes", "テンプレートID「" + template_name + "」の削除が完了しました");
 			return "Timetable_template_set.action";
 		}
 	}

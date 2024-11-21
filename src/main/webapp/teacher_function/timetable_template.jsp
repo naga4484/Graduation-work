@@ -27,7 +27,7 @@
     
     <!-- テンプレート名（全要素共通） -->
     <label for="templateName">テンプレート名</label>
-    <input type="text" id="templateName" name="templateName" placeholder="テンプレート名を入力">
+    <input type="text" id="templateName" name="templateName" placeholder="テンプレート名を入力" required>
 
     <label for="subjectName">科目名</label>
     <select name="subjectName" id="subjectName">
@@ -93,5 +93,7 @@ function saveSettings() {
 }
 </script>
 
-<a href="../common/top.jsp">TOP</a>
+<div class="common_back_button">
+  <a href="../teacher_function/timetable_template_list.jsp"><img src="../images/戻るボタン1.png" class="teacher_back_icon"></a>
+</div>
 <%@include file="../footer.jsp"  %>

@@ -17,12 +17,13 @@ public class Timetable_template_updateAction extends Action {
 
 			HttpSession session=request.getSession();
 			
-			String template_id=request.getParameter("template_id");
+			String template_name=request.getParameter("template_name");
 			TimetableDAO dao = new TimetableDAO();
 			Teacheraccount account = (Teacheraccount)session.getAttribute("account");
-			List<Timetable_template> timetablelist = dao.timetable_template_id(template_id);
+			List<Timetable_template> timetablelist = dao.timetable_template_name(template_name);
 			
 			session.setAttribute("timetable_edit", timetablelist);
+			session.setAttribute("template_name", template_name);
 			return "timetable_template_edit.jsp";
 		}
 	}

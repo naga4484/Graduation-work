@@ -12,18 +12,19 @@
 <c:if test="${retry_mes != null}">
 	<p>${retry_mes}</p>
 </c:if>
+<a href="Group_auto_create_retry.action" class="group_retry_button">再抽選</a>
+<a href="Group_excel_dl.action" class="group_retry_button">Excelファイルでダウンロードする(未完成[壊れたファイルがDLされる])</a>
 <div>
 	<c:forEach var="entry" items="${group_list}" varStatus="count">
 		<div class="group_create">
-			<p>グループ${count.index + 1}</p>
+			<h1 class="group_create_title">グループ${count.index + 1}</h1>
 			<c:forEach var="item" items="${entry.value}" varStatus="reader">
-				<p>${item.name}</p>
+				<p class="group_create_member">${item.name}</p>
 			</c:forEach>
 		</div>
 	</c:forEach>
 </div>
 
-<a href="Group_auto_create_retry.action">再抽選</a>
 
 <div class="common_back_button">
   <a href="../teacher_function/group_auto_create.jsp"><img src="../images/戻るボタン1.png" class="teacher_back_icon"></a>

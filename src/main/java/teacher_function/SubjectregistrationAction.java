@@ -3,6 +3,7 @@ package teacher_function;
 import java.util.List;
 
 import bean.Subject;
+import bean.Teacheraccount;
 import dao.SubjectDAO;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -49,6 +50,9 @@ public class SubjectregistrationAction extends Action {
 			    return "subject_registration.jsp"; // 入力ページに戻る
 			}
 			if(line>0) {
+				Teacheraccount account = (Teacheraccount) session.getAttribute("account");
+				List<Subject> class_subject = dao.getclasssubject(account.getClass_id());
+				session.setAttribute("class_subject", class_subject);
 				return "Subjectlisttop.action";
 			}
 			

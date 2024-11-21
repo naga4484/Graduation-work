@@ -38,7 +38,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <c:forEach var="item" items="${subject_list}">
+                    <c:forEach var="item" items="${class_subject}">
                         <tr>
                             <td id="subject_id">${item.subject_id}</td>
                             <td>

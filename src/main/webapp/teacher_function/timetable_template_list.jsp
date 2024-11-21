@@ -10,22 +10,33 @@
 
 <a href="../teacher_function/timetable_template.jsp">テンプレート新規作成</a>
 
-<table>
-	<tr>
-		<th>テンプレートID</th>
-		<th>テンプレート名</th>
-		<th></th>
-		<th></th>
-	</tr>
-	<c:forEach var="item_timetable" items="${timetablelist}">
-		<tr>
-			<td>${item_timetable.template_id}</td>
-			<td>${item_timetable.template_name}</td>
-			<td><a href="Timetable_template_update.action?template_id=${item_timetable.template_id}">編集のリンク</a></td>
-			<td><a href="Timetable_template_delete.action?template_id=${item_timetable.template_id}">削除のリンク</a></td>
-		</tr>
-	</c:forEach>
-</table>
+<c:if test="${delete_mes != null}">
+	<p>${delete_mes}</p>
+</c:if>
+<c:choose>
+	<c:when test="${timetablelist.size() > 0}">
+		<table>
+			<tr>
+				<th>テンプレート名</th>
+				<th></th>
+				<th></th>
+			</tr>
+			
+			<c:forEach var="item_timetable" items="${timetablelist}">
+				<tr>
+					<td>${item_timetable.template_name}</td>
+					<td><a href="Timetable_template_update.action?template_name=${item_timetable.template_name}">編集のリンク</a></td>
+					<td><a href="Timetable_template_delete.action?template_name=${item_timetable.template_name}">削除のリンク</a></td>
+				</tr>
+			</c:forEach>
+		</table>
+	</c:when>
+	<c:otherwise>
+		<p>テンプレートは作成されていません</p>
+	</c:otherwise>
+</c:choose>
 
-<a href="../common/top.jsp">TOP</a>
+<div class="common_back_button">
+  <a href="../teacher_function/teacher_function.jsp"><img src="../images/戻るボタン1.png" class="teacher_back_icon"></a>
+</div>
 <%@include file="../footer.jsp"  %>

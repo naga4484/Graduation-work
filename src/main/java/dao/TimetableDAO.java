@@ -222,19 +222,31 @@ public class TimetableDAO extends DAO {
 		con.close();
 		return line;
 	}
-	
-	
-	//ここからは、時間割テンプレートの機能のDAO
-	public int timetable_template_registration(String timetable_id,String timetable_name,String subject_id,String timetable_hour,String teacher_id) throws Exception {
+	//科目削除用
+	public int timetable_update(String subject_id) throws Exception {
 		Connection con=getConnection();
 
 		PreparedStatement st=con.prepareStatement(
-			"insert into Timetable_template values(?,?,?,?,?)");
-		st.setString(1, timetable_id);
-		st.setString(2, subject_id);
-        st.setString(3, timetable_hour);
-        st.setString(4, teacher_id);
-        st.setString(5, timetable_name);
+			"update Timetable set subject_id=? where subject_id=?");
+		st.setString(1, null);
+        st.setString(2, subject_id);
+		int line=st.executeUpdate();
+
+		st.close();
+		con.close();
+		return line;
+	}
+	
+	//ここからは、時間割テンプレートの機能のDAO
+	public int timetable_template_registration(String timetable_name,String subject_id,String timetable_hour,String teacher_id) throws Exception {
+		Connection con=getConnection();
+
+		PreparedStatement st=con.prepareStatement(
+			"insert into Timetable_template(subject_id,timetable_hour,teacher_id,template_name) values(?,?,?,?)");
+		st.setString(1, subject_id);
+        st.setString(2, timetable_hour);
+        st.setString(3, teacher_id);
+        st.setString(4, timetable_name);
 		int line=st.executeUpdate();
 
 		st.close();
@@ -269,16 +281,16 @@ public class TimetableDAO extends DAO {
         
         return timetableList;
 	}
-	//時間割テンプレートの一覧の取得(重複削除)
-	public List<Timetable_template> distinct_timetable_template(String teacher_id) 
+	//時間割テンプレートの一覧の取得(重複削除+名前検索)
+	public List<Timetable_template> distinct_timetable_template_name(String template_name) 
 	throws Exception {
 		List<Timetable_template> timetableList = new ArrayList<>(); 
 		Timetable_template timetable;
 
         Connection con = getConnection();
 
-        PreparedStatement st = con.prepareStatement("select distinct template_id,template_name from Timetable_template where teacher_id=?");
-        st.setString(1, teacher_id);
+        PreparedStatement st = con.prepareStatement("select distinct template_id,template_name from Timetable_template where template_name=?");
+        st.setString(1, template_name);
         ResultSet rs = st.executeQuery();
 
         while (rs.next()) {
@@ -294,16 +306,40 @@ public class TimetableDAO extends DAO {
         
         return timetableList;
 	}
-	//時間割テンプレートの一覧の取得(ID検索)
-	public List<Timetable_template> timetable_template_id(String template_id) 
+	//時間割テンプレートの一覧の取得(重複削除+教師ID検索)
+	public List<Timetable_template> distinct_timetable_template(String teacher_id) 
 	throws Exception {
 		List<Timetable_template> timetableList = new ArrayList<>(); 
 		Timetable_template timetable;
 
         Connection con = getConnection();
 
-        PreparedStatement st = con.prepareStatement("select * from Timetable_template where template_id=?");
-        st.setString(1, template_id);
+        PreparedStatement st = con.prepareStatement("select distinct template_name from Timetable_template where teacher_id=?");
+        st.setString(1, teacher_id);
+        ResultSet rs = st.executeQuery();
+
+        while (rs.next()) {
+        	timetable = new Timetable_template();
+        	timetable.setTemplate_name(rs.getString("template_name"));
+        	timetableList.add(timetable); 
+        }
+
+        rs.close(); 
+        st.close();
+        con.close(); 
+        
+        return timetableList;
+	}
+	//時間割テンプレートの一覧の取得(名前検索)
+	public List<Timetable_template> timetable_template_name(String template_name) 
+	throws Exception {
+		List<Timetable_template> timetableList = new ArrayList<>(); 
+		Timetable_template timetable;
+
+        Connection con = getConnection();
+
+        PreparedStatement st = con.prepareStatement("select * from Timetable_template where template_name=?");
+        st.setString(1, template_name);
         ResultSet rs = st.executeQuery();
 
         while (rs.next()) {
@@ -323,12 +359,12 @@ public class TimetableDAO extends DAO {
         return timetableList;
 	}
 	//時間割テンプレート削除用
-	public int timetable_template_delete(String template_id) throws Exception {
+	public int timetable_template_delete(String template_name) throws Exception {
 		Connection con=getConnection();
 
 		PreparedStatement st=con.prepareStatement(
-			"delete from Timetable_template where template_id = ?");
-		st.setString(1, template_id);
+			"delete from Timetable_template where template_name = ?");
+		st.setString(1, template_name);
 		int line=st.executeUpdate();
 
 		st.close();
@@ -336,19 +372,33 @@ public class TimetableDAO extends DAO {
 		return line;
 	}
 	//時間割テンプレート更新用
-		public int timetable_template_update(String template_id,String template_name,String subject_id,String timetable_hour) throws Exception {
-			Connection con=getConnection();
+	public int timetable_template_update(String befname,String template_name,String subject_id,String timetable_hour) throws Exception {
+		Connection con=getConnection();
 
-			PreparedStatement st=con.prepareStatement(
-				"update Timetable_template set template_name=?,subject_id=? where template_id=? and timetable_hour=?");
-			st.setString(1, template_name);
-			st.setString(2, subject_id);
-			st.setString(3, template_id);
-			st.setString(4, timetable_hour);
-			int line=st.executeUpdate();
+		PreparedStatement st=con.prepareStatement(
+			"update Timetable_template set template_name=?,subject_id=? where template_name=? and timetable_hour=?");
+		st.setString(1, template_name);
+		st.setString(2, subject_id);
+		st.setString(3, befname);
+		st.setString(4, timetable_hour);
+		int line=st.executeUpdate();
 
-			st.close();
-			con.close();
-			return line;
-		}
+		st.close();
+		con.close();
+		return line;
+	}
+	//時間割テンプレート更新用(科目削除時)
+	public int timetable_template_update(String subject_id) throws Exception {
+		Connection con=getConnection();
+
+		PreparedStatement st=con.prepareStatement(
+			"update Timetable_template set subject_id=? where subject_id=?");
+		st.setString(1, null);
+		st.setString(2, subject_id);
+		int line=st.executeUpdate();
+
+		st.close();
+		con.close();
+		return line;
+	}
 }

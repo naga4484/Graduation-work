@@ -22,8 +22,11 @@ public class Timetable_templateAction extends Action {
 			String templateName = request.getParameter("templateName");
 			TimetableDAO dao = new TimetableDAO();
 			Teacheraccount account = (Teacheraccount)session.getAttribute("account");
-			List<Timetable_template> timetablelist = dao.distinct_timetable_template(account.getTeacher_id());
-			String id_num = Integer.toString(timetablelist.size() + 1);
+			List<Timetable_template> timetablelist = dao.distinct_timetable_template_name(templateName);
+			if(timetablelist.size() > 0) {
+				request.setAttribute("dis_mes", "テンプレート名が重複しています");
+				return "timetable_template.jsp";
+			}
 			int line = 0;
 			
 			Map<Integer, String> itemSettings = new HashMap<>();
@@ -31,9 +34,9 @@ public class Timetable_templateAction extends Action {
 	            String subjectName = request.getParameter("itemSettings[" + i + "][name]");
 	            if (subjectName != null && !subjectName.isEmpty()) {
 	                itemSettings.put(i, subjectName);
-	                line = dao.timetable_template_registration(id_num, templateName,subjectName, Integer.toString(i),account.getTeacher_id());
+	                line = dao.timetable_template_registration(templateName,subjectName, Integer.toString(i),account.getTeacher_id());
 	            }else{
-	            	line = dao.timetable_template_registration(id_num, templateName,null, Integer.toString(i),account.getTeacher_id());
+	            	line = dao.timetable_template_registration(templateName,null, Integer.toString(i),account.getTeacher_id());
 	            }
 	        }
 			return "Timetable_template_set.action";
