@@ -32,7 +32,7 @@
 			<p class="top_links_contents_title3">グループ</p>
 		</div>
 		<div class="top_links_contents">	
-			<a href=""><img src="../images/アンケートアイコン.png" class="my_management_top_icon"></a> <!-- アンケート管理 -->
+			<a href="../questionnaire/QuestionnaireList.action"><img src="../images/アンケートアイコン.png" class="my_management_top_icon"></a> <!-- アンケート管理 -->
 			<p class="top_links_contents_title4">アンケート</p>
 		</div>	
 		<div class="top_links_contents">	
