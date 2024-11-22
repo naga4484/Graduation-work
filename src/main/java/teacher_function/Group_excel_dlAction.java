@@ -27,19 +27,26 @@ public class Group_excel_dlAction extends Action {
         HttpSession session = request.getSession();
         session.removeAttribute("reader_flag");
 
-        int member_num = (int) session.getAttribute("member_num");
-        String flag = (String) session.getAttribute("flag");
         HashMap<String, ArrayList<Studentaccount>> group_list =(HashMap<String, ArrayList<Studentaccount>>) session.getAttribute("group_list");
-        // グループ数の計算
-        int group_num = (int) session.getAttribute("group_num");
+        
+     // 日付をファイル名に付け加える
+        Date date = new Date();
+        String sdf = new SimpleDateFormat("yyyy'年'MM'月'dd'日'").format(date);
 
         // Excelファイル関連の処理
         Workbook outputWorkbook = new XSSFWorkbook();
 
         // シートを作成
         Sheet outputSheet = outputWorkbook.createSheet("group_data");
+        
+        Row opRow = outputSheet.createRow(0);
+        Cell outputCell_sdf= opRow.createCell(0);
+        outputCell_sdf.setCellValue("日付");
+        outputCell_sdf= opRow.createCell(1);
+        outputCell_sdf.setCellValue(sdf);
+        
 
-        int count = 0;
+        int count = 1;
 
         // グループ毎に振り分け
         for (Map.Entry<String, ArrayList<Studentaccount>> entry : group_list.entrySet()) {
@@ -62,9 +69,6 @@ public class Group_excel_dlAction extends Action {
             count++;
         }
 
-        // 日付をファイル名に付け加える
-        Date date = new Date();
-        String sdf = new SimpleDateFormat("yyyy'年'MM'月'dd'日'").format(date);
         String fileName = "Group_" + sdf + ".xlsx";
 
         //レスポンスのコンテンツタイプを設定

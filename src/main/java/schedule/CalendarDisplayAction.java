@@ -40,20 +40,47 @@ public class CalendarDisplayAction  extends Action {
         // 天気情報を取得する処理
         String todayTemperature = "情報取得エラー";
         List<String> todayTemperatureData = new ArrayList<>();
-
+        List<String> tempdays_list = new ArrayList<>();
+        
         try {
-            // MSN天気情報から気温データを取得
-            Document doc = Jsoup.connect("https://www.msn.com/ja-jp/weather/forecast/").get();
+            // Yahoo!の天気サイトから7日分のデータを取得
+            Document doc = Jsoup.connect("https://weather.yahoo.co.jp/weather/jp/33/?day=1").get();
             Element elm = doc.body();
-            Elements temperatures = elm.getElementsByClass("summaryLineGroupCompact-E1_1");
-
-            for (Element temperature : temperatures) {
-                todayTemperature = temperature.text();
+            Elements tempdays = elm.select("[id=navCal]");
+            for(Element el:tempdays) {
+            	Elements ert = el.select("em");
+            	tempdays_list = Arrays.asList(ert.text().split(" "));
             }
+            String searchdate = selectedDate.substring(8,10);
+            int searchnum = tempdays_list.indexOf(searchdate);
+            
+            if(searchnum != -1) {
+            	searchnum = searchnum + 1;
+            	String link = "https://weather.yahoo.co.jp/weather/jp/33/?day=" + searchnum;
+            	Document docin = Jsoup.connect(link).get();
+                Element elmin = docin.body();
+                Elements temperatures = elmin.getElementsByClass("point pt6610");
+                
+                for(Element el:temperatures) {
+                	// 地名を取得
+                    String name = el.select("dt.name").text().trim();
 
-            todayTemperatureData = new ArrayList<>(Arrays.asList(todayTemperature.split(" ")));
-            todayTemperatureData.add(0, "現在の気温");
-            todayTemperatureData.add(2, "現在の天気");
+                    // 最高気温、最低気温を取得
+                    String highTemp = el.select("em.high").text();
+                    String lowTemp = el.select("em.low").text();
+
+                    // 天気予報アイコンの alt 属性（天気の説明）を取得
+                    String weather = el.select("p.icon img").attr("alt");
+                    
+                    todayTemperatureData.add(name);
+                    todayTemperatureData.add(weather);
+                    todayTemperatureData.add(highTemp + "℃");
+                    todayTemperatureData.add(lowTemp + "℃");
+                }
+            }else {
+            	todayTemperatureData = Arrays.asList("天気予報情報がありません");
+            }
+           
         } catch (Exception e) {
             e.printStackTrace();
             todayTemperatureData = Arrays.asList("情報取得エラー");
