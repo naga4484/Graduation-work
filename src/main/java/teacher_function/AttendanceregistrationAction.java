@@ -18,7 +18,8 @@ public class AttendanceregistrationAction extends Action {
 		) throws Exception {
 
 			HttpSession session=request.getSession();
-
+			
+			session.removeAttribute("not_attendancestudent");
 			List<Studentaccount> attendancsstudentlist = (List<Studentaccount>) session.getAttribute("attendancsstudentlist");
 			
 			AttendanceDAO dao = new AttendanceDAO();
