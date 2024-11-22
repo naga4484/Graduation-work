@@ -5,12 +5,14 @@
 <link rel="stylesheet" type="text/css"href="../css/teacher_function.css">
 
 <title>学生情報登録画面</title>
+<div class="teacher_center">
 
 <h1>学生情報登録機能</h1>
+
 <form action="Studentregistration.action" method="post">
 	
     <label>氏名</label>
-    <input type="text" name="name" placeholder="氏名を入力してください"><br><br>
+    <input type="text" name="name" required="required" placeholder="氏名を入力してください"><br><br>
     
     <label>クラス</label>
     <select name="class_id">
@@ -21,10 +23,10 @@
 	
 	<p>${student_id_duplication_error}</p>
 	<label>学生ID</label>
-    <input type="text" name="student_id" placeholder="学生IDを入力してください">
-
+    <input type="text" name="student_id" required="required" placeholder="学生IDを入力してください">
    	<button type="submit">登録</button> 
 </form>
+</div>
 
 <a href="../common/top.jsp">TOP</a>
 <%@include file="../footer.jsp"  %>

@@ -8,8 +8,10 @@
 
 <h1>登録完了</h1>
 <p>提出物の登録が完了いたしました</p>
+<form action="../teacher_function/submissions_registration.jsp" method="get">
+    <button type="submit">完了</button>
+</form>
 
-<button><a href="../teacher_function/submissions_registration.jsp">完了</a></button>
 
 </div>
 <%@include file="../footer.jsp"  %>
