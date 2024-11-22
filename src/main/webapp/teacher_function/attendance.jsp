@@ -62,11 +62,13 @@
 </form>
 <c:if test="${attendancsstudentlist.size() > 0}">
 	<form  action="Attendanceregistration.action">
+	<div class="teacher_table">
+		<h2>学生出欠登録</h2>
 		<table>
 			<tr>
-				<th>出欠可否</th>
-				<th>学生ID</th>
-				<th>学生氏名</th>
+				<th class="headword">出欠可否</th>
+				<th class="headword">学生ID</th>
+				<th class="headword">学生氏名</th>
 			</tr>
 			<c:forEach var="item" items="${attendancsstudentlist}">
 		  		<tr>
@@ -76,6 +78,8 @@
 		  		</tr>
 			</c:forEach>
 		</table>
+	</div>
+	
 		<input type="submit" value="登録">
 	</form>
 	<c:if test="${samplelist.size() > 0}">

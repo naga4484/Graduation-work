@@ -9,7 +9,7 @@
 <h1>提出物登録機能</h1>
 <div class="main_contents">
     <!-- 学生検索フォーム -->
-    <div class="student_search">
+    <div class="teacher_side">
         <form action="Submissionsstudent.action">
             <h2>学生検索</h2>
             <c:if test="${none_error != null}">
@@ -30,7 +30,8 @@
     <!-- 提出物登録フォーム -->
     <c:if test="${submissionsstudent != null}">
         <form action="Submissionsregistration.action">
-            <div class="submission_registration">
+
+            <div>
                 <h2>提出物</h2>
                 <c:if test="${distinct_error != null}">
                     <p>${distinct_error}</p>
@@ -42,7 +43,7 @@
                 <input type="text" id="submission_name"maxlength="30" name="submission_name" placeholder="提出物名を入力してください" required>
                 
                 <label for="subject_id">科目</label>
-                <select id="subject_id" name="subject_id">
+                <select id="subject_id" name="subject_id" placeholder="科目を設定してください" required>
                     <c:forEach var="class_subject" items="${class_subject}">
                         <option value="${class_subject.subject_id}">${class_subject.subject_name}</option>
                     </c:forEach>

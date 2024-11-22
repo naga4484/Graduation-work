@@ -37,7 +37,7 @@
     <input type="text" name="teacher_id" placeholder="学生IDを入力してください" value="${entered_teacher_id}">
     
     <label>メールアドレス</label>
-    <input type="text" name="email" placeholder="メールアドレスを入力してください" value="${entered_email}">
+    <input type="email" name="email" placeholder="メールアドレスを入力してください" value="${entered_email}">
 
    	<button type="submit">登録</button> 
 </form>

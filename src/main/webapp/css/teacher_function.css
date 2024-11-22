@@ -1,21 +1,12 @@
 
-/*学生検索フォームのcss*/
-.class_submission_search,
-.student_search,
-.submission_registration {
-	border: 1px solid #ccc; /* 枠線 */
-  border-radius: 8px; /* 角を丸く */
-  padding: 10px; /* 内側の余白 */
-  max-width: 40%; /* 幅を制限 */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 軽い影 */
-   
-}
+
 
 h2{
-	padding: 0.2em 0.4em;
-    border-left: 5px solid #00000b;
+	display: inline-block;
+	padding: 0.2em 1.8em;
     color: #333333;
-	
+    border-left: 5px solid #121212;
+    background-color: #f7f3f3;
 }
 
 label{
@@ -46,15 +37,14 @@ padding: 10px; /* 内側の余白を10pxに設定 */
     min-width: 40px; /* 最小幅を制限 */
 }
 
-
 button[type="button"],
 button[type="submit"],
 input[type="submit"]{
 	padding: 5px; /* 内側の余白を10pxに設定 */
-    background-color: deepskyblue; /* 背景色を緑色に設定 */
+    background-color: skyblue; /* 背景色を緑色に設定 */
     color: #fff; /* テキストの色を白に設定 */
     border-radius: 4px; /* 枠線の角を丸く設定 */
-    max-width: 80px; /* 最大幅を制限 */
+    max-width: 90px; /* 最大幅を制限 */
     min-width: 60px; /* 最小幅を制限 */
     cursor: pointer; /* カーソルをポインタに設定 */
     width: 25%;
@@ -62,9 +52,13 @@ input[type="submit"]{
     margin: 0 auto;
 }
 
-/*selectボックスのcss*/
+button[type="button"]:hover,
+button[type="submit"]:hover,
+input[type="submit"]:hover {
+    background-color: darkblue; /* ホバー時に濃い緑色に変更 */
+}
+
 select{
-/*	appearance: none;*/
 	margin-bottom: 1em; /* 下に1emの隙間 */
     min-width: 230px;
     height: 2em;
@@ -80,15 +74,19 @@ select{
 }
 /*スクロールのテーブルをしようする際*/
 .teacher_table {
-	margin: 30px;
-  height: calc(190vh / 2 ); /* スクロール用の高さ */
-  overflow-y: scroll; /* スクロールを有効に */
+  margin: 30px;
+  height: calc(190vh / 2); /* 基本高さ */
+  max-height: 90vh; /* ビューポートの90%を最大高さに制限 */
+  overflow-y: auto; /* スクロールを有効に */
   border: 1px solid #ccc;
-  width:50%;
-  position: absolute; /* 絶対位置を指定 */
-  top: 0; /* 上部に配置 */
-  right: 0; /* 右側に配置 */
+  width: 50%;
+  max-width: 90%; /* ビューポートの90%を最大幅に制限 */
+  position: absolute;
+  top: 0;
+  right: 0;
 }
+
+
 
 .teacher_table table {
   width: 100%; /* テーブルの幅を100%に */
@@ -96,10 +94,10 @@ select{
   text-align: center;
 }
 
-/* チェックボックスのスタイル */
-input[type="checkbox"] {  
-  vertical-align: middle; /* チェックボックスを垂直方向に中央揃え */
-  transform :scale(1.5);/*  文字サイズ*/
+input[type="checkbox"] {
+  vertical-align: middle; /* 垂直方向の中央揃え */
+  margin-right: 10px; /* チェックボックスと文字の間隔を広げる */
+  transform: scale(1.5); /* サイズ拡大 */
 }
 
 
@@ -110,12 +108,18 @@ input[type="checkbox"] {
   border: 1px solid #ccc;
 }
 
+/*tableの見出し*/
 .headword {
   position: sticky;
   top: 0;
   color: #fff;
   background: #333;
+  white-space: nowrap;
+  padding: 10px 15px; /* 余白を設定して文字が詰まらないようにする */
+  z-index: 1; /* スクロール時に他の要素の下に隠れないよう設定 */
+  text-align: center; /* 見出しの文字を中央揃え */
 }
+
 
 /*subjecttableのスクロールする右置きにならないtableの作成*/
 
@@ -162,19 +166,27 @@ input[type="checkbox"] {
     margin-bottom: 30px;
 }
 
-.successPage button {
+.successPage button[type="submit"]{
     background-color: blue;
     color: white;
     border: none;
-    padding: 15px 30px;
+    padding: 15px;
     font-size: 1em;
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s;
+    display: inline-block; /* 追加 */
+    text-align: center; /* 追加 */
 }
+
 
 .successPage button:hover {
     background-color: lightskyblue;
+}
+
+.successPage button[type="submit"]:hover{
+	background-color: red;
+	
 }
 
 .successPage button a {
@@ -182,10 +194,50 @@ input[type="checkbox"] {
     text-decoration: none;
     font-weight: bold;
 }
+/*消すボタン*/
 
-/*テンプレート作成画面のpタグcss*/
+.delete {
+	text-align: center;
+}
 
-.detail-settings p{
+.delete input[type="submit"]{
+	background-color: red;
+	max-width: 100px; 
+}
+
+.teacher_center{
+	text-align: center;
 	
+}
+.teacher_center h2 {
+    margin: 0 auto; /* 中央揃え */
+}
+
+
+
+.teacher_link a{
+	text-decoration: none;
+	outline-color: transparent;
+	text-align: center;
+	line-height: 3;
+	color: black;
+	font-size:1.5em;
+	padding: 1em;
+}
+
+
+.teacher_link a:link,
+.teacher_link a:visited,
+.teacher_link a:focus{
+	background: skyblue;
+	color: white;
+}
+
+.teacher_link a:hover{
+	background: darkblue;
+}
+.teacher_link a:active{
+	background: purple;
+	color: white;
 }
 
