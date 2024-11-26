@@ -6,6 +6,12 @@
 
 <title>時間割テンプレート画面</title>
 
+
+<!-- ログイン状態のみで使用できるようにするモノ -->
+<c:if test="${account == null}">
+	<c:redirect url="../account/Error_common.action" />
+</c:if>
+
 <h1>時間割テンプレート機能</h1>
 
 <a href="../teacher_function/timetable_template.jsp">テンプレート新規作成</a>

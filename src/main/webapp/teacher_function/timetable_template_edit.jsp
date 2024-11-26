@@ -4,12 +4,12 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <link rel="stylesheet" type="text/css"href="../css/teacher_function.css">
 <title>一括設定送信</title>
-<div>
+<div class="items">
   <!-- 左側の要素 -->
-  <div class="item" id="itemLabel1"onclick="showSettings(1)">未設定 1</div>
-  <div class="item" id="itemLabel2"onclick="showSettings(2)">未設定 2</div>
-  <div class="item" id="itemLabel3"onclick="showSettings(3)">未設定 3</div>
-  <div class="item" id="itemLabel4"onclick="showSettings(4)">未設定 4</div>
+  <div class="item" id="itemLabel1"onclick="showSettings(1)">${empty timetable_edit[0].subject_id ? '未設定 1' : timetable_edit[0].subject_id}</div>
+  <div class="item" id="itemLabel2"onclick="showSettings(2)">${empty timetable_edit[1].subject_id ? '未設定 2' : timetable_edit[1].subject_id}</div>
+  <div class="item" id="itemLabel3"onclick="showSettings(3)">${empty timetable_edit[2].subject_id ? '未設定 3' : timetable_edit[2].subject_id}</div>
+  <div class="item" id="itemLabel4"onclick="showSettings(4)">${empty timetable_edit[3].subject_id ? 'ぱっぁ' : timetable_edit[3].subject_id}</div>
 </div>
 
 <!-- 詳細設定エリア -->

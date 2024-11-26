@@ -12,9 +12,7 @@
 </head>
 <body>
 	<div class="main_content">
-		<div class="login_top">
-
-			
+		<div class="login_top">			
 
 			<h1>ログインユーザー選択</h1>
 

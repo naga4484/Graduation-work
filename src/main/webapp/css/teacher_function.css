@@ -1,4 +1,11 @@
 
+body {
+  display: flex;
+  justify-content: center; /* 横方向の中央揃え */
+  align-items: center; /* 縦方向の中央揃え */
+  height: 100vh; /* ビューポート全体の高さを確保 */
+  margin: 0;
+}
 
 
 h2{
@@ -122,17 +129,39 @@ input[type="checkbox"] {
 
 
 /*subjecttableのスクロールする右置きにならないtableの作成*/
-
 .subject_table {
-	height: calc(120vh / 2 ); /* スクロール用の高さ */
+  height: calc(120vh / 2); /* スクロール用の高さ */
   overflow-y: scroll; /* スクロールを有効に */
   border: 1px solid #ccc;
-  width:50%;
+  width: 50%;
+  margin: 0 auto; /* テーブル全体を中央に配置 */
 }
+
 .subject_table table {
   width: 100%; /* テーブルの幅を100%に */
   border-collapse: collapse;
   text-align: center;
+  margin: 0 auto;
+}
+
+.subject_table th, .subject_table td {
+  border: 1px solid #ddd; /* セルの枠線 */
+  padding: 8px; /* セル内の余白 */
+}
+
+.subject_table input[type="text"],
+.subject_table input[type="number"],
+.subject_table input[type="color"] {
+  width: 95%; /* セルの枠に近い幅 */
+  box-sizing: border-box; /* パディングも幅に含める */
+  font-size: 1rem; /* テキストのサイズを適切に設定 */
+  margin: 0; /* 余計な余白を排除 */
+  padding: 4px; /* 入力フォーム内の余白 */
+}
+
+.subject_table input[type="button"] {
+  padding: 4px 8px; /* ボタン内の余白 */
+  font-size: 0.9rem; /* テキストサイズ調整 */
 }
 
 
@@ -208,12 +237,36 @@ input[type="checkbox"] {
 .teacher_center{
 	text-align: center;
 	
+	
 }
+/*科目テンプレートの科目設定画面の科目欄*/
+.item {
+  padding: 10px 20px;
+  background-color: skyblue;
+  border: 1px solid #ddd;
+  margin-bottom: 5px;
+  cursor: pointer;
+  text-align: center;
+  margin:0 auto
+}
+
+.items{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.item:active{
+	background-color: green;
+}
+
+.item:hover {
+  background-color: blue;
+}
+
 .teacher_center h2 {
     margin: 0 auto; /* 中央揃え */
 }
-
-
 
 .teacher_link a{
 	text-decoration: none;
@@ -224,7 +277,6 @@ input[type="checkbox"] {
 	font-size:1.5em;
 	padding: 1em;
 }
-
 
 .teacher_link a:link,
 .teacher_link a:visited,

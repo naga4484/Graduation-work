@@ -7,6 +7,12 @@
 
 <title>グループ自動作成画面</title>
 
+
+<!-- ログイン状態のみで使用できるようにするモノ -->
+<c:if test="${account == null}">
+	<c:redirect url="../account/Error_common.action" />
+</c:if>
+
 <h1>グループ自動作成機能</h1>
 
 

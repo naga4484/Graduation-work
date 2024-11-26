@@ -4,7 +4,13 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <link rel="stylesheet" type="text/css"href="../css/teacher_function.css">
 <title>一括設定送信</title>
-<div>
+
+<!-- ログイン状態のみで使用できるようにするモノ -->
+<c:if test="${account == null}">
+	<c:redirect url="../account/Error_common.action" />
+</c:if>
+
+<div class="items">
 <!-- 左側の要素 -->
   <div class="item" id="itemLabel1" onclick="showSettings(1)">未設定 1</div>
   <div class="item" id="itemLabel2" onclick="showSettings(2)">未設定 2</div>

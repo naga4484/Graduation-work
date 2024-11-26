@@ -6,6 +6,11 @@
 
 <title>成績登録トップ画面</title>
 
+<!-- ログイン状態のみで使用できるようにするモノ -->
+<c:if test="${account == null}">
+	<c:redirect url="../account/Error_common.action" />
+</c:if>
+
 <h1>成績登録</h1>
 <div class="teacher_link">
 <div class="teacher_function_iocn">
@@ -14,5 +19,9 @@
 	<a href="subject_result.jsp">科目成績</a>
 </div>
 </div>
-<a href="../common/top.jsp">TOP</a>
+<div class="common_back_button">
+ <a href="../teacher_function/teacher_function.jsp"><img src="../images/戻るボタン1.png" class="teacher_back_icon"></a>
+</div>
+
+
 <%@include file="../footer.jsp"%>

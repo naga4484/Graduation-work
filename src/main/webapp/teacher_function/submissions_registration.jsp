@@ -6,6 +6,11 @@
 
 <title>提出物登録画面</title>
 
+<!-- ログイン状態のみで使用できるようにするモノ -->
+<c:if test="${account == null}">
+	<c:redirect url="../account/Error_common.action" />
+</c:if>
+
 <h1>提出物登録機能</h1>
 <div class="main_contents">
     <!-- 学生検索フォーム -->
@@ -84,7 +89,10 @@
         </form>
     </c:if>
 </div>
+<div class="common_back_button">
+ <a href="../teacher_function/teacher_function.jsp"><img src="../images/戻るボタン1.png" class="teacher_back_icon"></a>
+</div>
 
-<a href="../teacher_function/teacher_function.jsp">戻る</a>
+
 <script src="../js/year.js"></script>
 <%@ include file="../footer.jsp" %>

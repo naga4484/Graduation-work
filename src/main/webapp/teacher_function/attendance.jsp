@@ -7,6 +7,10 @@
 
 <title>出欠管理画面</title>
 
+<!-- ログイン状態のみで使用できるようにするモノ -->
+<c:if test="${account == null}">
+	<c:redirect url="../account/Error_common.action" />
+</c:if>
 <h1>出欠管理機能</h1>
 
 <c:if test="${not_attendancestudent != null}">
@@ -86,7 +90,10 @@
 		<iframe src="attendance_list.jsp"></iframe>
 	</c:if>
 </c:if>
+<div class="common_back_button">
+ <a href="../teacher_function/teacher_function.jsp"><img src="../images/戻るボタン1.png" class="teacher_back_icon"></a>
+</div>
 
-<a href="../common/top.jsp">TOP</a>
+
 <script src="../js/attendance.js"></script>
 <%@include file="../footer.jsp"  %>

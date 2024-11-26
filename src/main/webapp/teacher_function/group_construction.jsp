@@ -7,6 +7,11 @@
 
 <title>グループ表示画面</title>
 
+<!-- ログイン状態のみで使用できるようにするモノ -->
+<c:if test="${account == null}">
+	<c:redirect url="../account/Error_common.action" />
+</c:if>
+
 <h1>振り分け結果</h1>
 
 <c:if test="${retry_mes != null}">

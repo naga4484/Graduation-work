@@ -6,6 +6,12 @@
 
 <title>学期成績登録画面</title>
 
+
+<!-- ログイン状態のみで使用できるようにするモノ -->
+<c:if test="${account == null}">
+	<c:redirect url="../account/Error_common.action" />
+</c:if>
+
 <h1>学期成績</h1>
 <form action="Semester_result_class.action">
 	<label>クラス</label>
@@ -68,6 +74,8 @@
 	</div>
 </form>
 </c:if>
+<div class="common_back_button">
+ <a href="../teacher_function/teacher_function.jsp"><img src="../images/戻るボタン1.png" class="teacher_back_icon"></a>
+</div>
 
-<a href="../common/top.jsp">TOP</a>
 <%@include file="../footer.jsp"%>
