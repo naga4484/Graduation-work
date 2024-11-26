@@ -19,6 +19,7 @@
 		<form  action="AttendanceNotregistration.action">
 			<table>
 				<tr>
+				
 					<th>病欠</th>
 					<th>公欠</th>
 					<th>遅刻</th>
