@@ -2,8 +2,6 @@
 body {
     font-family: Arial, sans-serif; /* フォント設定 */
     color: #333; /* テキストカラー */
-    margin: 0; /* 余白のリセット */
-    padding: 20px; /* 内側の余白 */
 }
 
 /* 見出しのスタイル */
@@ -166,4 +164,47 @@ h2 {
 /* 追加リンクのアンカーホバー時のスタイル */
 .additional-links a:hover {
     text-decoration: underline; /* ホバー時に下線表示 */
+}
+
+
+
+
+.weather_lists{
+	width: 110px;
+	display: inline-block;
+	border: 1px solid #333;
+	border-radius: 10px;
+	margin:0px 5px 0px 5px;
+}
+
+.weather_content{
+	width: 1050px;
+	position: absolute;
+	top: 120px;
+	left:50px;
+}
+
+.weather_lists_day{
+	font-size: 30px;
+	font-weight: bold;
+	text-align: center;
+	margin:3px 0;
+}
+.weather_lists_hr{
+	margin:0;
+}
+.weather_content_title{
+	margin-left: 30px;
+}
+.weather_content_title span{
+	font-size: 30px;
+}
+.weather_png{
+	width: 85px;
+	margin:0 0 0 11px;
+}
+.weather_lists_contents{
+	text-align: center;
+	font-size: 15px;
+	margin:0;
 }

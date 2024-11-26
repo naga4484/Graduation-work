@@ -55,7 +55,7 @@
 
 <!-- 詳しい予報とスケジュール画面へのリンク、トップ画面に戻るリンク -->
 <div class="additional-links">
-    <p><a href="#">詳しい予報へ</a></p>
+    <p><a href="Schedule_weather.action">詳しい予報へ</a></p>
     <p><a href="Schedule_plan.action">スケジュール画面</a></p>
     <p><a href="../common/top.jsp">トップ画面に戻る</a></p>
 </div>

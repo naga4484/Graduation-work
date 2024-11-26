@@ -5,6 +5,11 @@
 
 <title>教師機能一覧画面</title>
 
+<!-- ログイン状態のみで使用できるようにするモノ -->
+<c:if test="${account == null}">
+	<c:redirect url="../account/Error_common.action" />
+</c:if>
+
 <link rel="stylesheet" type="text/css" href="../css/teacher.css">
 <div class="teacher_top">
     <h1>教師機能</h1>

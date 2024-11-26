@@ -21,13 +21,11 @@ public class Submissions_classAction extends Action {
 			SubmissionsDAO sdao=new SubmissionsDAO();
 			List<Submissions> distinctsubmissions_class = sdao.distinctsubmissions_class(class_id);
 			
-			if(distinctsubmissions_class.size() > 0) {
-				session.setAttribute("distinctsubmissions_class", distinctsubmissions_class);
-				return "submissions_confirmation.jsp";
+			if(distinctsubmissions_class.size() == 0) {
+				request.setAttribute("none_error", "対象のクラスには課題が設定されていません");
 			}
 			
-			
-			request.setAttribute("none_error", "対象のクラスには課題が設定されていません");
+			session.setAttribute("distinctsubmissions_class", distinctsubmissions_class);
 			return "submissions_confirmation.jsp";
 		}
 	}
