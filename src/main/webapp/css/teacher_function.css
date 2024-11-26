@@ -3,7 +3,6 @@ body {
   display: flex;
   justify-content: center; /* 横方向の中央揃え */
   align-items: center; /* 縦方向の中央揃え */
-  height: 100vh; /* ビューポート全体の高さを確保 */
   margin: 0;
 }
 
