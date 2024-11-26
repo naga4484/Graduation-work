@@ -32,9 +32,9 @@
     </c:if>
 </div>
 
-<div class="teacher_table">
+<c:if test="${distinctsubmissions_class.size() > 0}">
+	<div class="teacher_table">
     <!-- 提出物リストの表示 -->
-    <c:if test="${distinctsubmissions_class != null}">
         <table>
             <thead>
                 <tr>
@@ -61,8 +61,8 @@
                 </c:forEach>
             </tbody>
         </table>
-    </c:if>
-</div>
+	</div>
+</c:if>
 
 <a href="../common/top.jsp">TOP</a>
 <script src="../js/year.js"></script>
