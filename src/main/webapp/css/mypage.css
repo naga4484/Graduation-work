@@ -11,18 +11,22 @@
 }
 
 .profile-table {
-    width: 100%;
+    width: 98%;
     border-collapse: collapse;
+    margin: 0 auto;
     text-align: center;
 }
 
 .top-row {
     font-weight: bold;
     background-color: #f0f0f0;
+
 }
 
 .bottom-row {
     background-color: #ffffff;
+    box-shadow: 0 10px 6px -6px #777;
+
 }
 
 
@@ -78,10 +82,17 @@ button[type="submit"] {
     height: 40px; 
     background-color:#007BFF; 
     color: #ffffff; 
-    font-size: 16px; 
+    font-size: 18px; 
     border: none; 
     border-radius: 5px; 
+    border: 1px solid #333; 
     cursor: pointer; 
+    transition: background-color 0.1s, color 0.3s; 
+}
+
+button[type="submit"]:hover {
+  background-color: #248dff; 
+  color: #ffffff; 
 }
 
 .box1 p {
@@ -136,6 +147,7 @@ input[type="text"] {
     margin: 1em auto; 
     font-weight: bold;
     color: #000; 
+    background-color: #fff;
     border: solid 3px #000; 
     border-radius: 10px; 
     position: relative; 
@@ -154,6 +166,7 @@ input[type="text"] {
     margin: 1em auto; 
     font-weight: bold;
     color: #000; 
+    background-color: #fff;
     border: solid 3px #000; 
     border-radius: 10px; 
     position: relative; 
@@ -187,9 +200,15 @@ input[type="password"] {
     font-size: 16px; 
     border: none; 
     border-radius: 5px; 
+    border: 1px solid #333; 
     cursor: pointer; 
+    transition: background-color 0.1s, color 0.3s; 
 }
 
+.passup_buttun button[type="submit"]:hover {
+  background-color: #248dff; 
+  color: #ffffff; 
+}
 .error {
 	text-align: cente;
 	font-size:20px;
@@ -214,6 +233,7 @@ input[type="password"] {
     margin: 1em auto; 
     font-weight: bold;
     color: #000; 
+    background-color: #fff;
     border: solid 3px #000; 
     border-radius: 10px; 
     position: relative; 

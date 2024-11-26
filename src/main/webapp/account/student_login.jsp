@@ -24,7 +24,7 @@
                 <input type="checkbox" id="showPassword" onchange="togglePasswordVisibility()" />
                 パスワードを表示する
             </label>
-            <a href="reset_password_email.jsp">パスワードリセットを行う</a>
+            <a href="reset_password_email.jsp">パスワードを忘れた方はこちら</a>
             <button type="submit">ログイン</button>
         </form>
         <a href="login_top.jsp">戻る</a>

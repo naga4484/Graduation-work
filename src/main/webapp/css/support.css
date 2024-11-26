@@ -1,7 +1,9 @@
 /* サポートトップ */
 .support_top{
-	font-size: 50px;
-    margin-top: -50px;
+    text-align: center;
+	font-size: 70px;
+    margin-top: -70px;
+    margin-right: 10px;
 }
 
 .support_top_icon img {
@@ -46,21 +48,40 @@
 }
 
 .timer_top{
+    text-align: center;
 	font-size: 40px;
-    margin-top: -50px;
+    margin-top: -40px;
 }
 /* タイマー全体のコンテナ */
 .timer-container {
     text-align: center;
+    padding: 2em 1em;
+    margin: 2em auto; 
+    color: black; 
+    background: silver;
+    border: solid 3px #000; 
+    border-radius: 9px; 
+    position: relative; 
+    width: 60%; 
+    margin-top: 10%;
+}
+
+@font-face {
+  font-family: 'degtal';
+  src: url('../font/DSEG7Classic-Bold.ttf')
+  format('truetype');
 }
 
 /* タイマーの数字表示エリア */
 #timerDisplay {
+	font-family: 'degtal', sans-serif;
     font-size: 110px;
 }
 
+
 /* 時・分・秒の入力欄のスタイル */
 .time-inputs {
+	margin-top: 10px;
     margin-bottom: 20px;
 }
 
@@ -100,11 +121,3 @@
   margin-top: 10px;
 }
 
-/* 縦スクロールを無効 */
-body {
-    margin: 0;
-    padding: 0;
-    height: 100vh; 
-    overflow-y: hidden;
-    overflow-x: auto;
-}

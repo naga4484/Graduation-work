@@ -26,8 +26,8 @@
           <a href="#" onclick="openCalculator(); return false;"><img src="../images/電卓アイコン(横長).png" class="support_link_icon"></a>
       </div>
    </div>
-<div class="back_button">
-    <a href="../common/top.jsp"><img src="../images/戻るボタン1.png" class="support_back_icon"></a>
+<div class="common_back_button">
+  <a href="../common/top.jsp"><img src="../images/戻るボタン1.png" class="support_back_icon"></a>
 </div>
 
  <script src="../js/calculator.js"></script>

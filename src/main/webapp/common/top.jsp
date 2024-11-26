@@ -13,7 +13,6 @@
     </div>
 </div>
 
-
 <!-- ここらへんから、トップ画面のメイン要素のHTML -->
 <div class="top_down_content">
 
@@ -80,18 +79,3 @@
 
 <%@include file="../footer.jsp"  %>	
 	
-	
-	
-	
-	
-	
-<br><br><br><br><br><br><br><br><br><br><br><br>	
-	<!-- ここらへんはプチ開発で試した内容。とりあえず保存しているだけ -->
-	
-	<h1>スクレイピングの確認</h1>
-	<c:forEach begin="0" end="5" step="2" var="i">
-		<p>${today_temperature_data[i]} ： ${today_temperature_data[i+1]}</p>
-	</c:forEach>
-	
-	<h1>AI使用の確認</h1>
-	<p><a href="../ai/gemini.jsp">AI使用ページへ</a></p>

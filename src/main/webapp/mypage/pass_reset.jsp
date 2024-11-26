@@ -6,7 +6,7 @@
 <title>パスワード変更処理</title>
 </head>
 <body>
-	<div class="main_content">
+	<div class="mypage_main_content">
 		<div class="update_pass">
 			<h1>パスワードリセット</h1>
 	

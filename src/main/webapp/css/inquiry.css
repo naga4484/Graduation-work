@@ -47,20 +47,11 @@
     border-radius: 4px; /* 枠線の角を丸く設定 */
     cursor: pointer; /* カーソルをポインタに設定 */
     width: 25%;
-    margin: 0 auto;
+    margin: 0 35%;
 }
 
-.back_button img {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 20px;
-    width: 60px;    
-    height: 60px;
-
-}
 .back_button {
     position: absolute;	
-	left: 30px;
-    top: 510px;
+	left: 23%;
+    top: 68%;
 }

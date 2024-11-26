@@ -20,19 +20,41 @@
   src: url("../font/Hetare.ttf") format("truetype");
 }
 
-.main_content{
-	width:1100px;
-	min-height: 640px;
-	max-height: 9999px;
-	margin:15px auto 0 auto;
-	position: relative;
-	background-color: #f9f9f9
-;
-	border-radius: 50px;
-	overflow: hidden;
-	padding-bottom: 20px;
-	margin-bottom: 50px;
+.main_content {
+    width: 1100px;
+    min-height: 640px;
+    max-height: 9999px;
+    margin: 15px auto 0 auto;
+    position: relative;
+    background-color: #fff; /* ホワイトボードの色 */
+    border: 10px solid #ccc; /* デフォルトの枠線色 */
+    border-radius: 50px;
+    overflow: hidden;
+    padding-bottom: 20px;
+    margin-bottom: 50px;
 }
+
+.main_content::before {
+    content: '';
+    position: absolute;
+    top: -10px; /* 枠線の太さと合わせる */
+    left: -10px;
+    width: calc(100% + 20px); /* 枠線の太さに応じて調整 */
+    height: calc(100% + 20px);
+    border-radius: 50px; /* 親要素と同じ丸み */
+    border: 10px solid transparent;
+    box-sizing: border-box;
+    background: 
+        radial-gradient(circle at top left, #ffd1d1 10%, transparent 35%) top left,
+        radial-gradient(circle at top right, #d1ffd1 10%, transparent 35%) top right,
+        radial-gradient(circle at bottom left, #d1ffd1 10%, transparent 35%) bottom left,
+        radial-gradient(circle at bottom right,#ffd1d1 10%, transparent 35%) bottom right;
+    background-size: 50% 50%;
+    background-repeat: no-repeat;
+    pointer-events: none; /* コンテンツのクリックを防ぐ */
+}
+
+
 
 .common_back_button{
 	position: fixed;

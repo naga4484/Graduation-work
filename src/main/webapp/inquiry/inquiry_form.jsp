@@ -3,7 +3,7 @@
 <link rel="stylesheet" type="text/css" href="../css/inquiry.css">
 <title>お問い合わせ</title>
 
-	<div class="main_content">
+	<div class="inquiry_main_content">
 		<div class="inquiry_top">
 			<h1>お問い合わせ</h1>
 
@@ -30,7 +30,7 @@
 			</form>
 
 			<div class="back_button">
-              <a href="../common/top.jsp"><img src="../images/戻るボタン2.png" class="teacher_back_icon"></a>
+              <a href="../common/top.jsp">もどる</a>
             </div>
 		</div>
 	</div>

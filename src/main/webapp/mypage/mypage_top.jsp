@@ -7,7 +7,7 @@
 <meta charset="UTF-8">
 <title>My page</title>
 </head>
-	<div class="main_content">
+	<div class="mypage_main_content">
 	<body>
 	  <div class="mypage_top">
 		<h1>マイページ</h1>
@@ -54,7 +54,7 @@
 				<button type="button">マイページを編集</button></a>
 				<a href="../account/Logout.action"><button class="logout-button">ログアウト</button></a> 		        
 			</div> 
-			<div class="back_button">
+            <div class="common_back_button">
                <a href="../common/top.jsp"><img src="../images/戻るボタン1.png" class="support_back_icon"></a>
             </div> 
 		</div>

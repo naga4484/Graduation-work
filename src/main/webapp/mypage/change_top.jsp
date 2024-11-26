@@ -52,7 +52,7 @@
     </tr>
 </table>
 
-<div class="back_button">
+<div class="common_back_button">
 <a href="mypage_top.jsp"><img src="../images/戻るボタン1.png" class="support_back_icon"></a></a>
 </div>
 </body>

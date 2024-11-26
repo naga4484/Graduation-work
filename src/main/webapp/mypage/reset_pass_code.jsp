@@ -7,7 +7,7 @@
 <title>password変更-確認コード入力</title>
 </head>
 <body>
-    <div class="main_content">
+    <div class="mypage_main_content">
         <div class="pass_reset">
             <h1>パスワード変更</h1>
             <div class="send_messe">
@@ -34,7 +34,9 @@
             </form>
             <br><br>
         </div>
-        <a href="change_top.jsp">戻る</a>
-    </div>
+           <div class="common_back_button">
+           <a href="change_top.jsp"><img src="../images/戻るボタン1.png" class="support_back_icon"></a></a>
+           </div>  
+        </div>
 </body>
 <%@ include file="../footer.jsp"%>

@@ -3,13 +3,26 @@ let isCountingUp = false;  // カウントアップかどうかを判断する�
 let countUpTime = 0;       // カウントアップ用のタイム変数
 
 // 入力時にリアルタイムでタイマー表示を更新する関数
+function validateAndUpdate(element) {
+    // 入力値が数字のみであることを確認
+    element.value = element.value.replace(/[^0-9]/g, '');
+
+    // 入力値が2桁以内であることを確認
+    if (element.value.length > 2) {
+        element.value = element.value.slice(0, 2);
+    }
+
+    updateDisplay();
+    }
+
 const updateDisplay = () => {
     const hours = parseInt(document.getElementById("hours").value) || 0;
     const minutes = parseInt(document.getElementById("minutes").value) || 0;
     const seconds = parseInt(document.getElementById("seconds").value) || 0;
     document.getElementById("timerDisplay").innerHTML =
         hours + ":" + ("0" + minutes).slice(-2) + ":" + ("0" + seconds).slice(-2);  //時間の表示が2桁になるように
-};
+    };
+
 
 const startTimer = () => {
     const hours = parseInt(document.getElementById("hours").value) || 0;

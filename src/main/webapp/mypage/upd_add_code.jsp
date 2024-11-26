@@ -7,7 +7,7 @@
 <title>email変更-確認コード入力</title>
 </head>
 <body>
-    <div class="main_content">
+    <div class="mypage_main_content">
         <div class="add_reset">
             <h1>メールアドレス変更</h1>
             <div class="code_return"
@@ -29,7 +29,9 @@
             </form>
             <br><br>
         </div>
-        <a href="change_top.jsp">戻る</a>
-    </div>
+           <div class="common_back_button">
+           <a href="change_top.jsp"><img src="../images/戻るボタン1.png" class="support_back_icon"></a></a>
+           </div> 
+           </div>
 </body>
 <%@ include file="../footer.jsp"%>
