@@ -19,7 +19,7 @@
 <form action="Teacherregistration.action" method="post">
 	
     <label>氏名</label>
-    <input type="text" name="name" placeholder="氏名を入力してください" value="${entered_name}"><br><br>
+    <input type="text" name="name" placeholder="氏名を入力してください" required value="${entered_name}"><br><br>
     
     <label>クラス</label>
     <select name="class_id">
@@ -38,10 +38,10 @@
 	
 	<p>${teacher_id_duplication_error}</p>
 	<label>教師ID</label>
-    <input type="text" name="teacher_id" placeholder="学生IDを入力してください" value="${entered_teacher_id}">
+    <input type="text" name="teacher_id" placeholder="学生IDを入力してください" value="${entered_teacher_id}" required>
     
     <label>メールアドレス</label>
-    <input type="email" name="email" placeholder="メールアドレスを入力してください" value="${entered_email}">
+    <input type="email" name="email" placeholder="メールアドレスを入力してください" value="${entered_email}" required>
 
    	<button type="submit">登録</button> 
 </form>
