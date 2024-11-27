@@ -61,7 +61,7 @@
 	</div>
 	<div class="top_critical_function_icon">
 		<div class="top_critical_function_contents">
-			<a href="../mypage/mypage_top.jsp"><img src="../images/マイページのアイコン.png" class="top_logout_icon"></a>
+			<a href="../mypage/mypage_top.jsp"><img src="../images/マイページ.png" class="top_logout_icon"></a>
 			<a href="../mypage/mypage_top.jsp"><p class="top_logout_mes">マイページ</p></a>
 		</div>
 		<div class="top_critical_function_contents">
@@ -73,6 +73,7 @@
 
 	
 	 
+	
 	
 	
 </div>
