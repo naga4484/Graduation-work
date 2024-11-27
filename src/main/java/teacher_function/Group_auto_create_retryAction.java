@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Random;
 
 import bean.Studentaccount;
+import bean.User_id;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
@@ -18,6 +19,10 @@ public class Group_auto_create_retryAction extends Action {
 
 			HttpSession session=request.getSession();
 			session.removeAttribute("reader_flag");
+			User_id select_user_id = (User_id)session.getAttribute("user");
+			if(select_user_id == null) {
+				return "../account/Error_function.action";
+			}
 
 			Random rand = new Random();
 			int member_num = (int)session.getAttribute("member_num");

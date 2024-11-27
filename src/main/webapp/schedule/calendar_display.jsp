@@ -6,7 +6,12 @@
 <link rel="stylesheet" type="text/css" href="../css/calendar.css">
 <script src="../js/calendar.js" defer></script>
 
-<h1>カレンダー表示</h1>
+<!-- ログイン状態のみで使用できるようにするモノ -->
+<c:if test="${account == null}">
+	<c:redirect url="../account/Error_common.action" />
+</c:if>
+
+<h1>カレンダー</h1>
 
 <!-- 天気情報エリア -->
 <div class="weather-info">
@@ -33,24 +38,37 @@
 </div>
 
 <!-- 予定エリア -->
-<h2>予定</h2>
-<div class="plan-info">
-<c:choose>
-<c:when test="${cal_list.size() > 0}">
-<c:forEach var="item" items="${cal_list}">
-	<p>${item.setting_date}　${item.schedule_content}</p>
-</c:forEach>
-</c:when>
-<c:otherwise>
-<p>予定はありません</p>
-</c:otherwise>
-    </c:choose>
+<div class="plan_area">
+	<h2>予定</h2>
+	<div class="plan-info">
+		<c:choose>
+			<c:when test="${cal_list.size() > 0}">
+				<c:forEach var="item" items="${cal_list}">
+					<p>${item.setting_date}　${item.schedule_content}</p>
+				</c:forEach>
+			</c:when>
+			<c:otherwise>
+			<p>予定はありません</p>
+			</c:otherwise>
+		</c:choose>
+	</div>
 </div>
 
 <!-- 提出物エリア -->
-<h2>提出物</h2>
-<div class="submission-info">
-    <p>提出物はありません</p>
+<div class="submissions_area">
+	<h2>提出物</h2>
+	<div class="submission-info">
+		<c:choose>
+			<c:when test="${cal_submissions.size() > 0}">
+				<c:forEach var="item" items="${cal_submissions}">
+					<p><font color="${item.submissions_date_color}">${item.create_date}　${item.name}</font></p>
+				</c:forEach>
+			</c:when>
+			<c:otherwise>
+				<p>提出物はありません</p>
+			</c:otherwise>
+		</c:choose>
+	</div>
 </div>
 
 <!-- 詳しい予報とスケジュール画面へのリンク、トップ画面に戻るリンク -->
@@ -67,17 +85,17 @@
         <ul>
          <c:forEach var="item" items="${schedule_timetable}">
          	<c:choose>
-		<c:when test="${item.subject_id != null}">
-			<c:forEach var="subject" items="${class_subject}">
-				<c:if test="${subject.subject_id == item.subject_id}">
-					<li>${subject.subject_name}</li>
-				</c:if>
-			</c:forEach>
-		</c:when>
-		<c:otherwise>
-			<li>未設定</li>
-		</c:otherwise>
-	</c:choose>
+				<c:when test="${item.subject_id != null}">
+					<c:forEach var="subject" items="${class_subject}">
+						<c:if test="${subject.subject_id == item.subject_id}">
+							<li>${subject.subject_name}</li>
+						</c:if>
+					</c:forEach>
+				</c:when>
+				<c:otherwise>
+					<li>未設定</li>
+				</c:otherwise>
+			</c:choose>
          </c:forEach>
         </ul>
         <button id="closePopup">閉じる</button>

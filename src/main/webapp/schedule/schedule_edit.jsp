@@ -46,6 +46,7 @@
 		<input type="submit" value="変更"> 
 	</form>
 </div>
-<a href="../common/top.jsp">TOP</a>
-<script src="../js/attendance.js"></script>
+<div class="common_back_button">
+  <a href="../schedule/schedule_plan.jsp"><img src="../images/戻るボタン1.png" class="teacher_back_icon"></a>
+</div>
 <%@include file="../footer.jsp"  %>

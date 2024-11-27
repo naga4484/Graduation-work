@@ -3,6 +3,7 @@ package teacher_function;
 import java.util.List;
 
 import bean.Submissions;
+import bean.User_id;
 import dao.SubmissionsDAO;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -15,6 +16,10 @@ public class Submissions_classAction extends Action {
 		) throws Exception {
 
 			HttpSession session=request.getSession();
+			User_id select_user_id = (User_id)session.getAttribute("user");
+			if(select_user_id == null) {
+				return "../account/Error_function.action";
+			}
 
 			String class_id=request.getParameter("class_id");
 			

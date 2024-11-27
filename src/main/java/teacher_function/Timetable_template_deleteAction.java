@@ -1,5 +1,6 @@
 package teacher_function;
 
+import bean.User_id;
 import dao.TimetableDAO;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -12,6 +13,10 @@ public class Timetable_template_deleteAction extends Action {
 		) throws Exception {
 
 			HttpSession session=request.getSession();
+			User_id select_user_id = (User_id)session.getAttribute("user");
+			if(select_user_id == null) {
+				return "../account/Error_function.action";
+			}
 			
 			String template_name=request.getParameter("template_name");
 			TimetableDAO dao = new TimetableDAO();

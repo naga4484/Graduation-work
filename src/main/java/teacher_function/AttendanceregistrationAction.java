@@ -6,6 +6,7 @@ import java.util.Date;
 import java.util.List;
 
 import bean.Studentaccount;
+import bean.User_id;
 import dao.AttendanceDAO;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -18,6 +19,11 @@ public class AttendanceregistrationAction extends Action {
 		) throws Exception {
 
 			HttpSession session=request.getSession();
+			User_id select_user_id = (User_id)session.getAttribute("user");
+			if(select_user_id == null) {
+				return "../account/Error_function.action";
+			}
+			
 			
 			session.removeAttribute("not_attendancestudent");
 			List<Studentaccount> attendancsstudentlist = (List<Studentaccount>) session.getAttribute("attendancsstudentlist");
@@ -38,7 +44,7 @@ public class AttendanceregistrationAction extends Action {
 				}
 				
 				if(Flag.equals("出席")==true) {
-					Boolean g = dao.student_search(i.getStudent_id(),sdf);
+					boolean g = dao.student_search(i.getStudent_id(),sdf);
 					
 					if(g == false) {
 						int line = dao.attendance_registration(id_num, i.getStudent_id(), "1", sdf, i.getClass_id(), "");
@@ -48,7 +54,7 @@ public class AttendanceregistrationAction extends Action {
 					}
 				}
 				else {
-					Boolean g = dao.student_search(i.getStudent_id(),sdf);
+					boolean g = dao.student_search(i.getStudent_id(),sdf);
 					
 					if(g == false) {
 						int line = dao.attendance_registration(id_num, i.getStudent_id(), "1", sdf, i.getClass_id(), "");

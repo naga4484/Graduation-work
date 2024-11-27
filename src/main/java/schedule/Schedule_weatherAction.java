@@ -10,6 +10,7 @@ import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
+import bean.User_id;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
@@ -21,6 +22,10 @@ public class Schedule_weatherAction extends Action {
 		) throws Exception {
 
 			HttpSession session=request.getSession();
+			User_id select_user_id = (User_id)session.getAttribute("user");
+			if(select_user_id == null) {
+				return "../account/Error_function.action";
+			}
 
 			// 天気情報を取得する処理
 	        List<List<String>> todayTemperatureData = new ArrayList<>();
