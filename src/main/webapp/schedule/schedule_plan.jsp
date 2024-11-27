@@ -35,7 +35,7 @@
 			  		<tr>
 			  			<td>${item.setting_date.substring(0,2)}</td>
 			  			<td>${item.setting_date.substring(3,5)}</td>
-			  			<td>${item.schedule_content}</td>
+			  			<td class="txt-limits">${item.schedule_content}</td>
 			  		</tr>
 				</c:forEach>
 			</table>
@@ -58,7 +58,7 @@
 		
 	</form>
 </div>
-
+<script src="../js/text_limit.js" defer></script>
 
 <div class="common_back_button">
   <a href="../schedule/calendar_display.jsp"><img src="../images/戻るボタン1.png" class="teacher_back_icon"></a>

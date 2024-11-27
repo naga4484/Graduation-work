@@ -6,6 +6,7 @@
 <link rel="stylesheet" type="text/css" href="../css/calendar.css">
 <script src="../js/calendar.js" defer></script>
 
+
 <!-- ログイン状態のみで使用できるようにするモノ -->
 <c:if test="${account == null}">
 	<c:redirect url="../account/Error_common.action" />
@@ -44,7 +45,7 @@
 		<c:choose>
 			<c:when test="${cal_list.size() > 0}">
 				<c:forEach var="item" items="${cal_list}">
-					<p>${item.setting_date}　${item.schedule_content}</p>
+					<p class="txt-limits">${item.setting_date}　${item.schedule_content}</p>
 				</c:forEach>
 			</c:when>
 			<c:otherwise>
@@ -61,7 +62,7 @@
 		<c:choose>
 			<c:when test="${cal_submissions.size() > 0}">
 				<c:forEach var="item" items="${cal_submissions}">
-					<p><font color="${item.submissions_date_color}">${item.create_date}　${item.name}</font></p>
+					<p class="txt-limit"><font color="${item.submissions_date_color}">${item.create_date}　${item.name}</font></p>
 				</c:forEach>
 			</c:when>
 			<c:otherwise>
@@ -102,4 +103,5 @@
     </div>
 </div>
 
+<script src="../js/text_limit.js" defer></script>
 <%@ include file="../footer.jsp" %>

@@ -293,7 +293,7 @@ public class SubmissionsDAO extends DAO {
 
         Connection con = getConnection();
 
-        PreparedStatement st = con.prepareStatement("SELECT T1.submissions_id,T1.student_id,T1.submissions_flag,T2.name,T2.save_path,T2.create_data,T2.subject_id FROM Submissions_alignment AS T1 JOIN Submissions AS T2 ON T1.SUBMISSIONS_ID = T2.SUBMISSIONS_ID WHERE student_id=?");
+        PreparedStatement st = con.prepareStatement("SELECT T1.submissions_id,T1.student_id,T1.submissions_flag,T2.name,T2.save_path,T2.create_data,T2.subject_id FROM Submissions_alignment AS T1 JOIN Submissions AS T2 ON T1.SUBMISSIONS_ID = T2.SUBMISSIONS_ID WHERE student_id=? ORDER BY STR_TO_DATE(T2.create_data, '%Y年%m月%d日') ASC;");
         st.setString(1, student_id);
         ResultSet rs = st.executeQuery();
 
@@ -312,7 +312,7 @@ public class SubmissionsDAO extends DAO {
         	LocalDate enddate = LocalDate.parse(submissions_date, formatter);
         	long daysBetween = ChronoUnit.DAYS.between(startdate, enddate);
         	if(daysBetween > 3) {
-        		submissions.setSubmissions_date_color("#98fb98");
+        		submissions.setSubmissions_date_color("#1f9c00");
         	}
         	else if(daysBetween > 0) {
         		submissions.setSubmissions_date_color("#cfa33e");

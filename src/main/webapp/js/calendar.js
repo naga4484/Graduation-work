@@ -157,3 +157,13 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 });
+
+const limit = document.querySelectorAll(".txt-limit");
+const len = 20;
+limit.forEach((element) => { // 取得した要素に対してループを実行
+    let str = element.textContent; // 要素のテキスト内容を取得
+    let font_elm = element.innerHTML.substring(0,22);
+    if (str.length > len) {
+        element.innerHTML = font_elm + str.substring(0, len) + "…</font>" ; // 指定文字数で切り取って末尾に "…" を追加
+    }
+});

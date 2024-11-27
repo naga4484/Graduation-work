@@ -37,6 +37,11 @@ public class CalendarDisplayAction  extends Action {
 		if(select_user_id == null) {
 			return "../account/Error_function.action";
 		}
+		session.removeAttribute("schedule_timetable");
+		session.removeAttribute("cal_list");
+		session.removeAttribute("cal_submissions");
+		session.removeAttribute("class_subject");
+		session.removeAttribute("today_temperature_data");
 		
 		
         // カレンダーから選択された日付を取得
@@ -136,7 +141,7 @@ public class CalendarDisplayAction  extends Action {
         
 
         // リクエスト属性に天気データを設定
-        request.setAttribute("today_temperature_data", todayTemperatureData);
+        session.setAttribute("today_temperature_data", todayTemperatureData);
 
         return "../schedule/calendar_display.jsp";
     }
