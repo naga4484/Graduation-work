@@ -15,6 +15,7 @@ import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 import bean.Studentaccount;
+import bean.User_id;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
@@ -26,6 +27,10 @@ public class Group_excel_dlAction extends Action {
     public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
         HttpSession session = request.getSession();
         session.removeAttribute("reader_flag");
+        User_id select_user_id = (User_id)session.getAttribute("user");
+		if(select_user_id == null) {
+			return "../account/Error_function.action";
+		}
 
         HashMap<String, ArrayList<Studentaccount>> group_list =(HashMap<String, ArrayList<Studentaccount>>) session.getAttribute("group_list");
         

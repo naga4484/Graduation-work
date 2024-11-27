@@ -1,13 +1,6 @@
 package account;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
-
-import org.jsoup.Jsoup;
-import org.jsoup.nodes.Document;
-import org.jsoup.nodes.Element;
-import org.jsoup.select.Elements;
 
 import bean.Class_num;
 import bean.Subject;
@@ -53,23 +46,10 @@ public class TeacherloginAction extends Action {
             user_id = udao.user_teacher(teacher_id);
         }
 
-        String today_temperature = "変更されていない";
-        Document Doc = Jsoup.connect("https://www.msn.com/ja-jp/weather/forecast/").get();
-        Element Elm = Doc.body();
-        Elements temperatures = Elm.getElementsByClass("summaryLineGroupCompact-E1_1");
-
-        for (Element temperature : temperatures) {
-            today_temperature = temperature.text();
-        }
-        ArrayList<String> today_temperature_data = new ArrayList<String>(Arrays.asList(today_temperature.split(" ")));
-        today_temperature_data.add(0, "現在の気温");
-        today_temperature_data.add(2, "現在の天気");
-
         session.setAttribute("user", user_id);
         session.setAttribute("account", account);
         session.setAttribute("class_num", class_num);
         session.setAttribute("class_subject", class_subject);
-        session.setAttribute("today_temperature_data", today_temperature_data);
 
         // 問い合わせシステムで利用する情報を追加してる
         session.setAttribute("accountKind", "教師"); 

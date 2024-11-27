@@ -28,6 +28,7 @@ public class AttendanceDAO extends DAO {
 		con.close();
 		return line;
 	}
+	
 	//出欠更新用
 	public int attendance_update(String sdf,String student_id,String attendance_kind_id,String note) throws Exception {
 		Connection con=getConnection();
@@ -66,8 +67,8 @@ public class AttendanceDAO extends DAO {
 	}
 	
 	//特定データの探索用
-	public Boolean student_search(String student_id,String sdf) throws Exception { 
-		Boolean i = false;
+	public boolean student_search(String student_id,String sdf) throws Exception { 
+		boolean i = false;
 		
 		Connection con=getConnection();
 		

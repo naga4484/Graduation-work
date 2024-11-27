@@ -1,6 +1,7 @@
 package teacher_function;
 
 import bean.Teacheraccount;
+import bean.User_id;
 import dao.TimetableDAO;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -13,6 +14,10 @@ public class Timetable_updateAction extends Action {
 		) throws Exception {
 
 			HttpSession session=request.getSession();
+			User_id select_user_id = (User_id)session.getAttribute("user");
+			if(select_user_id == null) {
+				return "../account/Error_function.action";
+			}
 
 			String class_id=(String)session.getAttribute("timetable_update_class_id");
 			String data=(String)session.getAttribute("data_num");

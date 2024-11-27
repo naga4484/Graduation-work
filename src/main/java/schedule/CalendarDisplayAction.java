@@ -12,11 +12,13 @@ import org.jsoup.select.Elements;
 import bean.Calendar;
 import bean.Studentaccount;
 import bean.Subject;
+import bean.Submissions;
 import bean.Teacheraccount;
 import bean.Timetable;
 import bean.User_id;
 import dao.CalendarDAO;
 import dao.SubjectDAO;
+import dao.SubmissionsDAO;
 import dao.TimetableDAO;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServletRequest;
@@ -29,12 +31,19 @@ public class CalendarDisplayAction  extends Action {
 	public String execute(
 			HttpServletRequest request, HttpServletResponse response
 		) throws Exception {
+		//ユーザー情報用の処理
+		HttpSession session=request.getSession();
+		User_id select_user_id = (User_id)session.getAttribute("user");
+		if(select_user_id == null) {
+			return "../account/Error_function.action";
+		}
+		
+		
         // カレンダーから選択された日付を取得
         String selectedDate = request.getParameter("selectedDate");
         if (selectedDate == null || selectedDate.isEmpty()) {
             selectedDate = "日付が選択されていません";
         }
-        HttpSession session=request.getSession();
         session.setAttribute("selectedDate", selectedDate);
 
         // 天気情報を取得する処理
@@ -99,6 +108,7 @@ public class CalendarDisplayAction  extends Action {
         String data = year_data + "年" + month_data + "月" + date_data + "日";
         User_id user_id = (User_id)session.getAttribute("user");
         SubjectDAO sdao=new SubjectDAO();
+        SubmissionsDAO subdao = new SubmissionsDAO();
         if(user_id.getStudent_id() == null) {
         	Teacheraccount account = (Teacheraccount)session.getAttribute("account");
         	List<Timetable> timetable = dao.timetable_search(account.getClass_id(), data);
@@ -106,6 +116,7 @@ public class CalendarDisplayAction  extends Action {
         	
     		List<Subject> class_subject = sdao.getclasssubject(account.getClass_id());
     		session.setAttribute("class_subject", class_subject);
+    		
         	
         }else if(user_id.getTeacher_id() == null) {
         	Studentaccount account = (Studentaccount)session.getAttribute("account");
@@ -114,6 +125,9 @@ public class CalendarDisplayAction  extends Action {
         	
     		List<Subject> class_subject = sdao.getclasssubject(account.getClass_id());
     		session.setAttribute("class_subject", class_subject);
+    		
+    		List<Submissions> submissions = subdao.submissions_cal(account.getStudent_id());
+    		session.setAttribute("cal_submissions", submissions);
         }
         
         CalendarDAO cdao = new CalendarDAO();

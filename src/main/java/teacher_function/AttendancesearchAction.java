@@ -6,6 +6,7 @@ import java.util.List;
 
 import bean.Attendance;
 import bean.Studentaccount;
+import bean.User_id;
 import dao.AccountDAO;
 import dao.AttendanceDAO;
 import jakarta.servlet.http.HttpServletRequest;
@@ -19,6 +20,10 @@ public class AttendancesearchAction extends Action {
 		) throws Exception {
 
 			HttpSession session=request.getSession();
+			User_id select_user_id = (User_id)session.getAttribute("user");
+			if(select_user_id == null) {
+				return "../account/Error_function.action";
+			}
 
 			String class_id=request.getParameter("class_id");
 			String name=request.getParameter("student_name");

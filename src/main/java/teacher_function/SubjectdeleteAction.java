@@ -4,6 +4,7 @@ import java.util.List;
 
 import bean.Subject;
 import bean.Teacheraccount;
+import bean.User_id;
 import dao.SubjectDAO;
 import dao.TimetableDAO;
 import jakarta.servlet.http.HttpServletRequest;
@@ -17,6 +18,10 @@ public class SubjectdeleteAction extends Action {
 		) throws Exception {
 
 			HttpSession session=request.getSession();
+			User_id select_user_id = (User_id)session.getAttribute("user");
+			if(select_user_id == null) {
+				return "../account/Error_function.action";
+			}
 			
 			String subject_id=request.getParameter("subject_id");
 			

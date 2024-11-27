@@ -1,6 +1,5 @@
 /* 全体の基本スタイル */
 body {
-    font-family: Arial, sans-serif; /* フォント設定 */
     color: #333; /* テキストカラー */
 }
 
@@ -121,6 +120,18 @@ h2 {
     border-radius: 5px;
 }
 
+.plan_area{
+	float: left;
+	overflow: hidden;
+	width: 400px;
+	margin: 0px 0px 50px 120px;
+}
+.submissions_area{
+	float: right;
+	overflow: hidden;
+	width: 400px;
+	margin: 0px 120px 50px 0px;
+}
 /* 予定エリア */
 .plan-info {
     margin: 10px auto;
@@ -147,6 +158,8 @@ h2 {
 .additional-links {
     text-align: center;
     margin-top: 30px;
+    overflow: hidden;
+    clear: both;
 }
 
 /* 追加リンク内のテキスト */

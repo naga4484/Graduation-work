@@ -16,6 +16,10 @@ public class Schedule_planAction extends Action {
 		) throws Exception {
 
 			HttpSession session=request.getSession();
+			User_id select_user_id = (User_id)session.getAttribute("user");
+			if(select_user_id == null) {
+				return "../account/Error_function.action";
+			}
 
 			String selectdate = (String)session.getAttribute("selectedDate");
 			User_id user_id = (User_id)session.getAttribute("user");

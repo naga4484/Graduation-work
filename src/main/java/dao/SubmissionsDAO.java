@@ -272,16 +272,61 @@ public class SubmissionsDAO extends DAO {
 	}
 	
 	//提出物情報削除機能
-		public int delete_submission(int submissions_id) throws Exception {
-			Connection con=getConnection();
+	public int delete_submission(int submissions_id) throws Exception {
+		Connection con=getConnection();
 
-			PreparedStatement st=con.prepareStatement(
-				"delete from Submissions where submissions_id = ?");
-			st.setInt(1, submissions_id);
-			int line=st.executeUpdate();
+		PreparedStatement st=con.prepareStatement(
+			"delete from Submissions where submissions_id = ?");
+		st.setInt(1, submissions_id);
+		int line=st.executeUpdate();
 
-			st.close();
-			con.close();
-			return line;
-		}
+		st.close();
+		con.close();
+		return line;
+	}
+	
+	//カレンダー機能での提出物
+	public List<Submissions> submissions_cal(String student_id) 
+	throws Exception {
+		List<Submissions> submissionsList = new ArrayList<>(); 
+		Submissions submissions;
+
+        Connection con = getConnection();
+
+        PreparedStatement st = con.prepareStatement("SELECT T1.submissions_id,T1.student_id,T1.submissions_flag,T2.name,T2.save_path,T2.create_data,T2.subject_id FROM Submissions_alignment AS T1 JOIN Submissions AS T2 ON T1.SUBMISSIONS_ID = T2.SUBMISSIONS_ID WHERE student_id=?");
+        st.setString(1, student_id);
+        ResultSet rs = st.executeQuery();
+
+        while (rs.next()) {
+        	submissions = new Submissions();
+        	submissions.setSubmissions_id(rs.getInt("submissions_id"));
+        	submissions.setName(rs.getString("name"));
+        	submissions.setSave_path(rs.getString("save_path"));
+        	submissions.setCreate_date(rs.getString("create_data"));
+        	submissions.setSubject_id(rs.getString("subject_id"));
+        	submissions.setStudent_id(rs.getString("student_id"));
+        	submissions.setSubmissions_flag(rs.getBoolean("submissions_flag"));
+        	String submissions_date = rs.getString("create_data");
+        	DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy年MM月dd日");
+        	LocalDate startdate = LocalDate.now();
+        	LocalDate enddate = LocalDate.parse(submissions_date, formatter);
+        	long daysBetween = ChronoUnit.DAYS.between(startdate, enddate);
+        	if(daysBetween > 3) {
+        		submissions.setSubmissions_date_color("#98fb98");
+        	}
+        	else if(daysBetween > 0) {
+        		submissions.setSubmissions_date_color("#cfa33e");
+        	}
+        	else if(daysBetween <= 0) {
+        		submissions.setSubmissions_date_color("#ff0000");
+        	}
+        	submissionsList.add(submissions); 
+        }
+
+        rs.close(); 
+        st.close();
+        con.close(); 
+        
+        return submissionsList;
+	}
 }

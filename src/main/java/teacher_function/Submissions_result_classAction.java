@@ -4,6 +4,7 @@ import java.util.List;
 
 import bean.Studentaccount;
 import bean.Submissions;
+import bean.User_id;
 import dao.AccountDAO;
 import dao.SubmissionsDAO;
 import jakarta.servlet.http.HttpServletRequest;
@@ -17,6 +18,10 @@ public class Submissions_result_classAction extends Action {
 		) throws Exception {
 
 			HttpSession session=request.getSession();
+			User_id select_user_id = (User_id)session.getAttribute("user");
+			if(select_user_id == null) {
+				return "../account/Error_function.action";
+			}
 
 			String class_id=request.getParameter("class_id");
 			List<Studentaccount> result_student_list=null;

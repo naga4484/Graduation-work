@@ -1,13 +1,6 @@
 package account;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
-
-import org.jsoup.Jsoup;
-import org.jsoup.nodes.Document;
-import org.jsoup.nodes.Element;
-import org.jsoup.select.Elements;
 
 import bean.Class_num;
 import bean.Studentaccount;
@@ -52,27 +45,12 @@ public class StudentloginAction extends Action {
 			user_id = udao.user_student(student_id);
 		}
 
-        // 天気情報を取得するための処理
-        String today_temperature = "変更されていない";
-        Document doc = Jsoup.connect("https://www.msn.com/ja-jp/weather/forecast/").get();
-        Element elm = doc.body();
-        Elements temperatures = elm.getElementsByClass("summaryLineGroupCompact-E1_1");
-
-        for (Element temperature : temperatures) {
-            today_temperature = temperature.text();
-        }
-
-        ArrayList<String> today_temperature_data = new ArrayList<>(Arrays.asList(today_temperature.split(" ")));
-        today_temperature_data.add(0, "現在の気温");
-        today_temperature_data.add(2, "現在の天気");
-
         if (account != null) {
             // ログイン成功時にセッションに情報を保存
         	session.setAttribute("user", user_id);
             session.setAttribute("account", account);
             session.setAttribute("class_num", class_num);
             session.setAttribute("class_subject", class_subject);
-            session.setAttribute("today_temperature_data", today_temperature_data);
 
             // 追加：ユーザー情報をセッションに保存
             session.setAttribute("userId", account.getStudent_id()); // 学生IDをセッションに保存

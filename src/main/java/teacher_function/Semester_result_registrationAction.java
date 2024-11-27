@@ -5,6 +5,7 @@ import java.util.List;
 import bean.Class_num;
 import bean.Result;
 import bean.Teacheraccount;
+import bean.User_id;
 import dao.ClassDAO;
 import dao.ResultDAO;
 import jakarta.servlet.http.HttpServletRequest;
@@ -18,6 +19,10 @@ public class Semester_result_registrationAction extends Action {
 		) throws Exception {
 
 			HttpSession session=request.getSession();
+			User_id select_user_id = (User_id)session.getAttribute("user");
+			if(select_user_id == null) {
+				return "../account/Error_function.action";
+			}
 
 			String class_id=request.getParameter("class_id");
 			String semester=request.getParameter("semester");

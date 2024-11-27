@@ -4,6 +4,7 @@ import java.util.List;
 
 import bean.Teacheraccount;
 import bean.Timetable;
+import bean.User_id;
 import dao.TimetableDAO;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -16,6 +17,10 @@ public class Timetable_classAction extends Action {
 		) throws Exception {
 
 			HttpSession session=request.getSession();
+			User_id select_user_id = (User_id)session.getAttribute("user");
+			if(select_user_id == null) {
+				return "../account/Error_function.action";
+			}
 
 			String class_id=request.getParameter("class_id");
 			Teacheraccount account = (Teacheraccount) session.getAttribute("account");
