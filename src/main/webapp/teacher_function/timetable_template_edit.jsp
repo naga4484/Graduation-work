@@ -100,6 +100,8 @@ function saveSettings() {
   document.getElementById(`item` + currentItem + `Name`).value = subjectName;
 }
 </script>
+<div class="common_back_button">
+ <a href="../teacher_function/timetable_template_list.jsp"><img src="../images/戻るボタン1.png" class="teacher_back_icon"></a>
+</div>
 
-<a href="../common/top.jsp">TOP</a>
 <%@include file="../footer.jsp"  %>

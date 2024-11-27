@@ -51,7 +51,7 @@
 </div>
 
 <div class="common_back_button">
- <a href="../teacher_function/teacher_function.jsp"><img src="../images/戻るボタン1.png" class="teacher_back_icon"></a>
+ <a href="../teacher_function/submissions_confirmation.jsp"><img src="../images/戻るボタン1.png" class="teacher_back_icon"></a>
 </div>
 
 
