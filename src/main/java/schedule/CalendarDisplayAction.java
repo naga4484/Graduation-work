@@ -55,7 +55,7 @@ public class CalendarDisplayAction  extends Action {
         String todayTemperature = "情報取得エラー";
         List<String> todayTemperatureData = new ArrayList<>();
         List<String> tempdays_list = new ArrayList<>();
-        
+        System.out.println(selectedDate);
         try {
             // Yahoo!の天気サイトから7日分のデータを取得
             Document doc = Jsoup.connect("https://weather.yahoo.co.jp/weather/jp/33/?day=1").get();
@@ -65,8 +65,16 @@ public class CalendarDisplayAction  extends Action {
             	Elements ert = el.select("em");
             	tempdays_list = Arrays.asList(ert.text().split(" "));
             }
-            String searchdate = selectedDate.substring(8,10);
+            String searchdate = "";
+            if(selectedDate.length() == 9) {
+            	searchdate = selectedDate.substring(8,9);
+            }else {
+            	searchdate = selectedDate.substring(8,10);
+            }
             int searchnum = tempdays_list.indexOf(searchdate);
+            System.out.println(searchnum);
+            System.out.println(searchdate);
+            System.out.println(tempdays_list);
             
             if(searchnum != -1) {
             	searchnum = searchnum + 1;
