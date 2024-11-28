@@ -34,25 +34,7 @@
     margin-bottom: 50px;
 }
 
-.main_content::before {
-    content: '';
-    position: absolute;
-    top: -10px; /* 枠線の太さと合わせる */
-    left: -10px;
-    width: calc(100% + 20px); /* 枠線の太さに応じて調整 */
-    height: calc(100% + 20px);
-    border-radius: 50px; /* 親要素と同じ丸み */
-    border: 10px solid transparent;
-    box-sizing: border-box;
-    background: 
-        radial-gradient(circle at top left, #ffd1d1 10%, transparent 35%) top left,
-        radial-gradient(circle at top right, #d1ffd1 10%, transparent 35%) top right,
-        radial-gradient(circle at bottom left, #d1ffd1 10%, transparent 35%) bottom left,
-        radial-gradient(circle at bottom right,#ffd1d1 10%, transparent 35%) bottom right;
-    background-size: 50% 50%;
-    background-repeat: no-repeat;
-    pointer-events: none; /* コンテンツのクリックを防ぐ */
-}
+
 
 
 
