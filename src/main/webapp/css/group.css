@@ -101,3 +101,15 @@
 	padding: 30px;
 	margin: 0px;
 }
+.group_icons{
+	position: absolute;
+	top: 50%;
+	left: 10px;
+}
+
+.group_icon_links{
+	display: inline-block;
+}
+.group_icon_links img{
+	width: 200px;
+}

@@ -97,27 +97,27 @@
 				   		</c:forEach>
 			    	</c:if>
 			    	<select name="timetable_template" id="select_template${days}">
-			    		<c:set var="num">none</c:set>
+			    		<c:set var="num">nonejfannfenfjdsanjk</c:set>
 			    		<c:forEach var="item_template" items="${timetable_template_teacher}">
 			    			<c:choose>
-								<c:when test="${item_template.template_id.equals(num) == true}">
+								<c:when test="${item_template.template_name.equals(num) == true}">
 		    					</c:when>
 		    					<c:otherwise>
-		    						<c:set var="num">${item_template.template_id}</c:set>
-									<option value="${item_template.template_id}">${item_template.template_name}</option>
+		    						<c:set var="num">${item_template.template_name}</c:set>
+									<option value="${item_template.template_name}">${item_template.template_name}</option>
 								</c:otherwise>
 							</c:choose>
 			    		</c:forEach>
 			    	</select>
-			    	<c:set var="num">none</c:set>
+			    	<c:set var="num">nonemakmnfajemskkd</c:set>
 		    		<c:forEach var="item_template" items="${timetable_template_teacher}">
 		    			<c:choose>
-							<c:when test="${item_template.template_id.equals(num) == true}">
-								<input type="hidden" id="${item_template.template_id}_${item_template.timetable_hour}" value="${item_template.subject_id}">
+							<c:when test="${item_template.template_name.equals(num) == true}">
+								<input type="hidden" id="${item_template.template_name}_${item_template.timetable_hour}" value="${item_template.subject_id}">
 	    					</c:when>
 	    					<c:otherwise>
-	    						<c:set var="num">${item_template.template_id}</c:set>
-								<input type="hidden" id="${item_template.template_id}_${item_template.timetable_hour}" value="${item_template.subject_id}">
+	    						<c:set var="num">${item_template.template_name}</c:set>
+								<input type="hidden" id="${item_template.template_name}_${item_template.timetable_hour}" value="${item_template.subject_id}">
 							</c:otherwise>
 						</c:choose>
 		    		</c:forEach>
@@ -146,12 +146,12 @@
 		let template_button = document.getElementById('template_button' + i);
 		template_button.addEventListener('click',function(e){
 			let select_template = document.querySelector("#select_template" + i);
-			let template_id = select_template.value;
+			let template_name = select_template.value;
 			let data_num = document.getElementById('contents_data_' + i).innerText;
-			let template_data_1 = document.getElementById(template_id + '_1');
-			let template_data_2 = document.getElementById(template_id + '_2');
-			let template_data_3 = document.getElementById(template_id + '_3');
-			let template_data_4 = document.getElementById(template_id + '_4');
+			let template_data_1 = document.getElementById(template_name + '_1');
+			let template_data_2 = document.getElementById(template_name + '_2');
+			let template_data_3 = document.getElementById(template_name + '_3');
+			let template_data_4 = document.getElementById(template_name + '_4');
 			let select_1 = document.querySelector('[name="' + data_num + '1"]');
 			let select_2 = document.querySelector('[name="' + data_num + '2"]');
 			let select_3 = document.querySelector('[name="' + data_num + '3"]');

@@ -2,11 +2,11 @@
 <%@include file="../header.jsp"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
-
+<link rel="stylesheet" type="text/css" href="../css/group.css">
 
 <title>グループ管理画面</title>
 
-<h1>グループ管理</h1>
+<h1 class="page_title">グループ管理</h1>
 
 <div>
 	<c:if test="${comp_mes != null}">
@@ -15,11 +15,24 @@
 	<c:if test="${no_par_error != null}">
 		<p>${no_par_error}</p>
 	</c:if>
-	<a href="#">共有(未着手)</a>
-	<a href="Group_chat.action">チャット</a>
-	<a href="group_create_participation.jsp">グループ作成・参加</a>
+	<div class="group_icons">
+		<div class="group_icon_links">
+			<a href="#"><img src="../images/共有アイコン.png"></a>
+			<p>共有(未着手)</p>
+		</div>
+		<div class="group_icon_links">
+			<a href="Group_chat.action"><img src="../images/チャットアイコン.png"></a>
+			<p>チャット</p>
+		</div>
+		<div class="group_icon_links">
+			<a href="group_create_participation.jsp"><img src="../images/グループアイコン.png"></a>
+			<p>グループ作成・参加</p>
+		</div>
+	</div>
 </div>
 
 
-<a href="../common/top.jsp">TOP</a>
+<div class="common_back_button">
+  <a href="../common/top.jsp"><img src="../images/戻るボタン1.png" class="teacher_back_icon"></a>
+</div>
 <%@include file="../footer.jsp"  %>

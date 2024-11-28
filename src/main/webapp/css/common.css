@@ -87,3 +87,8 @@
 .group_retry_button{
 	text-decoration:none;
 }
+.page_title{
+	width: 500px;
+	margin: 15px 0px 0px 120px;
+	font-size: 40px;
+}
