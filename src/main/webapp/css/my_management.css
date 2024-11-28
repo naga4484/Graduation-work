@@ -78,3 +78,14 @@
 	margin-left: 10px;
 	padding-left: 10px;
 }
+.my_management_schedule p{
+	margin-left: 10px;
+}
+#my_management_schedule_data{
+	margin-left: 10px;
+	font-size: 15px;
+	font-weight: bold;
+}
+#my_management_schedule_content{
+	margin-left: 20px;
+}

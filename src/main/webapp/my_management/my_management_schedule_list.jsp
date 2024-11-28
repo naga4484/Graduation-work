@@ -23,8 +23,8 @@
 						<h2>${item_date.calender_date}</h2>
 						<c:forEach var="item_content" items="${my_management_content_list}">
 							<c:if test="${item_date.calender_date == item_content.calender_date}">
-								<p>${item_content.setting_date}</p>
-								<p class="txt-limits">${item_content.schedule_content}</p>
+								<p id="my_management_schedule_data">${item_content.setting_date}</p>
+								<p class="txt-limits" id="my_management_schedule_content">${item_content.schedule_content}</p>
 							</c:if>
 						</c:forEach>
 					</div>
