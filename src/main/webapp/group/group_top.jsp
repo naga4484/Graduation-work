@@ -16,15 +16,15 @@
 		<p>${no_par_error}</p>
 	</c:if>
 	<div class="group_icons">
-		<div class="group_icon_links">
+		<div class="group_icon_links1">
 			<a href="#"><img src="../images/共有アイコン.png"></a>
 			<p>共有(未着手)</p>
 		</div>
-		<div class="group_icon_links">
+		<div class="group_icon_links2">
 			<a href="Group_chat.action"><img src="../images/チャットアイコン.png"></a>
 			<p>チャット</p>
 		</div>
-		<div class="group_icon_links">
+		<div class="group_icon_links3">
 			<a href="group_create_participation.jsp"><img src="../images/グループアイコン.png"></a>
 			<p>グループ作成・参加</p>
 		</div>

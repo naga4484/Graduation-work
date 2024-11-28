@@ -1,5 +1,7 @@
 @charset "UTF-8";
 
+
+/*グループチャットのCSS*/
 .chat_left_content{
 	width: 200px;
 	float: left;
@@ -84,7 +86,7 @@
 	
 }
 .chat_name{
-	margin: 0px 10px 0px 0px;
+	margin: 0px 5px 5px 0px;
 }
 .chat_date{
 	width: 70px;
@@ -101,15 +103,88 @@
 	padding: 30px;
 	margin: 0px;
 }
+
+/*グループトップのCSS*/
 .group_icons{
 	position: absolute;
-	top: 50%;
-	left: 10px;
+	top: 20%;
+	left: 10%;
 }
 
-.group_icon_links{
-	display: inline-block;
+.group_icon_links1{
+	position: absolute;
+	left: -25px;
+	top: 28px;
 }
-.group_icon_links img{
+.group_icon_links2{
+	position: absolute;
+	left: 337px;
+	top: 37px;
+}
+.group_icon_links3{
+	position: absolute;
+	left: 685px;
+	top: 29px;
+}
+.group_icon_links1 img{
+	width: 225px;
+}
+.group_icon_links2 img{
 	width: 200px;
+}
+.group_icon_links3 img{
+	width: 215px;
+}
+.group_icon_links1 p{
+	text-align: center;
+	margin-top: 5px;
+}
+.group_icon_links2 p{
+	text-align: center;
+	margin-top: 16px;
+}
+.group_icon_links3 p{
+	text-align: center;
+	margin-top: 0px;
+}
+
+
+/*グループ作成参加画面のCSS*/
+.group_new_create{
+	width: 500px;
+	border: 1px solid #333;
+	float: left;
+	margin:30px 0px 0px 30px;
+	border-radius: 10px;
+}
+.group_new_create h2{
+	text-align: center;
+}
+
+.group_new_par{
+	width: 500px;
+	border: 1px solid #333;
+	float: right;
+	margin:30px 30px 0px 0px;
+	border-radius: 10px;
+}
+.group_new_par h2{
+	text-align: center;
+}
+
+.group_create_text_label{
+	margin-left: 50px;
+}
+
+#group_create_text{
+	width: 400px;
+	height: 30px;
+	margin:5px 50px 15px 50px;
+	border-radius: 10px;
+}
+
+#group_create_button{
+	width: 100px;
+	height: 30px;
+	margin:10px 200px;
 }

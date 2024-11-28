@@ -7,7 +7,7 @@
 
 <title>チャット画面</title>
 
-<h1>チャット</h1>
+<h1 class="page_title">チャット</h1>
 
 <div class="chat_left_content">
 	<c:forEach var="item" items="${my_group_list}">
