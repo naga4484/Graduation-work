@@ -24,6 +24,18 @@ public class My_management_topAction extends Action {
 		) throws Exception {
 
 			HttpSession session=request.getSession();
+			User_id select_user_id = (User_id)session.getAttribute("user");
+			if(select_user_id == null) {
+				return "../account/Error_function.action";
+			}
+			
+			session.removeAttribute("my_management_date_list");
+			session.removeAttribute("my_management_content_list");
+			session.removeAttribute("attendance_count");
+			session.removeAttribute("attendance_management_date");
+			session.removeAttribute("attendance_management_date_sub");
+			session.removeAttribute("attendance_management_list_size");
+			session.removeAttribute("my_submissions_list");
 
 			//自己管理における共通機能の処理
 			User_id user_id = (User_id)session.getAttribute("user");

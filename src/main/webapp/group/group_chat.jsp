@@ -6,6 +6,10 @@
 
 
 <title>チャット画面</title>
+<!-- ログイン状態のみで使用できるようにするモノ -->
+<c:if test="${account == null}">
+	<c:redirect url="../account/Error_common.action" />
+</c:if>
 
 <h1 class="page_title">チャット</h1>
 

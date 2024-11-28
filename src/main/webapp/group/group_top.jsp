@@ -6,14 +6,19 @@
 
 <title>グループ管理画面</title>
 
+<!-- ログイン状態のみで使用できるようにするモノ -->
+<c:if test="${account == null}">
+	<c:redirect url="../account/Error_common.action" />
+</c:if>
+
 <h1 class="page_title">グループ管理</h1>
 
 <div>
 	<c:if test="${comp_mes != null}">
-		<p>${comp_mes}</p>
+		<p class="group_top_mes">${comp_mes}</p>
 	</c:if>
 	<c:if test="${no_par_error != null}">
-		<p>${no_par_error}</p>
+		<p class="group_top_mes">${no_par_error}</p>
 	</c:if>
 	<div class="group_icons">
 		<div class="group_icon_links1">

@@ -1,0 +1,80 @@
+@charset "UTF-8";
+
+.my_management_iframe{
+	width: 	500px;
+	height: 200px;
+	border-radius: 10px;
+	border: 1px solid #333;
+	margin-bottom: 10px;
+}
+
+.my_management_submission_area{
+	width: 500px;
+	position: absolute;
+	top: 70px;
+	right: 40px;
+}
+
+.my_management_submission_area h3{
+	text-align: center;
+	font-size: 25px;
+	margin-bottom: 5px;
+}
+.my_management_submission_area a{
+	margin-left: 310px;
+}
+
+.my_management_attendance_area{
+	width: 500px;
+	position: absolute;
+	top: 390px;
+	right: 40px;
+}
+.my_management_attendance_area h3{
+	text-align: center;
+	font-size: 25px;
+	margin-bottom: 5px;
+}
+.my_management_attendance_area p{
+	text-align: center;
+}
+.my_management_attendance_area span{
+	font-size: 30px;
+	margin-left: 10px;
+}
+
+.my_management_schedule_area{
+	width: 500px;
+	position: absolute;
+	top: 70px;
+	left: 40px;
+}
+.my_management_schedule_iframe{
+	width: 	500px;
+	height: 500px;
+	border-radius: 10px;
+	border: 1px solid #333;
+	margin-bottom: 10px;
+}
+.my_management_schedule_area h3{
+	text-align: center;
+	font-size: 25px;
+	margin-bottom: 5px;
+}
+.my_management_schedule_none{
+	width: 500px;
+}
+.my_management_schedule_none p{
+	text-align: center;
+	font-size: 20px;
+}
+.my_management_schedule{
+	width: 500px;
+	border-bottom: 1px solid #333;
+	margin-bottom: 10px;
+}
+.my_management_schedule h2{
+	border-left: 10px solid #333;
+	margin-left: 10px;
+	padding-left: 10px;
+}

@@ -188,3 +188,14 @@
 	height: 30px;
 	margin:10px 200px;
 }
+
+.group_mes{
+	margin:0px 0px 20px 50px;
+	font-size: 13px;
+	color: red;
+}
+
+.group_top_mes{
+	margin:30px 0px 20px 130px;
+	font-size: 20px;
+}

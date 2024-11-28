@@ -5,14 +5,18 @@
 <link rel="stylesheet" type="text/css" href="../css/group.css">
 
 <title>グループ作成参加画面</title>
+<!-- ログイン状態のみで使用できるようにするモノ -->
+<c:if test="${account == null}">
+	<c:redirect url="../account/Error_common.action" />
+</c:if>
 
 <h1 class="page_title">グループ作成参加</h1>
 
 <div class="group_new_create">
-	<c:if test="${dis_cre_error != null}">
-		<p>${dis_cre_error}</p>
-	</c:if>
 	<h2>新規作成</h2>
+	<c:if test="${dis_cre_error != null}">
+		<p class="group_mes">${dis_cre_error}</p>
+	</c:if>
 	<form action="Group_create.action">
 		<label class="group_create_text_label">グループ名</label>
 		<input type="text" name="group_name" placeholder="グループ名を入力してください" maxlength="20" required id="group_create_text">
@@ -22,13 +26,13 @@
 	</form>
 </div>
 <div class="group_new_par">
+	<h2>新規参加</h2>
 	<c:if test="${dis_par_error != null}">
-		<p>${dis_par_error}</p>
+		<p class="group_mes">${dis_par_error}</p>
 	</c:if>
 	<c:if test="${none_error != null}">
-		<p>${none_error}</p>
+		<p class="group_mes">${none_error}</p>
 	</c:if>
-	<h2>新規参加</h2>
 	<form action="Group_participation.action">
 		<label class="group_create_text_label">グループID</label>
 		<input type="text" name="group_id" placeholder="グループIDを入力してください" maxlength="5" required id="group_create_text">

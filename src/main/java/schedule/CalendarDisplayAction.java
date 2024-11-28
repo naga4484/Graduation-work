@@ -1,5 +1,8 @@
 package schedule;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -72,7 +75,27 @@ public class CalendarDisplayAction  extends Action {
             }
             int searchnum = tempdays_list.indexOf(searchdate);
             
-            if(searchnum != -1) {
+            List<String> search_date = new ArrayList<>();
+            LocalDate localdate = LocalDate.now();
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/MM/dd");
+            search_date.add(localdate.format(formatter));
+            for(int i = 1;i <= 7;i++) {
+            	LocalDate next_date = localdate.plusDays(i);
+            	search_date.add(next_date.format(formatter));
+            }
+            int search_date_num = 0;
+            try {
+	            LocalDate date = LocalDate.parse(selectedDate, formatter);
+	            search_date_num = search_date.indexOf(date.format(formatter));
+            } catch (DateTimeParseException e) {
+            	DateTimeFormatter formatter2 = DateTimeFormatter.ofPattern("yyyy/MM/d");
+            	LocalDate date = LocalDate.parse(selectedDate, formatter2);
+	            search_date_num = search_date.indexOf(date.format(formatter));
+            }
+            if(search_date_num == -1) {
+            	todayTemperatureData = Arrays.asList("天気予報情報がありません");
+            }
+            else if(searchnum != -1) {
             	searchnum = searchnum + 1;
             	String link = "https://weather.yahoo.co.jp/weather/jp/33/?day=" + searchnum;
             	Document docin = Jsoup.connect(link).get();
