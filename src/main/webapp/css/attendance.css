@@ -26,6 +26,30 @@
        	}
 }
 
+.scroll_table {
+  height: calc(160vh / 2); /* スクロール用の高さ */
+  overflow-y: auto; /* スクロールを有効に */
+  border: 1px solid #ccc;
+  width: 50%;
+  margin: 0 auto; /* テーブル全体を中央に配置 */
+}
+
+.headword {
+  position: sticky;
+  top: 0;
+  color: #fff;
+  background: #333;
+  white-space: nowrap;
+  padding: 10px 15px; /* 余白を設定して文字が詰まらないようにする */
+  z-index: 1; /* スクロール時に他の要素の下に隠れないよう設定 */
+  text-align: center; /* 見出しの文字を中央揃え */
+}
+
+.scroll_table table {
+  width: 100%; /* テーブルの幅をコンテナに合わせる */
+  border-collapse: collapse;
+}
+
 #attendance_box_back{
 	background: #333;
 	opacity: 0.5;

@@ -16,16 +16,17 @@
 <c:if test="${not_attendancestudent != null}">
 	<button id="up_not_attendance">欠席学生の情報を登録する</button>
 	<div id="attendance_box">
+	<div class="scroll_table">
 		<form  action="AttendanceNotregistration.action">
 			<table>
 				<tr>
 				
-					<th>病欠</th>
-					<th>公欠</th>
-					<th>遅刻</th>
-					<th>その他</th>
-					<th>学生ID</th>
-					<th>学生氏名</th>
+					<th class="headword">病欠</th>
+					<th class="headword">公欠</th>
+					<th class="headword">遅刻</th>
+					<th class="headword">その他</th>
+					<th class="headword">学生ID</th>
+					<th class="headword">学生氏名</th>
 				</tr>
 				<c:forEach var="item" items="${not_attendancestudent}">
 			  		<tr>
@@ -38,8 +39,10 @@
 			  		</tr>
 				</c:forEach>
 			</table>
+			</div>
 			<input type="submit" value="登録">
 		</form>
+		
 	</div>
 	<div id="attendance_box_back">
 	</div>
