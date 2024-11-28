@@ -10,7 +10,7 @@
 <h1>提出物管理機能</h1>
 
 <div id="my_submissions_box">
-	<h1>「${my_submissions.name}」のファイルを提出してください</h1>
+	<h1>一旦未完成の機能を残すな！！</h1>
 	<p>一旦未完成です</p>
 </div>
 <div id="my_submissions_box_back">
