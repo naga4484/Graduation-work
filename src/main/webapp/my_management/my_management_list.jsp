@@ -37,7 +37,6 @@
 									<td>✕</td>
 								</c:otherwise>
 							</c:choose>
-							<td><a href="My_submissions_management.action?submissions_id=${item.submissions_id}">提出物詳細へ</a></td>
 						</tr>
 					</c:forEach>
 				</table>

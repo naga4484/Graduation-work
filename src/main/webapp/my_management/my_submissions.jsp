@@ -38,14 +38,14 @@
 							<td>✕</td>
 						</c:otherwise>
 					</c:choose>
-					<td><a href="My_submissions_management.action?submissions_id=${item.submissions_id}">提出物詳細へ</a></td>
+					<td><a href="My_submissions_management.action?submissions_id=${item.submissions_id}" target="_parent">提出物詳細へ</a></td>
 				</tr>
 			</c:forEach>
 		</table>
 	</c:if>
 </div>
-
-
-<a href="../common/top.jsp">TOP</a>
+<div class="common_back_button">
+  <a href="../my_management/my_management.jsp"><img src="../images/戻るボタン1.png" class="teacher_back_icon"></a>
+</div>
 <script src="../js/my_submissions.js"></script>
 <%@include file="../footer.jsp"  %>
