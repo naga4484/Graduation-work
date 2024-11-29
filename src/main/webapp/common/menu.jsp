@@ -14,10 +14,10 @@
 		</c:choose>
 	
 	<div class="menu_box_contents">
-		<a href="" class="menu_links">自己管理</a>
+		<a href="../my_management/My_management_top.action" class="menu_links">自己管理</a>
 	</div>
 	<div class="menu_box_contents">
-		<a href="" class="menu_links">グループ管理</a>
+		<a href="../group/group_top.jsp" class="menu_links">グループ管理</a>
 	</div>
 	<div class="menu_box_contents">
 		<a href="" class="menu_links">アンケート</a>
