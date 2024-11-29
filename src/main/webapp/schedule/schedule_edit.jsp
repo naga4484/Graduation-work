@@ -3,13 +3,13 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 
-<link rel="stylesheet" type="text/css" href="../css/attendance.css">
+<link rel="stylesheet" type="text/css" href="../css/schedule.css">
 
 <title>スケジュール変更画面</title>
 
-<h1>スケジュール変更</h1>
+<h1 class="page_title">スケジュール変更</h1>
 <div>
-	<p>${selectedDate}</p>
+	<p class="schedule_plan_date">${selectedDate}</p>
 </div>
 <c:if test="${dis_error != null}">
 	<p>${dis_error}</p>
@@ -17,7 +17,7 @@
 <c:if test="${del_mes != null}">
 	<p>${del_mes}</p>
 </c:if>
-<div>
+<div class="schedule_plan_edit_form">
 	<form action="Schedule_edit.action">
 		<c:choose>
 			<c:when test="${cal_list.size() > 0}">
@@ -43,7 +43,7 @@
 			</c:otherwise>
 		</c:choose>
 		<input type="hidden" value="${cal_list.size()}" name="list_size"> 
-		<input type="submit" value="変更"> 
+		<input type="submit" value="変更" class="schedule_plan_edit_button"> 
 	</form>
 </div>
 <div class="common_back_button">

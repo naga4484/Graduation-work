@@ -1,0 +1,54 @@
+@charset "UTF-8";
+
+.schedule_plan_list{
+	width: 700px;
+	height: 300px;
+	border: 1px solid #333;
+	border-radius: 10px;
+	margin:15px 0px 0px 30px ;
+	display: inline-block;
+}
+
+.schedule_plan_date{
+	margin:20px 0px 5px 20px;
+	font-size: 25px;
+}
+
+.schedule_plan_button{
+	display: inline-block;
+}
+.schedule_plan_button button{
+	width: 100px;
+	height: 30px;
+}
+.schedule_plan_form{
+	width: 900px;
+	margin: 10px 0px 0px 30px;
+}
+.schedule_plan_form #schedule_content{
+	width: 300px;
+	height: 40px;
+	border-radius: 10px;
+	border: 1px solid #333;
+}
+.schedule_plan_form_number{
+	width: 100px;
+	height: 40px;
+	border-radius: 10px;
+	border: 1px solid #333;
+}
+.schedule_plan_form_button{
+	width: 100px;
+	height: 40px;
+	border-radius: 10px;
+	border: 1px solid #333;
+}
+
+.schedule_plan_edit_form{
+	margin: 10px 0px 0px 30px;
+}
+.schedule_plan_edit_button{
+	width: 100px;
+	height: 30px;
+	margin-left: 900px;
+}
