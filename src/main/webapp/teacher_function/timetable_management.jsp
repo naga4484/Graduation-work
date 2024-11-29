@@ -125,12 +125,15 @@
 		    	</div>
 		</c:forEach>
 		<input type="hidden" value="${timetable_template_teacher}" id="template_list">
+		<div class="timetable_button">
 		<input type="submit" value="登録">
+		</div>
 	</form>
-	<div class="pagination">
-	  <button onclick="changePage(-1)">前へ</button>
-	  <button onclick="changePage(1)">次へ</button>
-	</div>
+       <div class="pagination">
+         <button onclick="changePage(-1)">＜</button>
+         <button onclick="changePage(1)">＞</button>
+       </div>
+
 	
 </c:if>
 <div class="common_back_button">

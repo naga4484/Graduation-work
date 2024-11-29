@@ -48,7 +48,7 @@
 		<input type="hidden" value="${submissions_result_student_list[0].class_id}" name="class_id">
 		<input type="submit" value="登録">
 	</div>
-	<div>
+	<div class="teacher_table">
 		<table>
 			<tr>
 				<th>選択</th>

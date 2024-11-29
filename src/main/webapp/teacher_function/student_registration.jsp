@@ -30,7 +30,7 @@
 	
 	<p>${student_id_duplication_error}</p>
 	<label>学生ID</label>
-    <input type="text" name="student_id" required="required" placeholder="学生IDを入力してください">
+    <input type="text" name="student_id" required="required" placeholder="学生IDを入力してください"><br>
    	<button type="submit">登録</button> 
 </form>
 </div><div class="common_back_button">

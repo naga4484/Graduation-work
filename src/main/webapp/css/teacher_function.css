@@ -6,6 +6,9 @@ body {
   margin: 0;
 }
 
+h1 {
+	margin-left:10% ;
+}
 
 h2{
 	display: inline-block;
@@ -13,6 +16,7 @@ h2{
     color: #333333;
     border-left: 5px solid #121212;
     background-color: #f7f3f3;
+
 }
 
 label{
@@ -68,7 +72,7 @@ select{
 	margin-bottom: 1em; /* 下に1emの隙間 */
     min-width: 230px;
     height: 2em;
-    padding: .4em calc(.8em + 30px) .4em .8em;
+    padding: .4em calc(.10em + 30px) .4em .8em;
     border: 1px solid black;
     border-radius: 3px;
     background-color: #fff;
@@ -92,7 +96,59 @@ select{
   right: 0;
 }
 
+.timetable_box {
+    width: 300px;
+    min-height: 200px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    text-align: center;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
 
+.timetable_button {
+    margin-top: 10px;
+    position: absolute;
+    bottom: 20px; /* フォームの下に配置 */
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 5;
+}
+
+.timetable_button input {
+    font-size: 16px;
+    cursor: pointer;
+}
+
+
+
+select, input[type="button"], input[type="submit"] {
+    margin-top: 10px;
+}
+
+.pagination  {
+    position: relative;
+    height: 100px; /* 必要に応じて高さを調整 */
+    z-index: 1;
+}
+
+.pagination button {
+    width: 40px; /* ボタンの幅 */
+    height: 40px; /* ボタンの高さ */
+    border-radius: 50%; /* 丸くする */
+    border: 1px solid #ccc; /* ボタンの枠線 */
+    background-color: #f0f0f0; /* ボタンの背景色 */
+    color: #333; /* ボタンの文字色 */
+    font-size: 18px; /* 文字サイズ */
+    cursor: pointer; /* マウスオーバー時のカーソル変更 */
+    transition: background-color 0.3s ease; /* 背景色の変化をスムーズに */
+}
+
+.pagination button:hover {
+    background-color: #ddd; /* ホバー時の背景色 */
+}
 
 .teacher_table table {
   width: 100%; /* テーブルの幅を100%に */
@@ -246,13 +302,16 @@ input[type="checkbox"] {
   margin-bottom: 5px;
   cursor: pointer;
   text-align: center;
-  margin:0 auto
+  color: #f7f3f3;
+  margin:20px auto
 }
 
 .items{
 	display: flex;
 	justify-content: center;
 	align-items: center;
+    margin-top: 0px;
+
 }
 
 .item:active{
@@ -261,6 +320,10 @@ input[type="checkbox"] {
 
 .item:hover {
   background-color: blue;
+}
+
+.teacher_center h1 {
+    margin: 10px auto; /* 中央揃え */
 }
 
 .teacher_center h2 {
@@ -291,4 +354,3 @@ input[type="checkbox"] {
 	background: purple;
 	color: white;
 }
-

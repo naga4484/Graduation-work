@@ -28,6 +28,7 @@
 
 	<!-- 新規登録リンク -->
 	<a href="subject_registration.jsp">新規登録</a>
+	<br><br>
 
 	<div class="subject_table">
 		<!-- 科目情報編集フォーム -->
@@ -64,6 +65,7 @@
 				</tbody>
 			</table>
 	</div>
+	<br><br>
 	<input type="submit" value="変更" id="subject_change_button">
 	</form>
 </div>

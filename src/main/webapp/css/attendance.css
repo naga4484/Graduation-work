@@ -50,6 +50,10 @@
   border-collapse: collapse;
 }
 
+h1 {
+	margin-left:10% ;
+}
+
 #attendance_box_back{
 	background: #333;
 	opacity: 0.5;

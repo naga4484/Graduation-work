@@ -18,6 +18,7 @@
 	<div id="attendance_box">
 	<div class="scroll_table">
 		<form  action="AttendanceNotregistration.action">
+		  <div class="table-container">
 			<table>
 				<tr>
 				
@@ -39,6 +40,7 @@
 			  		</tr>
 				</c:forEach>
 			</table>
+			</div>
 			</div>
 			<input type="submit" value="登録">
 		</form>

@@ -26,7 +26,7 @@
 	</select>
 	
 	<input type="submit" value="検索">
-</form>
+</form><br>
 <c:if test="${st_list.size() > 0}">
 	<form action="Group_auto_create.action">
 		<div>
@@ -45,7 +45,7 @@
 			<input type="radio" name="reader_flag" id="no_flag" value="off" checked>
 			<div id="reader_content">
 			</div>
-			<br>
+			<br><br>
 			<input type="submit" value="生成">
 		</div>
 		<div id="group_member_table">
