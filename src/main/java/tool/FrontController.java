@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 
 import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.MultipartConfig;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
@@ -11,6 +12,11 @@ import jakarta.servlet.http.HttpServletResponse;
 
 
 @WebServlet(urlPatterns={"*.action"})
+@MultipartConfig(
+		maxFileSize = 104857600,  // 最大ファイルサイズ: 100MB
+	    maxRequestSize = 524288000,  // 最大リクエストサイズ: 500MB
+	    fileSizeThreshold = 0  // ファイルのサイズの閾値（0は即時保存）
+)
 public class FrontController extends HttpServlet {
 	
 	public void doPost (

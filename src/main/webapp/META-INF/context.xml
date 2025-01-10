@@ -13,4 +13,12 @@
 		maxIdle="10"
 		maxWaitMillis = "-1"
 		validationQuery="select 1"/>
+		
+	<MultipartConfig>
+        <maxFileSize>104857600</maxFileSize>
+        <maxRequestSize>524288000</maxRequestSize>
+        <fileSizeThreshold>0</fileSizeThreshold>
+    </MultipartConfig>
+    <Manager sessionCookieName="JSESSIONID" />
+    <Connector port="8080" maxPostSize="524288000" />
 </Context>

@@ -4,35 +4,42 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <link rel="stylesheet" type="text/css" href="../css/group.css">
 
-
-<title>チャット画面</title>
+<title>グループ作成参加画面</title>
 <!-- ログイン状態のみで使用できるようにするモノ -->
 <c:if test="${account == null}">
 	<c:redirect url="../account/Error_common.action" />
 </c:if>
 
-<h1 class="page_title">チャット</h1>
+<h1 class="page_title">共有</h1>
 
 <div class="chat_left_content">
 	<c:forEach var="item" items="${my_group_list}">
-		<a href="Group_chat_datail.action?group_id=${item.group_id}"><div class="chat_partner_select">
+		<a href="Group_file_upload_datail.action?group_id=${item.group_id}"><div class="chat_partner_select">
 			<h4>${item.group_name}</h4>
 		</div></a>
 	</c:forEach>
 </div>
-<c:if test="${chat_list != null}">
+<c:if test="${file_list != null}">
 
-	<iframe src="group_chat_inner.jsp" id="chat_iframe"></iframe>
-	<!-- チャット送信欄 -->
+	<iframe src="group_file_inner.jsp" id="chat_iframe"></iframe>
+	
+	
+	<!-- 共有アイテム送信欄 -->
 	<div class="chat_submit_area">
-		<form action="Chat_submit.action">
-			<input type="text" name="chat_content" placeholder="メッセ―ジを入力" id="chat_content_area">
-			<input type="hidden" name="group_id" value="${select_id}">
-			<input type="submit" value="送信" id="chat_submit_area">
-		</form>
+		<form action="Group_file_upload_submit.action?group_id=${select_id}" enctype="multipart/form-data" method="POST">
+	        <label for="file">Choose file:</label>
+	        <input type="file" name="file">
+	        <input type="submit" value="Upload">
+	    </form>
 	</div>
+	
+	
 </c:if>
+
+
 <div class="common_back_button">
-	<a href="../group/group_top.jsp"><img src="../images/戻るボタン1.png"></a>
+  <a href="../group/group_top.jsp"><img src="../images/戻るボタン1.png" class="teacher_back_icon"></a>
 </div>
+
+
 <%@include file="../footer.jsp"  %>

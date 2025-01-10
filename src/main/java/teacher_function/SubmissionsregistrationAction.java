@@ -1,5 +1,6 @@
 package teacher_function;
 
+import java.io.File;
 import java.util.List;
 
 import bean.Studentaccount;
@@ -12,6 +13,8 @@ import jakarta.servlet.http.HttpSession;
 import tool.Action;
 
 public class SubmissionsregistrationAction extends Action {
+	
+	private static final String FILE_DIRECTORY = "submissions/";
 	public String execute(
 			HttpServletRequest request, HttpServletResponse response
 		) throws Exception {
@@ -41,7 +44,20 @@ public class SubmissionsregistrationAction extends Action {
 				date = "0" + date;
 			}
 			String fulldata = year + "年" +month + "月" + date + "日";
-			String save_path = "../submissions_files/" + submission_name;
+			String save_path = FILE_DIRECTORY + submission_name;
+			
+			String folderpath = request.getServletContext().getRealPath("") + File.separator + "submissions";
+			File folDir = new File(folderpath);
+	        if (!folDir.exists()) {
+	        	folDir.mkdir();
+	        }
+			
+			String submissionsPath = request.getServletContext().getRealPath("") + File.separator + save_path;
+			// 保存ディレクトリが存在しない場合は作成
+	        File subDir = new File(submissionsPath);
+	        if (!subDir.exists()) {
+	        	subDir.mkdir();
+	        }
 			List<Studentaccount> submissionsstudent = (List<Studentaccount>) session.getAttribute("submissionsstudent");
 			
 			for(Studentaccount i : submissionsstudent) {

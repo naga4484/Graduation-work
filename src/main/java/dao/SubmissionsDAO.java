@@ -199,7 +199,7 @@ public class SubmissionsDAO extends DAO {
 		Connection con=getConnection();
 
 		PreparedStatement st=con.prepareStatement(
-			"insert into Submissions_alignment values(?, ?, ?)");
+			"insert into Submissions_alignment(submissions_id,student_id,submissions_flag) values(?, ?, ?)");
 		st.setInt(1, submissions_id);
 		st.setString(2, student_id);
 		st.setBoolean(3, flag);
@@ -208,6 +208,49 @@ public class SubmissionsDAO extends DAO {
 		st.close();
 		con.close();
 		return line;
+	}
+	//提出物学生登録時のフラグ関連の処理
+	public int submissions_alignment_flags(int submissions_id, String student_id,String name) throws Exception {
+		Connection con=getConnection();
+
+		PreparedStatement st=con.prepareStatement(
+			"update Submissions_alignment set submissions_flag=?,submissions_my_name=? where submissions_id=? and student_id=?");
+		st.setBoolean(1, true);
+		st.setString(2, name);
+		st.setInt(3,submissions_id);
+		st.setString(4, student_id);
+		
+		int line=st.executeUpdate();
+
+		st.close();
+		con.close();
+		return line;
+	}
+	//提出物学生一覧の取得(ID検索)
+	public Submissions submissions_alignment_list(int submissions_id,String student_id) 
+	throws Exception {
+		Submissions submissions = null;
+
+        Connection con = getConnection();
+
+        PreparedStatement st = con.prepareStatement("select * from Submissions_alignment where submissions_id=? and student_id=?");
+        st.setInt(1, submissions_id);
+        st.setString(2, student_id);
+        ResultSet rs = st.executeQuery();
+
+        while (rs.next()) {
+        	submissions = new Submissions();
+        	submissions.setSubmissions_id(rs.getInt("submissions_id"));
+        	submissions.setSubmissions_flag(rs.getBoolean("submissions_flag"));
+        	submissions.setStudent_id(rs.getString("student_id"));
+        	submissions.setSubmissions_my_name(rs.getString("submissions_my_name"));
+        }
+
+        rs.close(); 
+        st.close();
+        con.close(); 
+        
+        return submissions;
 	}
 	//自己管理画面における提出物の取得
 	public List<Submissions> submissions_my_management(String student_id) 

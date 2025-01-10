@@ -7,9 +7,11 @@ public class Group implements java.io.Serializable {
 	private String accept_user;
 	private int user_id;
 	private int chat_id;
+	private int share_id;
 	private String chat_content;
 	private String chat_date;
 	private String name;
+	private String share_item_path;
 	
 	public String getGroup_id() {
 		return group_id;
@@ -26,6 +28,9 @@ public class Group implements java.io.Serializable {
 	public int getChat_id() {
 		return chat_id;
 	}
+	public int getShare_id() {
+		return share_id;
+	}
 	public String getChat_content() {
 		return chat_content;
 	}
@@ -34,6 +39,9 @@ public class Group implements java.io.Serializable {
 	}
 	public String getName() {
 		return name;
+	}
+	public String getShare_item_path() {
+		return share_item_path;
 	}
 	
 	
@@ -52,6 +60,9 @@ public class Group implements java.io.Serializable {
 	public void setChat_id(int chat_id) {
 		this.chat_id=chat_id;
 	}
+	public void setShare_id(int share_id) {
+		this.share_id=share_id;
+	}
 	public void setChat_content(String chat_content) {
 		this.chat_content=chat_content;
 	}
@@ -61,5 +72,7 @@ public class Group implements java.io.Serializable {
 	public void setName(String name) {
 		this.name=name;
 	}
-	
+	public void setShare_item_path(String share_item_path) {
+		this.share_item_path=share_item_path;
+	}
 }

@@ -22,8 +22,8 @@
 	</c:if>
 	<div class="group_icons">
 		<div class="group_icon_links1">
-			<a href="#"><img src="../images/共有アイコン.png"></a>
-			<p>共有(未着手)</p>
+			<a href="Group_file_upload.action"><img src="../images/共有アイコン.png"></a>
+			<p>共有</p>
 		</div>
 		<div class="group_icon_links2">
 			<a href="Group_chat.action"><img src="../images/チャットアイコン.png"></a>

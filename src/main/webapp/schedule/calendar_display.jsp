@@ -22,14 +22,7 @@
 	    	<p>${today_temperature_data[0]}</p>
 	    </c:when>
     	<c:otherwise>
-    		<c:choose>
-    			<c:when test="${selectedDate.length() == 9}">
-		    		<p>${today_temperature_data[0]}の${selectedDate.substring(5,7)}月${selectedDate.substring(8,9)}日の天気</p>
-		    	</c:when>
-		    	<c:otherwise>
-		    		<p>${today_temperature_data[0]}の${selectedDate.substring(5,7)}月${selectedDate.substring(8,10)}日の天気</p>
-		    	</c:otherwise>
-		    </c:choose>
+		    <p>${today_temperature_data[0]}の${selectedDate.substring(5)}の天気</p>
 		    <p>天気　：　${today_temperature_data[1]}</p>
 		    <p>最高気温　：　${today_temperature_data[2]}</p>
 		    <p>最高気温　：　${today_temperature_data[3]}</p>

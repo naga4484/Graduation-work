@@ -1,5 +1,8 @@
 package teacher_function;
 
+import java.io.File;
+
+import bean.Submissions;
 import bean.User_id;
 import dao.SubmissionsDAO;
 import jakarta.servlet.http.HttpServletRequest;
@@ -20,8 +23,15 @@ public class Submissions_detail_deleteAction extends Action {
 			
 			int submissions_id=Integer.parseInt(request.getParameter("submissions_id"));
 			
+			
 			SubmissionsDAO sdao=new SubmissionsDAO();
+			Submissions sub_tol = sdao.distinctsubmissions_id(submissions_id);
+			
 			int line = sdao.delete_submission(submissions_id);
+			
+			String submissionsPath = request.getServletContext().getRealPath("") + File.separator + sub_tol.getSave_path();
+			File dir = new File(submissionsPath);
+			dir.delete();
 			
 			if(line>0) {
 				request.setAttribute("delete_mes", "科目コード「" + submissions_id + "」の削除が完了しました");

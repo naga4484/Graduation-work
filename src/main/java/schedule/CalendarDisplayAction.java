@@ -52,7 +52,7 @@ public class CalendarDisplayAction  extends Action {
         if (selectedDate == null || selectedDate.isEmpty()) {
             selectedDate = "日付が選択されていません";
         }
-        session.setAttribute("selectedDate", selectedDate);
+        session.setAttribute("selectedDate", selectedDate);   
 
         // 天気情報を取得する処理
         String todayTemperature = "情報取得エラー";
@@ -67,32 +67,26 @@ public class CalendarDisplayAction  extends Action {
             	Elements ert = el.select("em");
             	tempdays_list = Arrays.asList(ert.text().split(" "));
             }
-            String searchdate = "";
-            if(selectedDate.length() == 9) {
-            	searchdate = selectedDate.substring(8,9);
-            }else {
-            	searchdate = selectedDate.substring(8,10);
-            }
-            int searchnum = tempdays_list.indexOf(searchdate);
-            
             List<String> search_date = new ArrayList<>();
             LocalDate localdate = LocalDate.now();
-            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/MM/dd");
-            search_date.add(localdate.format(formatter));
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/M/d");
+	        search_date.add(localdate.format(formatter));
+            
             for(int i = 1;i <= 7;i++) {
             	LocalDate next_date = localdate.plusDays(i);
             	search_date.add(next_date.format(formatter));
             }
-            int search_date_num = 0;
+            int searchnum = search_date.indexOf(selectedDate);
+            boolean search_date_num = false;
             try {
 	            LocalDate date = LocalDate.parse(selectedDate, formatter);
-	            search_date_num = search_date.indexOf(date.format(formatter));
+	            search_date_num = search_date.contains(date.format(formatter));
             } catch (DateTimeParseException e) {
-            	DateTimeFormatter formatter2 = DateTimeFormatter.ofPattern("yyyy/MM/d");
+            	DateTimeFormatter formatter2 = DateTimeFormatter.ofPattern("yyyy/M/d");
             	LocalDate date = LocalDate.parse(selectedDate, formatter2);
-	            search_date_num = search_date.indexOf(date.format(formatter));
+	            search_date_num = search_date.contains(date.format(formatter));
             }
-            if(search_date_num == -1) {
+            if(search_date_num == false) {
             	todayTemperatureData = Arrays.asList("天気予報情報がありません");
             }
             else if(searchnum != -1) {
@@ -124,6 +118,7 @@ public class CalendarDisplayAction  extends Action {
            
         } catch (Exception e) {
             e.printStackTrace();
+            System.out.println(e);
             todayTemperatureData = Arrays.asList("情報取得エラー");
         }
         TimetableDAO dao = new TimetableDAO();

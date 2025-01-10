@@ -36,6 +36,8 @@ public class My_management_topAction extends Action {
 			session.removeAttribute("attendance_management_date_sub");
 			session.removeAttribute("attendance_management_list_size");
 			session.removeAttribute("my_submissions_list");
+			session.removeAttribute("my_submissions");
+			session.removeAttribute("my_send_submissions");
 
 			//自己管理における共通機能の処理
 			User_id user_id = (User_id)session.getAttribute("user");

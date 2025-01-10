@@ -146,4 +146,47 @@ public class GroupDAO extends DAO {
 		con.close();
 		return line;
 	}
+	
+	public List<Group> search_group_file(String group_id) throws Exception { 
+		List<Group> list_group = new ArrayList<>();
+		Group group = null;
+
+        Connection con = getConnection();
+
+        PreparedStatement st = con.prepareStatement("select S.share_id,S.share_item_path,S.group_id,S.user_id,U.name from Share AS S INNER JOIN User_account AS U ON S.user_id = U.user_id where group_id=?");
+        st.setString(1, group_id);
+        ResultSet rs = st.executeQuery();
+        
+
+        while (rs.next()) {
+        	group = new Group();
+        	group.setShare_id(Integer.parseInt(rs.getString("share_id")));
+        	group.setGroup_id(rs.getString("group_id"));
+        	group.setShare_item_path(rs.getString("share_item_path"));
+        	group.setUser_id(Integer.parseInt(rs.getString("user_id")));
+        	group.setName(rs.getString("name"));
+        	list_group.add(group);
+        }
+
+        rs.close(); 
+        st.close();
+        con.close(); 
+        
+        return list_group;
+	}
+	//共有ファイルの登録
+		public int group_file_insert(String group_id,String path,int user_id) throws Exception {
+			Connection con=getConnection();
+
+			PreparedStatement st=con.prepareStatement(
+				"insert into share(group_id,share_item_path,user_id) values(?, ?, ?)");
+			st.setString(1, group_id);
+			st.setString(2, path);
+			st.setInt(3, user_id);
+			int line=st.executeUpdate();
+
+			st.close();
+			con.close();
+			return line;
+		}
 }

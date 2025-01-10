@@ -31,10 +31,10 @@
 							<td>${item.create_date}</td>
 							<c:choose>
 								<c:when test="${item.submissions_flag == true}">
-									<td>○</td>
+									<td>提出済み</td>
 								</c:when>
 								<c:otherwise>
-									<td>✕</td>
+									<td>未提出</td>
 								</c:otherwise>
 							</c:choose>
 						</tr>
