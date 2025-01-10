@@ -12,30 +12,30 @@
 <link rel="stylesheet" type="text/css" href="../css/teacher.css">
 <link rel="stylesheet" type="text/css" href="../css/account.css">
 <link rel="stylesheet" type="text/css" href="../css/group.css">
-<link rel="stylesheet" type="text/css" href="../css/my_management.css">
 </head>
 <body>
 	<div>
 		<c:choose>
-			<c:when test="${sessionScope.my_submissions_list.size() > 0}">
-				<table class="my_management_inner_content">
+			<c:when test="${sessionScope.sub_detail_send_list.size() > 0}">
+				<table>
 					<tr>
-						<th>提出物名</th>
-						<th>期限</th>
-						<th>提出済</th>
-						<th></th>
+						<th>学生ID</th>
+						<th>氏名</th>
+						<th>提出状況</th>
+						<th>提出済みファイル</th>
 					</tr>
-					<c:forEach var="item" items="${my_submissions_list}">
+					<c:forEach var="item" items="${sessionScope.sub_detail_send_list}">
 						<tr>
-							
-							<td><p class="txt-limits">${item.name}</p></td>
-							<td>${item.create_date}</td>
+							<td>${item.student_id}</td>
+							<td>${item.name}</td>
 							<c:choose>
 								<c:when test="${item.submissions_flag == true}">
 									<td>提出済み</td>
+									<td><a href="Submissions_sended_file_download.action?path=${item.submissions_my_name}&submissions_id=${item.submissions_id}&student_id=${item.student_id}" target="_parent">${item.submissions_my_name}</a></td>
 								</c:when>
 								<c:otherwise>
 									<td>未提出</td>
+									<td></td>
 								</c:otherwise>
 							</c:choose>
 						</tr>
@@ -43,11 +43,8 @@
 				</table>
 			</c:when>
 			<c:otherwise>
-				<div>
-					<p>提出物はありません</p>
-				</div>
+				<p>本日のデータは登録されていません</p>
 			</c:otherwise>
 		</c:choose>
 	</div>
-<script src="../js/text_limit.js"></script>
 <%@include file="../footer.jsp"  %>

@@ -1,11 +1,14 @@
 package teacher_function;
 
+import java.io.File;
 import java.util.List;
 
 import bean.Subject;
+import bean.Submissions;
 import bean.Teacheraccount;
 import bean.User_id;
 import dao.SubjectDAO;
+import dao.SubmissionsDAO;
 import dao.TimetableDAO;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -29,6 +32,18 @@ public class SubjectdeleteAction extends Action {
 			TimetableDAO tdao = new TimetableDAO();
 			int num = tdao.timetable_update(subject_id);
 			num = tdao.timetable_template_update(subject_id);
+			
+			SubmissionsDAO sdao=new SubmissionsDAO();
+			List<Submissions> sub_tol = sdao.distinctsubmissions_subject_id(subject_id);
+			System.out.println(sub_tol);
+			System.out.println("これは出来ているのか？？");
+			
+			for(Submissions i : sub_tol) {
+				String submissionsPath = request.getServletContext().getRealPath("") + File.separator + i.getSave_path();
+				System.out.println(submissionsPath);
+				File dir = new File(submissionsPath);
+				dir.delete();
+			}
 			
 			SubjectDAO dao=new SubjectDAO();
 			int line = dao.delete_subject(subject_id);

@@ -34,7 +34,7 @@ public class Submissions_detail_deleteAction extends Action {
 			dir.delete();
 			
 			if(line>0) {
-				request.setAttribute("delete_mes", "科目コード「" + submissions_id + "」の削除が完了しました");
+				request.setAttribute("delete_mes", "提出物ID「" + submissions_id + "」の削除が完了しました");
 				session.removeAttribute("distinctsubmissions_class");
 				return "submissions_confirmation.jsp";
 			}

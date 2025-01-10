@@ -25,6 +25,7 @@ public class CalendarDAO extends DAO {
         while (rs.next()) {
             cal = new Calendar();
             cal.setUser_id(rs.getInt("user_id"));
+            cal.setCalendar_id(rs.getInt("calendar_id"));
             cal.setCalender_date(rs.getString("calender_date"));
             cal.setSetting_date(rs.getString("setting_date"));
             cal.setSchedule_content(rs.getString("schedule_content"));
@@ -72,7 +73,7 @@ public class CalendarDAO extends DAO {
 		Connection con=getConnection();
 
 		PreparedStatement st=con.prepareStatement(
-			"insert into Calendar values(?, ?, ?, ?)");
+			"insert into Calendar(user_id,calender_date,setting_date,schedule_content) values(?, ?, ?, ?)");
 		st.setInt(1, user_id);
 		st.setString(2, calender_date);
 		st.setString(3, setting_date);
@@ -83,14 +84,13 @@ public class CalendarDAO extends DAO {
 		con.close();
 		return line;
 	}
-	// カレンダー削除(ユーザーと日付)
-	public int cal_del(int user_id,String selectdate) throws Exception {
+	// カレンダー削除
+	public int cal_del(int calendar_id) throws Exception {
 		Connection con=getConnection();
 
 		PreparedStatement st=con.prepareStatement(
-			"delete from Calendar where user_id=? and calender_date=?");
-		st.setInt(1, user_id);
-		st.setString(2, selectdate);
+			"delete from Calendar where calendar_id=?");
+		st.setInt(1, calendar_id);
 		int line=st.executeUpdate();
 
 		st.close();
@@ -98,14 +98,13 @@ public class CalendarDAO extends DAO {
 		return line;
 	}
 	// カレンダー削除(ユーザーと日付と設定時間)
-	public int cal_del(int user_id,String selectdate,String delete_data) throws Exception {
+	public int cal_del(int user_id,String selectdate) throws Exception {
 		Connection con=getConnection();
 
 		PreparedStatement st=con.prepareStatement(
-			"delete from Calendar where user_id=? and calender_date=? and setting_date=?");
+			"delete from Calendar where user_id=? and calender_date=?");
 		st.setInt(1, user_id);
 		st.setString(2, selectdate);
-		st.setString(3, delete_data);
 		int line=st.executeUpdate();
 
 		st.close();

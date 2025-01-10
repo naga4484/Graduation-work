@@ -23,11 +23,11 @@ public class Schedule_deleteAction extends Action {
 
 			String selectdate = (String)session.getAttribute("selectedDate");
 			User_id user_id = (User_id)session.getAttribute("user");
-			String delete_data = request.getParameter("delete_data");
+			int calendar_id = Integer.parseInt(request.getParameter("delete_data"));
 			
 			CalendarDAO dao = new CalendarDAO();
 			
-			int line = dao.cal_del(user_id.getUser_id(), selectdate, delete_data);
+			int line = dao.cal_del(calendar_id);
 			List<Calendar> cal_list = dao.calender_list(user_id.getUser_id(), selectdate);
 			
 			session.setAttribute("cal_list", cal_list);

@@ -40,3 +40,73 @@
 	z-index: 80;
 	display: block;
 }
+
+.my_submissions_box_close_button{
+	position: absolute;
+	top: 10px;
+	right: 10px;
+}
+
+.my_submissions_box_file_select::-webkit-file-upload-button{
+	width: 120px;
+	height: 36px;
+	
+}
+.my_submissions_box_file_send_button{
+	width: 70px;
+	height: 36px;
+	margin-top: 50px;
+}
+.my_submissions_box_file_download{
+	position: absolute;
+	bottom: 10px;
+	left:250px;
+}
+.my_submissions_main_area{
+	margin-top: 30px;
+	text-align: center;
+}
+.my_submissions_main_table_area{
+	width: 1000px;
+	height: 45px;
+	margin-left: 50px;
+	border-bottom: 1px solid #333;
+}
+.my_submissions_main_table_area_top{
+	width: 1000px;
+	height: 45px;
+	margin-left: 50px;
+	border-bottom: 1px solid #333;
+	background-color: antiquewhite;
+}
+.my_submissions_main_table_area p{
+	margin:12px auto;
+}
+
+.my_submissions_main_table_area_name{
+	width: 500px;
+	display: inline-block;
+	margin:0;
+	height: 45px;
+	border-right: 1px solid #333;
+}
+.my_submissions_main_table_area_date{
+	width: 150px;
+	display: inline-block;
+	height: 45px;
+	margin:0;
+	border-right: 1px solid #333;
+}
+.my_submissions_main_table_area_flag{
+	width: 150px;
+	display: inline-block;
+	height: 45px;
+	margin:0;
+	border-right: 1px solid #333;
+}
+.my_submissions_main_table_area_send{
+	width: 150px;
+	display: inline-block;
+	height: 45px;
+	margin:0;
+}

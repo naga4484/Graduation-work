@@ -12,20 +12,35 @@
 <link rel="stylesheet" type="text/css" href="../css/teacher.css">
 <link rel="stylesheet" type="text/css" href="../css/account.css">
 <link rel="stylesheet" type="text/css" href="../css/group.css">
-<link rel="stylesheet" type="text/css" href="../css/schedule.css">
+<link rel="stylesheet" type="text/css" href="../css/my_management.css">
 </head>
 <body>
 	<div>
-		<c:forEach var="item" items="${sessionScope.cal_list}" varStatus="loop">
-			<div class="my_schedule_main_table_area">
-				<div class="my_schedule_main_table_area_date">
-					<p>${item.setting_date}</p>
+		<c:choose>
+			<c:when test="${sessionScope.my_submissions_list.size() > 0}">
+				<table class="my_management_inner_content">
+					<tr>
+						<th>提出物名</th>
+						<th>期限</th>
+						<th>提出状況</th>
+						<th></th>
+					</tr>
+					<c:forEach var="item" items="${my_submissions_list}" varStatus="loop">
+						<tr>
+							
+							<td><p class="txt-limits">${item.name}</p></td>
+							<td>${item.create_date}</td>
+							<td>${sessionScope.submissions_send_data_count[loop.index]}</td>
+						</tr>
+					</c:forEach>
+				</table>
+			</c:when>
+			<c:otherwise>
+				<div>
+					<p>提出物はありません</p>
 				</div>
-				<div class="my_schedule_main_table_area_content">
-					<p class="txt-limits">${item.schedule_content}</p>
-				</div>
-			</div>
-		</c:forEach>
+			</c:otherwise>
+		</c:choose>
 	</div>
 <script src="../js/text_limit.js"></script>
 <%@include file="../footer.jsp"  %>

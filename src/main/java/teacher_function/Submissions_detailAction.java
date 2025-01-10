@@ -1,5 +1,7 @@
 package teacher_function;
 
+import java.util.List;
+
 import bean.Submissions;
 import bean.User_id;
 import dao.SubmissionsDAO;
@@ -22,8 +24,10 @@ public class Submissions_detailAction extends Action {
 			int submissions_id=Integer.parseInt(request.getParameter("submissions_id"));
 			SubmissionsDAO sdao=new SubmissionsDAO();
 			Submissions distinctsubmissions_id = sdao.distinctsubmissions_id(submissions_id);
+			List<Submissions> list_sub = sdao.submissions_alignment_alllist(submissions_id);
 			
 			session.setAttribute("distinctsubmissions_id", distinctsubmissions_id);
+			session.setAttribute("sub_detail_send_list", list_sub);
 			return "submissions_detail.jsp";
 		}
 	}

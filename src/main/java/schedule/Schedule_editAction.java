@@ -44,20 +44,7 @@ public class Schedule_editAction extends Action {
 				}
 				minute_list.add(minute);
 			}
-			System.out.println(hour_list);
-			System.out.println(minute_list);
-			//重複チェック
-			int duplicate = 0;
-			String num_data = hour_list.get(0) + minute_list.get(0);
-			for(int i = 1;i < list_size;i++) {
-				if(num_data.equals(hour_list.get(i) + minute_list.get(i))){
-					duplicate++;
-				}
-			}
-			if(duplicate >= 1) {
-				request.setAttribute("dis_error", "入力した値が重複しています");
-				return "schedule_edit.jsp";
-			}
+			
 			//変更のために一度全削除
 			line = dao.cal_del(user_id.getUser_id(), selectdate);
 			

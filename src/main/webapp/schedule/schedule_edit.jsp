@@ -33,7 +33,7 @@
 				  			<td><input type="number" value="${item.setting_date.substring(0,2)}" name="${status.index}_hour_${item.user_id}" min="0" max="23" required></td>
 				  			<td><input type="number" value="${item.setting_date.substring(3,5)}" name="${status.index}_minute_${item.user_id}" min="0" max="59" required></td>
 				  			<td><input type="text" value="${item.schedule_content}" name="${status.index}_content_${item.user_id}" required></td>
-				  			<td><a href="Schedule_delete.action?delete_data=${item.setting_date}">削除</a></td>
+				  			<td><a href="Schedule_delete.action?delete_data=${item.calendar_id}">削除</a></td>
 				  		</tr>
 					</c:forEach>
 				</table>

@@ -52,3 +52,16 @@
 	height: 30px;
 	margin-left: 900px;
 }
+
+.my_schedule_main_table_area{
+	width: 700px;
+	border-bottom: 1px solid #333;
+}
+.my_schedule_main_table_area_date{
+	display: inline-block;
+	border-right: 1px solid #333;
+	padding: 0 20px;
+}
+.my_schedule_main_table_area_content{
+	display: inline-block;
+}

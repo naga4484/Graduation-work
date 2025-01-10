@@ -50,6 +50,13 @@
     </form>
 </div>
 
+<c:if test="${sub_detail_send_list != null}">
+	<div>
+		<h3>提出状況の確認</h3>
+		<iframe src="submissions_detail_inner.jsp"></iframe>
+	</div>
+</c:if>
+
 <div class="common_back_button">
  <a href="../teacher_function/submissions_confirmation.jsp"><img src="../images/戻るボタン1.png" class="teacher_back_icon"></a>
 </div>

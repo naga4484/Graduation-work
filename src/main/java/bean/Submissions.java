@@ -12,6 +12,7 @@ public class Submissions implements java.io.Serializable {
     private boolean submissions_flag;
     private String submissions_date_color;
     private String submissions_my_name;
+    private int count_num;
 
     // データを取得するメソッドを定義
     public int getSubmissions_id() {
@@ -49,6 +50,9 @@ public class Submissions implements java.io.Serializable {
     public String getSubmissions_my_name() {
 		return submissions_my_name;
 	}
+    public int getCount_num() {
+    	return count_num;
+    }
 
     // データを設定するメソッドを定義
     public void setSubmissions_id(int submissions_id) {
@@ -86,4 +90,7 @@ public class Submissions implements java.io.Serializable {
     public void setSubmissions_my_name(String submissions_my_name) {
 		this.submissions_my_name=submissions_my_name;
 	}
+    public void setCount_num(int count_num) {
+        this.count_num = count_num;
+    }
 }

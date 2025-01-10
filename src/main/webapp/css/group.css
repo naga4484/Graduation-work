@@ -200,3 +200,23 @@
 	margin:30px 0px 20px 130px;
 	font-size: 20px;
 }
+
+/*共有画面のCSS*/
+.file_submit_button{
+	width: 80px;
+	height: 36px;
+	background-color:rgb(16, 160, 45);
+	color: white;
+	border-radius: 5px;
+	border: 1px solid white;
+	position: absolute;
+	right: 40px;
+}
+.file_submit_select::-webkit-file-upload-button{
+	width: 120px;
+	height: 36px;
+	background-color: white;
+	color: #333;
+	border-radius: 5px;
+	border: 1px solid #333;
+}

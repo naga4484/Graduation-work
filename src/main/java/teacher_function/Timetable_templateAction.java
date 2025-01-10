@@ -44,6 +44,8 @@ public class Timetable_templateAction extends Action {
 	            	line = dao.timetable_template_registration(templateName,null, Integer.toString(i),account.getTeacher_id());
 	            }
 	        }
+	        List<Timetable_template> timetable_template_teacher = dao.timetable_template(account.getTeacher_id());
+	        session.setAttribute("timetable_template_teacher", timetable_template_teacher);
 			return "Timetable_template_set.action";
 		}
 	}

@@ -129,6 +129,65 @@ public class SubmissionsDAO extends DAO {
         
         return submissionsList;
 	}
+	//提出状況の確認
+	public List<String> distinctsubmissions_class_num(List<Submissions> sub_list) 
+	throws Exception {
+		List<String> submissionsList = new ArrayList<>();
+
+        Connection con = getConnection();
+        for(Submissions i : sub_list) {
+        	int all_count=0;
+        	int send_count=0;
+	        PreparedStatement st = con.prepareStatement("select submissions_my_name from Submissions_alignment where submissions_id=?");
+	        st.setInt(1, i.getSubmissions_id());
+	        ResultSet rs = st.executeQuery();
+	
+	        while (rs.next()) {
+	        	all_count++;
+	        	String str=rs.getString("submissions_my_name");
+	        	if(str != null) {
+	        		send_count++;
+	        	}
+	        	
+	        }
+	        String data = send_count + "人/" + all_count + "人中";
+	        submissionsList.add(data);
+	        rs.close(); 
+	        st.close();
+        }
+        con.close(); 
+        
+        return submissionsList;
+	}
+	//提出物一覧の取得(科目ID検索)
+	public List<Submissions> distinctsubmissions_subject_id(String subject_id) 
+	throws Exception {
+		List<Submissions> submissionsList = new ArrayList<>(); 
+		Submissions submissions;
+
+        Connection con = getConnection();
+
+        PreparedStatement st = con.prepareStatement("select * from Submissions where subject_id=?");
+        st.setString(1, subject_id);
+        ResultSet rs = st.executeQuery();
+
+        while (rs.next()) {
+        	submissions = new Submissions();
+        	submissions.setSubmissions_id(rs.getInt("submissions_id"));
+        	submissions.setName(rs.getString("name"));
+        	submissions.setSave_path(rs.getString("save_path"));
+        	submissions.setCreate_date(rs.getString("create_data"));
+        	submissions.setClass_id(rs.getString("class_id"));
+        	submissions.setSubject_id(rs.getString("subject_id"));
+        	submissionsList.add(submissions); 
+        }
+
+        rs.close(); 
+        st.close();
+        con.close(); 
+        
+        return submissionsList;
+	}
 	//提出物一覧の取得(ID検索)
 	public Submissions distinctsubmissions_id(int submissions_id) 
 	throws Exception {
@@ -226,7 +285,7 @@ public class SubmissionsDAO extends DAO {
 		con.close();
 		return line;
 	}
-	//提出物学生一覧の取得(ID検索)
+	//提出物学生一覧の取得(ID検索)(特定の学生)
 	public Submissions submissions_alignment_list(int submissions_id,String student_id) 
 	throws Exception {
 		Submissions submissions = null;
@@ -251,6 +310,34 @@ public class SubmissionsDAO extends DAO {
         con.close(); 
         
         return submissions;
+	}
+	//提出物学生一覧の取得(ID検索)
+	public List<Submissions> submissions_alignment_alllist(int submissions_id) 
+	throws Exception {
+		List<Submissions> submissionsList = new ArrayList<>(); 
+		Submissions submissions;
+
+        Connection con = getConnection();
+
+        PreparedStatement st = con.prepareStatement("select Sa.submissions_id,Sa.submissions_flag,Sa.student_id,Sa.submissions_my_name,Sat.name from Submissions_alignment AS Sa INNER JOIN Student_account AS Sat ON Sa.student_id = Sat.student_id where submissions_id=?");
+        st.setInt(1, submissions_id);
+        ResultSet rs = st.executeQuery();
+
+        while (rs.next()) {
+        	submissions = new Submissions();
+        	submissions.setSubmissions_id(rs.getInt("Sa.submissions_id"));
+        	submissions.setSubmissions_flag(rs.getBoolean("Sa.submissions_flag"));
+        	submissions.setStudent_id(rs.getString("Sa.student_id"));
+        	submissions.setSubmissions_my_name(rs.getString("Sa.submissions_my_name"));
+        	submissions.setName(rs.getString("Sat.name"));
+        	submissionsList.add(submissions);
+        }
+
+        rs.close(); 
+        st.close();
+        con.close(); 
+        
+        return submissionsList;
 	}
 	//自己管理画面における提出物の取得
 	public List<Submissions> submissions_my_management(String student_id) 

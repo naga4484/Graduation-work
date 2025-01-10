@@ -7,6 +7,13 @@
 	border: 1px solid #333;
 	margin-bottom: 10px;
 }
+.my_management_iframe_teacher{
+	width: 	500px;
+	height: 400px;
+	border-radius: 10px;
+	border: 1px solid #333;
+	margin-bottom: 10px;
+}
 
 .my_management_submission_area{
 	width: 500px;
@@ -88,4 +95,8 @@
 }
 #my_management_schedule_content{
 	margin-left: 20px;
+}
+
+.my_management_inner_content{
+	margin:0 auto;
 }

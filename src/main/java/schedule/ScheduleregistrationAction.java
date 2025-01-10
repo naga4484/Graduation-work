@@ -1,8 +1,5 @@
 package schedule;
 
-import java.util.List;
-
-import bean.Calendar;
 import bean.User_id;
 import dao.CalendarDAO;
 import jakarta.servlet.http.HttpServletRequest;
@@ -35,11 +32,6 @@ public class ScheduleregistrationAction extends Action {
 			String schedule_time = schedule_hour + "時" + schedule_minute + "分";
 			
 			CalendarDAO dao = new CalendarDAO();
-			List<Calendar> cal_list=dao.cal_search(user_id.getUser_id(), selectdate, schedule_time);
-			if(cal_list.size() > 0) {
-				request.setAttribute("distinct_error", "データが重複しています");
-				return "schedule_plan.jsp";
-			}
 			
 			int line = dao.cal_reg(user_id.getUser_id(),selectdate, schedule_time, schedule_content);
 			

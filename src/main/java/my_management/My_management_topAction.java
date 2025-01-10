@@ -57,8 +57,13 @@ public class My_management_topAction extends Action {
 			//教師アカウントの処理
 			if(user_id.getStudent_id() == null) {
 	        	Teacheraccount account = (Teacheraccount)session.getAttribute("account");
+	        	SubmissionsDAO sdao = new SubmissionsDAO();
+	        	List<Submissions> teacher_sub = sdao.distinctsubmissions_class(account.getClass_id());
+	        	List<String> submissions_send_data_count = sdao.distinctsubmissions_class_num(teacher_sub);
 	        	
-	        	
+	        	session.setAttribute("submissions_send_data_count", submissions_send_data_count);
+	        	session.setAttribute("my_submissions_list", teacher_sub);
+	        	return "my_management_teacher.jsp";
 	        }
 			//学生アカウントの処理
 			else if(user_id.getTeacher_id() == null) {
@@ -84,7 +89,7 @@ public class My_management_topAction extends Action {
 	        	List<Submissions> my_submissions_list = sdao.submissions_my_management(account.getStudent_id());
 	        	session.setAttribute("my_submissions_list", my_submissions_list);
 	        	
-	        	
+	        	return "my_management.jsp";
 	        }
 			return "my_management.jsp";
 	}
