@@ -18,7 +18,7 @@
         <h2>提出物</h2>
         <!-- エラーメッセージの表示 -->
         <c:if test="${distinct_error != null}">
-            <p>${distinct_error}</p>
+            <p class="system_return_mes">${distinct_error}</p>
         </c:if>
 
         <!-- 提出物情報の入力フォーム -->

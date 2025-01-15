@@ -14,7 +14,7 @@
 <h1>教師アカウント機能</h1>
 
 <c:if test="${comp_mes != null}">
-	<p>${comp_mes}</p>
+	<p class="system_return_mes">${comp_mes}</p>
 </c:if>
 <form action="Teacherregistration.action" method="post">
 	

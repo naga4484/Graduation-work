@@ -42,7 +42,7 @@
 	</div>
 </c:if>
 <c:if test="${success_mes != null}">
-	<p>登録が完了いたしました</p>
+	<p class="system_return_mes">登録が完了いたしました</p>
 </c:if>
 <c:if test="${timetable_change_List.size() > 0}">
 	<form action="Timetable_update.action">

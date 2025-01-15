@@ -30,7 +30,7 @@
 	<form action="Group_auto_create.action">
 		<div>
 			<c:if test="${num_error != null}">
-				<p>${num_error}</p>
+				<p class="system_return_mes">${num_error}</p>
 			</c:if>
 			<label>1グループの人数</label>
 			<select name="group_member_num" id="group_member_num">

@@ -28,13 +28,13 @@
 
     <!-- エラーメッセージや成功メッセージ -->
     <c:if test="${none_error != null}">
-        <p>${none_error}</p>
+        <p class="system_return_mes">${none_error}</p>
     </c:if>
     <c:if test="${change_mes != null}">
-        <p>${change_mes}</p>
+        <p class="system_return_mes">${change_mes}</p>
     </c:if>
     <c:if test="${delete_mes != null}">
-        <p>${delete_mes}</p>
+        <p class="system_return_mes">${delete_mes}</p>
     </c:if>
 </div>
 

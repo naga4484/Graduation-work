@@ -50,13 +50,13 @@
 	</div>
 </c:if>
 <c:if test="${attendance_finish != null}">
-	<p>${attendance_finish}</p>
+	<p class="system_return_mes">${attendance_finish}</p>
 </c:if>
 
 <form action="Attendancesearch.action">
 	<h2>学生検索</h2>
 	<c:if test="${none_error != null}">
-	<p>${none_error}</p>
+	<p class="system_return_mes">${none_error}</p>
 	</c:if>
 	<label>学生</label>
 	<input type="text" name="student_name" placeholder="名前を入力してください">

@@ -24,7 +24,7 @@
 
 <c:if test="${submissions_result_student_list != null}">
 <c:if test="${reg_mes != null}">
-	<p>${reg_mes}</p>
+	<p class="system_return_mes">${reg_mes}</p>
 </c:if>
 <form action="Submissions_result_registration.action">
 	<div>

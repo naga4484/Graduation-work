@@ -347,7 +347,7 @@ public class SubmissionsDAO extends DAO {
 
         Connection con = getConnection();
 
-        PreparedStatement st = con.prepareStatement("SELECT T1.submissions_id,T1.student_id,T1.submissions_flag,T2.name,T2.save_path,T2.create_data,T2.subject_id FROM Submissions_alignment AS T1 JOIN Submissions AS T2 ON T1.SUBMISSIONS_ID = T2.SUBMISSIONS_ID WHERE student_id=? ORDER BY STR_TO_DATE(T2.create_data, '%Y年%m月%d日') ASC");
+        PreparedStatement st = con.prepareStatement("SELECT T1.submissions_id,T1.student_id,T1.submissions_flag,T2.name,T2.save_path,T2.create_data,T2.subject_id,T1.submissions_my_name FROM Submissions_alignment AS T1 JOIN Submissions AS T2 ON T1.SUBMISSIONS_ID = T2.SUBMISSIONS_ID WHERE student_id=? ORDER BY STR_TO_DATE(T2.create_data, '%Y年%m月%d日') ASC");
         st.setString(1, student_id);
         ResultSet rs = st.executeQuery();
 
@@ -361,6 +361,7 @@ public class SubmissionsDAO extends DAO {
         	submissions.setStudent_id(rs.getString("student_id"));
         	submissions.setSubmissions_flag(rs.getBoolean("submissions_flag"));
         	String submissions_date = rs.getString("create_data");
+        	String submissions_my_name = rs.getString("submissions_my_name");
         	DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy年MM月dd日");
         	LocalDate startdate = LocalDate.now();
         	LocalDate enddate = LocalDate.parse(submissions_date, formatter);
@@ -423,7 +424,7 @@ public class SubmissionsDAO extends DAO {
 
         Connection con = getConnection();
 
-        PreparedStatement st = con.prepareStatement("SELECT T1.submissions_id,T1.student_id,T1.submissions_flag,T2.name,T2.save_path,T2.create_data,T2.subject_id FROM Submissions_alignment AS T1 JOIN Submissions AS T2 ON T1.SUBMISSIONS_ID = T2.SUBMISSIONS_ID WHERE student_id=? ORDER BY STR_TO_DATE(T2.create_data, '%Y年%m月%d日') ASC");
+        PreparedStatement st = con.prepareStatement("SELECT T1.submissions_id,T1.student_id,T1.submissions_flag,T2.name,T2.save_path,T2.create_data,T2.subject_id,T1.submissions_my_name FROM Submissions_alignment AS T1 JOIN Submissions AS T2 ON T1.SUBMISSIONS_ID = T2.SUBMISSIONS_ID WHERE student_id=? ORDER BY STR_TO_DATE(T2.create_data, '%Y年%m月%d日') ASC");
         st.setString(1, student_id);
         ResultSet rs = st.executeQuery();
 
@@ -437,19 +438,25 @@ public class SubmissionsDAO extends DAO {
         	submissions.setStudent_id(rs.getString("student_id"));
         	submissions.setSubmissions_flag(rs.getBoolean("submissions_flag"));
         	String submissions_date = rs.getString("create_data");
+        	String submissions_my_name = rs.getString("submissions_my_name");
         	DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy年MM月dd日");
         	LocalDate startdate = LocalDate.now();
         	LocalDate enddate = LocalDate.parse(submissions_date, formatter);
         	long daysBetween = ChronoUnit.DAYS.between(startdate, enddate);
-        	if(daysBetween > 3) {
+        	if(submissions_my_name == null) {
+        		if(daysBetween > 3) {
+            		submissions.setSubmissions_date_color("#1f9c00");
+            	}
+            	else if(daysBetween > 0) {
+            		submissions.setSubmissions_date_color("#cfa33e");
+            	}
+            	else if(daysBetween <= 0) {
+            		submissions.setSubmissions_date_color("#ff0000");
+            	}
+        	}else {
         		submissions.setSubmissions_date_color("#1f9c00");
         	}
-        	else if(daysBetween > 0) {
-        		submissions.setSubmissions_date_color("#cfa33e");
-        	}
-        	else if(daysBetween <= 0) {
-        		submissions.setSubmissions_date_color("#ff0000");
-        	}
+        	
         	submissionsList.add(submissions); 
         }
 

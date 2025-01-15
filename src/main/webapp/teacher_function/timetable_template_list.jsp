@@ -17,7 +17,7 @@
 <a href="../teacher_function/timetable_template.jsp">テンプレート新規作成</a>
 
 <c:if test="${delete_mes != null}">
-	<p>${delete_mes}</p>
+	<p class="system_return_mes">${delete_mes}</p>
 </c:if>
 <c:choose>
 	<c:when test="${timetablelist.size() > 0}">

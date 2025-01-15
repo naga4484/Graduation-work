@@ -18,7 +18,7 @@
         <form action="Submissionsstudent.action">
             <h2>学生検索</h2>
             <c:if test="${none_error != null}">
-                <p>${none_error}</p>
+                <p class="system_return_mes">${none_error}</p>
             </c:if>
             <label for="student_name">学生</label>
             <input type="text" id="student_name" name="student_name" placeholder="名前を入力してください">
@@ -39,10 +39,10 @@
             <div>
                 <h2>提出物</h2>
                 <c:if test="${distinct_error != null}">
-                    <p>${distinct_error}</p>
+                    <p class="system_return_mes">${distinct_error}</p>
                 </c:if>
                 <c:if test="${complete_mes != null}">
-                    <p>${complete_mes}</p>
+                    <p class="system_return_mes">${complete_mes}</p>
                 </c:if>
                 <label for="submission_name">提出物名</label>
                 <input type="text" id="submission_name"maxlength="30" name="submission_name" placeholder="提出物名を入力してください" required>

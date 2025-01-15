@@ -16,7 +16,7 @@
 
 			<h1>ログインユーザー選択</h1>
 
-			<p>${logout_mes}</p>
+			<p class="system_return_mes">${logout_mes}</p>
 
 			<a href="student_login.jsp">学生ユーザーはこちら</a> 
 			<a href="teacher_login.jsp">教師ユーザーはこちら</a>

@@ -22,21 +22,14 @@ class Calendar {
         const nowMonth = date.getMonth();
         const nowDate = date.getDate();
 
+        // 月と年の調整
+        let adjustedMonth = (month + 12) % 12;
+        year += Math.floor((month + 12) / 12) - 1;
+        month = adjustedMonth;
+
         let week = new Date(year, month, 1).getDay();
         let lastDay = new Date(year, month + 1, 0).getDate();
         let previousMonthLastDay = new Date(year, month, 0).getDate();
-        let monthAdjust = Math.floor(month / 12);
-
-        if (monthAdjust >= 0) {
-            year += monthAdjust;
-            month = month % 12;
-        } else {
-            year += monthAdjust;
-            month = 12 + month % 12;
-            if (month === 12) {
-                month = 0;
-            }
-        }
 
         // カレンダーのHTMLを構築
         let calendarHTML = `<h1>${year}年 ${month + 1}月</h1><table><tr>`;
@@ -63,9 +56,23 @@ class Calendar {
                     }
                     dayCounter++;
                 } else if (firstFlag === 0) {
-                    calendarHTML += `<td class="ex_td" data-infomation="${year}/${month}/${previousMonthLastDay - week + j + 1}">${previousMonthLastDay - week + j + 1}</td>`;
+                    // 先月のデータを補正
+                    let prevMonth = month - 1;
+                    let prevYear = year;
+                    if (prevMonth < 0) {
+                        prevMonth = 11;
+                        prevYear--;
+                    }
+                    calendarHTML += `<td class="ex_td" data-infomation="${prevYear}/${prevMonth + 1}/${previousMonthLastDay - week + j + 1}">${previousMonthLastDay - week + j + 1}</td>`;
                 } else {
-                    calendarHTML += `<td class="ex_td" data-infomation="${year}/${month + 2}/${nextMonthDayCounter}">${nextMonthDayCounter}</td>`;
+                    // 次月のデータを補正
+                    let nextMonth = month + 1;
+                    let nextYear = year;
+                    if (nextMonth > 11) {
+                        nextMonth = 0;
+                        nextYear++;
+                    }
+                    calendarHTML += `<td class="ex_td" data-infomation="${nextYear}/${nextMonth + 1}/${nextMonthDayCounter}">${nextMonthDayCounter}</td>`;
                     nextMonthDayCounter++;
                 }
             }
@@ -107,13 +114,8 @@ document.addEventListener("DOMContentLoaded", function () {
     // カレンダーインスタンス作成
     new Calendar();
 
-
-
-// これは、クラス内での利用の仕方が分からないので、無視。
-// なんでもいいから要素をクリックしたら、イベントが発生する。
-// その要素がtdタグなら、処理を実行する。
-// 日付クリック時にCalendarDisplayActionに遷移
-    document.addEventListener('click', function(e) {
+    // 日付クリック時にCalendarDisplayActionに遷移
+    document.addEventListener('click', function (e) {
         if (e.target.classList.contains('normal') || e.target.classList.contains('ex_td')) {
             const selectedDate = e.target.dataset.infomation;
             window.location.href = '../schedule/CalendarDisplay.action?selectedDate=' + encodeURIComponent(selectedDate);
@@ -136,21 +138,21 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // 日付ボックスをクリックしてポップアップを表示
     if (dateBox) {
-        dateBox.addEventListener("click", function() {
+        dateBox.addEventListener("click", function () {
             showPopup();
         });
     }
 
     // 閉じるボタンをクリックしてポップアップを非表示に
     if (closePopup) {
-        closePopup.addEventListener("click", function() {
+        closePopup.addEventListener("click", function () {
             hidePopup();
         });
     }
 
     // ポップアップの外側クリックで非表示にする
     if (popupWindow) {
-        popupWindow.addEventListener("click", function(event) {
+        popupWindow.addEventListener("click", function (event) {
             if (event.target === popupWindow) {
                 hidePopup();
             }

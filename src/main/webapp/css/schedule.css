@@ -10,8 +10,13 @@
 }
 
 .schedule_plan_date{
-	margin:20px 0px 5px 20px;
+	margin:20px 0px 5px 30px;
+	padding: 5px 0 5px 20px;
 	font-size: 25px;
+	background-color: antiquewhite;
+	border-left: #333 10px solid;
+	font-weight: bold;
+	width: 150px;
 }
 
 .schedule_plan_button{
@@ -64,4 +69,8 @@
 }
 .my_schedule_main_table_area_content{
 	display: inline-block;
+}
+
+.schedule_none_reg{
+	margin-left: 50px;
 }

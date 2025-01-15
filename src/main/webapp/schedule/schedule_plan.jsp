@@ -12,13 +12,13 @@
 </div>
 <div>
 	<c:if test="${distinct_error != null}">
-		<p>${distinct_error}</p>
+		<p class="system_return_mes">${distinct_error}</p>
 	</c:if>
 	<c:if test="${comp_mes != null}">
-		<p>${comp_mes}</p>
+		<p class="system_return_mes">${comp_mes}</p>
 	</c:if>
 	<c:if test="${edit_mes != null}">
-		<p>${edit_mes}</p>
+		<p class="system_return_mes">${edit_mes}</p>
 	</c:if>
 </div>
 <div>
@@ -30,7 +30,7 @@
 			</div>
 		</c:when>
 		<c:otherwise>
-			<p>スケジュールが登録されていません</p>
+			<p class="schedule_none_reg">スケジュールが登録されていません</p>
 		</c:otherwise>
 	</c:choose>
 </div>

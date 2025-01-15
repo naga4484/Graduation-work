@@ -39,9 +39,13 @@ public class Group_file_upload_submitAction extends Action {
 		
         // アップロードディレクトリのパスを取得
         String uploadPath = request.getServletContext().getRealPath("") + File.separator + UPLOAD_DIR;
+        File uploadDir = new File(request.getServletContext().getRealPath("") + File.separator + "uploads");
+        if (!uploadDir.exists()) {
+            uploadDir.mkdir();
+        }
 
         // 保存ディレクトリが存在しない場合は作成
-        File uploadDir = new File(uploadPath);
+        uploadDir = new File(uploadPath);
         if (!uploadDir.exists()) {
             uploadDir.mkdir();
         }

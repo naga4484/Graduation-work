@@ -15,7 +15,7 @@
 
 <h1>科目情報登録機能</h1>
 <c:if test="${subject_id_duplication_error != null}">
-	<p>${subject_id_duplication_error }</p>
+	<p class="system_return_mes">${subject_id_duplication_error }</p>
 </c:if>
 <form action="Subjectregistration.action" method="post">
 	<p>${errorMessage }</p>

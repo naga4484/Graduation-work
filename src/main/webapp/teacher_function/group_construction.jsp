@@ -15,7 +15,7 @@
 <h1>振り分け結果</h1>
 
 <c:if test="${retry_mes != null}">
-	<p>${retry_mes}</p>
+	<p class="system_return_mes">${retry_mes}</p>
 </c:if>
 <a href="Group_auto_create_retry.action" class="group_retry_button">再抽選</a>
 <a href="Group_excel_dl.action" class="group_retry_button">Excelファイルでダウンロードする(未完成[壊れたファイルがDLされる])</a>
