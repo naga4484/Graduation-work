@@ -230,21 +230,62 @@ button:hover {
 .result-container {
     max-width: 800px;
     margin: 0 auto;
-    padding: 0;
-    background-color: transparent; /* 背景色を透明に */
-    border: none; /* 枠を完全に削除 */
+    padding: 20px;
+    background-color: #ffffff; /* 背景色を白に */
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-.result-title {
+.result-header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.result-header h1 {
+    font-size: 28px;
+    font-weight: bold;
+    color: #007BFF;
+    margin-bottom: 10px;
+}
+
+.result-header h2 {
     font-size: 22px;
     font-weight: bold;
-    margin-bottom: 10px;
-    text-align: center;
+    color: #333;
+    margin-bottom: 5px;
+}
+
+.result-header p {
+    font-size: 16px;
     color: #555;
 }
 
 .result-table {
     margin-top: 20px;
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.result-table th {
+    background-color: #333;
+    color: white;
+    font-weight: bold;
+    padding: 10px;
+    text-align: center;
+}
+
+.result-table td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: center;
+}
+
+.result-table tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.result-table tr:hover {
+    background-color: #f1f1f1;
 }
 
 /* ウィンドウサイズ対応 */
