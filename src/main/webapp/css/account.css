@@ -34,8 +34,25 @@
     padding: 20px; /* 内側の余白を20pxに設定 */
     box-shadow: 0 0 10px rgba(0,0,0,0.1); /* コンテンツに薄い影を追加して浮き上がらせる */
 }
+.login h1{
+	padding:0 .4em .2em;
+    border-bottom: 3px solid #eac71a;
+    background-color: #ffffff;
+    color: #333333;
+}
+.login_top h1{
+	padding:0 .4em .2em;
+    border-bottom: 3px solid #eac71a;
+    background-color: #ffffff;
+    color: #333333;
+}
+.login_top p:hover{
+	position: relative;
+    color: #333333;
+    -webkit-box-reflect: below -10px -webkit-linear-gradient(top, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0) 10%, rgba(0, 0, 0, .5));	
+}
 
-h1 {
+.password_reseth1{
 	padding:0 .4em .2em;
     border-bottom: 3px solid #eac71a;
     background-color: #ffffff;
