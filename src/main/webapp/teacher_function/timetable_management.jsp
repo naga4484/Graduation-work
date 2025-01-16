@@ -96,7 +96,7 @@
 					    	</c:if>
 				   		</c:forEach>
 			    	</c:if>
-			    	<select name="tt" id="select_template${days}" disabled>
+			    	<select id="select_template${days}">
 			    		<c:set var="num">nonejfannfenfjdsanjk</c:set>
 			    		<c:forEach var="item_template" items="${timetable_template_teacher}">
 			    			<c:choose>
