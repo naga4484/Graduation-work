@@ -2,14 +2,19 @@ package bean;
 
 import java.io.Serializable;
 import java.sql.Date;
+import java.util.List;
 
 public class Questionnaire implements Serializable {
-    private String questionnaireId;
-    private String title;
-    private String questionnaire;
-    private int userId;
-    private Date questionnaireDate; // 新しく追加
+    private String questionnaireId; // アンケートID
+    private String title;           // アンケートタイトル
+    private String questionnaire;   // アンケート内容
+    private int userId;             // ユーザーID
+    private Date questionnaireDate; // アンケート作成日
+    private boolean isAnswered;     // 回答済みフラグ
+    private List<QuestionnaireOption> options; // 選択肢
+    private boolean isCreator;      // 作成者であるかのフラグ
 
+    // ゲッターとセッター
     public String getQuestionnaireId() {
         return questionnaireId;
     }
@@ -42,11 +47,35 @@ public class Questionnaire implements Serializable {
         this.userId = userId;
     }
 
-    public Date getQuestionnaireDate() { // getter
+    public Date getQuestionnaireDate() {
         return questionnaireDate;
     }
 
-    public void setQuestionnaireDate(Date questionnaireDate) { // setter
+    public void setQuestionnaireDate(Date questionnaireDate) {
         this.questionnaireDate = questionnaireDate;
+    }
+
+    public boolean isAnswered() {
+        return isAnswered;
+    }
+
+    public void setAnswered(boolean isAnswered) {
+        this.isAnswered = isAnswered;
+    }
+
+    public List<QuestionnaireOption> getOptions() {
+        return options;
+    }
+
+    public void setOptions(List<QuestionnaireOption> options) {
+        this.options = options;
+    }
+
+    public boolean isCreator() {
+        return isCreator;
+    }
+
+    public void setCreator(boolean isCreator) {
+        this.isCreator = isCreator;
     }
 }

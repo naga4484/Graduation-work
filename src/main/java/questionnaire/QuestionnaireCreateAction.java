@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import bean.Questionnaire;
-import bean.QuestionnaireAnswer;
 import bean.User_id;
 import dao.QuestionnaireDAO;
 import jakarta.servlet.http.HttpServletRequest;
@@ -13,18 +12,13 @@ import jakarta.servlet.http.HttpSession;
 import tool.Action;
 
 public class QuestionnaireCreateAction extends Action {
-    public String execute(
-        HttpServletRequest request, HttpServletResponse response
-    ) throws Exception {
-        // デバッグログ：クラスが実行されているか確認
-        System.out.println("QuestionnaireCreateAction executed.");
-
+    @Override
+    public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
         HttpSession session = request.getSession();
 
-        // ユーザー情報をセッションから取得
-        Object userObj = session.getAttribute("user");
-        if (userObj == null) {
-            // ユーザーがログインしていない場合、エラーを返す
+        // ユーザー情報を取得
+        User_id user = (User_id) session.getAttribute("user");
+        if (user == null) {
             request.setAttribute("error", "ログインが必要です");
             return "../account/login.jsp";
         }
@@ -32,65 +26,53 @@ public class QuestionnaireCreateAction extends Action {
         // フォームデータを取得
         String title = request.getParameter("title");
         String question = request.getParameter("question");
-        List<String> answers = new ArrayList<>();
+        List<String> options = new ArrayList<>();
         for (int i = 1; i <= 4; i++) {
-            String answer = request.getParameter("answer" + i);
-            if (answer != null && !answer.trim().isEmpty()) {
-                answers.add(answer);
+            String option = request.getParameter("answer" + i);
+            if (option != null && !option.trim().isEmpty()) {
+                options.add(option.trim());
             }
         }
 
-        // 入力バリデーション
+        // デバッグ: 受信した選択肢をログ出力
+        System.out.println("Received options:");
+        for (String option : options) {
+            System.out.println(option);
+        }
+
+        // 入力チェック
         if (title == null || title.trim().isEmpty() ||
             question == null || question.trim().isEmpty() ||
-            answers.size() < 2) {
-            // 必須項目が未入力の場合、エラーメッセージを設定
-            request.setAttribute("error", "全ての項目を正しく入力してください。");
+            options.size() < 2) {
+            request.setAttribute("error", "全ての項目を正しく入力してください。選択肢は最低2つ必要です。");
             return "questionnaire_create.jsp";
         }
-        
-//        String userIdString = (String) session.getAttribute("userId");
-        User_id user_id = (User_id)session.getAttribute("user");
-//        int userIdInt = Integer.parseInt(userIdString);
-        System.out.println("USER_ID to insert: " + user_id.getUser_id());
-
 
         // アンケートデータを準備
         Questionnaire questionnaire = new Questionnaire();
-        questionnaire.setQuestionnaireId(generateQuestionnaireId()); // ランダムIDを生成
-        questionnaire.setTitle(title);
-        questionnaire.setQuestionnaire(question);
-        questionnaire.setUserId(user_id.getUser_id()); // セッションからユーザーIDを取得
+        questionnaire.setQuestionnaireId(generateQuestionnaireId());
+        questionnaire.setTitle(title.trim());
+        questionnaire.setQuestionnaire(question.trim());
+        questionnaire.setUserId(user.getUser_id());
 
-        // 回答データを準備
-        List<QuestionnaireAnswer> questionnaireAnswers = new ArrayList<>();
-        for (String answer : answers) {
-            QuestionnaireAnswer answerBean = new QuestionnaireAnswer();
-            answerBean.setQuestionnaireId(questionnaire.getQuestionnaireId());
-            answerBean.setQuestionnaireContent(answer);
-            answerBean.setUserId(questionnaire.getUserId());
-            questionnaireAnswers.add(answerBean);
-        }
-
-        // データベースに保存
+        // DAOを使用してデータベースに保存
         QuestionnaireDAO dao = new QuestionnaireDAO();
         try {
-            dao.saveQuestionnaire(questionnaire, questionnaireAnswers);
-            request.setAttribute("message", "アンケートを作成しました。");
+            dao.saveQuestionnaireWithOptions(questionnaire, options);
+            // 成功メッセージをセッションに保存
+            session.setAttribute("message", "アンケートを作成しました");
         } catch (Exception e) {
             e.printStackTrace();
-            request.setAttribute("error", "アンケートの保存中にエラーが発生しました。");
+            request.setAttribute("error", "アンケートの保存中にエラーが発生しました");
             return "questionnaire_create.jsp";
         }
 
-        // 成功時の遷移先
-        return "questionnaire_create.jsp";
+        // アンケート一覧画面にリダイレクト
+        return "QuestionnaireList.action";
     }
 
     private String generateQuestionnaireId() {
-        int randomId = (int) (Math.random() * 9000) + 1000; // 4桁のランダムな数値を生成
-        return "Q" + randomId; // 最大5文字のID
+        int randomId = (int) (Math.random() * 9000) + 1000;
+        return "Q" + randomId;
     }
-
-
 }

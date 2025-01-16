@@ -1,21 +1,45 @@
 /* 全体レイアウト */
 body {
     font-family: Arial, sans-serif;
-    margin: 20px;
+    margin: 0;
+    padding: 0;
+    background-color: #f5f5f5;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 100vh;
 }
 
-/* ボタンデザイン */
-button {
-    background-color: #007BFF;
+.container {
+    width: 95.8%;
+    max-width: 1200px;
+    padding: 20px;
+    position: relative;
+    margin-top: 60px; /* メニューバーと被らないように調整 */
+    background-color: transparent; /* 背景色を透明に */
+}
+
+.menu-bar {
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    background-color: #333;
     color: white;
-    border: none;
-    padding: 10px 15px;
-    cursor: pointer;
-    margin-right: 5px;
+    padding: 10px 20px;
+    border-radius: 5px;
+    z-index: 100;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
-button:hover {
-    background-color: #0056b3;
+.menu-bar a {
+    color: #ffffff;
+    text-decoration: none;
+    margin-right: 15px;
+    font-weight: bold;
+}
+
+.menu-bar a:hover {
+    text-decoration: underline;
 }
 
 /* テーブルデザイン */
@@ -23,19 +47,218 @@ table {
     width: 100%;
     border-collapse: collapse;
     margin-top: 20px;
+    border: none; /* 不要な線を完全に削除 */
 }
 
 table th, table td {
-    border: 1px solid #ddd;
-    padding: 8px;
+    border: 1px solid #dcdcdc;
+    padding: 10px;
     text-align: left;
 }
 
 table th {
-    background-color: #f2f2f2;
+    background-color: #333;
+    color: white;
     font-weight: bold;
 }
 
 table tr:hover {
     background-color: #f1f1f1;
+}
+
+.answered {
+    background-color: #e3f7ff; /* 薄い青 */
+    font-weight: bold;
+}
+
+/* ボタンスタイル */
+button {
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    margin-right: 5px;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+.return-link {
+    display: inline-block;
+    margin-top: 30px; /* 「戻る」ボタンとの距離を調整 */
+    color: #007BFF;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.return-link:hover {
+    color: #0056b3;
+    text-decoration: underline;
+}
+
+/* メッセージ表示エリア */
+.message {
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
+.message-success {
+    background-color: #e6f9e6;
+    color: #2e7d32;
+}
+
+.message-error {
+    background-color: #fdecea;
+    color: #d32f2f;
+}
+
+/* フォームコンテナのスタイル */
+.form-container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 0; /* パディングをリセット */
+    border: none; /* 枠を完全に削除 */
+    background-color: transparent; /* 背景色を透明に */
+}
+
+.form-container label {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 5px;
+}
+
+.form-container input, .form-container textarea {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    resize: none; /* テキストエリアの右下のリサイズマークを非表示 */
+}
+
+.page-title {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    text-align: center;
+    color: #007BFF; /* アクセントカラーを追加 */
+}
+
+/* アンケート回答ページのスタイル */
+.answer-container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    border: none;
+    background-color: #ffffff; /* 背景色を白に */
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.answer-container h1 {
+    font-size: 28px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    text-align: center;
+    color: #007BFF;
+    border-bottom: 2px solid #ddd;
+    padding-bottom: 10px;
+}
+
+.answer-container .question-title {
+    font-size: 22px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #333;
+    text-align: center;
+}
+
+.answer-container .question-content {
+    font-size: 16px;
+    margin-bottom: 20px;
+    color: #555;
+    text-align: center;
+    line-height: 1.5;
+}
+
+.answer-container .options-container {
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.answer-container .option-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    background-color: #f9f9f9;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.answer-container .option-item input[type="radio"] {
+    margin-right: 10px;
+}
+
+.answer-container button {
+    background-color: #007BFF;
+    color: white;
+    font-weight: bold;
+    padding: 10px 20px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    max-width: 200px;
+    margin: 0 auto;
+    display: block;
+}
+
+.answer-container button:hover {
+    background-color: #0056b3;
+}
+
+/* アンケート結果ページのスタイル */
+.result-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0;
+    background-color: transparent; /* 背景色を透明に */
+    border: none; /* 枠を完全に削除 */
+}
+
+.result-title {
+    font-size: 22px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    text-align: center;
+    color: #555;
+}
+
+.result-table {
+    margin-top: 20px;
+}
+
+/* ウィンドウサイズ対応 */
+@media screen and (max-width: 768px) {
+    table th, table td {
+        font-size: 12px;
+        padding: 5px;
+    }
+    .menu-bar {
+        width: 100%;
+        text-align: center;
+    }
+    .menu-bar a {
+        display: inline-block;
+        margin: 5px;
+    }
 }

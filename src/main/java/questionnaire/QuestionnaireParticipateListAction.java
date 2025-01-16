@@ -10,34 +10,29 @@ import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import tool.Action;
 
-public class QuestionnaireListAction extends Action {
+public class QuestionnaireParticipateListAction extends Action {
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
         HttpSession session = request.getSession();
-
-        // ログインユーザーを取得
         User_id user = (User_id) session.getAttribute("user");
+
         if (user == null) {
             request.setAttribute("errorMessage", "ログインが必要です");
             return "../account/login.jsp";
         }
 
         try {
+            // DAOを使用して、削除されたアンケートを除外した一覧を取得
             QuestionnaireDAO dao = new QuestionnaireDAO();
+            List<Questionnaire> questionnaireList = dao.getFilteredQuestionnaires(user.getUser_id());
 
-            // 全アンケートを取得
-            List<Questionnaire> questionnaireList = dao.getAllQuestionnaires();
-
-            // 作成者情報を確認して追加
+            // デバッグログ: アンケート一覧を確認
+            System.out.println("アンケート一覧:");
             for (Questionnaire questionnaire : questionnaireList) {
-                boolean isAnswered = dao.isAnswered(questionnaire.getQuestionnaireId(), user.getUser_id());
-                questionnaire.setAnswered(isAnswered);
-
-                // 現在ログイン中のユーザーが作成者かどうかを設定
-                questionnaire.setCreator(user.getUser_id() == questionnaire.getUserId());
+                System.out.println("ID: " + questionnaire.getQuestionnaireId() + ", 回答済み: " + questionnaire.isAnswered());
             }
 
-            // アンケートリストをリクエストスコープに設定
+            // リクエストスコープにアンケートリストを設定
             request.setAttribute("questionnaireList", questionnaireList);
 
         } catch (Exception e) {

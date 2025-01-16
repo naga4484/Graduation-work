@@ -1,66 +1,46 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@page contentType="text/html; charset=UTF-8" %>
+<%@include file="../header.jsp"%>
 <!DOCTYPE html>
 <html lang="ja">
 <head>
     <meta charset="UTF-8">
     <title>アンケート作成</title>
-    <script>
-        let answerCount = 2; // 初期回答欄数
-        const maxAnswers = 4; // 最大回答数
-
-        function addAnswer() {
-            if (answerCount < maxAnswers) {
-                answerCount++;
-                const answerDiv = document.createElement('div');
-                answerDiv.id = `answer_${answerCount}`;
-                answerDiv.innerHTML = `<input type="text" name="answer${answerCount}" placeholder="回答${answerCount}" required>`;
-                document.getElementById("answers").appendChild(answerDiv);
-            } else {
-                alert("回答欄は最大4つまでです。");
-            }
-        }
-
-        function removeAnswer() {
-            if (answerCount > 2) {
-                const answerDiv = document.getElementById(`answer_${answerCount}`);
-                document.getElementById("answers").removeChild(answerDiv);
-                answerCount--;
-            } else {
-                alert("回答欄は最低2つ必要です。");
-            }
-        }
-    </script>
+    <link rel="stylesheet" href="../css/questionnaire.css">
 </head>
 <body>
-    <h1>アンケート作成</h1>
+    <div class="form-container">
+        <h1 class="page-title">アンケート作成</h1>
 
-    <!-- メッセージ表示エリア -->
-    <c:if test="${not empty message}">
-        <p style="color: green;">${message}</p>
-    </c:if>
-    <c:if test="${not empty error}">
-        <p style="color: red;">${error}</p>
-    </c:if>
+        <!-- メッセージ表示エリア -->
+        <c:if test="${not empty message}">
+            <p style="color: green;">${message}</p>
+        </c:if>
+        <c:if test="${not empty error}">
+            <p style="color: red;">${error}</p>
+        </c:if>
 
-    <form action="QuestionnaireCreate.action" method="post">
-        <div>
+        <form action="QuestionnaireCreate.action" method="post">
             <label for="title">アンケートタイトル:</label>
-            <input type="text" id="title" name="title" required>
-        </div>
-        <div>
+            <input type="text" id="title" name="title" value="${param.title}" required>
+
             <label for="question">アンケート内容:</label>
-            <textarea id="question" name="question" required></textarea>
-        </div>
-        <div id="answers">
-            <div id="answer_1"><input type="text" name="answer1" placeholder="回答1" required></div>
-            <div id="answer_2"><input type="text" name="answer2" placeholder="回答2" required></div>
-        </div>
-        <button type="button" onclick="addAnswer()">回答を追加</button>
-        <button type="button" onclick="removeAnswer()">回答を削除</button>
-        <div>
+            <textarea id="question" name="question" required>${param.question}</textarea>
+
+            <div id="answers">
+                <label>回答選択肢:</label>
+                <input type="text" name="answer1" placeholder="回答1" value="${param.answer1}">
+                <input type="text" name="answer2" placeholder="回答2" value="${param.answer2}">
+                <input type="text" name="answer3" placeholder="回答3" value="${param.answer3}">
+                <input type="text" name="answer4" placeholder="回答4" value="${param.answer4}">
+            </div>
+
             <button type="submit">送信</button>
+        </form>
+        <div class="common_back_button">
+           <a href="QuestionnaireList.action"><img src="../images/戻るボタン1.png" class="support_back_icon"></a></a>
+           </div> 
         </div>
-    </form>
-    <a href="../common/top.jsp">戻る</a>
+    </div>
 </body>
 </html>
+<%@include file="../footer.jsp"  %>
