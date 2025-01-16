@@ -130,8 +130,8 @@
 		</div>
 	</form>
        <div class="pagination">
-         <button onclick="changePage(-1)">＜</button>
-         <button onclick="changePage(1)">＞</button>
+         <button class="prev" onclick="changePage(-1)">＜</button>
+         <button class="next" onclick="changePage(1)">＞</button>
        </div>
 
 	
