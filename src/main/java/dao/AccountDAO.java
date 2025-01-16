@@ -208,6 +208,38 @@ public class AccountDAO extends DAO {
         con.close();
         return studentaccountlist;
     }
+    public String getAccountTypeByEmail(String email) throws Exception {
+        String accountType = null;
+
+        Connection con = getConnection();
+        PreparedStatement st = con.prepareStatement(
+            "SELECT " +
+            "CASE WHEN student_id IS NOT NULL THEN 'student' " +
+            "WHEN teacher_id IS NOT NULL THEN 'teacher' " +
+            "ELSE NULL END AS account_type " +
+            "FROM (" +
+            "    SELECT student_id, NULL AS teacher_id FROM Student_account " +
+            "    WHERE address = ? " +
+            "    UNION ALL " +
+            "    SELECT NULL AS student_id, teacher_id FROM Teacher_account " +
+            "    WHERE address = ?" +
+            ") AS account_data"
+        );
+        st.setString(1, email);
+        st.setString(2, email);
+
+        ResultSet rs = st.executeQuery();
+        if (rs.next()) {
+            accountType = rs.getString("account_type");
+        }
+
+        rs.close();
+        st.close();
+        con.close();
+
+        return accountType; // "student", "teacher", または null
+    }
+
 
     // 学生クラス検索機能
     public List<Studentaccount> student_search_class(String class_id) throws Exception {
@@ -282,10 +314,21 @@ public class AccountDAO extends DAO {
         return isValid;
     }
 
-    // パスワードの更新(メールアドレスを参照)
-    public void update_password(String email, String newPassword) throws Exception {
+    // パスワードの更新(メールアドレスを参照 (学生))
+    public void update_password_stu_mail(String email, String newPassword) throws Exception {
         Connection con = getConnection();
         PreparedStatement st = con.prepareStatement("UPDATE Student_account SET password = ? WHERE address = ?");
+        st.setString(1, newPassword);
+        st.setString(2, email);
+        st.executeUpdate();
+
+        st.close();
+        con.close();
+    }
+ // パスワードの更新(メールアドレスを参照 (教師))
+    public void update_password_tch_mail(String email, String newPassword) throws Exception {
+        Connection con = getConnection();
+        PreparedStatement st = con.prepareStatement("UPDATE Teacher_account SET password = ? WHERE address = ?");
         st.setString(1, newPassword);
         st.setString(2, email);
         st.executeUpdate();

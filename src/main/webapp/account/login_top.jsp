@@ -15,6 +15,7 @@
 		<div class="login_top">			
 
 			<h1>ログインユーザー選択</h1>
+			<p>${successMessage }</p>
 
 			<p class="system_return_mes">${logout_mes}</p>
 

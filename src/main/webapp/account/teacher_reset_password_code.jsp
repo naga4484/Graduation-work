@@ -16,7 +16,7 @@
 			<p>${errorMessage}</p>
 			<!-- 確認コードが正しくない場合のエラーメッセージ表示 -->
 
-			<form action="PasswordCodeVerify.action" method="post">
+			<form action="TchPasswordCodeVerify.action" method="post">
 				<p>確認コード：</p>
 				<input type="text" name="verification_code" required="required">
 				<br> <a href="ResendVerificationCode.action">確認コードを再送信</a> <br>

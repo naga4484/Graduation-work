@@ -37,13 +37,24 @@ public class PasswordResetAction extends Action {
             request.getSession().setAttribute("email", email);
 
             sendVerificationCodeByEmail(email, verificationCode);
-
-            request.setAttribute("successMessage", "確認コードを送信しました。");
-            return "reset_password_code.jsp";
+            
+            String accountType = dao.getAccountTypeByEmail(email);
+            
+         // 種別に応じて JSP を分岐
+            if ("student".equals(accountType)) {
+                request.setAttribute("successMessage", "確認コードを送信しました（学生用ページ）。");
+                return "student_reset_password_code.jsp"; // 学生用ページ
+            } else if ("teacher".equals(accountType)) {
+                request.setAttribute("successMessage", "確認コードを送信しました（教師用ページ）。");
+                return "teacher_reset_password_code.jsp"; // 教師用ページ
+            } else {
+                request.setAttribute("errorMessage", "アカウント種別を特定できませんでした。");
+                return "reset_password_email.jsp"; // エラー時のページ
+            }
         } else {
-            // デバッグログ追加
             System.out.println("Email not found: " + email);
 
+            // エラーメッセージの設定
             request.setAttribute("errorMessage", "登録されていないメールアドレスです。");
             return "reset_password_email.jsp";
         }

@@ -5,7 +5,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import tool.Action;
 
-public class PasswordUpdateAction extends Action {
+public class StuPasswordUpdateAction extends Action {
     public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
         String newPassword = request.getParameter("new_password");
         String confirmPassword = request.getParameter("confirm_password");
@@ -22,7 +22,7 @@ public class PasswordUpdateAction extends Action {
 
         // パスワード更新処理
         AccountDAO dao = new AccountDAO();
-        dao.update_password(email, newPassword);
+        dao.update_password_stu_mail(email, newPassword);
         
         request.setAttribute("successMessage", "パスワードが更新されました。");
         return "login_top.jsp";  // 更新後、ログインページに遷移

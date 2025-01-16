@@ -11,7 +11,7 @@
 		<div class="password_reset">
 			<h1>パスワードリセット</h1>
 
-			<form action="PasswordUpdate.action" method="post">
+			<form action="TchPasswordUpdate.action" method="post">
 				<p>${errorMessage}</p>
 				<!-- パスワードが条件を満たさない場合のエラーメッセージ表示 -->
 				<p>新規パスワード：</p>
