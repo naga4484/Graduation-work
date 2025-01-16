@@ -23,76 +23,63 @@
 
 #registration {
     position: absolute;
-    left: 140px; 
+    left: 210px; 
     top: 150px; 
 }
 
 #confirmation {
     position: absolute;
-    left: 280px; 
+    left: 350px; 
     top: 150px; 	
 }
 
 #Subjectlisttop {
     position: absolute;
-    left: 420px; 
+    left: 490px; 
     top: 150px; 	
 }
 
 #template {
     position: absolute;
-    left: 560px; 
+    left: 630px; 
     top: 150px; 		
 }
 
 #attendance {
     position: absolute;
-    left: 700px; 
-    top: 150px; 	
-}
-
-#grade {
-    position: absolute;
-    left: 840px; 
+    left: 770px; 
     top: 150px; 	
 }
 
 #timetable {
     position: absolute;
-    left: 140px; 
+    left: 210px; 
     top: 330px; 	
 }
 
 #authority {
     position: absolute;
-    left: 280px; 
+    left: 350px; 
     top: 330px; 		
 }
 
 #student {
     position: absolute;
-    left: 420px; 
-    top: 330px; 	
-}
-
-#seating {
-    position: absolute;
-    left: 560px; 
+    left: 490px; 
     top: 330px; 	
 }
 
 #group {
-	position: absolute;
-    left: 700px; 
-    top: 330px; 
+    position: absolute;
+    left: 630px; 
+    top: 330px; 	
 }
 
-#trend {
+#grade {
 	position: absolute;
-    left: 840px; 
+    left: 770px; 
     top: 330px; 
 }
-
 
 .back_button img {
     display: flex;
