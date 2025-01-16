@@ -6,7 +6,7 @@ body {
   margin: 0;
 }
 div {
-	padding : 9px ;
+	padding : 1px ;
 }
 h1 {
 	margin-left:10% ;
@@ -24,6 +24,7 @@ h2{
 label{
 	font-weight: bold; 
 	display: block;
+	margin-left: 10px;
 	margin-bottom: 5px;
 }
 
@@ -99,6 +100,7 @@ select{
 }
 
 .timetable_box {
+	margin-left: 4%;
     width: 300px;
     min-height: 200px;
     padding: 20px;
@@ -130,15 +132,19 @@ select, input[type="button"], input[type="submit"] {
     margin-top: 10px;
 }
 
-.pagination  {
+.pagination {
     position: relative;
-    height: 100px; /* 必要に応じて高さを調整 */
+    height: 10%; /* 必要に応じて高さを調整 */
     z-index: 1;
+    display: flex; /* ボタンを並べるためのフレックスボックス */
+    justify-content: center; /* ボタンを中央揃え */
+    align-items: center; /* 縦方向の中央揃え */
+    gap: 80%; /* ボタン間の余白 */
 }
 
 .pagination button {
-    width: 40px; /* ボタンの幅 */
-    height: 40px; /* ボタンの高さ */
+    width: 45px; /* ボタンの幅 */
+    height: 45px; /* ボタンの高さ */
     border-radius: 50%; /* 丸くする */
     border: 1px solid #ccc; /* ボタンの枠線 */
     background-color: #f0f0f0; /* ボタンの背景色 */
@@ -151,6 +157,7 @@ select, input[type="button"], input[type="submit"] {
 .pagination button:hover {
     background-color: #ddd; /* ホバー時の背景色 */
 }
+
 
 .teacher_table table {
   width: 100%; /* テーブルの幅を100%に */
@@ -221,6 +228,13 @@ input[type="checkbox"] {
   font-size: 0.9rem; /* テキストサイズ調整 */
 }
 
+.subject_list_form {
+	text-align: center;
+}
+
+.subregis_submit {
+	text-align: center;
+}
 
 /*success画面のcss*/
 
@@ -291,11 +305,37 @@ input[type="checkbox"] {
 	max-width: 100px; 
 }
 
-.teacher_center{
-	text-align: center;
-	
-	
+.teacher_center1{
+	margin-left: 30%;
+			
 }
+
+.teacher_center2 {
+	text-align: center;
+    padding: 0.8em 0.5em;
+    margin: 1em auto; 
+    font-weight: bold;
+    color: #000; 
+    background-color: #f4f9ff;
+    border: solid 1px #3a3a3a; 
+    border-radius: 10px; 
+    position: relative; 
+    width: 40%
+ 
+}
+
+.teacher_center2 button {
+	margin-top: 2%;
+}
+
+.teacher_center2 label {
+	margin-bottom: 1%;
+}
+
+.teacher_center2 input {
+	margin-top: 1%;
+}
+
 /*科目テンプレートの科目設定画面の科目欄*/
 .item {
   padding: 10px 20px;
@@ -305,7 +345,9 @@ input[type="checkbox"] {
   cursor: pointer;
   text-align: center;
   color: #f7f3f3;
-  margin:20px auto
+  margin:30px 60px;
+  border-radius: 10px; 
+
 }
 
 .items{
@@ -355,4 +397,40 @@ input[type="checkbox"] {
 .teacher_link a:active{
 	background: purple;
 	color: white;
+}
+
+#group_member_table {
+  margin: 30px;
+  height: calc(190vh / 2); /* 基本高さ */
+  max-height: 90vh; /* ビューポートの90%を最大高さに制限 */
+  overflow-y: auto; /* スクロールを有効に */
+  border: 1px solid #ccc;
+  width: 50%;
+  max-width: 90%; /* ビューポートの90%を最大幅に制限 */
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+#group_member_table table {
+  margin-top: 2%;
+  width: 100%; /* テーブルの幅を親要素いっぱいに設定 */
+  border-collapse: collapse; /* テーブル枠線の隙間をなくす */
+}
+
+#group_member_table th, #group_member_table td {
+  text-align: left; /* テキストを左寄せ */
+  padding: 8px; /* セル内の余白 */
+  border: 1px solid #ddd; /* セルの境界線 */
+}
+
+#group_member_table th {
+  background-color: black; /* ヘッダーの背景色 */
+  font-weight: bold; /* ヘッダーの文字を太字に */
+  color: #f0f0f0;
+}
+
+textarea{
+    resize: none;
+    height: 80px;
 }

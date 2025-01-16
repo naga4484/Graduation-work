@@ -117,8 +117,6 @@
     top: 530px
 }
 
-
-
 #delete_box {
   background: #FFF;
   border: 1px solid #333;
@@ -204,3 +202,7 @@
     gap: 100px; /* リンク間のスペースを調整 */
 }
 
+.teacher_function_iocn a {
+    display: flex;
+    border-radius: 10px; 
+}

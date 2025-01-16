@@ -12,7 +12,7 @@
 
 			<form action="StudentNicknameUpdate.action" method="post">
 			    <div class="box2">
-			    <label>新しいニックネームを入力</label><br>
+			    <label>新しいニックネームを入力</label><br><br>
 				<input type="hidden" name="student_id" id="student_id"value="${account.student_id }"> 
 			    <input type="text"name="new_nickname" required="required">
 			    <div class="directions">

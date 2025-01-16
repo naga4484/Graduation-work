@@ -3,6 +3,7 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 
+<link rel="stylesheet" type="text/css"href="../css/teacher_function.css">
 <link rel="stylesheet" type="text/css" href="../css/attendance.css">
 
 <title>グループ自動作成画面</title>

@@ -12,14 +12,15 @@
 			<h1>メールアドレス変更</h1>
 				<form action="TeacherAddressUpdate.action"method="post">
 				<input type="hidden"name="teacher_id"id="teacher_id"value="${account.teacher_id }">
-				<div class="box1">
+				
 				<div class="error">
 				<p>${errorMessage }</p>
 				</div>
-					<label>新しいメールアドレスを入力</label><br>
+				<div class="box1">
+					<label>新しいメールアドレスを入力</label><br><br>
 					<input type="email" name="new_address"required="required">
 					<br><br>
-					<label>新しいメールアドレスを確認</label><br>
+					<label>新しいメールアドレスを確認</label><br><br>
 					<input type="email" name="confirm_address"required="required">
 					
 				</div>

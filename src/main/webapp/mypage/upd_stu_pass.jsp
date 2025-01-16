@@ -19,15 +19,15 @@
                 </div>
                 <div class="box3">
                 
-                <label>パスワードを入力</label><br>
+                <label>パスワードを入力</label><br><br>
                 <input type="password" name="old_password" required>
                 <br>
 
-                <label>新しいパスワード</label><br>
+                <label>新しいパスワード</label><br><br>
                 <input type="password" name="new_password" required>
                 <br>
 
-                <label>新しいパスワードを確認</label><br>
+                <label>新しいパスワードを確認</label><br><br>
                 <input type="password" name="confirm_password" required>
                 <br>
                 

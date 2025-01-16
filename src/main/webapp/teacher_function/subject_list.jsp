@@ -12,9 +12,11 @@
 	<c:redirect url="../account/Error_common.action" />
 </c:if>
 
-<div class="teacher_center">
+<div class="teacher_center1">
 	<h1>科目情報一覧機能</h1>
 
+</div>
+<div class="subject_list_form">
 	<!-- メッセージ表示 -->
 	<c:if test="${delete_mes != null}">
 		<p class="system_return_mes">${delete_mes}</p>

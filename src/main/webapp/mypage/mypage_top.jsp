@@ -50,10 +50,10 @@
 		</table>
 	</div>
 			<div class="button-link">
-			    <a href="change_top.jsp">
-				<button type="button">マイページを編集</button></a>
-				<a href="../account/Logout.action"><button class="logout-button">ログアウト</button></a> 		        
-			</div> 
+    <a href="change_top.jsp" class="button">編集</a>
+    <a href="../account/Logout.action" class="button logout-button">ログアウト</a>
+</div>
+
             <div class="common_back_button">
                <a href="../common/top.jsp"><img src="../images/戻るボタン1.png" class="support_back_icon"></a>
             </div> 

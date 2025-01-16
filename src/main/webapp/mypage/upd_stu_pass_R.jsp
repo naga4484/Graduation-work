@@ -25,12 +25,13 @@
                 
                 
                 <label>新しいパスワード</label>
-                <br>
+                <br><br>
                 <input type="password" name="new_password" required="required">
                 
                 <br><br>
                 
                 <label>新しいパスワードを確認</label>
+                <br><br>
                 <input type="password" name="confirm_password" required="required">
                 
                 <br>

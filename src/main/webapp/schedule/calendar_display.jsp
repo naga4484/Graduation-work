@@ -102,6 +102,9 @@
         <button id="closePopup">閉じる</button>
     </div>
 </div>
+            <div class="common_back_button">
+               <a href="../common/top.jsp"><img src="../images/戻るボタン1.png" class="support_back_icon"></a>
+            </div> 
 
 <script src="../js/text_limit.js" defer></script>
 <%@ include file="../footer.jsp" %>

@@ -31,8 +31,8 @@
 			<c:forEach var="item_timetable" items="${timetablelist}">
 				<tr>
 					<td>${item_timetable.template_name}</td>
-					<td><a href="Timetable_template_update.action?template_name=${item_timetable.template_name}">編集のリンク</a></td>
-					<td><a href="Timetable_template_delete.action?template_name=${item_timetable.template_name}">削除のリンク</a></td>
+					<td><a href="Timetable_template_update.action?template_name=${item_timetable.template_name}">編集</a></td>
+					<td><a href="Timetable_template_delete.action?template_name=${item_timetable.template_name}">削除</a></td>
 				</tr>
 			</c:forEach>
 		</table>

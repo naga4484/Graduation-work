@@ -31,6 +31,15 @@ body::-webkit-scrollbar {
 	font-weight: bold;
 }
 
+
+
+.logout_links:visited{
+	color: red;
+}
+.logout_links:hover{
+	font-weight: bold;
+}
+
 .menu_var{
 	position: absolute;
 	left: 8%;
@@ -51,7 +60,7 @@ body::-webkit-scrollbar {
 	text-align: center;
 	float: left;
 	width: 20%;
-	height: 120%;
+	height: 100%;
 	z-index: 100;
 	margin-left: 79%;
 	overflow-y: auto; /* Add this line */
@@ -76,6 +85,9 @@ body::-webkit-scrollbar {
 	height: 45px;
 	padding-top: 20px;
 }
+
+
+
 .menu_box_contents a{
 	text-decoration: none;
 	
@@ -177,6 +189,7 @@ body::-webkit-scrollbar {
 }
 .top_links_contents_title1{
 	position: absolute;
+	color:#333;
 	font-weight: bold;
 	top:180px;
 	left: 90px;
@@ -262,12 +275,13 @@ body::-webkit-scrollbar {
 }
 .top_logout_icon{
 	width: 50px;
-	border-radius: 50px;
+	top: -40%;
 }
 .top_logout_mes{
 	position: absolute;
+	color: #333;
 	font-weight: bold;
-	top: 10%;
+	top: 5%;
 	left: 60px;
 }
 .top_contact_icon{
@@ -276,6 +290,7 @@ body::-webkit-scrollbar {
 }
 .top_contact_mes{
 	position: absolute;
+	color: #333;
 	font-weight: bold;
 	top: 4px;
 	left: 60px;

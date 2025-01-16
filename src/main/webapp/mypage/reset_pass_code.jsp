@@ -24,7 +24,7 @@
                 <p>確認コードを入力してください</p>
                 </div>
                 <input type="text" name="verification_code" required="required">
-                <br>
+                <br><br>
                 <div class="code_return">
                 <a href="PasswordResend.action">確認コードを再送信</a><br>
                 </div>

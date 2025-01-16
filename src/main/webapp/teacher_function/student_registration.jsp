@@ -12,10 +12,12 @@
 	<c:redirect url="../account/Error_common.action" />
 </c:if>
 
-<div class="teacher_center">
+<div class="teacher_center1">
 
 <h1>学生情報登録機能</h1>
 
+</div>
+<div class="teacher_center2">
 <form action="Studentregistration.action" method="post">
 	
 	<p class="system_return_mes">${reg_mes}</p>
