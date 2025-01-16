@@ -19,6 +19,7 @@
 </c:if>
 </div>
 
+<form action="Subjectregistration.action">
 <div class="teacher_center2">
 	<p>${errorMessage }</p>
     <label>科目ID</label>
@@ -34,12 +35,11 @@
     <input type="color" name="subject_color" value="#cce5ff"><br><br>
     
     <input type="hidden" name="class_id" value="${account.class_id}">
-
+</div>
 <div class="subregis_submit">
    	<button type="submit">登録</button> 
+</div>
 </form>
-</div>
-</div>
 <div class="common_back_button">
  <a href="../teacher_function/subject_list.jsp"><img src="../images/戻るボタン1.png" class="teacher_back_icon"></a>
 </div>
