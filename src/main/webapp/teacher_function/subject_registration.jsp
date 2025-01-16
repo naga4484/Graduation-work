@@ -34,6 +34,7 @@
     <label>科目イメージカラー</label>
     <input type="color" name="subject_color" value="#cce5ff"><br><br>
     
+    
     <input type="hidden" name="class_id" value="${account.class_id}">
 </div>
 <div class="subregis_submit">
