@@ -41,6 +41,7 @@ public class StudentregistrationAction extends Action {
 			int line=dao.student_registration(student_id, password,class_id,name);
 			
 			if(line>0) {
+				request.setAttribute("reg_mes", "学生ID「" + student_id +"」学生アカウントが登録されました");
 				return "student_registration.jsp";
 			}
 			return "student_registration.jsp";

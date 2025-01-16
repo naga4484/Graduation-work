@@ -1,5 +1,6 @@
 package teacher_function;
 
+import java.io.File;
 import java.util.List;
 
 import bean.Submissions;
@@ -34,9 +35,27 @@ public class Submissions_detail_changeAction extends Action {
 			String year=request.getParameter("year");
 			String month=request.getParameter("month");
 			String date=request.getParameter("date");
-			String fulldata = year + "年" +month + "月" + date + "日";
-			String save_path = "../submissions_files/" + submission_name;
 			
+			if(month.length() == 1) {
+				month = "0" + month;
+			}
+			if(date.length() == 1) {
+				date = "0" + date;
+			}
+			String fulldata = year + "年" +month + "月" + date + "日";
+			String save_path = "submissions/" + submission_name;
+			
+			String old_pass = null;
+			List<Submissions> dis_sub = sdao.distinctsubmissions(submissions_id);
+			for(Submissions i : dis_sub) {
+				old_pass = i.getSave_path();
+			}
+			String old_Path = request.getServletContext().getRealPath("") + File.separator + old_pass;
+	        File old_Dir = new File(old_Path);
+	        String new_Path = request.getServletContext().getRealPath("") + File.separator + save_path;
+	        File new_Dir = new File(new_Path);
+	        
+	        old_Dir.renameTo(new_Dir);
 		
 			int line = sdao.change_submissions(submissions_id, submission_name, save_path, fulldata, subject_id);
 					

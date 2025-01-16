@@ -26,9 +26,9 @@ public class SubmissionsDAO extends DAO {
         while (rs.next()) {
         	submissions = new Submissions();
         	submissions.setSubmissions_id(rs.getInt("submissions_id"));
-        	submissions.setName("name");
-        	submissions.setSave_path("save_path");
-        	submissions.setCreate_date("create_data");
+        	submissions.setName(rs.getString("name"));
+        	submissions.setSave_path(rs.getString("save_path"));
+        	submissions.setCreate_date(rs.getString("create_data"));
         	submissions.setClass_id(rs.getString("class_id"));
         	submissions.setSubject_id(rs.getString("subject_id"));
         	submissionsList.add(submissions); 
@@ -56,9 +56,38 @@ public class SubmissionsDAO extends DAO {
         while (rs.next()) {
         	submissions = new Submissions();
         	submissions.setSubmissions_id(rs.getInt("submissions_id"));
-        	submissions.setName("name");
-        	submissions.setSave_path("save_path");
-        	submissions.setCreate_date("create_data");
+        	submissions.setName(rs.getString("name"));
+        	submissions.setSave_path(rs.getString("save_path"));
+        	submissions.setCreate_date(rs.getString("create_data"));
+        	submissions.setClass_id(rs.getString("class_id"));
+        	submissions.setSubject_id(rs.getString("subject_id"));
+        	submissionsList.add(submissions); 
+        }
+
+        rs.close(); 
+        st.close();
+        con.close(); 
+        
+        return submissionsList;
+	}
+	//提出物一覧の取得(id検索)
+	public List<Submissions> distinctsubmissions(int submissions_id) 
+	throws Exception {
+		List<Submissions> submissionsList = new ArrayList<>(); 
+		Submissions submissions;
+
+        Connection con = getConnection();
+
+        PreparedStatement st = con.prepareStatement("select * from Submissions where submissions_id=?");
+        st.setInt(1, submissions_id);
+        ResultSet rs = st.executeQuery();
+
+        while (rs.next()) {
+        	submissions = new Submissions();
+        	submissions.setSubmissions_id(rs.getInt("submissions_id"));
+        	submissions.setName(rs.getString("name"));
+        	submissions.setSave_path(rs.getString("save_path"));
+        	submissions.setCreate_date(rs.getString("create_data"));
         	submissions.setClass_id(rs.getString("class_id"));
         	submissions.setSubject_id(rs.getString("subject_id"));
         	submissionsList.add(submissions); 
@@ -86,9 +115,9 @@ public class SubmissionsDAO extends DAO {
         while (rs.next()) {
         	submissions = new Submissions();
         	submissions.setSubmissions_id(rs.getInt("submissions_id"));
-        	submissions.setName("name");
-        	submissions.setSave_path("save_path");
-        	submissions.setCreate_date("create_data");
+        	submissions.setName(rs.getString("name"));
+        	submissions.setSave_path(rs.getString("save_path"));
+        	submissions.setCreate_date(rs.getString("create_data"));
         	submissions.setClass_id(rs.getString("class_id"));
         	submissions.setSubject_id(rs.getString("subject_id"));
         	submissionsList.add(submissions); 

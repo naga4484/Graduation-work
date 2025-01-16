@@ -18,6 +18,7 @@
 
 <form action="Studentregistration.action" method="post">
 	
+	<p class="system_return_mes">${reg_mes}</p>
     <label>氏名</label>
     <input type="text" name="name" required="required" placeholder="氏名を入力してください"><br><br>
     
@@ -28,7 +29,7 @@
 	    </c:forEach>
 	</select><br><br>
 	
-	<p>${student_id_duplication_error}</p>
+	<p class="system_return_mes">${student_id_duplication_error}</p>
 	<label>学生ID</label>
     <input type="text" name="student_id" required="required" placeholder="学生IDを入力してください"><br>
    	<button type="submit">登録</button> 

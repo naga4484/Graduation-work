@@ -53,6 +53,7 @@ public class CalendarDisplayAction  extends Action {
             selectedDate = "日付が選択されていません";
         }
         session.setAttribute("selectedDate", selectedDate);   
+        
 
         // 天気情報を取得する処理
         String todayTemperature = "情報取得エラー";
@@ -122,32 +123,34 @@ public class CalendarDisplayAction  extends Action {
             todayTemperatureData = Arrays.asList("情報取得エラー");
         }
         TimetableDAO dao = new TimetableDAO();
-        String[] data_list = selectedDate.split("/");
-        String year_data = data_list[0];
-        String month_data = data_list[1];
-        String date_data = data_list[2];
-        if(month_data.length() == 1) {
-        	month_data = "0" + month_data;
-        }
-        if(date_data.length() == 1) {
-        	date_data = "0" + date_data;
-        }
-        String data = year_data + "年" + month_data + "月" + date_data + "日";
+        // 入力のフォーマットを定義（柔軟な形式で解析）
+        DateTimeFormatter inputFormatter = DateTimeFormatter.ofPattern("yyyy/M/d");
+        
+        // 出力のフォーマットを定義
+        DateTimeFormatter outputFormatter = DateTimeFormatter.ofPattern("yyyy年MM月dd日");
+        
+        // 入力文字列をLocalDateに変換
+        LocalDate date = LocalDate.parse(selectedDate, inputFormatter);
+        
+        selectedDate = date.format(outputFormatter);
         User_id user_id = (User_id)session.getAttribute("user");
         SubjectDAO sdao=new SubjectDAO();
         SubmissionsDAO subdao = new SubmissionsDAO();
         if(user_id.getStudent_id() == null) {
         	Teacheraccount account = (Teacheraccount)session.getAttribute("account");
-        	List<Timetable> timetable = dao.timetable_search(account.getClass_id(), data);
+        	List<Timetable> timetable = dao.timetable_search(account.getClass_id(), selectedDate);
         	session.setAttribute("schedule_timetable", timetable);
         	
     		List<Subject> class_subject = sdao.getclasssubject(account.getClass_id());
     		session.setAttribute("class_subject", class_subject);
     		
+    		List<Submissions> submissions = subdao.distinctsubmissions_class(account.getClass_id());
+    		session.setAttribute("cal_submissions", submissions);
+    		
         	
         }else if(user_id.getTeacher_id() == null) {
         	Studentaccount account = (Studentaccount)session.getAttribute("account");
-        	List<Timetable> timetable = dao.timetable_search(account.getClass_id(), data);
+        	List<Timetable> timetable = dao.timetable_search(account.getClass_id(), selectedDate);
         	session.setAttribute("schedule_timetable", timetable);
         	
     		List<Subject> class_subject = sdao.getclasssubject(account.getClass_id());
@@ -157,6 +160,9 @@ public class CalendarDisplayAction  extends Action {
     		session.setAttribute("cal_submissions", submissions);
         }
         
+        
+        outputFormatter = DateTimeFormatter.ofPattern("yyyy/MM/dd");
+        selectedDate = date.format(outputFormatter);
         CalendarDAO cdao = new CalendarDAO();
         List<Calendar> calender_list = cdao.calender_list(user_id.getUser_id(), selectedDate);
         session.setAttribute("cal_list", calender_list);

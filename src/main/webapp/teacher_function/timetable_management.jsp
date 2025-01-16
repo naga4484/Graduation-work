@@ -96,7 +96,7 @@
 					    	</c:if>
 				   		</c:forEach>
 			    	</c:if>
-			    	<select name="timetable_template" id="select_template${days}">
+			    	<select name="tt" id="select_template${days}" disabled>
 			    		<c:set var="num">nonejfannfenfjdsanjk</c:set>
 			    		<c:forEach var="item_template" items="${timetable_template_teacher}">
 			    			<c:choose>
@@ -124,7 +124,7 @@
 			    	<input type="button" id="template_button${days}" value="適用">
 		    	</div>
 		</c:forEach>
-		<input type="hidden" value="${timetable_template_teacher}" id="template_list">
+		<!-- <input type="hidden" value="${timetable_template_teacher}" id="template_list"> -->
 		<div class="timetable_button">
 		<input type="submit" value="登録">
 		</div>

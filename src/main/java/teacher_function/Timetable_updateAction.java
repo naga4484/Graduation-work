@@ -36,7 +36,7 @@ public class Timetable_updateAction extends Action {
 					String today_data_time = today_data + j;
 					String subject_id=request.getParameter(today_data_time);
 					if(subject_id.equals("Notset") == true) {
-						continue;
+						line=dao.timetable_update(null, Integer.toString(j), account.getTeacher_id(),class_id,today_data);
 					}
 					else {
 						line=dao.timetable_update(subject_id, Integer.toString(j), account.getTeacher_id(),class_id,today_data);

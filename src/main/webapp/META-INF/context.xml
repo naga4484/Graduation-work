@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Context reloadable="true">
+	<Valve className="org.apache.catalina.valves.RemoteIpValve"
+           requestAttributesEnabled="true" />
 	<Resource
 		name="jdbc/kaiki"
 		auth="Container"
