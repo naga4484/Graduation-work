@@ -1,22 +1,10 @@
-/* 全体レイアウト */
-body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #f5f5f5;
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    min-height: 100vh;
-}
-
 .container {
     width: 95.8%;
     max-width: 1200px;
     padding: 20px;
     position: relative;
-    margin-top: 60px; /* メニューバーと被らないように調整 */
-    background-color: transparent; /* 背景色を透明に */
+    margin-top: 60px; 
+    background-color: transparent;
 }
 
 .menu-bar {
@@ -47,7 +35,7 @@ table {
     width: 100%;
     border-collapse: collapse;
     margin-top: 20px;
-    border: none; /* 不要な線を完全に削除 */
+    border: none; 
 }
 
 table th, table td {
@@ -67,7 +55,7 @@ table tr:hover {
 }
 
 .answered {
-    background-color: #e3f7ff; /* 薄い青 */
+    background-color: #e3f7ff; 
     font-weight: bold;
 }
 
@@ -81,6 +69,7 @@ button {
     margin-right: 5px;
     border-radius: 4px;
     transition: background-color 0.3s;
+    font-family: inherit; 
 }
 
 button:hover {
@@ -89,7 +78,7 @@ button:hover {
 
 .return-link {
     display: inline-block;
-    margin-top: 30px; /* 「戻る」ボタンとの距離を調整 */
+    margin-top: 30px; 
     color: #007BFF;
     text-decoration: none;
     font-size: 14px;
@@ -122,9 +111,9 @@ button:hover {
 .form-container {
     max-width: 600px;
     margin: 0 auto;
-    padding: 0; /* パディングをリセット */
-    border: none; /* 枠を完全に削除 */
-    background-color: transparent; /* 背景色を透明に */
+    padding: 0; 
+    border: none; 
+    background-color: transparent; 
 }
 
 .form-container label {
@@ -139,7 +128,7 @@ button:hover {
     margin-bottom: 15px;
     border: 1px solid #ccc;
     border-radius: 4px;
-    resize: none; /* テキストエリアの右下のリサイズマークを非表示 */
+    resize: none; 
 }
 
 .page-title {
@@ -147,7 +136,7 @@ button:hover {
     font-weight: bold;
     margin-bottom: 20px;
     text-align: center;
-    color: #007BFF; /* アクセントカラーを追加 */
+    color: #007BFF;
 }
 
 /* アンケート回答ページのスタイル */
@@ -156,7 +145,7 @@ button:hover {
     margin: 0 auto;
     padding: 20px;
     border: none;
-    background-color: #ffffff; /* 背景色を白に */
+    background-color: #ffffff; 
     border-radius: 10px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
@@ -220,6 +209,7 @@ button:hover {
     max-width: 200px;
     margin: 0 auto;
     display: block;
+    font-family: inherit; 
 }
 
 .answer-container button:hover {
@@ -231,7 +221,7 @@ button:hover {
     max-width: 800px;
     margin: 0 auto;
     padding: 20px;
-    background-color: #ffffff; /* 背景色を白に */
+    background-color: #ffffff; 
     border-radius: 10px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
