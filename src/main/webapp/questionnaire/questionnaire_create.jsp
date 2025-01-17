@@ -9,7 +9,7 @@
 </head>
 <body>
     <div class="form-container">
-        <h1 class="page-title">アンケート作成</h1>
+        <h1 class="page-title2">アンケート作成</h1>
 
         <!-- メッセージ表示エリア -->
         <c:if test="${not empty message}">

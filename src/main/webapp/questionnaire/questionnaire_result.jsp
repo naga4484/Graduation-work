@@ -10,7 +10,7 @@
 </head>
 <body>
     <div class="result-container">
-        <h1 class="page-title">アンケート結果</h1>
+        <h1 class="page-title2">アンケート結果</h1>
 
         <!-- アンケートタイトルと質問内容 -->
         <c:if test="${not empty questionnaire}">

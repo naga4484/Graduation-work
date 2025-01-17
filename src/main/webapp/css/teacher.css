@@ -192,4 +192,18 @@
 .teacher_function_iocn a {
     display: flex;
     border-radius: 10px; 
+} 
+
+.delete {
+	margin-left: -90%;
+}
+
+.iframe {
+  width: 95%; 
+  border-collapse: collapse;
+  text-align: center;
+  height: 100%;
+  vertical-align: middle;
+  padding: 0 15px;
+  border: 1px solid #ccc;
 }

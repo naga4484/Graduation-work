@@ -3,6 +3,8 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <link rel="stylesheet" type="text/css" href="../css/teacher_function.css">
+<link rel="stylesheet" type="text/css" href="../css/attendance.css">
+
 
 <title>提出物詳細画面</title>
 
@@ -46,14 +48,14 @@
 <div class="delete">
     <form action="Submissions_detail_delete.action">
         <input type="hidden" name="submissions_id" value="${distinctsubmissions_id.submissions_id}">
-        <input type="submit" value="提出物の削除">
+        <input type="submit" class="delete_submit" value="提出物の削除">
     </form>
 </div>
 
 <c:if test="${sub_detail_send_list != null}">
-	<div>
+	<div class="teacher_table">
 		<h3>提出状況の確認</h3>
-		<iframe src="submissions_detail_inner.jsp"></iframe>
+		<iframe class=iframe src="submissions_detail_inner.jsp"></iframe>
 	</div>
 </c:if>
 

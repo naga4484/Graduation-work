@@ -10,7 +10,7 @@
 </head>
 <body>
     <div class="answer-container">
-        <h1 class="page-title">アンケート回答</h1>
+        <h1 class="page-title2">アンケート回答</h1>
 
         <!-- エラーメッセージの表示 -->
         <c:if test="${not empty errorMessage}">

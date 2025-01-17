@@ -9,8 +9,10 @@
     <link rel="stylesheet" href="../css/questionnaire.css">
 </head>
 <body>
+
+        <h1 class="page-title">アンケート一覧</h1>
+
     <div class="container">
-        <h1>アンケート一覧</h1>
 
         <!-- メッセージ表示 -->
         <c:if test="${not empty message}">
