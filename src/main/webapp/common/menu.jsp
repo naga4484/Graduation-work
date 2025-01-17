@@ -20,7 +20,7 @@
 		<a href="../group/group_top.jsp" class="menu_links">グループ管理</a>
 	</div>
 	<div class="menu_box_contents">
-		<a href="" class="menu_links">アンケート</a>
+		<a href="../questionnaire/QuestionnaireList.action" class="menu_links">アンケート</a>
 	</div>
 	<div class="menu_box_contents">
 		<a href="" class="menu_links">効率化</a>
