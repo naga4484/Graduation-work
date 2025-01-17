@@ -26,6 +26,9 @@
 	
 	<!-- 共有アイテム送信欄 -->
 	<div class="chat_submit_area">
+		<c:if test="${dis_err_mes != null}">
+			<p>${dis_err_mes}</p>
+		</c:if>
 		<form action="Group_file_upload_submit.action?group_id=${select_id}" enctype="multipart/form-data" method="POST">
 	        <label for="file">ファイルを選択してください</label>
 	        <input type="file" name="file" class="file_submit_select">

@@ -7,7 +7,9 @@ import java.io.IOException;
 import java.io.OutputStream;
 import java.net.URLEncoder;
 
+import bean.Group;
 import bean.User_id;
+import dao.GroupDAO;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
@@ -22,13 +24,17 @@ public class Group_file_downloadAction extends Action {
         HttpSession session = request.getSession();
         User_id user_id = (User_id) session.getAttribute("user");
 
-        String group_id = request.getParameter("group_id");
+        String group_id = (String)session.getAttribute("select_id");
         String fileName = request.getParameter("name");
         
         // セキュリティ対策: ファイル名を正規化
         fileName = fileName.replace("..", "");
+        GroupDAO dao=new GroupDAO();
+		Group group_ob = dao.search_group_id(group_id);
         
-        File file = new File(request.getServletContext().getRealPath("") + File.separator + FILE_DIRECTORY, fileName);
+        String FILE_AREA_OB = FILE_DIRECTORY + "/" + group_ob.getGroup_name();
+        
+        File file = new File(request.getServletContext().getRealPath("") + File.separator + FILE_AREA_OB, fileName);
         if (file.exists()) {
             String mimeType = request.getServletContext().getMimeType(file.getPath());
             if (mimeType == null) {

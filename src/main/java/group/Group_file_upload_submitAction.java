@@ -36,6 +36,7 @@ public class Group_file_upload_submitAction extends Action {
 		GroupDAO dao=new GroupDAO();
 		List<Group> file_list = dao.search_group_file(group_id);
 		
+		Group group_ob = dao.search_group_id(group_id);
 		
         // アップロードディレクトリのパスを取得
         String uploadPath = request.getServletContext().getRealPath("") + File.separator + UPLOAD_DIR;
@@ -45,6 +46,11 @@ public class Group_file_upload_submitAction extends Action {
         }
 
         // 保存ディレクトリが存在しない場合は作成
+        uploadDir = new File(uploadPath);
+        if (!uploadDir.exists()) {
+            uploadDir.mkdir();
+        }
+        uploadPath = request.getServletContext().getRealPath("") + File.separator + UPLOAD_DIR + "/" + group_ob.getGroup_name();
         uploadDir = new File(uploadPath);
         if (!uploadDir.exists()) {
             uploadDir.mkdir();
@@ -65,6 +71,8 @@ public class Group_file_upload_submitAction extends Action {
             }
         } catch (Exception e) {
             System.out.println(e);
+            session.setAttribute("dis_err_mes", "ファイル名が既存のモノと重複しています");
+            return "group_file_upload.jsp";
         }
         session.setAttribute("file_list", file_list);
         return "group_file_upload.jsp";
