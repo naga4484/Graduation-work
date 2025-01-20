@@ -18,7 +18,7 @@
 	<p class="system_return_mes">${retry_mes}</p>
 </c:if>
 <a href="Group_auto_create_retry.action" class="group_retry_button">再抽選</a>
-<a href="Group_excel_dl.action" class="group_retry_button">Excelファイルでダウンロードする(未完成[壊れたファイルがDLされる])</a>
+<a href="Group_excel_dl.action" class="group_retry_button">Excelファイルでダウンロードする</a>
 <div>
 	<c:forEach var="entry" items="${group_list}" varStatus="count">
 		<div class="group_create">

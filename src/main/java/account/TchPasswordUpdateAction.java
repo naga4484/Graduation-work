@@ -14,10 +14,10 @@ public class TchPasswordUpdateAction extends Action {
         // パスワードのバリデーション
         if (!newPassword.equals(confirmPassword)) {
             request.setAttribute("errorMessage", "パスワードが一致しません。");
-            return "reset_password_form.jsp";
+            return "teacher_reset_password_form.jsp";
         } else if (!isValidPassword(newPassword)) {
             request.setAttribute("errorMessage", "8字以上、数字、大文字、小文字をそれぞれ1文字以上使用してください。");
-            return "reset_password_form.jsp";
+            return "teacher_reset_password_form.jsp";
         }
 
         // パスワード更新処理
