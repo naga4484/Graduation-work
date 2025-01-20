@@ -434,3 +434,7 @@ textarea{
     resize: none;
     height: 80px;
 }
+.submregs {
+	text-align: center;
+	margin-left: -1%;
+}

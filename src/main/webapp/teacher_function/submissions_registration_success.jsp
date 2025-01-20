@@ -6,7 +6,7 @@
 <div class="successPage">
 <title>提出物登録完了画面</title>
 
-<h1>登録完了</h1>
+<h1 class="submregs">登録完了</h1>
 <p>提出物の登録が完了いたしました</p>
 <form action="../teacher_function/submissions_registration.jsp" method="get">
     <button type="submit">完了</button>
