@@ -14,42 +14,42 @@
 </c:if>
 
 <h1>提出物詳細機能</h1>
-
-<form action="Submissions_detail_change.action">
-    <div class="teacher_center">
-        <h2>提出物</h2>
-        <!-- エラーメッセージの表示 -->
-        <c:if test="${distinct_error != null}">
-            <p class="system_return_mes">${distinct_error}</p>
-        </c:if>
-
-        <!-- 提出物情報の入力フォーム -->
-        <label>提出物名</label>
-        <input type="text" name="submission_name" placeholder="提出物名を入力してください" maxlength="30" required="required" value="${distinctsubmissions_id.name}">
-
-        <label>科目</label>
-        <select name="subject_id">
-            <c:forEach var="class_subject" items="${class_subject}">
-                <option value="${class_subject.subject_id}">${class_subject.subject_name}</option>
-            </c:forEach>
-        </select>
-
-        <label>期限</label>
-        <select id="year" name="year"></select>
-        <select id="month" name="month"></select>
-        <select id="date" name="date"></select>
-
-        <input type="hidden" name="submissions_id" value="${distinctsubmissions_id.submissions_id}">
-        <input type="submit" value="変更">
-    </div>
-</form>
-
-<!-- 提出物削除フォーム -->
-<div class="delete">
-    <form action="Submissions_detail_delete.action">
-        <input type="hidden" name="submissions_id" value="${distinctsubmissions_id.submissions_id}">
-        <input type="submit" class="delete_submit" value="提出物の削除">
-    </form>
+<div class="left_form_content">
+	<form action="Submissions_detail_change.action">
+	    <div class="teacher_center">
+	        <h2>提出物</h2>
+	        <!-- エラーメッセージの表示 -->
+	        <c:if test="${distinct_error != null}">
+	            <p class="system_return_mes">${distinct_error}</p>
+	        </c:if>
+	
+	        <!-- 提出物情報の入力フォーム -->
+	        <label>提出物名</label>
+	        <input type="text" name="submission_name" placeholder="提出物名を入力してください" maxlength="30" required="required" value="${distinctsubmissions_id.name}">
+	
+	        <label>科目</label>
+	        <select name="subject_id">
+	            <c:forEach var="class_subject" items="${class_subject}">
+	                <option value="${class_subject.subject_id}">${class_subject.subject_name}</option>
+	            </c:forEach>
+	        </select>
+	
+	        <label>期限</label>
+	        <select id="year" name="year"></select>
+	        <select id="month" name="month"></select>
+	        <select id="date" name="date"></select>
+	
+	        <input type="hidden" name="submissions_id" value="${distinctsubmissions_id.submissions_id}">
+	        <input type="submit" value="変更">
+	    </div>
+	</form>
+	<!-- 提出物削除フォーム -->
+	<div class="delete">
+	    <form action="Submissions_detail_delete.action">
+	        <input type="hidden" name="submissions_id" value="${distinctsubmissions_id.submissions_id}">
+	        <input type="submit" class="delete_submit" value="提出物の削除">
+	    </form>
+	</div>
 </div>
 
 <c:if test="${sub_detail_send_list != null}">

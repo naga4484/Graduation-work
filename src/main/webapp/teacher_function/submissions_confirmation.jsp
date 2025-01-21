@@ -13,29 +13,31 @@
 </c:if>
 
 <h1>提出物確認機能</h1>
-<div class="class_submission_search">
-    <!-- クラス検索フォーム -->
-    <form action="Submissions_class.action">
-        <h2>クラス検索</h2>
-        <label for="class_id">クラス</label>
-        <select id="class_id" name="class_id">
-            <c:forEach var="class_num" items="${class_num}">
-                <option value="${class_num.class_id}">${class_num.class_num}</option>
-            </c:forEach>
-        </select>
-        <input type="submit" value="検索">
-    </form>
-
-    <!-- エラーメッセージや成功メッセージ -->
-    <c:if test="${none_error != null}">
-        <p class="system_return_mes">${none_error}</p>
-    </c:if>
-    <c:if test="${change_mes != null}">
-        <p class="system_return_mes">${change_mes}</p>
-    </c:if>
-    <c:if test="${delete_mes != null}">
-        <p class="system_return_mes">${delete_mes}</p>
-    </c:if>
+<div class="left_form_content">
+	<div class="class_submission_search">
+	    <!-- クラス検索フォーム -->
+	    <form action="Submissions_class.action">
+	        <h2>クラス検索</h2>
+	        <label for="class_id">クラス</label>
+	        <select id="class_id" name="class_id">
+	            <c:forEach var="class_num" items="${class_num}">
+	                <option value="${class_num.class_id}">${class_num.class_num}</option>
+	            </c:forEach>
+	        </select>
+	        <input type="submit" value="検索">
+	    </form>
+	
+	    <!-- エラーメッセージや成功メッセージ -->
+	    <c:if test="${none_error != null}">
+	        <p class="system_return_mes">${none_error}</p>
+	    </c:if>
+	    <c:if test="${change_mes != null}">
+	        <p class="system_return_mes">${change_mes}</p>
+	    </c:if>
+	    <c:if test="${delete_mes != null}">
+	        <p class="system_return_mes">${delete_mes}</p>
+	    </c:if>
+	</div>
 </div>
 
 <c:if test="${distinctsubmissions_class.size() > 0}">

@@ -16,56 +16,57 @@
 
 <h1>グループ自動作成機能</h1>
 
-
-<form action="Group_auto_student.action">
-	<h2>学生検索</h2>
-	<label>クラス</label>
-    <select name="class_id">
-	    <c:forEach var="class_num" items="${class_num}">
-	    	<option value="${class_num.class_id}">${class_num.class_num}</option>
-	    </c:forEach>
-	</select>
-	
-	<input type="submit" value="検索">
-</form><br>
-<c:if test="${st_list.size() > 0}">
-	<form action="Group_auto_create.action">
-		<div>
-			<c:if test="${num_error != null}">
-				<p class="system_return_mes">${num_error}</p>
-			</c:if>
-			<label>1グループの人数</label>
-			<select name="group_member_num" id="group_member_num">
-				<c:forEach var="i" begin="1" end="${st_list.size() / 2 + 1}" step="1">
-					<option value="${i}">${i}</option>
-				</c:forEach>
-			</select>
-			<label for="yes_flag">リーダーを設定する</label>
-			<input type="radio" name="reader_flag" id="yes_flag" value="on">
-			<label for="no_flag">リーダーを設定しない</label>
-			<input type="radio" name="reader_flag" id="no_flag" value="off" checked>
-			<div id="reader_content">
+<div class="left_form_content">
+	<form action="Group_auto_student.action">
+		<h2>学生検索</h2>
+		<label>クラス</label>
+	    <select name="class_id">
+		    <c:forEach var="class_num" items="${class_num}">
+		    	<option value="${class_num.class_id}">${class_num.class_num}</option>
+		    </c:forEach>
+		</select>
+		
+		<input type="submit" value="検索">
+	</form><br>
+	<c:if test="${st_list.size() > 0}">
+		<form action="Group_auto_create.action">
+			<div>
+				<c:if test="${num_error != null}">
+					<p class="system_return_mes">${num_error}</p>
+				</c:if>
+				<label>1グループの人数</label>
+				<select name="group_member_num" id="group_member_num">
+					<c:forEach var="i" begin="1" end="${st_list.size() / 2 + 1}" step="1">
+						<option value="${i}">${i}</option>
+					</c:forEach>
+				</select>
+				<label for="yes_flag">リーダーを設定する</label>
+				<input type="radio" name="reader_flag" id="yes_flag" value="on">
+				<label for="no_flag">リーダーを設定しない</label>
+				<input type="radio" name="reader_flag" id="no_flag" value="off" checked>
+				<div id="reader_content">
+				</div>
+				<br><br>
+				<input type="submit" value="生成">
 			</div>
-			<br><br>
-			<input type="submit" value="生成">
-		</div>
-		<div id="group_member_table">
-			<table>
-				<tr>
-					<th>学生ID</th>
-					<th>氏名</th>
-				</tr>
-				<c:forEach var="item" items="${st_list}">
+			<div id="group_member_table">
+				<table>
 					<tr>
-						<td>${item.student_id}</td>
-						<td>${item.name}</td>
+						<th>学生ID</th>
+						<th>氏名</th>
 					</tr>
-				</c:forEach>
-			</table>
-		</div>
-	</form>
-</c:if>
-
+					<c:forEach var="item" items="${st_list}">
+						<tr>
+							<td>${item.student_id}</td>
+							<td>${item.name}</td>
+						</tr>
+					</c:forEach>
+				</table>
+			</div>
+		</form>
+	</c:if>
+</div>
+	
 <div class="common_back_button">
   <a href="../teacher_function/teacher_function.jsp"><img src="../images/戻るボタン1.png" class="teacher_back_icon"></a>
 </div>

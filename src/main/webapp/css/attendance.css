@@ -71,10 +71,9 @@ h1 {
 /*デザイン用(最終修正用)*/
 .attendance_list_iframe_text{
 	margin-top: 50px;
-	margin-left: 20px;
+	margin-left: 10px;
 }
 .attendance_list_iframe{
-	margin-left: 20px;
 	width: 400px;
 	border: 1px solid #333;
 	border-radius:10px;

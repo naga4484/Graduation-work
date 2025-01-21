@@ -14,29 +14,31 @@
 <h1>提出物登録機能</h1>
 <div class="main_contents">
     <!-- 学生検索フォーム -->
-    <div class="teacher_side">
-        <form action="Submissionsstudent.action">
-            <h2>学生検索</h2>
-            <c:if test="${none_error != null}">
-                <p class="system_return_mes">${none_error}</p>
-            </c:if>
-            <label for="student_name">学生</label>
-            <input type="text" id="student_name" name="student_name" placeholder="名前を入力してください">
-            <label for="class_id">クラス</label>
-            <select id="class_id" name="class_id">
-                <c:forEach var="class_num" items="${class_num}">
-                    <option value="${class_num.class_id}">${class_num.class_num}</option>
-                </c:forEach>
-            </select>
-            <input type="submit" value="検索">
-        </form>
-    </div>
+    <div class="left_form_content">
+	    <div class="teacher_side">
+	        <form action="Submissionsstudent.action">
+	            <h2>学生検索</h2>
+	            <c:if test="${none_error != null}">
+	                <p class="system_return_mes">${none_error}</p>
+	            </c:if>
+	            <label for="student_name">学生</label>
+	            <input type="text" id="student_name" name="student_name" placeholder="名前を入力してください">
+	            <label for="class_id">クラス</label>
+	            <select id="class_id" name="class_id">
+	                <c:forEach var="class_num" items="${class_num}">
+	                    <option value="${class_num.class_id}">${class_num.class_num}</option>
+	                </c:forEach>
+	            </select>
+	            <input type="submit" value="検索">
+	        </form>
+	    </div>
+	</div>
     
     <!-- 提出物登録フォーム -->
     <c:if test="${submissionsstudent != null}">
         <form action="Submissionsregistration.action">
 
-            <div>
+            <div class="left_form_content">
                 <h2>提出物</h2>
                 <c:if test="${distinct_error != null}">
                     <p class="system_return_mes">${distinct_error}</p>

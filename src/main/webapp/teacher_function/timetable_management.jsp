@@ -13,37 +13,42 @@
 </c:if>
 
 <h1>時間割機能</h1>
-
-<form action="Timetable_class.action">
-	<label>クラス</label>
-    <select name="class_id">
-	    <c:forEach var="class_num" items="${class_num}">
-	    	<option value="${class_num.class_id}">${class_num.class_num}</option>
-	    </c:forEach>
-	</select>
-	
-	<input type="submit" value="検索">
-</form>
-<c:if test="${timetable_select.size() > 0}">
-	<div id="timetable_select_date">
-		<label>日付</label>
-		<select name="timetable_date">
-			<c:forEach var="item" items="${timetable_select}">
-				<c:choose>
-					<c:when test="${item.equals(data_num) == true}">
-						<option value="${item}" selected>${item}</option>
-					</c:when>
-					<c:otherwise>
-						<option value="${item}">${item}</option>
-					</c:otherwise>
-				</c:choose>	
+<div class="left_form_content">
+	<form action="Timetable_class.action">
+		<label>クラス</label>
+	    <select name="class_id">
+		    <c:forEach var="class_num" items="${class_num}">
+		    	<option value="${class_num.class_id}">${class_num.class_num}</option>
 		    </c:forEach>
 		</select>
-	</div>
-</c:if>
-<c:if test="${success_mes != null}">
-	<p class="system_return_mes">登録が完了いたしました</p>
-</c:if>
+		
+		<input type="submit" value="検索">
+	</form>
+</div>
+<div class="left_form_content">
+	<c:if test="${timetable_select.size() > 0}">
+		<div id="timetable_select_date">
+			<label>日付</label>
+			<select name="timetable_date">
+				<c:forEach var="item" items="${timetable_select}">
+					<c:choose>
+						<c:when test="${item.equals(data_num) == true}">
+							<option value="${item}" selected>${item}</option>
+						</c:when>
+						<c:otherwise>
+							<option value="${item}">${item}</option>
+						</c:otherwise>
+					</c:choose>	
+			    </c:forEach>
+			</select>
+		</div>
+	</c:if>
+</div>
+<div class="left_form_content">
+	<c:if test="${success_mes != null}">
+		<p class="system_return_mes">登録が完了いたしました</p>
+	</c:if>
+</div>
 <c:if test="${timetable_change_List.size() > 0}">
 	<form action="Timetable_update.action">
 	    <c:forEach begin="1" end="${Month_of_days}" step="1" var="days">
