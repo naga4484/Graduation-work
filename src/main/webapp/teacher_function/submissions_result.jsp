@@ -29,7 +29,7 @@
 <form action="Submissions_result_registration.action">
 	<div>
 		<h2>成績情報</h2>
-		<label>科目</label>
+		<label>提出物</label>
 	    <select name="submissions_id">
 		    <c:forEach var="class_submissions" items="${submissions_result_list}">
 		    	<option value="${class_submissions.submissions_id}">${class_submissions.name}</option>
