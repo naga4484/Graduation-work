@@ -54,8 +54,8 @@
 
 <c:if test="${sub_detail_send_list != null}">
 	<div class="teacher_table">
-		<h3>提出状況の確認</h3>
-		<iframe class=iframe src="submissions_detail_inner.jsp"></iframe>
+		<h3 class="submissions_detail_tag">提出状況の確認</h3>
+		<iframe class="submissions_detail_inner_iframe" src="submissions_detail_inner.jsp"></iframe>
 	</div>
 </c:if>
 

@@ -15,25 +15,33 @@
 <link rel="stylesheet" type="text/css" href="../css/my_management.css">
 </head>
 <body>
-	<div>
+	<div class="my_management_inner_content">
 		<c:choose>
 			<c:when test="${sessionScope.my_submissions_list.size() > 0}">
-				<table class="my_management_inner_content">
-					<tr>
-						<th>提出物名</th>
-						<th>期限</th>
-						<th>提出状況</th>
-						<th></th>
-					</tr>
-					<c:forEach var="item" items="${my_submissions_list}" varStatus="loop">
-						<tr>
-							
-							<td><p class="txt-limits">${item.name}</p></td>
-							<td>${item.create_date}</td>
-							<td>${sessionScope.submissions_send_data_count[loop.index]}</td>
-						</tr>
-					</c:forEach>
-				</table>
+				<div class="my_submissions_teacher_inner_head">
+					<div class="my_submissions_teacher_inner_name">
+						<p>提出物名</p>
+					</div>
+					<div class="my_submissions_teacher_inner_limit">
+						<p>期限</p>
+					</div>
+					<div class="my_submissions_teacher_inner_submit">
+						<p>提出状況</p>
+					</div>
+				</div>
+				<c:forEach var="item" items="${my_submissions_list}" varStatus="loop">
+					<div class="my_submissions_teacher_inner_body">
+						<div class="my_submissions_teacher_inner_name">
+							<p class="txt-limits-min">${item.name}</p>
+						</div>
+						<div class="my_submissions_teacher_inner_limit">
+							<p>${item.create_date}</p>
+						</div>
+						<div class="my_submissions_teacher_inner_submit">
+							<p>${sessionScope.submissions_send_data_count[loop.index]}</p>
+						</div>
+					</div>
+				</c:forEach>
 			</c:when>
 			<c:otherwise>
 				<div>

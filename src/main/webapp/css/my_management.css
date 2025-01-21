@@ -97,6 +97,33 @@
 	margin-left: 20px;
 }
 
+
+/*教師の奴*/
 .my_management_inner_content{
 	margin:0 auto;
+}
+.my_submissions_teacher_inner_head{
+	background-color: antiquewhite;
+	width: 500px;
+	text-align: center;
+	border-bottom:1px solid #333;
+}
+.my_submissions_teacher_inner_body{
+	width: 500px;
+	text-align: center;
+	border-bottom:1px solid #333;
+}
+.my_submissions_teacher_inner_name{
+	display: inline-block;
+	width: 230px;
+	border-right:1px solid #333;
+}
+.my_submissions_teacher_inner_limit{
+	display: inline-block;
+	width: 130px;
+	border-right:1px solid #333;
+}
+.my_submissions_teacher_inner_submit{
+	display: inline-block;
+	width: 120px;
 }

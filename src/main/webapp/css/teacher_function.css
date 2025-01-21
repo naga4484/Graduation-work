@@ -5,9 +5,11 @@ body {
   align-items: center; /* 縦方向の中央揃え */
   margin: 0;
 }
+/*
 div {
 	padding : 1px ;
 }
+*/
 h1 {
 	margin-left:10% ;
 }
@@ -86,18 +88,6 @@ select{
     cursor: pointer;
 }
 /*スクロールのテーブルをしようする際*/
-.teacher_table {
-  margin: 30px;
-  height: calc(190vh / 2); /* 基本高さ */
-  max-height: 90vh; /* ビューポートの90%を最大高さに制限 */
-  overflow-y: auto; /* スクロールを有効に */
-  border: 1px solid #ccc;
-  width: 50%;
-  max-width: 90%; /* ビューポートの90%を最大幅に制限 */
-  position: absolute;
-  top: 0;
-  right: 0;
-}
 
 .timetable_box {
 	margin-left: 4%;
@@ -437,4 +427,125 @@ textarea{
 .submregs {
 	text-align: center;
 	margin-left: -1%;
+}
+
+
+
+/*デザイン用(最終修正用)*/
+.submissions_detail_tag{
+	padding-left: 10px;
+	padding-bottom: 5px;
+	border-bottom: 1px solid #333;
+}
+.teacher_table {
+  width: 600px;
+  position: absolute;
+  top: 50px;
+  right: 30px;
+  border: 1px solid #333;
+  border-radius: 10px;
+  overflow: hidden;
+  overflow: auto;
+  min-height: 300px;
+  max-height: 600px;
+}
+
+.submissions_detail_inner_iframe{
+	width: 600px;
+	height: 500px;
+	border-top: 1px solid #333;
+	border-left: none;
+	border-right: none;
+	border-bottom: none;
+}
+
+.submissions_detail_inner_head{
+	width: 600px;
+	background-color:antiquewhite;
+	text-align: center;
+	border-bottom: 1px solid #333;
+}
+.submissions_detail_inner_body{
+	width: 600px;
+	text-align: center;
+	border-bottom: 1px solid #333;
+}
+
+.submissions_detail_inner_id{
+	display: inline-block;
+	width: 100px;
+	border-right: 1px solid #333;
+}
+.submissions_detail_inner_name{
+	display: inline-block;
+	width: 200px;
+	border-right: 1px solid #333;
+}
+.submissions_detail_inner_submit{
+	display: inline-block;
+	width: 70px;
+	border-right: 1px solid #333;
+}
+.submissions_detail_inner_file{
+	display: inline-block;
+	width: 150px;
+}
+
+.submissions_confomation_head{
+	width: 600px;
+	background-color:antiquewhite;
+	text-align: center;
+	border-bottom: 1px solid #333;
+}
+.submissions_confomation_body{
+	width: 600px;
+	text-align: center;
+	border-bottom: 1px solid #333;
+}
+.submissions_confomatio_no{
+	display: inline-block;
+	width: 100px;
+	border-right: 1px solid #333;
+}
+.submissions_confomation_id{
+	display: inline-block;
+	width: 100px;
+	border-right: 1px solid #333;
+}
+.submissions_confomation_name{
+	display: inline-block;
+	width: 300px;
+}
+
+.submissions_reg_head{
+	width: 600px;
+	background-color:antiquewhite;
+	text-align: center;
+	border-bottom: 1px solid #333;
+	border-top: 1px solid #333;
+}
+.submissions_reg_body{
+	width: 600px;
+	text-align: center;
+	border-bottom: 1px solid #333;
+}
+.submissions_reg_body p {
+	margin:10px 0;
+}
+.submission_reg_flag{
+	display: inline-block;
+	width: 80px;
+	border-right: 1px solid #333;
+	min-height: 40px;
+}
+.submission_reg_id{
+	display: inline-block;
+	width: 80px;
+	min-height: 40px;
+	border-right: 1px solid #333;
+}
+.submission_reg_name{
+	display: inline-block;
+	min-height: 40px;
+	width: 400px;
 }

@@ -161,8 +161,9 @@ public class CalendarDisplayAction  extends Action {
         }
         
         
-        outputFormatter = DateTimeFormatter.ofPattern("yyyy/MM/dd");
+        outputFormatter = DateTimeFormatter.ofPattern("yyyy/M/d");
         selectedDate = date.format(outputFormatter);
+        System.out.println(selectedDate);
         CalendarDAO cdao = new CalendarDAO();
         List<Calendar> calender_list = cdao.calender_list(user_id.getUser_id(), selectedDate);
         session.setAttribute("cal_list", calender_list);

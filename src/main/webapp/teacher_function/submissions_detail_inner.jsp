@@ -12,39 +12,55 @@
 <link rel="stylesheet" type="text/css" href="../css/teacher.css">
 <link rel="stylesheet" type="text/css" href="../css/account.css">
 <link rel="stylesheet" type="text/css" href="../css/group.css">
+<link rel="stylesheet" type="text/css" href="../css/teacher_function.css">
 </head>
 <body>
 	<div>
 		<c:choose>
 			<c:when test="${sessionScope.sub_detail_send_list.size() > 0}">
-				<table>
-					<tr>
-						<th>学生ID</th>
-						<th>氏名</th>
-						<th>提出状況</th>
-						<th>提出済みファイル</th>
-					</tr>
-					<c:forEach var="item" items="${sessionScope.sub_detail_send_list}">
-						<tr>
-							<td>${item.student_id}</td>
-							<td>${item.name}</td>
-							<c:choose>
-								<c:when test="${item.submissions_flag == true}">
-									<td>提出済み</td>
-									<td><a href="Submissions_sended_file_download.action?path=${item.submissions_my_name}&submissions_id=${item.submissions_id}&student_id=${item.student_id}" target="_parent">${item.submissions_my_name}</a></td>
-								</c:when>
-								<c:otherwise>
-									<td>未提出</td>
-									<td></td>
-								</c:otherwise>
-							</c:choose>
-						</tr>
-					</c:forEach>
-				</table>
+				<div class="submissions_detail_inner_head">
+					<div class="submissions_detail_inner_id">
+						<p>学生ID</p>
+					</div>
+					<div class="submissions_detail_inner_name">
+						<p>氏名</p>
+					</div>
+					<div class="submissions_detail_inner_submit">
+						<p>提出状況</p>
+					</div>
+					<div class="submissions_detail_inner_file">
+						<p>提出済みファイル</p>
+					</div>
+				</div>
+				<c:forEach var="item" items="${sessionScope.sub_detail_send_list}">
+					<div class="submissions_detail_inner_body">
+						<div class="submissions_detail_inner_id">
+							<p>${item.student_id}</p>
+						</div>
+						<div class="submissions_detail_inner_name">
+							<p>${item.name}</p>
+						</div>
+						<c:choose>
+							<c:when test="${item.submissions_flag == true}">
+								<div class="submissions_detail_inner_submit">
+									<p>提出済み</p>
+								</div>
+								<div class="submissions_detail_inner_file">
+									<p><a href="Submissions_sended_file_download.action?path=${item.submissions_my_name}&submissions_id=${item.submissions_id}&student_id=${item.student_id}" target="_parent">${item.submissions_my_name}</a></p>
+								</div>
+							</c:when>
+							<c:otherwise>
+								<div class="submissions_detail_inner_submit">
+									<p>未提出</p>
+								</div>
+								<div class="submissions_detail_inner_file">
+									<p></p>
+								</div>
+							</c:otherwise>
+						</c:choose>
+					</div>
+				</c:forEach>
 			</c:when>
-			<c:otherwise>
-				<p>本日のデータは登録されていません</p>
-			</c:otherwise>
 		</c:choose>
 	</div>
 <%@include file="../footer.jsp"  %>

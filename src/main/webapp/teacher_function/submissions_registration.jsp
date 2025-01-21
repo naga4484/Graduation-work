@@ -65,26 +65,30 @@
             <!-- 検索結果テーブル -->
             <div class="teacher_table">
                 <h2>検索結果</h2>
-                <table>
-                    <thead>
-                        <tr>
-                            <th class="headword">提出登録</th>
-                            <th class="headword">学生ID</th>
-                            <th class="headword">学生氏名</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <c:forEach var="item" items="${submissionsstudent}">
-                            <tr>
-                                <td>
-                                    <input type="checkbox" name="${item.student_id}" value="〇" checked>
-                                </td>
-                                <td>${item.student_id}</td>
-                                <td>${item.name}</td>
-                            </tr>
-                        </c:forEach>
-                    </tbody>
-                </table>
+                <div class="submissions_reg_head">
+                	<div class="submission_reg_flag">
+                		<p>提出登録</p>
+                	</div>
+                	<div class="submission_reg_id">
+                		<p>学生ID</p>
+                	</div>
+                	<div class="submission_reg_name">
+                		<p>学生氏名</p>
+                	</div>
+                </div>
+                <c:forEach var="item" items="${submissionsstudent}">
+	                <div class="submissions_reg_body">
+	                	<div class="submission_reg_flag">
+	                		<p><input type="checkbox" name="${item.student_id}" value="〇" checked></p>
+	                	</div>
+	                	<div class="submission_reg_id">
+	                		<p>${item.student_id}</p>
+	                	</div>
+	                	<div class="submission_reg_name">
+	                		<p>${item.name}</p>
+	                	</div>
+	                </div>
+	            </c:forEach>
             </div>
         </form>
     </c:if>

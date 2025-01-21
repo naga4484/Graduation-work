@@ -93,7 +93,8 @@
 		<input type="submit" value="登録">
 	</form>
 	<c:if test="${samplelist.size() > 0}">
-		<iframe src="attendance_list.jsp"></iframe>
+		<h3 class="attendance_list_iframe_text">登録済み情報</h3>
+		<iframe src="attendance_list.jsp" class="attendance_list_iframe"></iframe>
 	</c:if>
 </c:if>
 <div class="common_back_button">

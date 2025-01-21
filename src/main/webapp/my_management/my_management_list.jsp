@@ -18,29 +18,37 @@
 	<div>
 		<c:choose>
 			<c:when test="${sessionScope.my_submissions_list.size() > 0}">
-				<table class="my_management_inner_content">
-					<tr>
-						<th>提出物名</th>
-						<th>期限</th>
-						<th>提出済</th>
-						<th></th>
-					</tr>
-					<c:forEach var="item" items="${my_submissions_list}">
-						<tr>
-							
-							<td><p class="txt-limits">${item.name}</p></td>
-							<td>${item.create_date}</td>
+				<div class="my_submissions_teacher_inner_head">
+					<div class="my_submissions_teacher_inner_name">
+						<p>提出物名</p>
+					</div>
+					<div class="my_submissions_teacher_inner_limit">
+						<p>期限</p>
+					</div>
+					<div class="my_submissions_teacher_inner_submit">
+						<p>提出状況</p>
+					</div>
+				</div>
+				<c:forEach var="item" items="${my_submissions_list}" varStatus="loop">
+					<div class="my_submissions_teacher_inner_body">
+						<div class="my_submissions_teacher_inner_name">
+							<p class="txt-limits-min">${item.name}</p>
+						</div>
+						<div class="my_submissions_teacher_inner_limit">
+							<p>${item.create_date}</p>
+						</div>
+						<div class="my_submissions_teacher_inner_submit">
 							<c:choose>
 								<c:when test="${item.submissions_flag == true}">
-									<td>提出済み</td>
+									<p>提出済み</p>
 								</c:when>
 								<c:otherwise>
-									<td>未提出</td>
+									<p>未提出</p>
 								</c:otherwise>
 							</c:choose>
-						</tr>
-					</c:forEach>
-				</table>
+						</div>
+					</div>
+				</c:forEach>
 			</c:when>
 			<c:otherwise>
 				<div>

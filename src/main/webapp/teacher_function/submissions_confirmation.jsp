@@ -41,32 +41,34 @@
 <c:if test="${distinctsubmissions_class.size() > 0}">
 	<div class="teacher_table">
     <!-- 提出物リストの表示 -->
-        <table>
-            <thead>
-                <tr>
-                    <th class="headword">No</th>
-                    <th class="headword">提出物ID</th>
-                    <th class="headword">提出物名</th>
-                </tr>
-            </thead>
-            <tbody>
-                <c:forEach var="item" items="${distinctsubmissions_class}" varStatus="status">
-                    <tr>
-                        <td>${status.index + 1}</td>
-                        <td>
-                            <a href="Submissions_detail.action?submissions_id=${item.submissions_id}">
-                                ${item.submissions_id}
-                            </a>
-                        </td>
-                        <td>
-                            <a href="Submissions_detail.action?submissions_id=${item.submissions_id}">
-                                ${item.name}
-                            </a>
-                        </td>
-                    </tr>
-                </c:forEach>
-            </tbody>
-        </table>
+        <div class="submissions_confomation_head">
+        	<div class="submissions_confomatio_no">
+				<p>No.</p>
+			</div>
+			<div class="submissions_confomation_id">
+				<p>提出物ID</p>
+			</div>
+			<div class="submissions_confomation_name">
+				<p>提出物名</p>
+			</div>
+		</div>
+		<c:forEach var="item" items="${distinctsubmissions_class}" varStatus="status">
+        	<div class="submissions_confomation_body">
+	        	<div class="submissions_confomatio_no">
+					<p>${status.index + 1}</p>
+				</div>
+				<div class="submissions_confomation_id">
+					<p><a href="Submissions_detail.action?submissions_id=${item.submissions_id}">
+                         ${item.submissions_id}
+                     </a></p>
+				</div>
+				<div class="submissions_confomation_name">
+					<p><a href="Submissions_detail.action?submissions_id=${item.submissions_id}">
+                         ${item.name}
+                     </a></p>
+				</div>
+        	</div>
+        </c:forEach>
 	</div>
 </c:if>
 <div class="common_back_button">
