@@ -10,14 +10,14 @@
   position: absolute;
   top: 0px;
   text-align: center;
-  float: left;
-  width: 100%;
+  width: 1040px;
   height: 120%;
   z-index: 100;
-  margin:auto;
   opacity: 0;
   animation: popaimation 0.3s;
   animation-fill-mode: forwards;
+  border-radius: 50px;
+  overflow: auto hidden;
 }
 
 @keyframes popaimation {
@@ -77,4 +77,55 @@ h1 {
 	width: 400px;
 	border: 1px solid #333;
 	border-radius:10px;
+}
+.attendance_inner_list_head{
+	width: 400px;
+	background-color: antiquewhite;
+	border-bottom:1px solid #333;
+	text-align: center;
+}
+.attendance_inner_list_body{
+	width: 400px;
+	border-bottom:1px solid #333;
+	text-align: center;
+}
+.attendance_inner_list_name{
+	display: inline-block;
+	border-right: 1px solid #333;
+	width: 300px;
+}
+.attendance_inner_list_kind{
+	display: inline-block;
+	width: 90px;
+}
+
+.not_attendance_stu_tags{
+	margin:10px 0 10px 0;
+	text-align: center;
+}
+.not_attendance_stu_head{
+	width:1040px;
+	background-color: antiquewhite;
+	border-bottom:1px solid #333;
+	text-align: center;
+	margin-top:10px;
+}
+.not_attendance_stu_body{
+	width: 1040px;
+	border-bottom:1px solid #333;
+	text-align: center;
+}
+.not_attendance_stu_radio{
+	display: inline-block;
+	border-right: 1px solid #333;
+	width: 100px;
+}
+.not_attendance_stu_id{
+	display: inline-block;
+	border-right: 1px solid #333;
+	width: 150px;
+}
+.not_attendance_stu_name{
+	display: inline-block;
+	width: 400px;
 }

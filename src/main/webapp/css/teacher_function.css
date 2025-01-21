@@ -549,3 +549,39 @@ textarea{
 	min-height: 40px;
 	width: 400px;
 }
+
+.timetable_tmp_reg_link{
+	margin-left: 40px;
+}
+.timetable_tmp_list_table{
+	width: 500px;
+	border: 1px solid #333;
+	border-radius: 10px;
+	overflow: auto hidden;
+	margin-top: 20px;
+}
+.timetable_tmp_list_head{
+	width: 500px;
+	background-color:antiquewhite;
+	text-align: center;
+	border-bottom: 1px solid #333;
+}
+.timetable_tmp_list_body{
+	width: 500px;
+	text-align: center;
+	border-bottom: 1px solid #333;
+}
+.timetable_tmp_list_name{
+	width: 380px;
+	display: inline-block;
+	border-right: 1px solid #333;
+}
+.timetable_tmp_list_edit{
+	width: 50px;
+	display: inline-block;
+	border-right: 1px solid #333;
+}
+.timetable_tmp_list_delete{
+	width: 50px;
+	display: inline-block;
+}

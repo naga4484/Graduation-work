@@ -1,5 +1,8 @@
 package teacher_function;
 
+import java.util.List;
+
+import bean.Timetable_template;
 import bean.User_id;
 import dao.TimetableDAO;
 import jakarta.servlet.http.HttpServletRequest;
@@ -21,6 +24,9 @@ public class Timetable_template_deleteAction extends Action {
 			String template_name=request.getParameter("template_name");
 			TimetableDAO dao = new TimetableDAO();
 			int line = dao.timetable_template_delete(template_name);
+			
+			List<Timetable_template> timetable_template_teacher = dao.timetable_template(select_user_id.getTeacher_id());
+	        session.setAttribute("timetable_template_teacher", timetable_template_teacher);
 			
 			request.setAttribute("delete_mes", "テンプレートID「" + template_name + "」の削除が完了しました");
 			return "Timetable_template_set.action";

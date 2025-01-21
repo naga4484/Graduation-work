@@ -1,9 +1,11 @@
 package teacher_function;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import bean.Teacheraccount;
+import bean.Timetable_template;
 import bean.User_id;
 import dao.TimetableDAO;
 import jakarta.servlet.http.HttpServletRequest;
@@ -38,6 +40,9 @@ public class Timetable_template_editAction extends Action {
 	            	line = dao.timetable_template_update(befname,templateName,null,Integer.toString(i));
 	            }
 	        }
+	        List<Timetable_template> timetable_template_teacher = dao.timetable_template(account.getTeacher_id());
+	        session.setAttribute("timetable_template_teacher", timetable_template_teacher);
+	        request.setAttribute("delete_mes", "テンプレートID「" + templateName + "」の変更が完了しました");
 			return "Timetable_template_set.action";
 		}
 	}
