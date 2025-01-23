@@ -13,6 +13,24 @@
 <link rel="stylesheet" type="text/css" href="../css/account.css">
 <link rel="stylesheet" type="text/css" href="../css/group.css">
 <link rel="stylesheet" type="text/css" href="../css/my_management.css">
+<style>
+    body {
+        margin: 0;
+        overflow-x: hidden;
+    }
+    body::-webkit-scrollbar {
+    width: 8px;
+	}
+	body::-webkit-scrollbar-thumb {
+	    background-color: #888; 
+	    border-radius: 10px;
+	     height:50px;
+	}
+	body::-webkit-scrollbar-track {
+	    background-color: #f9ffff;
+	    border-radius: 10px;
+	}
+</style>
 </head>
 <body>
 	<div>

@@ -1,7 +1,7 @@
 @charset "UTF-8";
 
 .schedule_plan_list{
-	width: 700px;
+	width: 709px;
 	height: 300px;
 	border: 1px solid #333;
 	border-radius: 10px;
@@ -25,6 +25,15 @@
 .schedule_plan_button button{
 	width: 100px;
 	height: 30px;
+	border: none;
+	color: #333;
+	background-color: #f2f2f2;
+	border-radius: 20px;
+	font-weight: bold;
+	font-size: 15px;
+}
+.schedule_plan_button button:hover{
+	background-color: #d3d3d3;
 }
 .schedule_plan_form{
 	width: 900px;
@@ -47,20 +56,138 @@
 	height: 40px;
 	border-radius: 10px;
 	border: 1px solid #333;
+	background-color: #3bed00;
+	color: white;
+	font-weight: bold;
+	font-size: 15px;
 }
 
 .schedule_plan_edit_form{
 	margin: 10px 0px 0px 30px;
+	width:1039px;
+	max-height: 350px;
+	overflow-x: hidden;
+   	overflow-y: auto;
+   	border: 1px solid #333;
+   	border-radius: 5px;
+}
+.schedule_plan_edit_form::-webkit-scrollbar {
+    width: 8px; /* スクロールバーの幅 */
+}
+.schedule_plan_edit_form::-webkit-scrollbar-thumb {
+    background-color: #888; /* スクロールバーの色 */
+    border-radius: 10px; /* 角丸 */
+     height:50px;
+}
+
+.schedule_plan_edit_form::-webkit-scrollbar-track {
+    background-color: #f9ffff; /* スクロールバーのトラック部分 */
+    border-radius: 10px; /* 角丸 */
+}
+.schedule_edit_table_head{
+	width:1030px;
+	background-color: antiquewhite;
+	border-bottom: 1px solid #333;
+	border-right: 1px solid #333;
+	text-align: center;
+}
+.schedule_edit_table_body{
+	height: 50px;
+	width:1030px;
+	border-bottom: 1px solid #333;
+	border-right: 1px solid #333;
+	text-align: center;
+}
+.schedule_edit_table_head p{
+	font-weight: bold;
+	font-size: 20px;
+	text-align: center;
+	margin:13px 0px;
+}
+.schedule_edit_table_hour{
+	display: inline-block;
+	width: 100px;
+	border-right: 1px solid #333;
+	margin:0 auto;
+	height: 50px;
+	vertical-align:  middle; 
+}
+.schedule_edit_table_body .schedule_edit_table_hour p{
+	margin:10px 10px 10px 10px;
+}
+.schedule_edit_hour_input{
+	display: block;
+	width: 47px;
+	margin: 0;
+	padding-left: 26px;
+	font-size: 20px;
+}
+.schedule_edit_table_minute{
+	display: inline-block;
+	width: 100px;
+	border-right: 1px solid #333;
+	margin:0 auto;
+	height: 50px;
+	vertical-align:  middle; 
+}
+.schedule_edit_table_body .schedule_edit_table_minute p{
+	margin:10px 10px 10px 10px;
+}
+.schedule_edit_minute_input{
+	display: block;
+	width: 47px;
+	margin: 0;
+	padding-left: 26px;
+	font-size: 20px;
+}
+.schedule_edit_table_schedule{
+	display: inline-block;
+	width: 724px;
+	border-right: 1px solid #333;
+	margin-top: 0px;
+	height: 50px;
+	vertical-align:  middle; 
+}
+.schedule_edit_table_body .schedule_edit_table_schedule p{
+	margin:10px 10px 10px 10px;
+}
+.schedule_edit_schedule_input{
+	display: block;
+	width: 690px;
+	margin: 0;
+	font-size: 15px;
+}
+.schedule_edit_table_delete{
+	display: inline-block;
+	width: 80px;
+	margin:0 auto;
+	height: 50px;
+	vertical-align:  middle; 
+}
+.schedule_edit_table_body .schedule_edit_table_delete p{
+	margin:10px 10px 10px 10px;
 }
 .schedule_plan_edit_button{
-	width: 100px;
-	height: 30px;
-	margin-left: 900px;
+	position: absolute;
+	top: 50px;
+	right: 80px;
+	width: 130px;
+	height: 50px;
+	border: none;
+	color: #333;
+	background-color: #f2f2f2;
+	border-radius: 20px;
+	font-weight: bold;
+	font-size: 15px;
+}
+.schedule_plan_edit_button:hover{
+	background-color: #d3d3d3;
 }
 
 .my_schedule_main_table_area{
 	width: 700px;
 	border-bottom: 1px solid #333;
+	border-right:1px solid #333 ;
 }
 .my_schedule_main_table_area_date{
 	display: inline-block;
@@ -73,4 +200,7 @@
 
 .schedule_none_reg{
 	margin-left: 50px;
+}
+.schedule_req_mes{
+	margin-left:40px;
 }

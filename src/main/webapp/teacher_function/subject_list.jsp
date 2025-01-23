@@ -12,11 +12,9 @@
 	<c:redirect url="../account/Error_common.action" />
 </c:if>
 
-<div class="teacher_center1">
-	<h1>科目情報一覧機能</h1>
+<h1 class="page_title">科目情報一覧機能</h1>
 
-</div>
-<div class="subject_list_form">
+<div class="subject_list_area">
 	<!-- メッセージ表示 -->
 	<c:if test="${delete_mes != null}">
 		<p class="system_return_mes">${delete_mes}</p>
@@ -27,53 +25,67 @@
 	<c:if test="${none_mes != null}">
 		<p class="system_return_mes">${none_mes}</p>
 	</c:if>
-
 	<!-- 新規登録リンク -->
-	<a href="subject_registration.jsp">新規登録</a>
-	<br><br>
-
-	<div class="subject_table">
-		<!-- 科目情報編集フォーム -->
-		<form action="Subjectchangedata.action">
-			<table>
-				<thead>
-					<tr>
-						<th class="headword">科目ID</th>
-						<th class="headword">科目名</th>
-						<th class="headword">総単位数</th>
-						<th class="headword">クラスID</th>
-						<th class="headword">科目色</th>
-						<th></th>
-					</tr>
-				</thead>
-				<tbody>
-					<c:forEach var="item" items="${class_subject}">
-						<tr>
-							<td id="subject_id">${item.subject_id}</td>
-							<td><input type="text" maxlength="30"
-								name="${item.subject_id}_subject_name"
-								value="${item.subject_name}"></td>
-							<td><input type="number" max="999" min="1"
-								name="${item.subject_id}_total_unit" value="${item.total_unit}">
-							</td>
-							<td>${item.class_id}</td>
-							<td><input type="color"
+	<p><a href="subject_registration.jsp">新規登録</a></p>
+		<div class="subject_list_table_area">
+			<!-- 科目情報編集フォーム -->
+			<form action="Subjectchangedata.action">
+				<div class="subject_list_table_head">
+					<div class="subject_list_table_head_id">
+						<p>科目ID</p>
+					</div>
+					<div class="subject_list_table_head_name">
+						<p>科目名</p>
+					</div>
+					<div class="subject_list_table_head_unit">
+						<p>総単位数</p>
+					</div>
+					<div class="subject_list_table_head_class">
+						<p>クラスID</p>
+					</div>
+					<div class="subject_list_table_head_color">
+						<p>科目色</p>
+					</div>
+					<div class="subject_list_table_head_delete">
+						<p>DELETE</p>
+					</div>
+				</div>
+				<c:forEach var="item" items="${class_subject}">
+					<div class="subject_list_table_body">
+						<div class="subject_list_table_id">
+							<p id="subject_id">${item.subject_id}</p>
+						</div>
+						<div class="subject_list_table_name">
+							<p><input type="text" maxlength="30"
+							name="${item.subject_id}_subject_name"
+							value="${item.subject_name}" class="subject_list_table_name_input"></p>
+						</div>
+						<div class="subject_list_table_unit">
+							<p><input type="number" max="999" min="1"
+								name="${item.subject_id}_total_unit" value="${item.total_unit}" class="subject_list_table_unit_input"></p>
+						</div>
+						<div class="subject_list_table_class">
+							<p>${item.class_id}</p>
+						</div>
+						<div class="subject_list_table_color">
+							<p><input type="color"
 								name="${item.subject_id}_subject_color"
-								value="${item.subject_color}"></td>
-							<td><input type="button" id="button${item.subject_id}"
-								name="${item.subject_id}" value="削除"></td>
-						</tr>
-					</c:forEach>
-				</tbody>
-			</table>
-	</div>
-	<br><br>
-	<input type="submit" value="変更" id="subject_change_button">
+								value="${item.subject_color}" class="subject_list_table_color_input"></p>
+						</div>
+						<div class="subject_list_table_delete">
+							<p><input type="button" id="button${item.subject_id}"
+								name="${item.subject_id}" value="削除"></p>
+						</div>
+					</div>
+				</c:forEach>
+		</div>
+		<input type="submit" value="変更" id="subject_change_button" class="subject_change_button_css">
 	</form>
 </div>
 
 <!-- 削除確認ボックス -->
 <div id="delete_box"></div>
+<div id="delete_box_back"></div>
 
 <script src="../js/subject.js"></script>
 <div class="common_back_button">

@@ -26,7 +26,7 @@
 		<c:when test="${cal_list.size() > 0}">
 			<iframe src="schedule_plan_list.jsp" class="schedule_plan_list"></iframe>
 			<div class="schedule_plan_button">
-				<a href="../schedule/schedule_edit.jsp"><button>変更モード</button></a>
+				<a href="../schedule/schedule_edit.jsp"><button class="schedule_edit_button">変更</button></a>
 			</div>
 		</c:when>
 		<c:otherwise>

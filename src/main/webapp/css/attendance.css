@@ -74,19 +74,21 @@ h1 {
 	margin-left: 10px;
 }
 .attendance_list_iframe{
-	width: 400px;
+	width: 408px;
 	border: 1px solid #333;
 	border-radius:10px;
 }
 .attendance_inner_list_head{
-	width: 400px;
+	width: 399px;
 	background-color: antiquewhite;
 	border-bottom:1px solid #333;
+	border-right: 1px solid #333;
 	text-align: center;
 }
 .attendance_inner_list_body{
-	width: 400px;
+	width: 399px;
 	border-bottom:1px solid #333;
+	border-right: 1px solid #333;
 	text-align: center;
 }
 .attendance_inner_list_name{

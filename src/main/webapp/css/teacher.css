@@ -123,7 +123,36 @@
   animation-fill-mode: forwards;
   z-index: 100;
 }
+.subject_delete_mes{
+	font-size: 30px;
+	color: red;
+	margin-top: 200px;
+}
+#subject_next_button{
+	position: absolute;
+	width: 300px;
+	height: 100px;
+	top: 340px;
+	left: 150px;
+	background-color: crimson;
+	border: 2px solid #333;
+	border-radius: 20px;
+	font-size: 40px;
+	color: white;
+}
 
+#subject_close_button{
+	position: absolute;
+	width: 300px;
+	height: 100px;
+	top: 340px;
+	right: 150px;
+	background-color: chartreuse;
+	border: 2px solid #333;
+	border-radius: 20px;
+	font-size: 40px;
+	color: white;
+}
 @keyframes popaimation {
         100%{
             opacity: 1;

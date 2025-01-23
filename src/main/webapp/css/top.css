@@ -9,18 +9,18 @@
 body {
     font-family: '手書き', sans-serif;
 }
-
+/*
 body,html {
-    -ms-overflow-style: none; /* IEとEdge */
-    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; 
+    scrollbar-width: none; 
     margin:0;
     padding: 0;
 }
 
 body::-webkit-scrollbar {
-    display: none; /* Webkitブラウザ */
+    display: none; 
 }
-
+*/
 .menu_links:link{
 	color: #333;
 }

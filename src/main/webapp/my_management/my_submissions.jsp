@@ -66,7 +66,7 @@
 				<c:choose>
 					<c:when test="${item.submissions_flag == true}">
 						<div class="my_submissions_main_table_area_flag">
-							<p>提出済み</p>
+							<p style="color:#00ff7f">提出済み</p>
 						</div>
 						<div class="my_submissions_main_table_area_send">
 							<p><a href="My_submissions_management_update.action?submissions_id=${item.submissions_id}">提出状況変更へ</a></p>
@@ -74,7 +74,7 @@
 					</c:when>
 					<c:otherwise>
 						<div class="my_submissions_main_table_area_flag">
-							<p>未提出</p>
+							<p style="color:#ff3d0c">未提出</p>
 						</div>
 						<div class="my_submissions_main_table_area_send">
 							<p><a href="My_submissions_management.action?submissions_id=${item.submissions_id}">提出物詳細へ</a></p>
