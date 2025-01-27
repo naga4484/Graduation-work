@@ -72,7 +72,6 @@ public class Group_auto_createAction extends Action {
 						member_list.add(st_list.get(i));
 					}
 				}
-				
 				//リーダーメンバーの人数とグループ数が一致するか判定
 				if(group_num != reader_list.size()) {
 					request.setAttribute("num_error", "リーダーの人数とグループ数が一致しません");

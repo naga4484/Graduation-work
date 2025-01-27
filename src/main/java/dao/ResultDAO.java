@@ -117,6 +117,39 @@ public class ResultDAO extends DAO {
         
         return result_list;
 	}
+	//科目成績参照機能(科目IDのみの全体参照)
+	public List<Result> getSubject_result_all(String subject_id) 
+	throws Exception {
+		
+		List<Result> result_list = new ArrayList<>(); 
+		Result result;
+
+        Connection con = getConnection();
+
+        PreparedStatement st = con.prepareStatement("select sb.grade_id,sb.class_id,sa.name,sb.student_id,sb.subject_id,sb.result,sb.evaluation,sb.comment,sb.teacher_id from Subject_result AS sb INNER JOIN Student_account AS sa ON sb.student_id = sa.student_id where subject_id=?");
+        st.setString(1, subject_id);
+        ResultSet rs = st.executeQuery();
+
+        while (rs.next()) {
+        	result = new Result();
+        	result.setGrade_id(rs.getString("grade_id"));
+            result.setClass_id(rs.getString("class_id"));
+            result.setName(rs.getString("name"));
+            result.setStudent_id(rs.getString("student_id"));
+            result.setSubject_id(rs.getString("subject_id"));
+            result.setResult(rs.getInt("result"));
+            result.setEvaluation(rs.getString("evaluation"));
+            result.setComment(rs.getString("comment"));
+            result.setTeacher_id(rs.getString("teacher_id"));
+            result_list.add(result);
+        }
+
+        rs.close(); 
+        st.close();
+        con.close(); 
+        
+        return result_list;
+	}
 	//科目成績登録機能
 	public int subject_result_registration(String student_id,String class_id,String subject_id,int result,String evaluation,String comment,String teacher_id) throws Exception {
 		Connection con=getConnection();
@@ -172,7 +205,40 @@ public class ResultDAO extends DAO {
         	result.setGrade_id(rs.getString("grade_id"));
             result.setClass_id(rs.getString("class_id"));
             result.setStudent_id(rs.getString("student_id"));
-            result.setSubject_id(rs.getString("subject_id"));
+            result.setSubmissions_id(rs.getString("submissions_id"));
+            result.setResult(rs.getInt("result"));
+            result.setEvaluation(rs.getString("evaluation"));
+            result.setComment(rs.getString("comment"));
+            result.setTeacher_id(rs.getString("teacher_id"));
+            result_list.add(result);
+        }
+
+        rs.close(); 
+        st.close();
+        con.close(); 
+        
+        return result_list;
+	}
+	//提出物成績参照機能(提出物IDのみの全体参照)
+	public List<Result> getSubmissions_result_all(String submissions_id) 
+	throws Exception {
+		
+		List<Result> result_list = new ArrayList<>(); 
+		Result result;
+
+        Connection con = getConnection();
+
+        PreparedStatement st = con.prepareStatement("select sb.grade_id,sb.class_id,sa.name,sb.student_id,sb.submissions_id,sb.result,sb.evaluation,sb.comment,sb.teacher_id from Submissions_result AS sb INNER JOIN Student_account AS sa ON sb.student_id = sa.student_id where submissions_id=?");
+        st.setString(1, submissions_id);
+        ResultSet rs = st.executeQuery();
+
+        while (rs.next()) {
+        	result = new Result();
+        	result.setGrade_id(rs.getString("grade_id"));
+            result.setClass_id(rs.getString("class_id"));
+            result.setStudent_id(rs.getString("student_id"));
+            result.setName(rs.getString("name"));
+            result.setSubmissions_id(rs.getString("submissions_id"));
             result.setResult(rs.getInt("result"));
             result.setEvaluation(rs.getString("evaluation"));
             result.setComment(rs.getString("comment"));
@@ -221,5 +287,39 @@ public class ResultDAO extends DAO {
 		st.close();
 		con.close();
 		return line;
+	}
+	
+	public List<Result> get_semester_result_class(String class_id) 
+	throws Exception {
+		
+		List<Result> result_list = new ArrayList<>(); 
+		Result result;
+
+        Connection con = getConnection();
+
+        PreparedStatement st = con.prepareStatement("select sr.grade_id,sr.class_id,sa.name,sr.student_id,sr.semester,sr.result,sr.evaluation,sr.comment,sr.teacher_id,sr.grade from Semester_result AS sr INNER JOIN Student_account AS sa ON sr.student_id = sa.student_id where sr.class_id=?");
+        st.setString(1, class_id);
+        ResultSet rs = st.executeQuery();
+
+        while (rs.next()) {
+        	result = new Result();
+        	result.setGrade_id(rs.getString("grade_id"));
+            result.setClass_id(rs.getString("class_id"));
+            result.setStudent_id(rs.getString("student_id"));
+            result.setName(rs.getString("name"));
+            result.setResult(rs.getInt("result"));
+            result.setSemester(rs.getString("semester"));
+            result.setEvaluation(rs.getString("evaluation"));
+            result.setComment(rs.getString("comment"));
+            result.setTeacher_id(rs.getString("teacher_id"));
+            result.setGrade(rs.getString("grade"));
+            result_list.add(result);
+        }
+
+        rs.close(); 
+        st.close();
+        con.close(); 
+        
+        return result_list;
 	}
 }

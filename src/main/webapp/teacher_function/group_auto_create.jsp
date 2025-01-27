@@ -31,18 +31,20 @@
 	<c:if test="${st_list.size() > 0}">
 		<form action="Group_auto_create.action">
 			<div>
-				<c:if test="${num_error != null}">
-					<p class="system_return_mes">${num_error}</p>
-				</c:if>
+				<div class="group_auto_create_err">
+					<c:if test="${num_error != null}">
+						<p class="system_return_mes">${num_error}</p>
+					</c:if>
+				</div>
 				<label>1グループの人数</label>
 				<select name="group_member_num" id="group_member_num">
 					<c:forEach var="i" begin="1" end="${st_list.size() / 2 + 1}" step="1">
 						<option value="${i}">${i}</option>
 					</c:forEach>
 				</select>
-				<label for="yes_flag">リーダーを設定する</label>
+				<label for="yes_flag" id="yes_flag_mes">リーダーを設定する</label>
 				<input type="radio" name="reader_flag" id="yes_flag" value="on">
-				<label for="no_flag">リーダーを設定しない</label>
+				<label for="no_flag" id="no_flag_mes">リーダーを設定しない</label>
 				<input type="radio" name="reader_flag" id="no_flag" value="off" checked>
 				<div id="reader_content">
 				</div>
@@ -50,18 +52,24 @@
 				<input type="submit" value="生成">
 			</div>
 			<div id="group_member_table">
-				<table>
-					<tr>
-						<th>学生ID</th>
-						<th>氏名</th>
-					</tr>
-					<c:forEach var="item" items="${st_list}">
-						<tr>
-							<td>${item.student_id}</td>
-							<td>${item.name}</td>
-						</tr>
-					</c:forEach>
-				</table>
+				<div class="group_member_table_head">
+					<div class="group_member_table_id">
+						<p>学生ID</p>
+					</div>
+					<div class="group_member_table_name">
+						<p>氏名</p>
+					</div>
+				</div>
+				<c:forEach var="item" items="${st_list}">
+					<div class="group_member_table_body">
+						<div class="group_member_table_id">
+							<p>${item.student_id}</p>
+						</div>
+						<div class="group_member_table_name">
+							<p>${item.name}</p>
+						</div>
+					</div>
+				</c:forEach>
 			</div>
 		</form>
 	</c:if>
@@ -74,6 +82,8 @@
 <!-- sessionの情報をつかう為にここにjsを記入 -->
 <script>
 	let group = document.getElementById('group_member_table');
+	let reader_radio_on_mes = document.getElementById('yes_flag_mes');
+	let reader_radio_off_mes = document.getElementById('no_flag_mes');
 	let reader_radio_on = document.getElementById('yes_flag');
 	let reader_radio_off = document.getElementById('no_flag');
 	let reader_content = document.getElementById('reader_content');
@@ -96,39 +106,63 @@
 		select_reader_value = select_reader.value
 		num = Math.ceil(list_num / select_reader_value);
 		reader_content.innerHTML = `<p>リーダーの人数：` + num + `</p>`
+		reader_radio_on_mes.style.color = "red";
+		reader_radio_off_mes.style.color = "#e2e2e2";
+		reader_radio_on_mes.style.opacity = "1";
+		reader_radio_off_mes.style.opacity = "0.5";
 		group.innerHTML = `
-			<table>
-			<tr>
-				<th></th>
-				<th>学生ID</th>
-				<th>氏名</th>
-			</tr>
-			<c:forEach var="item" items="${st_list}"  varStatus="count">
-				<tr>
-					<td><input type="checkbox" name="reader_${count.index}" value="リーダー"></td>
-					<td>${item.student_id}</td>
-					<td>${item.name}</td>
-				</tr>
+			<div class="group_member_table_head">
+				<div class="group_member_table_reader_box">
+					<p>リーダー</p>
+				</div>
+				<div class="group_member_table_reader_id">
+					<p>学生ID</p>
+				</div>
+				<div class="group_member_table_reader_name">
+					<p>氏名</p>
+				</div>
+			</div>
+			<c:forEach var="item" items="${st_list}" varStatus="count">
+				<div class="group_member_table_body">
+					<div class="group_member_table_reader_box">
+						<p><input type="checkbox" name="reader_${count.index}" value="リーダー"></p>
+					</div>
+					<div class="group_member_table_reader_id">
+						<p>${item.student_id}</p>
+					</div>
+					<div class="group_member_table_reader_name">
+						<p>${item.name}</p>
+					</div>
+				</div>
 			</c:forEach>
-			</table>
 		`
 	};
 	reader_radio_off.onchange = function(e){
 		reader_content_style.display = "none";
 		reader_content.innerHTML = ``
+		reader_radio_on_mes.style.color = "#e2e2e2";
+		reader_radio_off_mes.style.color = "red";
+		reader_radio_on_mes.style.opacity = "0.5";
+		reader_radio_off_mes.style.opacity = "1";
 		group.innerHTML = `
-			<table>
-			<tr>
-				<th>学生ID</th>
-				<th>氏名</th>
-			</tr>
+			<div class="group_member_table_head">
+				<div class="group_member_table_id">
+					<p>学生ID</p>
+				</div>
+				<div class="group_member_table_name">
+					<p>氏名</p>
+				</div>
+			</div>
 			<c:forEach var="item" items="${st_list}">
-				<tr>
-					<td>${item.student_id}</td>
-					<td>${item.name}</td>
-				</tr>
+				<div class="group_member_table_body">
+					<div class="group_member_table_id">
+						<p>${item.student_id}</p>
+					</div>
+					<div class="group_member_table_name">
+						<p>${item.name}</p>
+					</div>
+				</div>
 			</c:forEach>
-			</table>
 		`
 	};
 </script>

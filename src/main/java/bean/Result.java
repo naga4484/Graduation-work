@@ -14,6 +14,7 @@ public class Result implements Serializable {
     private String subject_id;
     private String submissions_id;
     private String grade;
+    private String name;
 
     
     public String getGrade_id() {
@@ -85,4 +86,11 @@ public class Result implements Serializable {
     public void setGrade(String grade) {
         this.grade = grade;
     }
+    
+    public String getName() {
+		return name;
+	}
+    public void setName(String name) {
+		this.name=name;
+	}
 }
