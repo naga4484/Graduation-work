@@ -36,7 +36,7 @@
                     <tr>
                         <th>アンケートタイトル</th>
                         <th>結果</th>
-                        <th>解答</th>
+                        <th>回答</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -54,7 +54,7 @@
                             <td>
                                 <c:if test="${!questionnaire.answered}">
                                     <a href="QuestionnaireParticipateDetail.action?questionnaireId=${questionnaire.questionnaireId}">
-                                        <button>解答</button>
+                                        <button>回答</button>
                                     </a>
                                 </c:if>
                                 <c:if test="${questionnaire.answered}">
