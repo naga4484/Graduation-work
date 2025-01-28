@@ -39,11 +39,11 @@ public class Subject_result_registrationAction extends Action {
 			if(result_nums.size() > 0) {
 				
 				int line = dao.subject_result_update(select_con, subject_id, result, evaluation, comment);
-				session.setAttribute("reg_mes", "学生ID「"+select_con +"」の成績情報の更新が完了しました");
+				request.setAttribute("reg_mes", "学生ID「"+select_con +"」の成績情報の更新が完了しました");
 				return "subject_result.jsp";
 			}
 			int line = dao.subject_result_registration(select_con, class_id, subject_id, result, evaluation, comment, account.getTeacher_id());
-			session.setAttribute("reg_mes", "学生ID「"+select_con +"」の成績情報の登録が完了しました");
+			request.setAttribute("reg_mes", "学生ID「"+select_con +"」の成績情報の登録が完了しました");
 			return "subject_result.jsp";
 		}
 	}

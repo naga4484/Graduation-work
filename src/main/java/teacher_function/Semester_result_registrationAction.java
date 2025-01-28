@@ -42,11 +42,11 @@ public class Semester_result_registrationAction extends Action {
 			List<Result> result_nums = dao.getSemester_result(select_con, semester, class_num.getGrade());
 			if(result_nums.size() > 0) {
 				dao.semester_result_update(select_con, semester, result, evaluation, comment,class_num.getGrade());
-				session.setAttribute("reg_mes", "学生ID「"+select_con +"」の成績情報の更新が完了しました");
+				request.setAttribute("reg_mes", "学生ID「"+select_con +"」の成績情報の更新が完了しました");
 				return "semester_result.jsp";
 			}
 			int line = dao.semester_result_registration(select_con, class_id, semester, result, evaluation, comment, account.getTeacher_id(),class_num.getGrade());
-			session.setAttribute("reg_mes", "学生ID「"+select_con +"」の成績情報の登録が完了しました");
+			request.setAttribute("reg_mes", "学生ID「"+select_con +"」の成績情報の登録が完了しました");
 			return "semester_result.jsp";
 		}
 	}

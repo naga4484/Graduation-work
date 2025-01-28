@@ -16,69 +16,60 @@ import jakarta.servlet.http.Part;
 import tool.Action;
 
 @MultipartConfig(
-	maxFileSize = 104857600,  // 最大ファイルサイズ: 100MB
-    maxRequestSize = 524288000,  // 最大リクエストサイズ: 500MB
-    fileSizeThreshold = 0  // ファイルのサイズの閾値（0は即時保存）
+    maxFileSize = 104857600, // 最大ファイルサイズ: 100MB
+    maxRequestSize = 524288000, // 最大リクエストサイズ: 500MB
+    fileSizeThreshold = 0 // ファイルのサイズの閾値（0は即時保存）
 )
 public class Group_file_upload_submitAction extends Action {
-	
-	private static final String UPLOAD_DIR = "uploads/共有用"; // 保存ディレクトリ
-	
-	@Override
+
+    private static final String UPLOAD_DIR = "uploads/共有用";
+
+    @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		
-		HttpSession session=request.getSession();
-		
-		User_id user_id = (User_id)session.getAttribute("user");
-		
-		String group_id=request.getParameter("group_id");
-		
-		GroupDAO dao=new GroupDAO();
-		List<Group> file_list = dao.search_group_file(group_id);
-		
-		Group group_ob = dao.search_group_id(group_id);
-		
+
+        HttpSession session = request.getSession();
+        User_id user_id = (User_id) session.getAttribute("user");
+        String group_id = request.getParameter("group_id");
+
+        GroupDAO dao = new GroupDAO();
+        List<Group> file_list = dao.search_group_file(group_id);
+        Group group_ob = dao.search_group_id(group_id);
+
         // アップロードディレクトリのパスを取得
-        String uploadPath = request.getServletContext().getRealPath("") + File.separator + UPLOAD_DIR;
-        File uploadDir = new File(request.getServletContext().getRealPath("") + File.separator + "uploads");
+        String uploadPath = request.getServletContext().getRealPath("") + File.separator + UPLOAD_DIR
+                + File.separator + group_ob.getGroup_name();
+        File uploadDir = new File(uploadPath);
         if (!uploadDir.exists()) {
-            uploadDir.mkdir();
+            uploadDir.mkdirs(); // 親ディレクトリも含めて作成
         }
 
-        // 保存ディレクトリが存在しない場合は作成
-        uploadDir = new File(uploadPath);
-        if (!uploadDir.exists()) {
-            uploadDir.mkdir();
-        }
-        uploadPath = request.getServletContext().getRealPath("") + File.separator + UPLOAD_DIR + "/" + group_ob.getGroup_name();
-        uploadDir = new File(uploadPath);
-        if (!uploadDir.exists()) {
-            uploadDir.mkdir();
-        }
         try {
-            // フォームでアップロードされたファイルを処理
             for (Part part : request.getParts()) {
-                String fileName = extractFileName(part); // ファイル名を取得
+                String fileName = extractFileName(part);
                 if (fileName != null && !fileName.isEmpty()) {
-                    String filePath = uploadPath + File.separator + fileName;
+                    // ファイル名にタイムスタンプを付与
+                    String uniqueFileName = System.currentTimeMillis() + "_" + fileName;
+                    String filePath = uploadPath + File.separator + uniqueFileName;
+
                     try (InputStream fileContent = part.getInputStream()) {
                         Files.copy(fileContent, new File(filePath).toPath());
                     }
-                    int line = dao.group_file_insert(group_id, fileName,user_id.getUser_id());
+
+                    dao.group_file_insert(group_id, uniqueFileName, user_id.getUser_id());
                     file_list = dao.search_group_file(group_id);
-                    System.out.println("最新ファイル " + fileName + " がアップロードされました: " + filePath);
+                    System.out.println("ファイル " + uniqueFileName + " がアップロードされました: " + filePath);
                 }
             }
         } catch (Exception e) {
-            System.out.println(e);
-            session.setAttribute("dis_err_mes", "ファイル名が既存のモノと重複しています");
+            e.printStackTrace();
+            session.setAttribute("dis_err_mes", "アップロード中にエラーが発生しました");
             return "group_file_upload.jsp";
         }
+
         session.setAttribute("file_list", file_list);
         return "group_file_upload.jsp";
     }
-	
-	// ヘッダーからファイル名を取得するメソッド
+
     private String extractFileName(Part part) {
         String contentDisp = part.getHeader("Content-Disposition");
         for (String content : contentDisp.split(";")) {
