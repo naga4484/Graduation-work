@@ -148,7 +148,7 @@ public class AccountDAO extends DAO {
     public int student_registration(String student_id, String password, String class_id, String name) throws Exception {
         Connection con = getConnection();
 
-        PreparedStatement st = con.prepareStatement("INSERT INTO student_account VALUES (?, ?, ?, ?, ?, ?, ?)");
+        PreparedStatement st = con.prepareStatement("INSERT INTO Student_account VALUES (?, ?, ?, ?, ?, ?, ?)");
         st.setString(1, student_id);
         st.setString(2, name);
         st.setString(3, class_id);
@@ -166,7 +166,7 @@ public class AccountDAO extends DAO {
     public int teacher_registration(String teacher_id, String password, String class_id, String name,String email) throws Exception {
         Connection con = getConnection();
 
-        PreparedStatement st = con.prepareStatement("INSERT INTO teacher_account VALUES (?, ?, ?, ?, ?, ?, ?)");
+        PreparedStatement st = con.prepareStatement("INSERT INTO Teacher_account VALUES (?, ?, ?, ?, ?, ?, ?)");
         st.setString(1, teacher_id);
         st.setString(2, name);
         st.setString(3, password);
