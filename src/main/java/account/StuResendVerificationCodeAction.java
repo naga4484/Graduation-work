@@ -13,7 +13,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import tool.Action;
 
-public class ResendVerificationCodeAction extends Action {
+public class StuResendVerificationCodeAction extends Action {
     public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
         String email = (String) request.getSession().getAttribute("email");
 
@@ -27,10 +27,10 @@ public class ResendVerificationCodeAction extends Action {
 
             // 再送信完了メッセージを設定（画面遷移せずにメッセージを表示）
             request.setAttribute("successMessage", "確認コードを再送信しました。");
-            return "reset_password_code.jsp";  // 確認コード入力ページのままにする
+            return "student_reset_password_code.jsp";  // 確認コード入力ページのままにする
         } else {
             request.setAttribute("errorMessage", "メールアドレスが見つかりません。最初からやり直してください。");
-            return "reset_password_email.jsp";  // エラーメッセージと共にメールアドレス入力ページに戻る
+            return "student_reset_password_email.jsp";  // エラーメッセージと共にメールアドレス入力ページに戻る
         }
     }
 

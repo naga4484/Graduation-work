@@ -22,7 +22,7 @@
 			<form action="TchPasswordCodeVerify.action" method="post">
 				<p>確認コード：</p>
 				<input type="text" name="verification_code" required="required">
-				<br> <a href="ResendVerificationCode.action">確認コードを再送信</a> <br>
+				<br> <a href="TchResendVerificationCode.action">確認コードを再送信</a> <br>
 				<button type="submit">送信</button>
 			</form>
 
