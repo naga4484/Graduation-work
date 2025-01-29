@@ -13,7 +13,7 @@
 <body>
 	<div class="main_content">
 		<div class="login_top">			
-
+　
 			<h1>ログインユーザー選択</h1>
 			<p>${successMessage }</p>
 
