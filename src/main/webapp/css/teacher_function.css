@@ -793,7 +793,7 @@ textarea{
 }
 .subject_list_table_head_class{
 	width: 100px;
-	height: 88px;
+	height: 50px;
 	display: inline-block;
 	border-right: 1px solid #333;
 	vertical-align: top;
