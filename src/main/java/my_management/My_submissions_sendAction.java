@@ -3,6 +3,8 @@ package my_management;
 import java.io.File;
 import java.io.InputStream;
 import java.nio.file.Files;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import bean.Submissions;
@@ -40,14 +42,18 @@ public class My_submissions_sendAction extends Action {
 	            for (Part part : request.getParts()) {
 	                String fileName = extractFileName(part); // ファイル名を取得
 	                if (fileName != null && !fileName.isEmpty()) {
-	                    String filePath = uploadPath + File.separator + fileName;
+	                    // タイムスタンプを追加したファイル名を生成
+	                    String timestamp = new SimpleDateFormat("yyyyMMddHHmmssSSS").format(new Date());
+	                    String fileNameWithTimestamp = timestamp + "_" + fileName;
+	                    
+	                    String filePath = uploadPath + File.separator + fileNameWithTimestamp;
 	                    try (InputStream fileContent = part.getInputStream()) {
 	                        Files.copy(fileContent, new File(filePath).toPath());
 	                    }
-	                    int line = dao.submissions_alignment_flags(submissions.getSubmissions_id(),user_id.getStudent_id(),fileName);
+	                    int line = dao.submissions_alignment_flags(submissions.getSubmissions_id(), user_id.getStudent_id(), fileNameWithTimestamp);
 	                    List<Submissions> my_submissions_list = dao.submissions_my_management(user_id.getStudent_id());
 	    	        	session.setAttribute("my_submissions_list", my_submissions_list);
-	                    System.out.println("最新ファイル " + fileName + " がアップロードされました: " + filePath);
+	                    System.out.println("最新ファイル " + fileNameWithTimestamp + " がアップロードされました: " + filePath);
 	                }
 	            }
 	        } catch (Exception e) {

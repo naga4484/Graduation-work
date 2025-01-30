@@ -21,15 +21,33 @@ import tool.Action;
 	    fileSizeThreshold = 0  // ファイルのサイズの閾値（0は即時保存）
 )
 public class My_submissions_send_updateAction extends Action {
+	
+    // タイムスタンプを付けたファイル名を生成するメソッド
+    private String generateTimestampedFileName(String originalFileName) {
+        // 現在のタイムスタンプを生成（yyyyMMdd_HHmmss_SSS形式）
+        String timestamp = java.time.LocalDateTime.now()
+                        .format(java.time.format.DateTimeFormatter.ofPattern("yyyyMMdd_HHmmss_SSS"));
+        
+        // 元のファイル名の拡張子を取り出す
+        String fileExtension = "";
+        int dotIndex = originalFileName.lastIndexOf(".");
+        if (dotIndex != -1) {
+            fileExtension = originalFileName.substring(dotIndex);
+        }
+        
+        // タイムスタンプを付けた新しいファイル名を作成
+        return timestamp + "_" + originalFileName.substring(0, dotIndex) + fileExtension;
+    }
+
 	public String execute(
 			HttpServletRequest request, HttpServletResponse response
 		) throws Exception {
 
-			HttpSession session=request.getSession();
+			HttpSession session = request.getSession();
 
 			//自己管理における共通機能の処理
-			User_id user_id = (User_id)session.getAttribute("user");
-			Submissions submissions = (Submissions)session.getAttribute("my_send_submissions");
+			User_id user_id = (User_id) session.getAttribute("user");
+			Submissions submissions = (Submissions) session.getAttribute("my_send_submissions");
 			SubmissionsDAO dao = new SubmissionsDAO();
 			Submissions my_submissions = dao.distinctsubmissions_id(submissions.getSubmissions_id());
 			
@@ -45,14 +63,19 @@ public class My_submissions_send_updateAction extends Action {
 	            for (Part part : request.getParts()) {
 	                String fileName = extractFileName(part); // ファイル名を取得
 	                if (fileName != null && !fileName.isEmpty()) {
-	                    String filePath = uploadPath + File.separator + fileName;
+	                    // タイムスタンプを追加したファイル名を生成
+	                    String newFileName = generateTimestampedFileName(fileName);
+	                    String filePath = uploadPath + File.separator + newFileName;
+	                    
 	                    try (InputStream fileContent = part.getInputStream()) {
 	                        Files.copy(fileContent, new File(filePath).toPath());
 	                    }
-	                    int line = dao.submissions_alignment_flags(submissions.getSubmissions_id(),user_id.getStudent_id(),fileName);
+	                    
+	                    // データベースに新しいファイル名を登録
+	                    int line = dao.submissions_alignment_flags(submissions.getSubmissions_id(), user_id.getStudent_id(), newFileName);
 	                    List<Submissions> my_submissions_list = dao.submissions_my_management(user_id.getStudent_id());
 	    	        	session.setAttribute("my_submissions_list", my_submissions_list);
-	                    System.out.println("最新ファイル " + fileName + " がアップロードされました: " + filePath);
+	                    System.out.println("最新ファイル " + newFileName + " がアップロードされました: " + filePath);
 	                }
 	            }
 	        } catch (Exception e) {

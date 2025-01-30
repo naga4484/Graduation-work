@@ -1,16 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Context reloadable="true">
+	<Valve className="org.apache.catalina.valves.RemoteIpValve"
+           requestAttributesEnabled="true" />
 	<Resource
 		name="jdbc/kaiki"
 		auth="Container"
 		type="javax.sql.DataSource"
 		driverClassName="com.mysql.cj.jdbc.Driver"
-		url="jdbc:mysql://database-1.cmfg8jgpxn7a.us-east-1.rds.amazonaws.com:3306/kaiki"
+		url="jdbc:mysql://localhost:3306/kaiki?allowPublicKeyRetrieval=true"
 		connectionProperties="autoReconnect=true;verifyServerCertificate=false;useSSL=false;requireSSL=false;useUnicode=true;characterEncoding=UTF-8;"
-		username="admin"
+		username="root"
 		password="yamatonadeko"
 		maxTotal = "20"
 		maxIdle="10"
 		maxWaitMillis = "-1"
 		validationQuery="select 1"/>
+		
+	<MultipartConfig>
+        <maxFileSize>104857600</maxFileSize>
+        <maxRequestSize>524288000</maxRequestSize>
+        <fileSizeThreshold>0</fileSizeThreshold>
+    </MultipartConfig>
+    <Manager sessionCookieName="JSESSIONID" />
+    <Connector port="8080" maxPostSize="524288000" />
 </Context>

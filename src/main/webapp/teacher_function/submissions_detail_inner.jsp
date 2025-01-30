@@ -46,7 +46,7 @@
 									<p>提出済み</p>
 								</div>
 								<div class="submissions_detail_inner_file">
-									<p><a href="Submissions_sended_file_download.action?path=${item.submissions_my_name}&submissions_id=${item.submissions_id}&student_id=${item.student_id}" target="_parent">${item.submissions_my_name}</a></p>
+									<p><a href="Submissions_sended_file_download.action?path=${item.submissions_my_name}&submissions_id=${item.submissions_id}&student_id=${item.student_id}" target="_parent" class="txt-limits-min">${item.submissions_my_name}</a></p>
 								</div>
 							</c:when>
 							<c:otherwise>
@@ -63,4 +63,5 @@
 			</c:when>
 		</c:choose>
 	</div>
+<script src="../js/text_limit.js"></script>
 <%@include file="../footer.jsp"  %>
