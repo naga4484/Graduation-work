@@ -18,26 +18,53 @@ function openRelaxWindow() {
     }
 }
 
-// 音楽リストを動的に読み込む関数
+
+window.addEventListener("beforeunload", () => {
+    if (currentAudio) {
+        localStorage.setItem("currentTrackIndex", currentTrackIndex);
+        localStorage.setItem("isPlaying", isPlaying);
+        localStorage.setItem("isLooping", isLooping);
+    }
+});
+
 function loadMusicList() {
-    fetch("../relax/musicList") // サーブレットから音楽リストを取得
+    fetch("../relax/musicList")
         .then(response => response.json())
         .then(data => {
-            musicList = data; // 音楽リストを格納
+            musicList = data;
             const musicSelect = document.getElementById("musicSelect");
-            musicSelect.innerHTML = ""; 
+            musicSelect.innerHTML = "";
             musicList.forEach(file => {
                 const option = document.createElement("option");
                 option.value = file;
-                option.text = file.replace(".mp3", ""); // 拡張子を除去して表示
+                option.text = file.replace(".mp3", "");
                 musicSelect.appendChild(option);
             });
-            currentTrackIndex = 0; // 初期化
-            playMusic(); // 最初の曲を自動再生
+
+            // ローカルストレージから前回の状態を取得
+            const savedTrackIndex = localStorage.getItem("currentTrackIndex");
+            const savedIsLooping = localStorage.getItem("isLooping") === "true";
+
+            if (savedTrackIndex !== null) {
+                currentTrackIndex = parseInt(savedTrackIndex, 10);
+                musicSelect.value = musicList[currentTrackIndex]; // セレクトボックスの選択状態を復元
+            } else {
+                currentTrackIndex = 0; // デフォルトの曲
+            }
+
+            isLooping = savedIsLooping;
+
+            // **ここが重要**
+            // currentAudio を作成するが、自動再生はしない
+            currentAudio = new Audio(`../music/${musicList[currentTrackIndex]}`);
+            currentAudio.loop = isLooping;
+            
+            // 「再生中かどうか」はローカルストレージに保存されたものではなく、初期状態では false にする
+            isPlaying = false;
+            updatePlayPauseIcon(); // アイコンを停止状態に更新
         })
         .catch(error => console.error("Error loading music list:", error));
 }
-
 // 音楽を再生する関数
 function playMusic() {
     if (musicList.length === 0) return; // 音楽リストが空の場合は何もしない
@@ -62,16 +89,16 @@ function playMusic() {
 
 // 再生/一時停止のアイコンを切り替える関数
 function togglePlayPause() {
-    if (currentAudio) {
-        if (isPlaying) {
-            currentAudio.pause();
-            isPlaying = false;
-        } else {
-            currentAudio.play();
-            isPlaying = true;
-        }
-        updatePlayPauseIcon(); // アイコンを切り替え
+    if (!currentAudio) return; // currentAudio がない場合は何もしない
+
+    if (isPlaying) {
+        currentAudio.pause();
+        isPlaying = false;
+    } else {
+        currentAudio.play();
+        isPlaying = true;
     }
+    updatePlayPauseIcon(); // アイコンを切り替え
 }
 
 // アイコン画像を更新する関数
