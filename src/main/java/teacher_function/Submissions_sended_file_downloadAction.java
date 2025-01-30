@@ -38,9 +38,9 @@ public class Submissions_sended_file_downloadAction extends Action {
 			
 			String file_path = sub.getSave_path() + "/" + path;
 			
-			File file = new File(request.getServletContext().getRealPath("") + File.separator + file_path);
+			File file = new File(System.getProperty("user.dir") + File.separator + file_path);
 			 
-			 System.out.println(request.getServletContext().getRealPath("") + File.separator + file_path);
+			 System.out.println(System.getProperty("user.dir") + File.separator + file_path);
 	        if (file.exists()) {
 	            String mimeType = request.getServletContext().getMimeType(file.getPath());
 	            if (mimeType == null) {

@@ -34,7 +34,7 @@ public class My_submissions_send_updateAction extends Action {
 			Submissions my_submissions = dao.distinctsubmissions_id(submissions.getSubmissions_id());
 			
 			// アップロードディレクトリのパスを取得
-	        String uploadPath = request.getServletContext().getRealPath("") + File.separator + my_submissions.getSave_path();
+	        String uploadPath = System.getProperty("user.dir") + File.separator + my_submissions.getSave_path();
 	        
 	        //既存のファイルの削除
 	        File file = new File(uploadPath + "/" + submissions.getSubmissions_my_name());

@@ -34,7 +34,7 @@ public class Group_file_downloadAction extends Action {
         
         String FILE_AREA_OB = FILE_DIRECTORY + "/" + group_ob.getGroup_name();
         
-        File file = new File(request.getServletContext().getRealPath("") + File.separator + FILE_AREA_OB, fileName);
+        File file = new File(System.getProperty("user.dir") + File.separator + FILE_AREA_OB, fileName);
         if (file.exists()) {
             String mimeType = request.getServletContext().getMimeType(file.getPath());
             if (mimeType == null) {

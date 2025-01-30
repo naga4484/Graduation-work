@@ -33,7 +33,7 @@ public class My_submissions_sendAction extends Action {
 			SubmissionsDAO dao = new SubmissionsDAO();
 			
 			// アップロードディレクトリのパスを取得
-	        String uploadPath = request.getServletContext().getRealPath("") + File.separator + submissions.getSave_path();
+	        String uploadPath = System.getProperty("user.dir") + File.separator + submissions.getSave_path();
 	        
 	        try {
 	            // フォームでアップロードされたファイルを処理

@@ -35,7 +35,7 @@ public class Group_file_upload_submitAction extends Action {
         Group group_ob = dao.search_group_id(group_id);
 
         // アップロードディレクトリのパスを取得
-        String uploadPath = request.getServletContext().getRealPath("") + File.separator + UPLOAD_DIR
+        String uploadPath = System.getProperty("user.dir") + File.separator + UPLOAD_DIR
                 + File.separator + group_ob.getGroup_name();
         File uploadDir = new File(uploadPath);
         if (!uploadDir.exists()) {

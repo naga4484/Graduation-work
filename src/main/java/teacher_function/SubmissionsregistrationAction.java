@@ -46,13 +46,13 @@ public class SubmissionsregistrationAction extends Action {
 			String fulldata = year + "年" +month + "月" + date + "日";
 			String save_path = FILE_DIRECTORY + submission_name;
 			
-			String folderpath = request.getServletContext().getRealPath("") + File.separator + "submissions";
+			String folderpath = System.getProperty("user.dir") + File.separator + "submissions";
 			File folDir = new File(folderpath);
 	        if (!folDir.exists()) {
 	        	folDir.mkdir();
 	        }
 			
-			String submissionsPath = request.getServletContext().getRealPath("") + File.separator + save_path;
+			String submissionsPath = System.getProperty("user.dir") + File.separator + save_path;
 			// 保存ディレクトリが存在しない場合は作成
 	        File subDir = new File(submissionsPath);
 	        if (!subDir.exists()) {
