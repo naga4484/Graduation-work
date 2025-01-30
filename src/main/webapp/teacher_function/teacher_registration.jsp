@@ -15,7 +15,7 @@
 <h1>教師アカウント機能</h1>
 
 <c:if test="${comp_mes != null}">
-	<p class="system_return_mes">${comp_mes}</p>
+	<p class="system_return_mess">${comp_mes}</p>
 </c:if>
 </div>
 <div class="teacher_center2">
