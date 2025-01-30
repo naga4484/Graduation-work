@@ -42,7 +42,7 @@
 </div>
 <div>
 	<c:choose>
-		<c:when test="${semester_result_list.size() > 0}">
+		<c:when test="${semester_result_check_list.size() > 0}">
 			<div class="teacher_table">
 				<div class="result_tables_head">
 					<div class="result_tables_semester">
@@ -61,7 +61,7 @@
 						<p>コメント</p>
 					</div>
 				</div>
-				<c:forEach var="result_list" items="${semester_result_list}">
+				<c:forEach var="result_list" items="${semester_result_check_list}">
 					<div class="result_tables_body">
 						<div class="result_tables_semester">
 							<p>${result_list.semester}</p>
@@ -82,7 +82,7 @@
 				</c:forEach>
 			</div>
 		</c:when>
-		<c:when test="${subject_result_list.size() > 0}">
+		<c:when test="${subject_result_check_list.size() > 0}">
 			<div class="teacher_table">
 				<div class="result_tables_head">
 					<div class="result_tables_subject">
@@ -101,7 +101,7 @@
 						<p>コメント</p>
 					</div>
 				</div>
-				<c:forEach var="result_list" items="${subject_result_list}">
+				<c:forEach var="result_list" items="${subject_result_check_list}">
 					<div class="result_tables_body">
 						<div class="result_tables_subject">
 							<p>${result_list.subject_id}</p>
@@ -122,7 +122,7 @@
 				</c:forEach>
 			</div>
 		</c:when>
-		<c:when test="${submissions_result_list.size() > 0}">
+		<c:when test="${submissions_result_check_list.size() > 0}">
 			<div class="teacher_table">
 				<div class="result_tables_head">
 					<div class="result_tables_subject">
@@ -141,7 +141,7 @@
 						<p>コメント</p>
 					</div>
 				</div>
-				<c:forEach var="result_list" items="${submissions_result_list}">
+				<c:forEach var="result_list" items="${submissions_result_check_list}">
 					<div class="result_tables_body">
 						<div class="result_tables_subject">
 							<p>${result_list.submissions_id}</p>

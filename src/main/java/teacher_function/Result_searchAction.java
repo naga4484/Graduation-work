@@ -31,19 +31,19 @@ public class Result_searchAction extends Action {
 			
 			if(result_kind.equals("semester") == true) {
 				List<Result> search_result_list = dao.get_semester_result_class(class_id);
-				request.setAttribute("semester_result_list", search_result_list);
+				request.setAttribute("semester_result_check_list", search_result_list);
 				return "result_check.jsp";
 			}
 			else if(result_kind.equals("subject") == true) {
 				String subject_id=request.getParameter("subject_id");
 				List<Result> search_result_list = dao.getSubject_result_all(subject_id);
-				request.setAttribute("subject_result_list", search_result_list);
+				request.setAttribute("subject_result_check_list", search_result_list);
 				return "result_check.jsp";
 			}
 			else if(result_kind.equals("submissions") == true) {
 				String submissions_id=request.getParameter("submissions_id");
 				List<Result> search_result_list = dao.getSubmissions_result_all(submissions_id);
-				request.setAttribute("submissions_result_list", search_result_list);
+				request.setAttribute("submissions_result_check_list", search_result_list);
 				return "result_check.jsp";
 				
 			}

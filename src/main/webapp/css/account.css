@@ -13,12 +13,9 @@
 }
 
 .login_top a{
-	padding: 0 10px;
-  background-image: linear-gradient(to right, rgba(0, 0, 0, 0) 50%, rgb(49, 170, 226) 50%);
-  background-position: 0 0;
-  background-size: 200% auto;
+  padding: 0 10px;
   transition: .3s;
-  font-size: 18px; /* フォントサイズを大きくする */
+  font-size: 18px;  /*フォントサイズを大きくする */
 }
 
 .login_top a:hover{
@@ -45,11 +42,6 @@
     border-bottom: 3px solid #eac71a;
     background-color: #ffffff;
     color: #333333;
-}
-.login_top p:hover{
-	position: relative;
-    color: #333333;
-    -webkit-box-reflect: below -10px -webkit-linear-gradient(top, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0) 10%, rgba(0, 0, 0, .5));	
 }
 
 .password_reset h1{

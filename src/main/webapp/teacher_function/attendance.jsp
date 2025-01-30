@@ -19,48 +19,50 @@
 		<div id="attendance_box">
 			<h1 class="not_attendance_stu_tags">欠席生徒の種別登録</h1>
 			<form  action="AttendanceNotregistration.action">
-				<div class="not_attendance_stu_head">
-					<div class="not_attendance_stu_radio">
-						<p>病欠</p>
-					</div>
-					<div class="not_attendance_stu_radio">
-						<p>公欠</p>
-					</div>
-					<div class="not_attendance_stu_radio">
-						<p>遅刻</p>
-					</div>
-					<div class="not_attendance_stu_radio">
-						<p>その他</p>
-					</div>
-					<div class="not_attendance_stu_id">
-						<p>学生ID</p>
-					</div>
-					<div class="not_attendance_stu_name">
-						<p>学生氏名</p>
-					</div>
-				</div>
-				<c:forEach var="item" items="${not_attendancestudent}">
-					<div class="not_attendance_stu_body">
+				<div class="not_attendance_stu_box">
+					<div class="not_attendance_stu_head">
 						<div class="not_attendance_stu_radio">
-							<p><input type="radio" name="${item.student_id}" value="病欠" checked></p>
+							<p>病欠</p>
 						</div>
 						<div class="not_attendance_stu_radio">
-							<p><input type="radio" name="${item.student_id}" value="公欠"></p>
+							<p>公欠</p>
 						</div>
 						<div class="not_attendance_stu_radio">
-							<p><input type="radio" name="${item.student_id}" value="遅刻"></p>
+							<p>遅刻</p>
 						</div>
 						<div class="not_attendance_stu_radio">
-							<p><input type="radio" name="${item.student_id}" value="その他"></p>
+							<p>その他</p>
 						</div>
 						<div class="not_attendance_stu_id">
-							<p>${item.student_id}</p>
+							<p>学生ID</p>
 						</div>
 						<div class="not_attendance_stu_name">
-							<p>${item.name}</p>
+							<p>学生氏名</p>
 						</div>
 					</div>
-				</c:forEach>
+					<c:forEach var="item" items="${not_attendancestudent}">
+						<div class="not_attendance_stu_body">
+							<div class="not_attendance_stu_radio">
+								<p><input type="radio" name="${item.student_id}" value="病欠" checked></p>
+							</div>
+							<div class="not_attendance_stu_radio">
+								<p><input type="radio" name="${item.student_id}" value="公欠"></p>
+							</div>
+							<div class="not_attendance_stu_radio">
+								<p><input type="radio" name="${item.student_id}" value="遅刻"></p>
+							</div>
+							<div class="not_attendance_stu_radio">
+								<p><input type="radio" name="${item.student_id}" value="その他"></p>
+							</div>
+							<div class="not_attendance_stu_id">
+								<p>${item.student_id}</p>
+							</div>
+							<div class="not_attendance_stu_name">
+								<p>${item.name}</p>
+							</div>
+						</div>
+					</c:forEach>
+				</div>
 				<input type="submit" value="登録">
 			</form>
 		</div>

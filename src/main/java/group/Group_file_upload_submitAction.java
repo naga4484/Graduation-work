@@ -26,7 +26,6 @@ public class Group_file_upload_submitAction extends Action {
 
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
-
         HttpSession session = request.getSession();
         User_id user_id = (User_id) session.getAttribute("user");
         String group_id = request.getParameter("group_id");
@@ -42,7 +41,6 @@ public class Group_file_upload_submitAction extends Action {
         if (!uploadDir.exists()) {
             uploadDir.mkdirs(); // 親ディレクトリも含めて作成
         }
-
         try {
             for (Part part : request.getParts()) {
                 String fileName = extractFileName(part);
@@ -61,7 +59,8 @@ public class Group_file_upload_submitAction extends Action {
                 }
             }
         } catch (Exception e) {
-            e.printStackTrace();
+        	e.printStackTrace();
+            System.out.println("エラー内容: " + e.getMessage());
             session.setAttribute("dis_err_mes", "アップロード中にエラーが発生しました");
             return "group_file_upload.jsp";
         }
