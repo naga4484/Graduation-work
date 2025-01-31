@@ -179,7 +179,7 @@ public class GroupDAO extends DAO {
 			Connection con=getConnection();
 
 			PreparedStatement st=con.prepareStatement(
-				"insert into share(group_id,share_item_path,user_id) values(?, ?, ?)");
+				"insert into Share(group_id,share_item_path,user_id) values(?, ?, ?)");
 			st.setString(1, group_id);
 			st.setString(2, path);
 			st.setInt(3, user_id);
