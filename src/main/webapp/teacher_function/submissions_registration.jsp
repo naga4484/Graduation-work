@@ -57,9 +57,7 @@
                 </select>
 
                 <label for="year">日付</label>
-                <select id="year" name="year"></select>
-                <select id="month" name="month"></select>
-                <select id="date" name="date"></select>
+                <input type="date" name="datetime" required>
                 
                 <input type="submit" value="登録">
             </div>
@@ -100,5 +98,4 @@
 </div>
 
 
-<script src="../js/year.js"></script>
 <%@ include file="../footer.jsp" %>

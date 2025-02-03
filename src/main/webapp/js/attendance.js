@@ -21,3 +21,10 @@ attendance_box_back.onclick = function() {
         boxstyle.display = "block";
         attendance_backstyle.display = "block";
 }}
+
+
+let date_input_attendance = document.getElementById("date_input_attendance");
+
+date_input_attendance.addEventListener("change", function() {
+    document.getElementById("output").textContent = "選択した日付: " + this.value;
+});

@@ -73,6 +73,14 @@ input[type="submit"]:hover {
     background-color: darkblue; /* ホバー時に濃い緑色に変更 */
 }
 
+#date_input{
+	width: 100px;
+	height: 30px;
+	border: 1px solid #333;
+	border-radius: 5px;
+	
+}
+
 select{
 	margin-bottom: 1em; /* 下に1emの隙間 */
     min-width: 230px;

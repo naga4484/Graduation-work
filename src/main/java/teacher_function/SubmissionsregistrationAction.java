@@ -34,16 +34,10 @@ public class SubmissionsregistrationAction extends Action {
 				return "submissions_registration.jsp";
 			}
 			String subject_id=request.getParameter("subject_id");
-			String year=request.getParameter("year");
-			String month=request.getParameter("month");
-			if(month.length() == 1) {
-				month = "0" + month;
-			}
-			String date=request.getParameter("date");
-			if(date.length() == 1) {
-				date = "0" + date;
-			}
-			String fulldata = year + "年" +month + "月" + date + "日";
+			String datetime=request.getParameter("datetime");
+			String[] parts = datetime.split("-");
+	        String formattedTime = parts[0] + "年" + parts[1] + "月"+ parts[2] + "日";
+			
 			String save_path = FILE_DIRECTORY + submission_name;
 			
 			String folderpath = System.getProperty("user.dir") + File.separator + "submissions";
@@ -67,7 +61,7 @@ public class SubmissionsregistrationAction extends Action {
 				}
 				
 				if(Flag.equals("〇")==true) {
-					int line = sdao.submissions_registration(submission_name, save_path , fulldata, i.getClass_id() ,subject_id);
+					int line = sdao.submissions_registration(submission_name, save_path , formattedTime, i.getClass_id() ,subject_id);
 					break;
 				}
 			}

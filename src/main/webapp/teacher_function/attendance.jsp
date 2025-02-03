@@ -121,6 +121,7 @@
 		</div>
 		
 			<input type="submit" value="登録">
+			<input type="date" id="date_input_attendance" name="datetime" value="2025-02-03" required>
 		</form>
 		<c:if test="${samplelist.size() > 0}">
 			<h3 class="attendance_list_iframe_text">登録済み情報</h3>

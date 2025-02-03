@@ -38,8 +38,7 @@
 <div class="schedule_plan_form">
 	<form action="Scheduleregistration.action">
 		<input type="text" name="schedule_content" id="schedule_content" placeholder="スケジュールを入力" required>
-		<input type="number" name="hour" id="schedule_hour" placeholder="時" min="0" max="23" required class="schedule_plan_form_number">
-		<input type="number" name="minute" id="schedule_minute" placeholder="分" min="0" max="59" required class="schedule_plan_form_number">
+		<input type="time" id="schedule_time" name="schedule_datetime" required>
 		<input type="submit" value="登録" class="schedule_plan_form_button">
 		
 	</form>

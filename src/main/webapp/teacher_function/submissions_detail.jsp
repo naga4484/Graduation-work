@@ -35,9 +35,7 @@
 	        </select>
 	
 	        <label>期限</label>
-	        <select id="year" name="year"></select>
-	        <select id="month" name="month"></select>
-	        <select id="date" name="date"></select>
+	        <input type="date" id="date_input" name="datetime" value="${distinctsubmissions_id.create_date.substring(0,4)}-${distinctsubmissions_id.create_date.substring(5,7)}-${distinctsubmissions_id.create_date.substring(8,10)}" required>
 	
 	        <input type="hidden" name="submissions_id" value="${distinctsubmissions_id.submissions_id}">
 	        <input type="submit" value="変更">
@@ -64,5 +62,4 @@
 </div>
 
 
-<script src="../js/year.js"></script>
 <%@ include file="../footer.jsp" %>

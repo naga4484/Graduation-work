@@ -30,19 +30,12 @@ public class Schedule_editAction extends Action {
 			
 			//変更内容の重複を確認する
 			//変更情報をリストにまとめる
-			List<String> hour_list = new ArrayList<>();;
-			List<String> minute_list = new ArrayList<>();;
+			List<String> time_list = new ArrayList<>();;
 			for(int i = 0;i < list_size;i++) {
-				String hour = request.getParameter(i + "_hour_" + user_id.getUser_id());
-				if(hour.length() == 2 && hour.substring(0,1).equals("0")) {
-					hour = hour.substring(1);
-				}
-				hour_list.add(hour);
-				String minute = request.getParameter(i + "_minute_" + user_id.getUser_id());
-				if(minute.length() == 2 && minute.substring(0,1).equals("0")) {
-					minute = minute.substring(1,2);
-				}
-				minute_list.add(minute);
+				String time = request.getParameter(i + "_time_" + user_id.getUser_id());
+				String[] parts = time.split(":");
+		        String formattedTime = parts[0] + "時" + parts[1] + "分";
+		        time_list.add(formattedTime);
 			}
 			
 			//変更のために一度全削除
@@ -51,16 +44,7 @@ public class Schedule_editAction extends Action {
 			//変更のための新規登録
 			for(int i = 0;i < list_size;i++) {
 				String content = request.getParameter(i + "_content_" + user_id.getUser_id());
-				String hour = hour_list.get(i);
-				if(hour.length() == 1) {
-					hour = "0" + hour;
-				}
-				String minute = minute_list.get(i);
-				if(minute.length() == 1) {
-					minute = "0" + minute;
-				}
-				String data = hour + "時" + minute + "分";
-				line = dao.cal_reg(user_id.getUser_id(), selectdate, data,content);
+				line = dao.cal_reg(user_id.getUser_id(), selectdate, time_list.get(i),content);
 			}
 			
 			List<Calendar> cal_list = dao.calender_list(user_id.getUser_id(), selectdate);

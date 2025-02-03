@@ -24,11 +24,8 @@
 		<c:choose>
 			<c:when test="${cal_list.size() > 0}">
 				<div class="schedule_edit_table_head">
-					<div class="schedule_edit_table_hour">
+					<div class="schedule_edit_table_time">
 						<p>時間</p>
-					</div>
-					<div class="schedule_edit_table_minute">
-						<p>分</p>
 					</div>
 					<div class="schedule_edit_table_schedule">
 						<p>スケジュール</p>
@@ -39,11 +36,8 @@
 				</div>
 				<c:forEach var="item" items="${cal_list}" varStatus="status">
 					<div class="schedule_edit_table_body">
-						<div class="schedule_edit_table_hour">
-							<p><input type="number" value="${item.setting_date.substring(0,2)}" name="${status.index}_hour_${item.user_id}" min="0" max="23" required class="schedule_edit_hour_input"></p>
-						</div>
-						<div class="schedule_edit_table_minute">
-							<p><input type="number" value="${item.setting_date.substring(3,5)}" name="${status.index}_minute_${item.user_id}" min="0" max="59" required class="schedule_edit_minute_input"></p>
+						<div class="schedule_edit_table_time">
+							<p><input type="time" value="${item.setting_date.substring(0,2)}:${item.setting_date.substring(3,5)}" name="${status.index}_time_${item.user_id}" required class="schedule_edit_hour_input"></p>
 						</div>
 						<div class="schedule_edit_table_schedule">
 							<p><input type="text" value="${item.schedule_content}" name="${status.index}_content_${item.user_id}" required class="schedule_edit_schedule_input"></p>
